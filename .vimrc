@@ -48,21 +48,14 @@ set rtp+=/usr/local/opt/fzf " fzf runtimepath
 if has("gui_macvim") && has("gui_running")
   set guifont=SFMono\ Nerd\ Font:h13 " mvim font
   set termguicolors
+
   let g:airline_powerline_fonts = 1
+
   colorscheme onedark
 
   map <D-E> :NERDTreeFind<CR>
   map <D-e> :NERDTreeToggle<CR>
   map <D-p> :FZF ~/git/betr/<CR>
-
-" map <D-h> <C-w>h
-" map <D-j> <C-w>j
-" map <D-k> <C-w>k
-" map <D-l> <C-w>l
-" map <D-H> <C-w>H
-" map <D-J> <C-w>J
-" map <D-K> <C-w>K
-" map <D-L> <C-w>L
 endif
 
 let mapleader = "\<Space>"
@@ -80,7 +73,6 @@ let g:ctrlp_by_filename = 1
 
 let g:ackprg = 'ag --vimgrep'
 
-let g:tsuquyomi_disable_quickfix = 1
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
@@ -88,6 +80,9 @@ let g:syntastic_check_on_wq = 0
 let g:syntastic_html_tidy_exec = 'tidy5'
 let g:syntastic_cs_checkers = ['code_checker']
 let g:syntastic_typescript_checkers = ['tsuquyomi']
+
+let g:tsuquyomi_disable_default_mappings = 1
+let g:tsuquyomi_disable_quickfix = 1
 
 let g:airline_theme='onedark'
 
@@ -108,49 +103,32 @@ endfunction
 augroup tsuquyomi_commands
   autocmd!
 
-  autocmd FileType typescript setlocal balloonexpr=tsuquyomi#balloonexpr()
-
+  " core
   autocmd FileType typescript nmap <buffer> <Leader>tt : <C-u>echo tsuquyomi#hint()<CR>
+  autocmd FileType typescript nnoremap <F2> :TsuRenameSymbol<CR>
   autocmd FileType typescript nnoremap <buffer> <Leader><Space> :TsuImport<CR>
+  autocmd FileType typescript nnoremap <buffer> gd :TsuDefinition<CR>
+  autocmd FileType typescript nnoremap <buffer> <Leader>x :TsuQuickFix<CR>
 augroup END
 
 " omnisharp
 augroup omnisharp_commands
-    autocmd!
+  autocmd!
 
-    " Automatic syntax check on events (TextChanged requires Vim 7.4)
-    autocmd BufEnter,TextChanged,InsertLeave *.cs SyntasticCheck
+  autocmd BufEnter,TextChanged,InsertLeave *.cs SyntasticCheck
+  autocmd BufWritePost *.cs call OmniSharp#AddToProject()
 
-    " Automatically add new cs files to the nearest project on save
-    autocmd BufWritePost *.cs call OmniSharp#AddToProject()
+  " core
+  autocmd FileType cs nnoremap <buffer> <Leader>tt :OmniSharpTypeLookup<CR>
+  autocmd FileType cs nnoremap <F2> :OmniSharpRename<CR>
+  autocmd FileType cs noremap <Leader><Space> :OmniSharpGetCodeActions<CR>
+  autocmd FileType cs nnoremap <buffer> gd :OmniSharpGotoDefinition<CR>
+  autocmd FileType cs nnoremap <buffer> <Leader>x :OmniSharpFixIssue<CR>
+  autocmd FileType cs nnoremap <buffer> <Leader>dc :OmniSharpDocumentation<CR>
 
-    " Show type information automatically when the cursor stops moving
-    autocmd CursorHold *.cs call OmniSharp#TypeLookupWithoutDocumentation()
-
-    " The following commands are contextual, based on the cursor position.
-    autocmd FileType cs nnoremap <buffer> gd :OmniSharpGotoDefinition<CR>
-    autocmd FileType cs nnoremap <buffer> <Leader>fi :OmniSharpFindImplementations<CR>
-    autocmd FileType cs nnoremap <buffer> <Leader>fs :OmniSharpFindSymbol<CR>
-    autocmd FileType cs nnoremap <buffer> <Leader>fu :OmniSharpFindUsages<CR>
-
-    " Finds members in the current buffer
-    autocmd FileType cs nnoremap <buffer> <Leader>fm :OmniSharpFindMembers<CR>
-
-    autocmd FileType cs nnoremap <buffer> <Leader>tt :OmniSharpTypeLookup<CR>
-    autocmd FileType cs nnoremap <buffer> <Leader>dc :OmniSharpDocumentation<CR>
-
-    " Contextual code actions (uses fzf, CtrlP or unite.vim when available)
-    autocmd FileType cs noremap <Leader><Space> :OmniSharpGetCodeActions<CR>
-
-    " Run code actions with text selected in visual mode to extract method
-    autocmd FileType cs noremap <Leader><Space> :call OmniSharp#GetCodeActions('visual')<CR>
-
-    " Force OmniSharp to reload the solution. Useful when switching branches etc.
-    autocmd FileType cs nnoremap <Leader>rl :OmniSharpReloadSolution<CR>
-
-    " Load the current .cs file to the nearest project
-    autocmd FileType cs nnoremap <Leader>tp :OmniSharpAddToProject<CR>
-
-    " Add syntax highlighting for types and interfaces
-    autocmd FileType cs nnoremap <Leader>th :OmniSharpHighlightTypes<CR>
+  " search
+  autocmd FileType cs nnoremap <buffer> <Leader>fi :OmniSharpFindImplementations<CR>
+  autocmd FileType cs nnoremap <buffer> <Leader>fs :OmniSharpFindSymbol<CR>
+  autocmd FileType cs nnoremap <buffer> <Leader>fu :OmniSharpFindUsages<CR>
+  autocmd FileType cs nnoremap <buffer> <Leader>fm :OmniSharpFindMembers<CR>
 augroup END
