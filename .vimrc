@@ -5,11 +5,12 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'junegunn/fzf'
-Plugin 'mileszs/ack.vim'
+Plugin 'junegunn/fzf.vim'
 Plugin 'vim-syntastic/syntastic'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'sheerun/vim-polyglot'
 Plugin 'tpope/vim-surround'
+Plugin 'haya14busa/incsearch.vim'
 " sugar
 Plugin 'vim-airline/vim-airline'
 Plugin 'tpope/vim-fugitive'
@@ -37,6 +38,7 @@ set expandtab
 set laststatus=2
 set encoding=utf-8
 set previewheight=5
+set pumheight=5
 set completeopt=longest,menuone,preview
 set hlsearch
 set showcmd
@@ -44,19 +46,6 @@ set noswapfile
 set ballooneval
 set wildignore+=*/node_modules/*,*/wwwroot/*,*/bin/*,*/obj/*
 set rtp+=/usr/local/opt/fzf " fzf runtimepath
-
-if has("gui_macvim") && has("gui_running")
-  set guifont=SFMono\ Nerd\ Font:h13 " mvim font
-  set termguicolors
-
-  let g:airline_powerline_fonts = 1
-
-  colorscheme onedark
-
-  map <D-E> :NERDTreeFind<CR>
-  map <D-e> :NERDTreeToggle<CR>
-  map <D-p> :FZF ~/git/betr/<CR>
-endif
 
 let mapleader = "\<Space>"
 
@@ -71,8 +60,6 @@ let NERDTreeAutoDeleteBuffer = 1
 
 let g:ctrlp_by_filename = 1
 
-let g:ackprg = 'ag --vimgrep'
-
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
@@ -86,7 +73,25 @@ let g:tsuquyomi_disable_quickfix = 1
 
 let g:airline_theme='onedark'
 
-let $FZF_DEFAULT_COMMAND='ag -l -s -o -g ""'
+nnoremap <esc> :noh<return><esc>
+
+map /  <Plug>(incsearch-forward)
+map ?  <Plug>(incsearch-backward)
+map g/ <Plug>(incsearch-stay)
+
+if has("gui_macvim") && has("gui_running")
+  set guifont=SFMono\ Nerd\ Font:h13 " mvim font
+  set termguicolors
+
+  let g:airline_powerline_fonts = 1
+
+  colorscheme onedark
+
+  map <D-E> :NERDTreeFind<CR>
+  map <D-e> :NERDTreeToggle<CR>
+  map <D-p> :GFiles<CR>
+  map <D-B> :Buffers<CR>
+endif
 
 augroup general_commands
   autocmd!
@@ -99,11 +104,11 @@ augroup tsuquyomi_commands
   autocmd!
 
   " core
-  autocmd FileType typescript nmap <buffer> <Leader>tt : <C-u>echo tsuquyomi#hint()<CR>
-  autocmd FileType typescript nnoremap <F2> :TsuRenameSymbol<CR>
-  autocmd FileType typescript nnoremap <buffer> <Leader><Space> :TsuImport<CR>
+  autocmd FileType typescript nnoremap <buffer> <Leader>tt : <C-u>echo tsuquyomi#hint()<CR>
+  autocmd FileType typescript nnoremap <buffer> <F2> :TsuRenameSymbol<CR>
   autocmd FileType typescript nnoremap <buffer> gd :TsuDefinition<CR>
   autocmd FileType typescript nnoremap <buffer> <Leader>x :TsuQuickFix<CR>
+  autocmd FileType typescript nnoremap <buffer> <Leader>i :TsuImport<CR>
 augroup END
 
 augroup omnisharp_commands
@@ -114,10 +119,10 @@ augroup omnisharp_commands
 
   " core
   autocmd FileType cs nnoremap <buffer> <Leader>tt :OmniSharpTypeLookup<CR>
-  autocmd FileType cs nnoremap <F2> :OmniSharpRename<CR>
-  autocmd FileType cs noremap <Leader><Space> :OmniSharpGetCodeActions<CR>
+  autocmd FileType cs nnoremap <buffer> <F2> :OmniSharpRename<CR>
   autocmd FileType cs nnoremap <buffer> gd :OmniSharpGotoDefinition<CR>
   autocmd FileType cs nnoremap <buffer> <Leader>x :OmniSharpFixIssue<CR>
+  autocmd FileType cs noremap <buffer> <Leader><Space> :OmniSharpGetCodeActions<CR>
   autocmd FileType cs nnoremap <buffer> <Leader>dc :OmniSharpDocumentation<CR>
 
   " search
@@ -126,3 +131,9 @@ augroup omnisharp_commands
   autocmd FileType cs nnoremap <buffer> <Leader>fu :OmniSharpFindUsages<CR>
   autocmd FileType cs nnoremap <buffer> <Leader>fm :OmniSharpFindMembers<CR>
 augroup END
+
+" fzf search git file content
+command! -bang -nargs=* GGrep
+  \ call fzf#vim#grep(
+  \   'git grep --line-number '.shellescape(<q-args>), 0,
+  \   { 'dir': systemlist('git rev-parse --show-toplevel')[0] }, <bang>0)
