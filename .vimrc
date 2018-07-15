@@ -3,25 +3,25 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 " essential
 Plugin 'VundleVim/Vundle.vim'
-Plugin 'scrooloose/nerdtree'
-Plugin 'junegunn/fzf'
-Plugin 'junegunn/fzf.vim'
 Plugin 'vim-syntastic/syntastic'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'sheerun/vim-polyglot'
 Plugin 'tpope/vim-surround'
-Plugin 'haya14busa/incsearch.vim'
-" sugar
-Plugin 'vim-airline/vim-airline'
+" project
+Plugin 'scrooloose/nerdtree'
+Plugin 'junegunn/fzf'
+Plugin 'junegunn/fzf.vim'
 Plugin 'tpope/vim-fugitive'
+Plugin 'haya14busa/incsearch.vim'
+Plugin 'amiorin/vim-project'
+" looks
+Plugin 'vim-airline/vim-airline'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'prettier/prettier'
 Plugin 'joshdick/onedark.vim'
 " typescript
-Plugin 'leafgarland/typescript-vim'
 Plugin 'Quramy/tsuquyomi'
 " c#
-Plugin 'OrangeT/vim-csharp'
 Plugin 'OmniSharp/omnisharp-vim'
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -39,7 +39,7 @@ set laststatus=2
 set encoding=utf-8
 set previewheight=5
 set pumheight=5
-set completeopt=longest,menuone,preview
+set completeopt=longest,menuone
 set hlsearch
 set showcmd
 set noswapfile
@@ -57,6 +57,7 @@ let g:OmniSharp_prefer_global_sln = 1
 let NERDTreeMinimalUI = 1
 let NERDTreeDirArrows = 1
 let NERDTreeAutoDeleteBuffer = 1
+let NERDTreeQuitOnOpen=1
 
 let g:ctrlp_by_filename = 1
 
@@ -87,8 +88,7 @@ if has("gui_macvim") && has("gui_running")
 
   colorscheme onedark
 
-  map <D-E> :NERDTreeFind<CR>
-  map <D-e> :NERDTreeToggle<CR>
+  map <D-e> :call ToggleNERDTreeFind()<CR>
   map <D-p> :GFiles<CR>
   map <D-B> :Buffers<CR>
 endif
@@ -96,8 +96,8 @@ endif
 augroup general_commands
   autocmd!
 
-  autocmd CompleteDone * pclose " close preview when completion is finished
-  autocmd BufEnter * if &ft !~ '^nerdtree$' | silent! lcd %:p:h | endif
+  autocmd CompleteDone * pclose
+  " autocmd BufLeave NERD_tree_* execute ":NERDTreeClose"
 augroup END
 
 augroup tsuquyomi_commands
@@ -137,3 +137,22 @@ command! -bang -nargs=* GGrep
   \ call fzf#vim#grep(
   \   'git grep --line-number '.shellescape(<q-args>), 0,
   \   { 'dir': systemlist('git rev-parse --show-toplevel')[0] }, <bang>0)
+
+" toggle nerdtree on current file 
+function! ToggleNERDTreeFind()
+  if g:NERDTree.IsOpen()
+    execute ':NERDTreeClose'
+  else
+    execute ':NERDTreeFind'
+  endif
+endfunction
+
+" projects
+let g:project_use_nerdtree = 1
+set rtp+=~/.vim/bundle/vim-project/
+call project#rc("~/git")
+
+Project  'betr'
+Project  'kyoiku'
+
+File     '~/.vimrc', 'vimrc'
