@@ -19,6 +19,8 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'prettier/prettier'
 Plugin 'joshdick/onedark.vim'
+Plugin 'rakr/vim-one'
+Plugin 'altercation/vim-colors-solarized'
 " typescript
 Plugin 'Quramy/tsuquyomi'
 " c#
@@ -59,8 +61,6 @@ let NERDTreeDirArrows = 1
 let NERDTreeAutoDeleteBuffer = 1
 let NERDTreeQuitOnOpen=1
 
-let g:ctrlp_by_filename = 1
-
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
@@ -72,32 +72,34 @@ let g:syntastic_typescript_checkers = ['tsuquyomi']
 let g:tsuquyomi_disable_default_mappings = 1
 let g:tsuquyomi_disable_quickfix = 1
 
-let g:airline_theme='onedark'
-
-nnoremap <esc> :noh<return><esc>
+let g:airline_section_c = '%<%f%m %#__accent_red#%{airline#util#wrap(airline#parts#readonly(),0)}%#__restore__#'
 
 map /  <Plug>(incsearch-forward)
 map ?  <Plug>(incsearch-backward)
 map g/ <Plug>(incsearch-stay)
+map ;; :noh<CR>
 
 if has("gui_macvim") && has("gui_running")
   set guifont=SFMono\ Nerd\ Font:h13 " mvim font
   set termguicolors
-
-  let g:airline_powerline_fonts = 1
+  set titlestring=%F
+  set background=dark
 
   colorscheme onedark
+
+  let g:airline_theme='onedark'
+  let g:airline_powerline_fonts = 1
 
   map <D-e> :call ToggleNERDTreeFind()<CR>
   map <D-p> :GFiles<CR>
   map <D-B> :Buffers<CR>
+  map <D-P> :GGrep<Space>
 endif
 
 augroup general_commands
   autocmd!
 
   autocmd CompleteDone * pclose
-  " autocmd BufLeave NERD_tree_* execute ":NERDTreeClose"
 augroup END
 
 augroup tsuquyomi_commands
@@ -134,9 +136,9 @@ augroup END
 
 " fzf search git file content
 command! -bang -nargs=* GGrep
-  \ call fzf#vim#grep(
-  \   'git grep --line-number '.shellescape(<q-args>), 0,
-  \   { 'dir': systemlist('git rev-parse --show-toplevel')[0] }, <bang>0)
+      \ call fzf#vim#grep(
+      \   'git grep --line-number '.shellescape(<q-args>), 0,
+      \   { 'dir': systemlist('git rev-parse --show-toplevel')[0] }, <bang>0)
 
 " toggle nerdtree on current file 
 function! ToggleNERDTreeFind()
