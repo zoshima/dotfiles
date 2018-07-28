@@ -3,8 +3,11 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 " editor
+Plugin 'easymotion/vim-easymotion'
 Plugin 'haya14busa/incsearch.vim'
+Plugin 'haya14busa/incsearch-easymotion.vim'
 Plugin 'tpope/vim-surround'
+Plugin 'terryma/vim-multiple-cursors'
 " project
 Plugin 'junegunn/fzf'
 Plugin 'junegunn/fzf.vim'
@@ -13,6 +16,7 @@ Plugin 'amiorin/vim-project'
 " looks
 Plugin 'vim-airline/vim-airline'
 Plugin 'joshdick/onedark.vim'
+Plugin 'morhetz/gruvbox'
 " git
 Plugin 'airblade/vim-gitgutter'
 Plugin 'tpope/vim-fugitive'
@@ -32,8 +36,10 @@ syntax on
 
 set nocompatible              " be iMproved, required
 set splitright
+set background=dark
 set number relativenumber
 set ai
+set cursorline
 set tabstop=2
 set shiftwidth=2
 set expandtab
@@ -81,6 +87,9 @@ autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.gra
 map /  <Plug>(incsearch-forward)
 map ?  <Plug>(incsearch-backward)
 map g/ <Plug>(incsearch-stay)
+map z/ <Plug>(incsearch-easymotion-/)
+map z? <Plug>(incsearch-easymotion-?)
+map zg/ <Plug>(incsearch-easymotion-stay)
 map ;; :noh<CR>
 
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
@@ -92,13 +101,12 @@ if has("gui_macvim") && has("gui_running")
   set guioptions=
   set termguicolors
   set title titlestring=%F
-  set background=dark
 
   lan no_NO
 
-  colorscheme onedark
+  colorscheme gruvbox
 
-  let g:airline_theme='onedark'
+  let g:airline_theme='gruvbox'
   let g:airline_powerline_fonts = 1
 
   map <D-e> :call ToggleNERDTreeFind()<CR>
@@ -145,7 +153,7 @@ augroup omnisharp_commands
   autocmd FileType cs nnoremap <buffer> <F2> :OmniSharpRename<CR>
   autocmd FileType cs nnoremap <buffer> gd :OmniSharpGotoDefinition<CR>
   autocmd FileType cs nnoremap <buffer> <Leader>x :OmniSharpFixIssue<CR>
-  autocmd FileType cs noremap <buffer> <Leader><Space> :OmniSharpGetCodeActions<CR>
+  autocmd FileType cs noremap <buffer> <Leader>ca :OmniSharpGetCodeActions<CR>
   autocmd FileType cs nnoremap <buffer> <Leader>dc :OmniSharpDocumentation<CR>
 
   " search
