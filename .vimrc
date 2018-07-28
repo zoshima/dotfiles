@@ -1,30 +1,31 @@
 filetype off                  " required
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-" essential
 Plugin 'VundleVim/Vundle.vim'
-Plugin 'vim-syntastic/syntastic'
-Plugin 'Valloric/YouCompleteMe'
-Plugin 'sheerun/vim-polyglot'
+" editor
+Plugin 'haya14busa/incsearch.vim'
 Plugin 'tpope/vim-surround'
 " project
-Plugin 'scrooloose/nerdtree'
 Plugin 'junegunn/fzf'
 Plugin 'junegunn/fzf.vim'
-Plugin 'tpope/vim-fugitive'
-Plugin 'haya14busa/incsearch.vim'
+Plugin 'scrooloose/nerdtree'
 Plugin 'amiorin/vim-project'
 " looks
 Plugin 'vim-airline/vim-airline'
-Plugin 'airblade/vim-gitgutter'
-Plugin 'prettier/prettier'
 Plugin 'joshdick/onedark.vim'
-Plugin 'rakr/vim-one'
-Plugin 'altercation/vim-colors-solarized'
+" git
+Plugin 'airblade/vim-gitgutter'
+Plugin 'tpope/vim-fugitive'
+" syntax
+Plugin 'HerringtonDarkholme/yats.vim'
+" Plugin 'w0rp/ale'
+Plugin 'vim-syntastic/syntastic'
+" autocomplete
+Plugin 'Valloric/YouCompleteMe'
 " typescript
 Plugin 'Quramy/tsuquyomi'
 " c#
-Plugin 'OmniSharp/omnisharp-vim'
+Bundle 'OmniSharp/omnisharp-vim'
 call vundle#end()            " required
 filetype plugin indent on    " required
 
@@ -51,15 +52,16 @@ set rtp+=/usr/local/opt/fzf " fzf runtimepath
 
 let mapleader = "\<Space>"
 
-let g:OmniSharp_server_path = '/Users/kdi/omnisharp/omnisharp.http-osx/omnisharp/OmniSharp.exe'
-let g:OmniSharp_server_use_mono = 1
-let g:OmniSharp_server_type = 'roslyn'
-let g:OmniSharp_prefer_global_sln = 1
-
 let NERDTreeMinimalUI = 1
 let NERDTreeDirArrows = 1
 let NERDTreeAutoDeleteBuffer = 1
 let NERDTreeQuitOnOpen=1
+
+" let g:ale_fixers = {'typescript': ['prettier', 'tslint']}
+" let g:ale_fix_on_save = 1
+
+" let g:airline_section_c = '%<%f%m %#__accent_red#%{airline#util#wrap(airline#parts#readonly(),0)}%#__restore__#'
+let g:airline_section_c = '%t%m'
 
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
@@ -72,17 +74,23 @@ let g:syntastic_typescript_checkers = ['tsuquyomi']
 let g:tsuquyomi_disable_default_mappings = 1
 let g:tsuquyomi_disable_quickfix = 1
 
-let g:airline_section_c = '%<%f%m %#__accent_red#%{airline#util#wrap(airline#parts#readonly(),0)}%#__restore__#'
+let g:OmniSharp_server_path = '/Users/kdi/.omnisharp/omnisharp-roslyn/omnisharp/OmniSharp.exe'
+let g:OmniSharp_server_use_mono = 1
+let g:OmniSharp_selector_ui = 'fzf'
 
 map /  <Plug>(incsearch-forward)
 map ?  <Plug>(incsearch-backward)
 map g/ <Plug>(incsearch-stay)
 map ;; :noh<CR>
 
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+inoremap <expr><S-TAB>  pumvisible() ? "\<C-p>" : "\<TAB>"
+
 if has("gui_macvim") && has("gui_running")
   set guifont=SFMono\ Nerd\ Font:h13 " mvim font
+  set guioptions=
   set termguicolors
-  set titlestring=%F
+  set title titlestring=%F
   set background=dark
 
   colorscheme onedark
@@ -92,8 +100,19 @@ if has("gui_macvim") && has("gui_running")
 
   map <D-e> :call ToggleNERDTreeFind()<CR>
   map <D-p> :GFiles<CR>
-  map <D-B> :Buffers<CR>
-  map <D-P> :GGrep<Space>
+  map <D-b> :Buffers<CR>
+  map <D-F> :GGrep<Space>
+
+  nnoremap <D-l> <C-w>l
+  nnoremap <D-h> <C-w>h
+  nnoremap <D-j> <C-w>j
+  nnoremap <D-k> <C-w>k
+
+  nnoremap <D-1> 1gt
+  nnoremap <D-2> 2gt
+  nnoremap <D-3> 3gt
+  nnoremap <D-4> 4gt
+  nnoremap <D-5> 5gt
 endif
 
 augroup general_commands
@@ -116,8 +135,8 @@ augroup END
 augroup omnisharp_commands
   autocmd!
 
+  " Automatic syntax check on events (TextChanged requires Vim 7.4)
   autocmd BufEnter,TextChanged,InsertLeave *.cs SyntasticCheck
-  autocmd BufWritePost *.cs call OmniSharp#AddToProject()
 
   " core
   autocmd FileType cs nnoremap <buffer> <Leader>tt :OmniSharpTypeLookup<CR>
@@ -132,6 +151,13 @@ augroup omnisharp_commands
   autocmd FileType cs nnoremap <buffer> <Leader>fs :OmniSharpFindSymbol<CR>
   autocmd FileType cs nnoremap <buffer> <Leader>fu :OmniSharpFindUsages<CR>
   autocmd FileType cs nnoremap <buffer> <Leader>fm :OmniSharpFindMembers<CR>
+
+  " server
+  autocmd FileType cs nnoremap <buffer> <Leader>ss :OmniSharpStartServer<CR>
+  autocmd FileType cs nnoremap <buffer> <Leader>sp :OmniSharpStopServer<CR>
+
+  " syntax
+  autocmd FileType cs nnoremap <buffer> <Leader>th :OmniSharpHighlightTypes<CR>
 augroup END
 
 " fzf search git file content
@@ -150,7 +176,7 @@ function! ToggleNERDTreeFind()
 endfunction
 
 " projects
-let g:project_use_nerdtree = 1
+let g:project_use_nerdtree = 0
 set rtp+=~/.vim/bundle/vim-project/
 call project#rc("~/git")
 
