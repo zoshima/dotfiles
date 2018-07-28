@@ -79,11 +79,14 @@ map g/ <Plug>(incsearch-stay)
 map ;; :noh<CR>
 
 if has("gui_macvim") && has("gui_running")
+  set langmenu=en_US.UTF-8
   set guifont=SFMono\ Nerd\ Font:h13 " mvim font
   set guioptions=
   set termguicolors
   set title titlestring=%F
   set background=dark
+
+  lan no_NO
 
   colorscheme onedark
 
