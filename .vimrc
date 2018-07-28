@@ -17,11 +17,11 @@ Plugin 'joshdick/onedark.vim'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'tpope/vim-fugitive'
 " syntax
-Plugin 'HerringtonDarkholme/yats.vim'
 Plugin 'vim-syntastic/syntastic'
-" autocomplete
-Plugin 'Valloric/YouCompleteMe'
+Plugin 'prettier/vim-prettier'
+Plugin 'editorconfig/editorconfig-vim'
 " typescript
+Plugin 'HerringtonDarkholme/yats.vim'
 Plugin 'Quramy/tsuquyomi'
 " c#
 Bundle 'OmniSharp/omnisharp-vim'
@@ -68,15 +68,23 @@ let g:syntastic_typescript_checkers = ['tsuquyomi']
 
 let g:tsuquyomi_disable_default_mappings = 1
 let g:tsuquyomi_disable_quickfix = 1
+let g:tsuquyomi_shortest_import_path = 1
 
 let g:OmniSharp_server_path = '/Users/kdi/.omnisharp/omnisharp-roslyn/omnisharp/OmniSharp.exe'
 let g:OmniSharp_server_use_mono = 1
 let g:OmniSharp_selector_ui = 'fzf'
 
+let g:prettier#autoformat = 0
+let g:prettier#exec_cmd_async = 1
+autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue PrettierAsync
+
 map /  <Plug>(incsearch-forward)
 map ?  <Plug>(incsearch-backward)
 map g/ <Plug>(incsearch-stay)
 map ;; :noh<CR>
+
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+inoremap <expr><S-TAB>  pumvisible() ? "\<C-p>" : "\<TAB>"
 
 if has("gui_macvim") && has("gui_running")
   set langmenu=en_US.UTF-8
@@ -109,12 +117,12 @@ if has("gui_macvim") && has("gui_running")
   nnoremap <D-4> 4gt
   nnoremap <D-5> 5gt
 endif
-
-augroup general_commands
-  autocmd!
-
-  autocmd CompleteDone * pclose
-augroup END
+ " 
+ " augroup general_commands
+ "   autocmd!
+ " 
+ "   autocmd CompleteDone * pclose
+ " augroup END
 
 augroup tsuquyomi_commands
   autocmd!
@@ -170,7 +178,7 @@ function! ToggleNERDTreeFind()
 endfunction
 
 " projects
-let g:project_use_nerdtree = 0
+let g:project_use_nerdtree = 1
 set rtp+=~/.vim/bundle/vim-project/
 call project#rc("~/git")
 
