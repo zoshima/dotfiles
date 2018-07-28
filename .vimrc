@@ -18,7 +18,6 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'tpope/vim-fugitive'
 " syntax
 Plugin 'HerringtonDarkholme/yats.vim'
-" Plugin 'w0rp/ale'
 Plugin 'vim-syntastic/syntastic'
 " autocomplete
 Plugin 'Valloric/YouCompleteMe'
@@ -57,10 +56,6 @@ let NERDTreeDirArrows = 1
 let NERDTreeAutoDeleteBuffer = 1
 let NERDTreeQuitOnOpen=1
 
-" let g:ale_fixers = {'typescript': ['prettier', 'tslint']}
-" let g:ale_fix_on_save = 1
-
-" let g:airline_section_c = '%<%f%m %#__accent_red#%{airline#util#wrap(airline#parts#readonly(),0)}%#__restore__#'
 let g:airline_section_c = '%t%m'
 
 let g:syntastic_always_populate_loc_list = 1
@@ -82,9 +77,6 @@ map /  <Plug>(incsearch-forward)
 map ?  <Plug>(incsearch-backward)
 map g/ <Plug>(incsearch-stay)
 map ;; :noh<CR>
-
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-inoremap <expr><S-TAB>  pumvisible() ? "\<C-p>" : "\<TAB>"
 
 if has("gui_macvim") && has("gui_running")
   set guifont=SFMono\ Nerd\ Font:h13 " mvim font
@@ -135,7 +127,6 @@ augroup END
 augroup omnisharp_commands
   autocmd!
 
-  " Automatic syntax check on events (TextChanged requires Vim 7.4)
   autocmd BufEnter,TextChanged,InsertLeave *.cs SyntasticCheck
 
   " core
