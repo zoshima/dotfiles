@@ -35,6 +35,7 @@ filetype plugin indent on    " required
 syntax on
 
 set nocompatible              " be iMproved, required
+set splitbelow
 set splitright
 set background=dark
 set number relativenumber
@@ -79,6 +80,7 @@ let g:tsuquyomi_shortest_import_path = 1
 let g:OmniSharp_server_path = '/Users/kdi/.omnisharp/omnisharp-roslyn/omnisharp/OmniSharp.exe'
 let g:OmniSharp_server_use_mono = 1
 let g:OmniSharp_selector_ui = 'fzf'
+let g:OmniSharp_timeout = 5
 
 let g:prettier#autoformat = 0
 let g:prettier#exec_cmd_async = 1
@@ -124,6 +126,8 @@ if has("gui_macvim") && has("gui_running")
   nnoremap <D-3> 3gt
   nnoremap <D-4> 4gt
   nnoremap <D-5> 5gt
+
+  autocmd FocusLost * redraw! " fixes fullscreen rendering issue
 endif
  " 
  " augroup general_commands
@@ -136,7 +140,7 @@ augroup tsuquyomi_commands
   autocmd!
 
   " core
-  autocmd FileType typescript nnoremap <buffer> <Leader>tt : <C-u>echo tsuquyomi#hint()<CR>
+  autocmd FileType typescript nnoremap <buffer> <Leader>gh : <C-u>echo tsuquyomi#hint()<CR>
   autocmd FileType typescript nnoremap <buffer> <F2> :TsuRenameSymbol<CR>
   autocmd FileType typescript nnoremap <buffer> gd :TsuDefinition<CR>
   autocmd FileType typescript nnoremap <buffer> <Leader>x :TsuQuickFix<CR>
@@ -149,12 +153,11 @@ augroup omnisharp_commands
   autocmd BufEnter,TextChanged,InsertLeave *.cs SyntasticCheck
 
   " core
-  autocmd FileType cs nnoremap <buffer> <Leader>tt :OmniSharpTypeLookup<CR>
-  autocmd FileType cs nnoremap <buffer> <F2> :OmniSharpRename<CR>
+  autocmd FileType cs nnoremap <buffer> <Leader>gt :OmniSharpTypeLookup<CR>
   autocmd FileType cs nnoremap <buffer> gd :OmniSharpGotoDefinition<CR>
-  autocmd FileType cs nnoremap <buffer> <Leader>x :OmniSharpFixIssue<CR>
-  autocmd FileType cs noremap <buffer> <Leader>ca :OmniSharpGetCodeActions<CR>
-  autocmd FileType cs nnoremap <buffer> <Leader>dc :OmniSharpDocumentation<CR>
+  autocmd FileType cs noremap <buffer> <Leader>ga :OmniSharpGetCodeActions<CR>
+  autocmd FileType cs nnoremap <buffer> <Leader>gh :OmniSharpDocumentation<CR>
+  autocmd FileType cs noremap <buffer> <Leader>gs :OmniSharpSignatureHelp<CR>
 
   " search
   autocmd FileType cs nnoremap <buffer> <Leader>fi :OmniSharpFindImplementations<CR>
@@ -167,6 +170,7 @@ augroup omnisharp_commands
   autocmd FileType cs nnoremap <buffer> <Leader>sp :OmniSharpStopServer<CR>
 
   " syntax
+  autocmd FileType cs nnoremap <buffer> <F2> :OmniSharpRename<CR>
   autocmd FileType cs nnoremap <buffer> <Leader>th :OmniSharpHighlightTypes<CR>
 augroup END
 
@@ -178,7 +182,7 @@ command! -bang -nargs=* GGrep
 
 " toggle nerdtree on current file 
 function! ToggleNERDTreeFind()
-  if g:NERDTree.IsOpen()
+  if g:NERDTree.IsOpen() && bufwinnr(t:NERDTreeBufName) == winnr()
     execute ':NERDTreeClose'
   else
     execute ':NERDTreeFind'
@@ -192,5 +196,6 @@ call project#rc("~/git")
 
 Project  'betr'
 Project  'kyoiku'
+Project  'node-ts'
 
 File     '~/.vimrc', 'vimrc'
