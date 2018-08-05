@@ -23,7 +23,6 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'tpope/vim-fugitive'
 " syntax
 Plugin 'w0rp/ale'
-Plugin 'editorconfig/editorconfig-vim'
 " autocomplete
 " Plugin 'Valloric/YouCompleteMe'
 " typescript
