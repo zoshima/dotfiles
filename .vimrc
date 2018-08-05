@@ -12,6 +12,7 @@ Plugin 'terryma/vim-multiple-cursors'
 Plugin 'junegunn/fzf'
 Plugin 'junegunn/fzf.vim'
 Plugin 'scrooloose/nerdtree'
+Plugin 'ryanoasis/vim-devicons'
 Plugin 'amiorin/vim-project'
 " looks
 Plugin 'vim-airline/vim-airline'
@@ -21,9 +22,11 @@ Plugin 'morhetz/gruvbox'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'tpope/vim-fugitive'
 " syntax
-Plugin 'vim-syntastic/syntastic'
+Plugin 'w0rp/ale'
 Plugin 'prettier/vim-prettier'
 Plugin 'editorconfig/editorconfig-vim'
+" autocomplete
+" Plugin 'Valloric/YouCompleteMe'
 " typescript
 Plugin 'HerringtonDarkholme/yats.vim'
 Plugin 'Quramy/tsuquyomi'
@@ -52,7 +55,6 @@ set completeopt=longest,menuone
 set hlsearch
 set showcmd
 set noswapfile
-set ballooneval
 set wildignore+=*/node_modules/*,*/wwwroot/*,*/bin/*,*/obj/*
 set rtp+=/usr/local/opt/fzf " fzf runtimepath
 
@@ -62,16 +64,9 @@ let NERDTreeMinimalUI = 1
 let NERDTreeDirArrows = 1
 let NERDTreeAutoDeleteBuffer = 1
 let NERDTreeQuitOnOpen=1
+let NERDTreeShowHidden=1
 
 let g:airline_section_c = '%t%m'
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_html_tidy_exec = 'tidy5'
-let g:syntastic_cs_checkers = ['code_checker']
-let g:syntastic_typescript_checkers = ['tsuquyomi']
 
 let g:tsuquyomi_disable_default_mappings = 1
 let g:tsuquyomi_disable_quickfix = 1
@@ -82,8 +77,15 @@ let g:OmniSharp_server_use_mono = 1
 let g:OmniSharp_selector_ui = 'fzf'
 let g:OmniSharp_timeout = 5
 
+let g:ale_linters = { 'cs': ['omnisharp'] }
+let g:ale_set_balloons = 0
+
 let g:prettier#autoformat = 0
 let g:prettier#exec_cmd_async = 1
+
+let g:airline_theme='gruvbox'
+let g:airline_powerline_fonts = 1
+
 autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue PrettierAsync
 
 map /  <Plug>(incsearch-forward)
@@ -92,7 +94,7 @@ map g/ <Plug>(incsearch-stay)
 map z/ <Plug>(incsearch-easymotion-/)
 map z? <Plug>(incsearch-easymotion-?)
 map zg/ <Plug>(incsearch-easymotion-stay)
-map ;; :noh<CR>
+map <Leader>, :noh<CR>
 
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 inoremap <expr><S-TAB>  pumvisible() ? "\<C-p>" : "\<TAB>"
@@ -103,18 +105,18 @@ if has("gui_macvim") && has("gui_running")
   set guioptions=
   set termguicolors
   set title titlestring=%F
+  set noballooneval
 
   lan no_NO
 
   colorscheme gruvbox
 
-  let g:airline_theme='gruvbox'
-  let g:airline_powerline_fonts = 1
-
   map <D-e> :call ToggleNERDTreeFind()<CR>
+  map <D-E> :NERDTreeFind<CR>
   map <D-p> :GFiles<CR>
   map <D-b> :Buffers<CR>
   map <D-F> :GGrep<Space>
+  map <D-f> :BLines<Space>
 
   nnoremap <D-l> <C-w>l
   nnoremap <D-h> <C-w>h
@@ -144,13 +146,11 @@ augroup tsuquyomi_commands
   autocmd FileType typescript nnoremap <buffer> <F2> :TsuRenameSymbol<CR>
   autocmd FileType typescript nnoremap <buffer> gd :TsuDefinition<CR>
   autocmd FileType typescript nnoremap <buffer> <Leader>x :TsuQuickFix<CR>
-  autocmd FileType typescript nnoremap <buffer> <Leader>i :TsuImport<CR>
+  autocmd FileType typescript nnoremap <buffer> <Leader>ga :TsuImport<CR>
 augroup END
 
 augroup omnisharp_commands
   autocmd!
-
-  autocmd BufEnter,TextChanged,InsertLeave *.cs SyntasticCheck
 
   " core
   autocmd FileType cs nnoremap <buffer> <Leader>gt :OmniSharpTypeLookup<CR>
@@ -158,6 +158,7 @@ augroup omnisharp_commands
   autocmd FileType cs noremap <buffer> <Leader>ga :OmniSharpGetCodeActions<CR>
   autocmd FileType cs nnoremap <buffer> <Leader>gh :OmniSharpDocumentation<CR>
   autocmd FileType cs noremap <buffer> <Leader>gs :OmniSharpSignatureHelp<CR>
+  autocmd FileType cs nnoremap <buffer> <F2> :OmniSharpRename<CR>
 
   " search
   autocmd FileType cs nnoremap <buffer> <Leader>fi :OmniSharpFindImplementations<CR>
@@ -170,7 +171,6 @@ augroup omnisharp_commands
   autocmd FileType cs nnoremap <buffer> <Leader>sp :OmniSharpStopServer<CR>
 
   " syntax
-  autocmd FileType cs nnoremap <buffer> <F2> :OmniSharpRename<CR>
   autocmd FileType cs nnoremap <buffer> <Leader>th :OmniSharpHighlightTypes<CR>
 augroup END
 
@@ -194,8 +194,10 @@ let g:project_use_nerdtree = 1
 set rtp+=~/.vim/bundle/vim-project/
 call project#rc("~/git")
 
-Project  'betr'
-Project  'kyoiku'
-Project  'node-ts'
+Project 'betr'
+Project 'kyoiku'
+Project 'node-ts'
+Project 'csconsole'
+Project 'game'
 
 File     '~/.vimrc', 'vimrc'
