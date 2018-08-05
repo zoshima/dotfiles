@@ -16,7 +16,6 @@ Plugin 'ryanoasis/vim-devicons'
 Plugin 'amiorin/vim-project'
 " looks
 Plugin 'vim-airline/vim-airline'
-Plugin 'joshdick/onedark.vim'
 Plugin 'morhetz/gruvbox'
 " git
 Plugin 'airblade/vim-gitgutter'
