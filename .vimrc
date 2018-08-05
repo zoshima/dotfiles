@@ -23,7 +23,6 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'tpope/vim-fugitive'
 " syntax
 Plugin 'w0rp/ale'
-Plugin 'prettier/vim-prettier'
 Plugin 'editorconfig/editorconfig-vim'
 " autocomplete
 " Plugin 'Valloric/YouCompleteMe'
@@ -77,16 +76,25 @@ let g:OmniSharp_server_use_mono = 1
 let g:OmniSharp_selector_ui = 'fzf'
 let g:OmniSharp_timeout = 5
 
-let g:ale_linters = { 'cs': ['omnisharp'] }
+let g:ale_linters = {
+\   'cs': ['omnisharp'],
+\   'typescript': ['tsserver','tslint'],
+\   'html': [],
+\   'css': [],
+\   'scss': [],
+\}
+let g:ale_fixers = {
+\   'cs': ['remove_trailing_lines','trim_whitespace'],
+\   'typescript': ['prettier','tslint','remove_trailing_lines','trim_whitespace'],
+\   'html': ['remove_trailing_lines','trim_whitespace'],
+\   'css': ['prettier','remove_trailing_lines','trim_whitespace'],
+\   'scss': ['prettier','remove_trailing_lines','trim_whitespace'],
+\}
 let g:ale_set_balloons = 0
-
-let g:prettier#autoformat = 0
-let g:prettier#exec_cmd_async = 1
+let g:ale_fix_on_save = 1
 
 let g:airline_theme='gruvbox'
 let g:airline_powerline_fonts = 1
-
-autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue PrettierAsync
 
 map /  <Plug>(incsearch-forward)
 map ?  <Plug>(incsearch-backward)
