@@ -34,6 +34,8 @@ filetype plugin indent on    " required
 
 syntax on
 
+colorscheme gruvbox
+
 set nocompatible              " be iMproved, required
 set splitbelow
 set splitright
@@ -114,8 +116,6 @@ if has("gui_macvim") && has("gui_running")
   set noballooneval
 
   lan no_NO
-
-  colorscheme gruvbox
 
   map <D-e> :call ToggleNERDTreeFind()<CR>
   map <D-E> :NERDTreeFind<CR>
