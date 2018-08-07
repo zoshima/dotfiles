@@ -7,7 +7,6 @@ Plugin 'easymotion/vim-easymotion'
 Plugin 'haya14busa/incsearch.vim'
 Plugin 'haya14busa/incsearch-easymotion.vim'
 Plugin 'tpope/vim-surround'
-Plugin 'terryma/vim-multiple-cursors'
 " project
 Plugin 'junegunn/fzf'
 Plugin 'junegunn/fzf.vim'
