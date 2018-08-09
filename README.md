@@ -1,10 +1,10 @@
 # VIM for Angular and .NET Core development on MacOS
 ## Prerequisites
 ### MacVim
-~~brew install macvim --with-override-system-vim --with-python@2~~
-~~Python 2.x is required by the ``OmniSharp-vim`` plugin.~~
+```sh
+brew cask install macvim
+```
 
-Install the binary from https://github.com/macvim-dev/macvim/releases/tag/snapshot-149
 ### Vundle
 ```sh
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
@@ -15,17 +15,16 @@ git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 brew install fzf
 ```
 
-### Omnisharp-Roslyn server
+### OmniSharp-Roslyn server
 ```sh
 brew install mono
 brew install libuv
 ```
 
-~~Download ``omnisharp.http-osx`` from https://github.com/OmniSharp/omnisharp-roslyn/releases and extract to ``~/omnisharp`` folder.~~
+Opening a .cs file for the first time will prompt for omnisharp-roslyn installation. 
 
-Opening a .cs file for the first time will prompt for omnisharp-roslyn installation.
 
-### Typescript server
+### TypeScript server
 ```sh
 npm i -g typescript
 ```
@@ -41,7 +40,5 @@ ln -s ~/git/dotfiles/.gvimrc ~/.gvimrc
 ```vim
 :PluginInstall
 ```
-```sh
-cd ~/.vim/bundle/YouCompleteMe
-./install.py
-```
+
+Set the correct ```OmniSharp_server_path``` in vimrc.
