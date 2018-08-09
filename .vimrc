@@ -11,18 +11,17 @@ Plugin 'tpope/vim-surround'
 Plugin 'junegunn/fzf'
 Plugin 'junegunn/fzf.vim'
 Plugin 'scrooloose/nerdtree'
-Plugin 'ryanoasis/vim-devicons'
 Plugin 'amiorin/vim-project'
 " looks
 Plugin 'vim-airline/vim-airline'
 Plugin 'morhetz/gruvbox'
+Plugin 'kshenoy/vim-signature'
+Plugin 'ryanoasis/vim-devicons'
 " git
 Plugin 'airblade/vim-gitgutter'
 Plugin 'tpope/vim-fugitive'
 " syntax
 Plugin 'w0rp/ale'
-" autocomplete
-" Plugin 'Valloric/YouCompleteMe'
 " typescript
 Plugin 'HerringtonDarkholme/yats.vim'
 Plugin 'Quramy/tsuquyomi'
