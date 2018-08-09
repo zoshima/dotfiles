@@ -33,6 +33,11 @@ npm i -g typescript
 Note that the latest typescript might lead to some autocomplete issues.
 
 ## Installation
+```sh
+ln -s ~/git/dotfiles/.gitconfig ~/.gitconfig
+ln -s ~/git/dotfiles/.vimrc ~/.vimrc
+ln -s ~/git/dotfiles/.gvimrc ~/.gvimrc
+``
 ```vim
 :PluginInstall
 ```

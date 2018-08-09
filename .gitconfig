@@ -1,0 +1,9 @@
+[credential]
+  helper = cache
+[user]
+  email = dmykras@gmail.com
+  name = Dmytro Krasovsky
+[log]
+  date = format:%d.%m %H:%M
+[format]
+  pretty = format:%C(dim white)%h%Creset%C(cyan) %ad %C(yellow)%<(7,trunc)%aN %C(reset)%s%C(red)% gD% D
