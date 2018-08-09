@@ -36,6 +36,7 @@ Note that the latest typescript might lead to some autocomplete issues.
 ln -s ~/git/dotfiles/.gitconfig ~/.gitconfig
 ln -s ~/git/dotfiles/.vimrc ~/.vimrc
 ln -s ~/git/dotfiles/.gvimrc ~/.gvimrc
+ln -s ~/git/dotfiles/veles.zsh-theme ~/.oh-my-zsh/themes/veles.zsh-theme
 ``
 ```vim
 :PluginInstall
