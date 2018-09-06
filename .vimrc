@@ -8,15 +8,18 @@ Plugin 'haya14busa/incsearch.vim'
 Plugin 'haya14busa/incsearch-easymotion.vim'
 Plugin 'tpope/vim-surround'
 Plugin 'kshenoy/vim-signature'
+Plugin 'tpope/vim-commentary'
+Plugin 'tpope/vim-repeat'
 " project
 Plugin 'junegunn/fzf'
 Plugin 'junegunn/fzf.vim'
 Plugin 'scrooloose/nerdtree'
-Plugin 'ryanoasis/vim-devicons'
 Plugin 'amiorin/vim-project'
 " looks
+Plugin 'ryanoasis/vim-devicons'
 Plugin 'vim-airline/vim-airline'
 Plugin 'morhetz/gruvbox'
+Plugin 'dracula/vim'
 " git
 Plugin 'airblade/vim-gitgutter'
 Plugin 'tpope/vim-fugitive'
@@ -54,14 +57,17 @@ set showcmd
 set noswapfile
 set wildignore+=*/node_modules/*,*/wwwroot/*,*/bin/*,*/obj/*
 set rtp+=/usr/local/opt/fzf " fzf runtimepath
+set foldmethod=syntax
+set nofoldenable
 
 let mapleader = "\<Space>"
 
-let NERDTreeMinimalUI = 1
-let NERDTreeDirArrows = 1
-let NERDTreeAutoDeleteBuffer = 1
-let NERDTreeQuitOnOpen=1
-let NERDTreeShowHidden=1
+let g:NERDTreeMinimalUI = 1
+let g:NERDTreeDirArrows = 1
+let g:NERDTreeAutoDeleteBuffer = 1
+let g:NERDTreeQuitOnOpen=1
+let g:NERDTreeShowHidden=1
+let g:NERDTreeWinSize=60
 
 let g:airline_section_c = '%t%m'
 
@@ -82,7 +88,7 @@ let g:ale_linters = {
 \   'scss': [],
 \}
 let g:ale_fixers = {
-\   'cs': ['remove_trailing_lines','trim_whitespace'],
+\   'cs': ['prettier','remove_trailing_lines','trim_whitespace'],
 \   'typescript': ['prettier','tslint','remove_trailing_lines','trim_whitespace'],
 \   'html': ['remove_trailing_lines','trim_whitespace'],
 \   'css': ['prettier','remove_trailing_lines','trim_whitespace'],
@@ -91,8 +97,10 @@ let g:ale_fixers = {
 let g:ale_set_balloons = 0
 let g:ale_fix_on_save = 1
 
-let g:airline_theme='gruvbox'
+let g:airline_theme = 'gruvbox'
 let g:airline_powerline_fonts = 1
+
+let g:prettier#config#print_width = 80
 
 map /  <Plug>(incsearch-forward)
 map ?  <Plug>(incsearch-backward)
@@ -110,7 +118,6 @@ if has("gui_macvim") && has("gui_running")
   set guifont=SFMono\ Nerd\ Font:h13 " mvim font
   set guioptions=
   set termguicolors
-  set title titlestring=%F
   set noballooneval
 
   lan no_NO
@@ -202,6 +209,6 @@ Project 'betr'
 Project 'kyoiku'
 Project 'node-ts'
 Project 'csconsole'
-Project 'game'
+Project 'websocket'
 
 File     '~/.vimrc', 'vimrc'
