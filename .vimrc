@@ -19,7 +19,7 @@ Plugin 'amiorin/vim-project'
 Plugin 'ryanoasis/vim-devicons'
 Plugin 'vim-airline/vim-airline'
 Plugin 'morhetz/gruvbox'
-Plugin 'dracula/vim'
+Plugin 'arcticicestudio/nord-vim'
 " git
 Plugin 'airblade/vim-gitgutter'
 Plugin 'tpope/vim-fugitive'
@@ -34,8 +34,6 @@ call vundle#end()            " required
 filetype plugin indent on    " required
 
 syntax on
-
-colorscheme gruvbox
 
 set nocompatible              " be iMproved, required
 set splitbelow
@@ -69,8 +67,6 @@ let g:NERDTreeQuitOnOpen=1
 let g:NERDTreeShowHidden=1
 let g:NERDTreeWinSize=60
 
-let g:airline_section_c = '%t%m'
-
 let g:tsuquyomi_disable_default_mappings = 1
 let g:tsuquyomi_disable_quickfix = 1
 let g:tsuquyomi_shortest_import_path = 1
@@ -97,10 +93,18 @@ let g:ale_fixers = {
 let g:ale_set_balloons = 0
 let g:ale_fix_on_save = 1
 
+let g:airline_section_c = '%t%m'
 let g:airline_theme = 'gruvbox'
 let g:airline_powerline_fonts = 1
+" let g:airline#extensions#tabline#enabled = 1
+" let g:airline#extensions#tabline#left_sep = ' '
+" let g:airline#extensions#tabline#left_alt_sep = '|'
+
+let g:gruvbox_contrast_dark = 'hard'
 
 let g:prettier#config#print_width = 80
+
+colorscheme gruvbox
 
 map /  <Plug>(incsearch-forward)
 map ?  <Plug>(incsearch-backward)
@@ -115,7 +119,7 @@ inoremap <expr><S-TAB>  pumvisible() ? "\<C-p>" : "\<TAB>"
 
 if has("gui_macvim") && has("gui_running")
   set langmenu=en_US.UTF-8
-  set guifont=SFMono\ Nerd\ Font:h13 " mvim font
+  set guifont=SFMono\ Nerd\ Font:h14 " mvim font
   set guioptions=
   set termguicolors
   set noballooneval
@@ -207,8 +211,13 @@ call project#rc("~/git")
 
 Project 'betr'
 Project 'kyoiku'
-Project 'node-ts'
 Project 'csconsole'
 Project 'websocket'
+Project 'node-ts'
+Project 'ts-express-api'
+Project 'ngrx-tutorial'
+Project 'tour-of-heroes-ng5-ngrx'
+Project 'ngrx-store-effects-app'
+Project 'macstats'
 
 File     '~/.vimrc', 'vimrc'
