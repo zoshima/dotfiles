@@ -1,5 +1,4 @@
 call plug#begin('~/.vim/plugged')
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugs' }
 " project
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
@@ -20,11 +19,6 @@ Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
 Plug 'OmniSharp/omnisharp-vim'
 call plug#end()
 
-let g:deoplete#enable_at_startup = 1
-
-let g:prettier#autoformat = 1
-let g:prettier#exec_cmd_async = 1
-
 let g:gruvbox_contrast_dark = 'hard'
 
 let g:airline_section_c = '%t%m'
@@ -38,7 +32,7 @@ let g:NERDTreeQuitOnOpen = 1
 let g:NERDTreeShowHidden = 1
 let g:NERDTreeWinSize = 60
 
-let g:OmniSharp_server_path = '/Users/kdi/.omnisharp/omnisharp-roslyn/omnisharp/OmniSharp.exe'
+" let g:OmniSharp_server_path = '/Users/kdi/.omnisharp/omnisharp-roslyn/OmniSharp.exe'
 let g:OmniSharp_server_use_mono = 1
 let g:OmniSharp_selector_ui = 'fzf'
 let g:OmniSharp_timeout = 5
@@ -46,7 +40,7 @@ let g:OmniSharp_timeout = 5
 let g:nvim_typescript#diagnostics_enable = 0
 
 let g:ale_linters = {
-\   'cs': ['omnisharp'],
+\   'cs': ['OmniSharp'],
 \   'typescript': ['tsserver','tslint'],
 \   'html': [],
 \   'css': [],
@@ -72,6 +66,8 @@ set tabstop=2
 set shiftwidth=2
 set splitbelow
 set splitright
+set previewheight=5
+set pumheight=5 
 
 nnoremap <C-l> <C-w>l
 nnoremap <C-h> <C-w>h
@@ -88,6 +84,12 @@ command! -bang -nargs=* GGrep
 			\ call fzf#vim#grep(
 			\   'git grep --line-number '.shellescape(<q-args>), 0,
 			\   { 'dir': systemlist('git rev-parse --show-toplevel')[0] }, <bang>0)
+
+augroup nvimts_commands
+  autocmd!
+
+  autocmd FileType typescript set omnifunc=TSComplete
+augroup END
 
 augroup omnisharp_commands
   autocmd!
