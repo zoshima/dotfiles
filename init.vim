@@ -3,6 +3,9 @@ call plug#begin('~/.vim/plugged')
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'scrooloose/nerdtree'
+"editor 
+Plug 'kshenoy/vim-signature'
+Plug 'tpope/vim-commentary'
 " looks
 Plug 'morhetz/gruvbox'
 Plug 'vim-airline/vim-airline'
@@ -68,6 +71,11 @@ set splitbelow
 set splitright
 set previewheight=5
 set pumheight=5 
+set foldmethod=syntax
+set nofoldenable
+set clipboard=unnamed
+
+let mapleader = "\<SPACE>"
 
 nnoremap <C-l> <C-w>l
 nnoremap <C-h> <C-w>h
@@ -75,9 +83,10 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-p> :GFiles<CR>
 nnoremap <C-b> :Buffers<CR>
-nnoremap <C-F> :GGrep<Space>
+nnoremap <C-g> :GGrep<Space>
 nnoremap <C-f> :BLines<Space>
 nnoremap <C-t> :call ToggleNERDTreeFind()<CR>
+nnoremap <Leader>, :noh<CR>
 
 " COMMANDS
 command! -bang -nargs=* GGrep
@@ -89,6 +98,9 @@ augroup nvimts_commands
   autocmd!
 
   autocmd FileType typescript set omnifunc=TSComplete
+  autocmd FileType typescript nnoremap <buffer> <Leader>gh :TSType<CR>
+  autocmd FileType typescript nnoremap <buffer> gd :TSDef<CR>
+  autocmd FileType typescript nnoremap <buffer> <Leader>ga :TSImport<CR>
 augroup END
 
 augroup omnisharp_commands
