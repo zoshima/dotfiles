@@ -9,6 +9,7 @@ Plug 'tpope/vim-commentary'
 " looks
 Plug 'morhetz/gruvbox'
 Plug 'vim-airline/vim-airline'
+Plug 'edkolev/tmuxline.vim'
 Plug 'ryanoasis/vim-devicons'
 " git
 Plug 'airblade/vim-gitgutter'
@@ -20,6 +21,7 @@ Plug 'HerringtonDarkholme/yats.vim'
 Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
 " c#
 Plug 'OmniSharp/omnisharp-vim'
+Plug 'OrangeT/vim-csharp'
 call plug#end()
 
 let g:gruvbox_contrast_dark = 'hard'
@@ -81,12 +83,14 @@ nnoremap <C-l> <C-w>l
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
-nnoremap <C-p> :GFiles<CR>
-nnoremap <C-b> :Buffers<CR>
-nnoremap <C-g> :GGrep<Space>
-nnoremap <C-f> :BLines<Space>
-nnoremap <C-t> :call ToggleNERDTreeFind()<CR>
-nnoremap <Leader>, :noh<CR>
+nnoremap <Space>p :GFiles<CR>
+nnoremap <Space>b :Buffers<CR>
+nnoremap <Space>F :GGrep<Space>
+nnoremap <Space>f :BLines<Space>
+nnoremap <Space>e :call ToggleNERDTreeFind()<CR>
+nnoremap <Space>, :noh<CR>
+
+tnoremap <Esc> <C-\><C-n>
 
 " COMMANDS
 command! -bang -nargs=* GGrep
