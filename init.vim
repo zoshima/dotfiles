@@ -77,7 +77,8 @@ set foldmethod=syntax
 set nofoldenable
 set clipboard=unnamed
 
-let mapleader = "\<SPACE>"
+"let mapleader = "\<SPACE>"
+map <Space> \
 
 nnoremap <C-l> <C-w>l
 nnoremap <C-h> <C-w>h
