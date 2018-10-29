@@ -6,6 +6,8 @@ Plug 'scrooloose/nerdtree'
 "editor 
 Plug 'kshenoy/vim-signature'
 Plug 'tpope/vim-commentary'
+Plug 'editorconfig/editorconfig-vim'
+Plug 'junegunn/goyo.vim'
 " looks
 Plug 'morhetz/gruvbox'
 Plug 'vim-airline/vim-airline'
