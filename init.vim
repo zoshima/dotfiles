@@ -78,6 +78,7 @@ set pumheight=5
 set foldmethod=syntax
 set nofoldenable
 set clipboard=unnamed
+set completeopt=menu,longest
 
 "let mapleader = "\<SPACE>"
 map <Space> \
@@ -133,6 +134,7 @@ augroup omnisharp_commands
 
   " syntax
   autocmd FileType cs nnoremap <buffer> <Leader>th :OmniSharpHighlightTypes<CR>
+  autocmd FileType cs nnoremap <buffer> <Leader>tf :OmniSharpCodeFormat<CR>mzgg=G`z
 augroup END
 
 " FUNCTIONS
