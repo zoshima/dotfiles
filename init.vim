@@ -7,30 +7,19 @@ Plug 'scrooloose/nerdtree'
 Plug 'kshenoy/vim-signature'
 Plug 'tpope/vim-commentary'
 Plug 'editorconfig/editorconfig-vim'
-Plug 'junegunn/goyo.vim'
 " looks
 Plug 'morhetz/gruvbox'
-Plug 'vim-airline/vim-airline'
-Plug 'edkolev/tmuxline.vim'
-Plug 'ryanoasis/vim-devicons'
-" git
-Plug 'airblade/vim-gitgutter'
-Plug 'tpope/vim-fugitive'
 " syntax
 Plug 'w0rp/ale'
+Plug 'Shougo/deoplete.nvim'
 " typescript
 Plug 'HerringtonDarkholme/yats.vim'
 Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
 " c#
 Plug 'OmniSharp/omnisharp-vim'
-Plug 'OrangeT/vim-csharp'
 call plug#end()
 
 let g:gruvbox_contrast_dark = 'hard'
-
-let g:airline_section_c = '%t%m'
-let g:airline_theme = 'gruvbox'
-let g:airline_powerline_fonts = 1
 
 let g:NERDTreeMinimalUI = 1
 let g:NERDTreeDirArrows = 1
@@ -39,12 +28,13 @@ let g:NERDTreeQuitOnOpen = 1
 let g:NERDTreeShowHidden = 1
 let g:NERDTreeWinSize = 60
 
-" let g:OmniSharp_server_path = '/Users/kdi/.omnisharp/omnisharp-roslyn/OmniSharp.exe'
 let g:OmniSharp_server_use_mono = 1
 let g:OmniSharp_selector_ui = 'fzf'
 let g:OmniSharp_timeout = 5
 
 let g:nvim_typescript#diagnostics_enable = 0
+
+let g:deoplete#enable_at_startup = 1
 
 let g:ale_linters = {
 \   'cs': ['OmniSharp'],
@@ -63,6 +53,7 @@ let g:ale_fixers = {
 let g:ale_set_balloons = 0
 let g:ale_fix_on_save = 1
 
+filetype plugin on
 colorscheme gruvbox
 
 set background=dark
@@ -77,10 +68,10 @@ set previewheight=5
 set pumheight=5 
 set foldmethod=syntax
 set nofoldenable
+set noswapfile
 set clipboard=unnamed
 set completeopt=menu,longest
 
-"let mapleader = "\<SPACE>"
 map <Space> \
 
 nnoremap <C-l> <C-w>l
@@ -93,6 +84,13 @@ nnoremap <Space>F :GGrep<Space>
 nnoremap <Space>f :BLines<Space>
 nnoremap <Space>e :call ToggleNERDTreeFind()<CR>
 nnoremap <Space>, :noh<CR>
+
+nmap <Leader>hv <Plug>GitGutterPreviewHunk
+nmap <Leader>hp <Plug>GitGutterPrevHunk
+nmap <Leader>hn <Plug>GitGutterNextHunk
+
+nmap <Leader>an :ALENext<CR>
+nmap <Leader>ap :ALEPrevious<CR>
 
 tnoremap <Esc> <C-\><C-n>
 
@@ -145,4 +143,3 @@ function! ToggleNERDTreeFind()
 		execute ':NERDTreeFind'
 	endif
 endfunction
-
