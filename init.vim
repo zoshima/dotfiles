@@ -6,7 +6,6 @@ Plug 'scrooloose/nerdtree'
 "editor 
 Plug 'kshenoy/vim-signature'
 Plug 'tpope/vim-commentary'
-Plug 'editorconfig/editorconfig-vim'
 " looks
 Plug 'morhetz/gruvbox'
 " syntax
@@ -15,8 +14,6 @@ Plug 'Shougo/deoplete.nvim'
 " typescript
 Plug 'HerringtonDarkholme/yats.vim'
 Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
-" c#
-Plug 'OmniSharp/omnisharp-vim'
 call plug#end()
 
 let g:gruvbox_contrast_dark = 'hard'
@@ -92,7 +89,7 @@ nmap <Leader>hn <Plug>GitGutterNextHunk
 nmap <Leader>an :ALENext<CR>
 nmap <Leader>ap :ALEPrevious<CR>
 
-tnoremap <Esc> <C-\><C-n>
+" tnoremap <Esc> <C-\><C-n>
 
 " COMMANDS
 command! -bang -nargs=* GGrep
@@ -107,32 +104,6 @@ augroup nvimts_commands
   autocmd FileType typescript nnoremap <buffer> <Leader>gh :TSType<CR>
   autocmd FileType typescript nnoremap <buffer> gd :TSDef<CR>
   autocmd FileType typescript nnoremap <buffer> <Leader>ga :TSImport<CR>
-augroup END
-
-augroup omnisharp_commands
-  autocmd!
-
-  " core
-  autocmd FileType cs nnoremap <buffer> <Leader>gt :OmniSharpTypeLookup<CR>
-  autocmd FileType cs nnoremap <buffer> gd :OmniSharpGotoDefinition<CR>
-  autocmd FileType cs noremap <buffer> <Leader>ga :OmniSharpGetCodeActions<CR>
-  autocmd FileType cs nnoremap <buffer> <Leader>gh :OmniSharpDocumentation<CR>
-  autocmd FileType cs noremap <buffer> <Leader>gs :OmniSharpSignatureHelp<CR>
-  autocmd FileType cs nnoremap <buffer> <F2> :OmniSharpRename<CR>
-
-  " search
-  autocmd FileType cs nnoremap <buffer> <Leader>fi :OmniSharpFindImplementations<CR>
-  autocmd FileType cs nnoremap <buffer> <Leader>fs :OmniSharpFindSymbol<CR>
-  autocmd FileType cs nnoremap <buffer> <Leader>fu :OmniSharpFindUsages<CR>
-  autocmd FileType cs nnoremap <buffer> <Leader>fm :OmniSharpFindMembers<CR>
-
-  " server
-  autocmd FileType cs nnoremap <buffer> <Leader>ss :OmniSharpStartServer<CR>
-  autocmd FileType cs nnoremap <buffer> <Leader>sp :OmniSharpStopServer<CR>
-
-  " syntax
-  autocmd FileType cs nnoremap <buffer> <Leader>th :OmniSharpHighlightTypes<CR>
-  autocmd FileType cs nnoremap <buffer> <Leader>tf :OmniSharpCodeFormat<CR>mzgg=G`z
 augroup END
 
 " FUNCTIONS
