@@ -25,27 +25,23 @@ let g:NERDTreeQuitOnOpen = 1
 let g:NERDTreeShowHidden = 1
 let g:NERDTreeWinSize = 60
 
-let g:OmniSharp_server_use_mono = 1
-let g:OmniSharp_selector_ui = 'fzf'
-let g:OmniSharp_timeout = 5
-
 let g:nvim_typescript#diagnostics_enable = 0
 
 let g:deoplete#enable_at_startup = 1
 
 let g:ale_linters = {
-\   'cs': ['OmniSharp'],
 \   'typescript': ['tsserver','tslint'],
 \   'html': [],
 \   'css': [],
 \   'scss': [],
+\   'php': ['langserver']
 \}
 let g:ale_fixers = {
-\   'cs': ['prettier','remove_trailing_lines','trim_whitespace'],
 \   'typescript': ['prettier','tslint','remove_trailing_lines','trim_whitespace'],
 \   'html': ['remove_trailing_lines','trim_whitespace'],
 \   'css': ['prettier','remove_trailing_lines','trim_whitespace'],
 \   'scss': ['prettier','remove_trailing_lines','trim_whitespace'],
+\   'php': ['langserver','remove_trailing_lines','trim_whitespace']
 \}
 let g:ale_set_balloons = 0
 let g:ale_fix_on_save = 1
