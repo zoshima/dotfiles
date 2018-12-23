@@ -10,7 +10,6 @@ Plug 'tpope/vim-commentary'
 Plug 'morhetz/gruvbox'
 " syntax
 Plug 'w0rp/ale'
-Plug 'Shougo/deoplete.nvim'
 " typescript
 Plug 'HerringtonDarkholme/yats.vim'
 Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
@@ -27,24 +26,22 @@ let g:NERDTreeWinSize = 60
 
 let g:nvim_typescript#diagnostics_enable = 0
 
-let g:deoplete#enable_at_startup = 1
-
 let g:ale_linters = {
 \   'typescript': ['tsserver','tslint'],
 \   'html': [],
 \   'css': [],
 \   'scss': [],
-\   'php': ['langserver']
 \}
 let g:ale_fixers = {
 \   'typescript': ['prettier','tslint','remove_trailing_lines','trim_whitespace'],
 \   'html': ['remove_trailing_lines','trim_whitespace'],
 \   'css': ['prettier','remove_trailing_lines','trim_whitespace'],
 \   'scss': ['prettier','remove_trailing_lines','trim_whitespace'],
-\   'php': ['langserver','remove_trailing_lines','trim_whitespace']
 \}
 let g:ale_set_balloons = 0
 let g:ale_fix_on_save = 1
+let g:ale_lint_on_text_changed = 'never'
+let g:ale_completion_enabled = 1
 
 filetype plugin on
 colorscheme gruvbox
@@ -96,9 +93,10 @@ command! -bang -nargs=* GGrep
 augroup nvimts_commands
   autocmd!
 
-  autocmd FileType typescript set omnifunc=TSComplete
-  autocmd FileType typescript nnoremap <buffer> <Leader>gh :TSType<CR>
-  autocmd FileType typescript nnoremap <buffer> gd :TSDef<CR>
+  " autocmd FileType typescript set omnifunc=TSComplete
+  autocmd FileType typescript nnoremap <buffer> gh :ALEHover<CR>
+  autocmd FileType typescript nnoremap <buffer> gd :ALEGoToDefinition<CR>
+  autocmd FileType typescript nnoremap <buffer> gf :ALEFindReferences<CR>
   autocmd FileType typescript nnoremap <buffer> <Leader>ga :TSImport<CR>
 augroup END
 
