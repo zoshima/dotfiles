@@ -40,7 +40,7 @@ let g:ale_fixers = {
 \}
 let g:ale_set_balloons = 0
 let g:ale_fix_on_save = 1
-let g:ale_lint_on_text_changed = 'never'
+" let g:ale_lint_on_text_changed = 'never'
 let g:ale_completion_enabled = 1
 
 filetype plugin on
@@ -48,7 +48,7 @@ colorscheme gruvbox
 
 set background=dark
 set number relativenumber
-set cursorline
+" set cursorline
 set expandtab
 set tabstop=2
 set shiftwidth=2
