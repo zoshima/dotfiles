@@ -40,7 +40,6 @@ let g:ale_fixers = {
 \}
 let g:ale_set_balloons = 0
 let g:ale_fix_on_save = 1
-" let g:ale_lint_on_text_changed = 'never'
 let g:ale_completion_enabled = 1
 
 filetype plugin on
@@ -48,7 +47,6 @@ colorscheme gruvbox
 
 set background=dark
 set number relativenumber
-" set cursorline
 set expandtab
 set tabstop=2
 set shiftwidth=2
@@ -68,6 +66,7 @@ nnoremap <C-l> <C-w>l
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
+
 nnoremap <Space>p :GFiles<CR>
 nnoremap <Space>b :Buffers<CR>
 nnoremap <Space>F :GGrep<Space>
@@ -75,14 +74,8 @@ nnoremap <Space>f :BLines<Space>
 nnoremap <Space>e :call ToggleNERDTreeFind()<CR>
 nnoremap <Space>, :noh<CR>
 
-nmap <Leader>hv <Plug>GitGutterPreviewHunk
-nmap <Leader>hp <Plug>GitGutterPrevHunk
-nmap <Leader>hn <Plug>GitGutterNextHunk
-
 nmap <Leader>an :ALENext<CR>
 nmap <Leader>ap :ALEPrevious<CR>
-
-" tnoremap <Esc> <C-\><C-n>
 
 " COMMANDS
 command! -bang -nargs=* GGrep
@@ -93,7 +86,6 @@ command! -bang -nargs=* GGrep
 augroup nvimts_commands
   autocmd!
 
-  " autocmd FileType typescript set omnifunc=TSComplete
   autocmd FileType typescript nnoremap <buffer> gh :ALEHover<CR>
   autocmd FileType typescript nnoremap <buffer> gd :ALEGoToDefinition<CR>
   autocmd FileType typescript nnoremap <buffer> gf :ALEFindReferences<CR>
