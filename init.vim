@@ -72,18 +72,14 @@ nnoremap <Space>b :Buffers<CR>
 nnoremap <Space>F :GGrep<Space>
 nnoremap <Space>f :BLines<Space>
 nnoremap <Space>e :call ToggleNERDTreeFind()<CR>
+nnoremap <Space>s :call SwitchAngularComponentBuffer()<CR>
 nnoremap <Space>, :noh<CR>
 
 nmap <Leader>an :ALENext<CR>
 nmap <Leader>ap :ALEPrevious<CR>
 
 " COMMANDS
-command! -bang -nargs=* GGrep
-			\ call fzf#vim#grep(
-			\   'git grep --line-number '.shellescape(<q-args>), 0,
-			\   { 'dir': systemlist('git rev-parse --show-toplevel')[0] }, <bang>0)
-
-augroup nvimts_commands
+augroup typescript
   autocmd!
 
   autocmd FileType typescript nnoremap <buffer> gh :ALEHover<CR>
@@ -92,6 +88,11 @@ augroup nvimts_commands
   autocmd FileType typescript nnoremap <buffer> <Leader>ga :TSImport<CR>
 augroup END
 
+command! -bang -nargs=* GGrep
+			\ call fzf#vim#grep(
+			\   'git grep --line-number '.shellescape(<q-args>), 0,
+			\   { 'dir': systemlist('git rev-parse --show-toplevel')[0] }, <bang>0)
+
 " FUNCTIONS
 function! ToggleNERDTreeFind()
 	if g:NERDTree.IsOpen() && bufwinnr(t:NERDTreeBufName) == winnr()
@@ -99,4 +100,35 @@ function! ToggleNERDTreeFind()
 	else
 		execute ':NERDTreeFind'
 	endif
+endfunction
+
+function! SwitchAngularComponentBuffer()
+  let file_name = expand("%:t") 
+
+  if match(file_name, "^.*\.component\.[a-z]*$") != -1
+    let file_extension = expand("%:e")
+    let target_buffer = expand("%:t:r")
+
+    if file_extension == "ts"
+      let target_buffer = target_buffer . ".html"
+    elseif file_extension == "html"
+      let target_buffer = target_buffer . ".ts"
+      " let target_buffer = target_buffer . ".scss"
+    " elseif file_extension == "scss"
+    "   let target_buffer = target_buffer . ".ts"
+    else
+      echo "SACB: unsupported file extension: " . file_extension
+      return
+    endif
+
+    let target_file = expand("%:p:h") . "/" . target_buffer
+
+    if bufnr(target_buffer) >= 0
+      silent execute "buffer" bufnr(target_buffer)
+    elseif filereadable(target_file)
+      silent execute "edit" target_file
+    else
+      echo "SACB: file not found: " . target_file
+    endif
+  endif
 endfunction
