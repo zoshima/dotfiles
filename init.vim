@@ -15,6 +15,9 @@ Plug 'HerringtonDarkholme/yats.vim'
 Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
 call plug#end()
 
+" map <Space> \
+let mapleader=" "
+
 let g:gruvbox_contrast_dark = 'hard'
 
 let g:NERDTreeMinimalUI = 1
@@ -41,6 +44,8 @@ let g:ale_fixers = {
 let g:ale_set_balloons = 0
 let g:ale_fix_on_save = 1
 let g:ale_completion_enabled = 1
+let g:ale_sign_error = '❗️' 
+let g:ale_sign_warning = '❕' 
 
 filetype plugin on
 colorscheme gruvbox
@@ -59,8 +64,7 @@ set nofoldenable
 set noswapfile
 set clipboard=unnamed
 set completeopt=menu,longest
-
-map <Space> \
+set hidden
 
 nnoremap <C-l> <C-w>l
 nnoremap <C-h> <C-w>h
