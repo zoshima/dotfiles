@@ -8,15 +8,17 @@ Plug 'kshenoy/vim-signature'
 Plug 'tpope/vim-commentary'
 " looks
 Plug 'morhetz/gruvbox'
-Plug 'rakr/vim-one'
-Plug 'itchyny/lightline.vim'
-" completion
-Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
+" syntax
+Plug 'w0rp/ale'
 " typescript
 Plug 'HerringtonDarkholme/yats.vim'
+Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
 call plug#end()
 
+" map <Space> \
 let mapleader=" "
+
+let g:gruvbox_contrast_dark = 'hard'
 
 let g:NERDTreeMinimalUI = 1
 let g:NERDTreeDirArrows = 1
@@ -25,29 +27,29 @@ let g:NERDTreeQuitOnOpen = 1
 let g:NERDTreeShowHidden = 1
 let g:NERDTreeWinSize = 60
 
-let g:gruvbox_contrast_dark = 'hard'
-let g:one_allow_italics = 1
+let g:nvim_typescript#diagnostics_enable = 0
 
-let g:lightline = {
-      \ 'colorscheme': 'one',
-      \ 'active': {
-      \   'left': [ [], [], ['readonly', 'modified', 'filename' ] ],
-      \   'right': [ [], [], ['cocstatus'] ]
-      \ },
-      \ 'inactive': {
-      \   'left': [ [], ['readonly', 'modified', 'filename' ] ],
-      \   'right': [ [], [], [] ]
-      \ },
-      \ 'component_function': {
-      \   'cocstatus': 'coc#status'
-      \ },
-      \ }
+let g:ale_linters = {
+\   'typescript': ['tsserver','tslint'],
+\   'html': [],
+\   'css': [],
+\   'scss': [],
+\}
+let g:ale_fixers = {
+\   'typescript': ['prettier','tslint','remove_trailing_lines','trim_whitespace'],
+\   'html': ['remove_trailing_lines','trim_whitespace'],
+\   'css': ['prettier','remove_trailing_lines','trim_whitespace'],
+\   'scss': ['prettier','remove_trailing_lines','trim_whitespace'],
+\}
+let g:ale_set_balloons = 0
+let g:ale_fix_on_save = 1
+let g:ale_completion_enabled = 1
+let g:ale_sign_error = '❗️' 
+let g:ale_sign_warning = '❕' 
 
 filetype plugin on
+colorscheme gruvbox
 
-colorscheme one
-
-set signcolumn=yes
 set background=dark
 set number relativenumber
 set expandtab
@@ -63,9 +65,6 @@ set noswapfile
 set clipboard=unnamed
 set completeopt=menu,longest
 set hidden
-" set noshowmode
-
-highlight clear SignColumn
 
 nnoremap <C-l> <C-w>l
 nnoremap <C-h> <C-w>h
@@ -80,15 +79,19 @@ nnoremap <Space>e :call ToggleNERDTreeFind()<CR>
 nnoremap <Space>s :call SwitchAngularComponentBuffer()<CR>
 nnoremap <Space>, :noh<CR>
 
-nmap <leader>gh :call <SID>show_documentation()<CR>
-nmap <leader>ga <Plug>(coc-codeaction)
-nmap <leader>gd <Plug>(coc-definition)
-nmap <leader>gy <Plug>(coc-type-definition)
-nmap <leader>gi <Plug>(coc-implementation)
-nmap <leader>gr <Plug>(coc-references)
-nmap <leader>qf <Plug>(coc-fix-current)
+nmap <Leader>an :ALENext<CR>
+nmap <Leader>ap :ALEPrevious<CR>
 
 " COMMANDS
+augroup typescript
+  autocmd!
+
+  autocmd FileType typescript nnoremap <buffer> gh :ALEHover<CR>
+  autocmd FileType typescript nnoremap <buffer> gd :ALEGoToDefinition<CR>
+  autocmd FileType typescript nnoremap <buffer> gf :ALEFindReferences<CR>
+  autocmd FileType typescript nnoremap <buffer> <Leader>ga :TSImport<CR>
+augroup END
+
 command! -bang -nargs=* GGrep
 			\ call fzf#vim#grep(
 			\   'git grep --line-number '.shellescape(<q-args>), 0,
@@ -131,13 +134,5 @@ function! SwitchAngularComponentBuffer()
     else
       echo "SACB: file not found: " . target_file
     endif
-  endif
-endfunction
-
-function! s:show_documentation()
-  if &filetype == 'vim'
-    execute 'h '.expand('<cword>')
-  else
-    call CocAction('doHover')
   endif
 endfunction
