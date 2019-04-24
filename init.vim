@@ -1,6 +1,6 @@
 call plug#begin('~/.vim/plugged')
 " project
-Plug 'junegunn/fzf'
+Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'scrooloose/nerdtree'
 "editor 
@@ -8,7 +8,6 @@ Plug 'kshenoy/vim-signature'
 Plug 'tpope/vim-commentary'
 " looks
 Plug 'morhetz/gruvbox'
-Plug 'rakr/vim-one'
 Plug 'itchyny/lightline.vim'
 " completion
 Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
@@ -29,7 +28,7 @@ let g:gruvbox_contrast_dark = 'hard'
 let g:one_allow_italics = 1
 
 let g:lightline = {
-      \ 'colorscheme': 'one',
+      \ 'colorscheme': 'gruvbox',
       \ 'active': {
       \   'left': [ [], [], ['readonly', 'modified', 'filename' ] ],
       \   'right': [ [], [], ['cocstatus'] ]
@@ -45,7 +44,7 @@ let g:lightline = {
 
 filetype plugin on
 
-colorscheme one
+colorscheme gruvbox
 
 set signcolumn=yes
 set background=dark
@@ -64,6 +63,7 @@ set clipboard=unnamed
 set completeopt=menu,longest
 set hidden
 " set noshowmode
+" set termguicolors
 
 highlight clear SignColumn
 
