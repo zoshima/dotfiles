@@ -63,7 +63,7 @@ set clipboard=unnamed
 set completeopt=menu,longest
 set hidden
 " set noshowmode
-" set termguicolors
+set termguicolors
 
 highlight clear SignColumn
 
