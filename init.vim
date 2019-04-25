@@ -1,6 +1,6 @@
 call plug#begin('~/.vim/plugged')
 " project
-Plug 'junegunn/fzf'
+Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'scrooloose/nerdtree'
 "editor 
@@ -8,8 +8,6 @@ Plug 'kshenoy/vim-signature'
 Plug 'tpope/vim-commentary'
 " looks
 Plug 'morhetz/gruvbox'
-Plug 'rakr/vim-one'
-Plug 'itchyny/lightline.vim'
 " completion
 Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
 " typescript
@@ -25,27 +23,11 @@ let g:NERDTreeQuitOnOpen = 1
 let g:NERDTreeShowHidden = 1
 let g:NERDTreeWinSize = 60
 
-let g:gruvbox_contrast_dark = 'hard'
-let g:one_allow_italics = 1
-
-let g:lightline = {
-      \ 'colorscheme': 'one',
-      \ 'active': {
-      \   'left': [ [], [], ['readonly', 'modified', 'filename' ] ],
-      \   'right': [ [], [], ['cocstatus'] ]
-      \ },
-      \ 'inactive': {
-      \   'left': [ [], ['readonly', 'modified', 'filename' ] ],
-      \   'right': [ [], [], [] ]
-      \ },
-      \ 'component_function': {
-      \   'cocstatus': 'coc#status'
-      \ },
-      \ }
+" let g:gruvbox_contrast_dark = 'hard'
 
 filetype plugin on
 
-colorscheme one
+colorscheme gruvbox
 
 set signcolumn=yes
 set background=dark
@@ -63,9 +45,16 @@ set noswapfile
 set clipboard=unnamed
 set completeopt=menu,longest
 set hidden
-" set noshowmode
+set termguicolors
+set statusline=--%r%m%t%=%{StatusDiagnostic()}--
+set fillchars=vert:\|
 
-highlight clear SignColumn
+hi SignColumn guibg=NONE
+hi StatusLine guibg=NONE
+hi CursorLineNr guibg=NONE
+hi StatusLine guibg=0 guifg=#fabd2f gui=NONE
+hi StatusLineNC guibg=0 guifg=#7c6f64 gui=NONE
+hi VertSplit guifg=#7c6f64
 
 nnoremap <C-l> <C-w>l
 nnoremap <C-h> <C-w>h
@@ -140,4 +129,20 @@ function! s:show_documentation()
   else
     call CocAction('doHover')
   endif
+endfunction
+
+function! StatusDiagnostic() abort
+  let info = get(b:, 'coc_diagnostic_info', {})
+  if empty(info) | return '' | endif
+  let msgs = []
+
+  if get(info, 'error', 0)
+    call add(msgs, '[E:' . info['error'] . ']')
+  endif
+
+  if get(info, 'warning', 0)
+    call add(msgs, '[W:' . info['warning'] . ']')
+  endif
+
+  return join(msgs, ''). '' . get(g:, 'coc_status', '')
 endfunction

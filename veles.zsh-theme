@@ -9,7 +9,6 @@ eval col_foreground='$FG[007]'
 PROMPT='$col_main%~ $(git_prompt_info)$col_main%(!.#.:) %{$reset_color%}'
 
 # right prompt
-# RPROMPT='$col_backdrop%n@%m %*%{$reset_color%}%'
 RPROMPT='$col_backdrop%*%{$reset_color%}%'
 
 # git settings

@@ -1,45 +1,49 @@
-# VIM for Angular and .NET Core development on MacOS
-## Prerequisites
-### MacVim
+# nvim + ts
+## homebrew
 ```sh
-brew cask install macvim
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 ```
 
-### Vundle
+## oh-my-zsh
 ```sh
-git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 ```
 
-### FZF
-```sh
-brew install fzf
+### formulae
+```
+git
+zsh
+zsh-autosuggestions
+zsh-completions
+fzf
+prettier
+yarn
+python
+neovim
 ```
 
-### OmniSharp-Roslyn server
+## links
 ```sh
-brew install mono
-brew install libuv
-```
-
-Opening a .cs file for the first time will prompt for omnisharp-roslyn installation. 
-
-
-### TypeScript server
-```sh
-npm i -g typescript
-```
-
-Note that the latest typescript might lead to some autocomplete issues.
-
-## Installation
-```sh
+ln -s ~/git/dotfiles/init.vim ~/.config/nvim/init.vim 
 ln -s ~/git/dotfiles/.gitconfig ~/.gitconfig
-ln -s ~/git/dotfiles/.vimrc ~/.vimrc
-ln -s ~/git/dotfiles/.gvimrc ~/.gvimrc
 ln -s ~/git/dotfiles/veles.zsh-theme ~/.oh-my-zsh/themes/veles.zsh-theme
-```
-```vim
-:PluginInstall
+ln -s ~/git/dotfiles/.zshrc ~/.zshrc
 ```
 
-Set the correct ```OmniSharp_server_path``` in vimrc.
+## neovim
+```sh
+brew install neovim
+pip3 install neovim
+yarn global add neovim
+```
+
+### vim-plug
+```sh
+curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+```
+
+```
+:PlugInstall
+:UpdateRemotePlugins
+```
