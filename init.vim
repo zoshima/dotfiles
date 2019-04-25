@@ -3,6 +3,7 @@ call plug#begin('~/.vim/plugged')
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'scrooloose/nerdtree'
+Plug 'tpope/vim-fugitive'
 "editor 
 Plug 'kshenoy/vim-signature'
 Plug 'tpope/vim-commentary'
@@ -23,7 +24,7 @@ let g:NERDTreeQuitOnOpen = 1
 let g:NERDTreeShowHidden = 1
 let g:NERDTreeWinSize = 60
 
-" let g:gruvbox_contrast_dark = 'hard'
+let g:gruvbox_contrast_dark = 'hard'
 
 filetype plugin on
 
@@ -46,8 +47,8 @@ set clipboard=unnamed
 set completeopt=menu,longest
 set hidden
 set termguicolors
-set statusline=--%r%m%t%=%{StatusDiagnostic()}--
-set fillchars=vert:\|
+set statusline=%r%m%t%=%{StatusDiagnostic()}
+set fillchars=vert:\¦,stlnc:-,stl:-
 
 hi SignColumn guibg=NONE
 hi StatusLine guibg=NONE
@@ -102,10 +103,10 @@ function! SwitchAngularComponentBuffer()
     if file_extension == "ts"
       let target_buffer = target_buffer . ".html"
     elseif file_extension == "html"
+      " let target_buffer = target_buffer . ".ts"
+      let target_buffer = target_buffer . ".scss"
+    elseif file_extension == "scss"
       let target_buffer = target_buffer . ".ts"
-      " let target_buffer = target_buffer . ".scss"
-    " elseif file_extension == "scss"
-    "   let target_buffer = target_buffer . ".ts"
     else
       echo "SACB: unsupported file extension: " . file_extension
       return
