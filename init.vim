@@ -13,6 +13,8 @@ Plug 'morhetz/gruvbox'
 Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
 " typescript
 Plug 'HerringtonDarkholme/yats.vim'
+" c#
+Plug 'OmniSharp/omnisharp-vim'
 call plug#end()
 
 let mapleader=" "
@@ -50,6 +52,10 @@ set termguicolors
 set statusline=%r%m%t%=%{StatusDiagnostic()}
 set fillchars=vert:\¦,stlnc:-,stl:-
 
+" let g:OmniSharp_server_use_mono = 1
+let g:OmniSharp_selector_ui = 'fzf'
+let g:OmniSharp_timeout = 5
+
 hi SignColumn guibg=NONE
 hi StatusLine guibg=NONE
 hi CursorLineNr guibg=NONE
@@ -83,6 +89,32 @@ command! -bang -nargs=* GGrep
 			\ call fzf#vim#grep(
 			\   'git grep --line-number '.shellescape(<q-args>), 0,
 			\   { 'dir': systemlist('git rev-parse --show-toplevel')[0] }, <bang>0)
+
+augroup omnisharp_commands
+  autocmd!
+
+  " core
+  autocmd FileType cs nnoremap <buffer> <Leader>gt :OmniSharpTypeLookup<CR>
+  autocmd FileType cs nnoremap <buffer> <Leader>gd :OmniSharpGotoDefinition<CR>
+  autocmd FileType cs noremap <buffer> <Leader>ga :OmniSharpGetCodeActions<CR>
+  autocmd FileType cs nnoremap <buffer> <Leader>gh :OmniSharpDocumentation<CR>
+  autocmd FileType cs noremap <buffer> <Leader>gs :OmniSharpSignatureHelp<CR>
+  autocmd FileType cs nnoremap <buffer> <F2> :OmniSharpRename<CR>
+
+  " search
+  autocmd FileType cs nnoremap <buffer> <Leader>fi :OmniSharpFindImplementations<CR>
+  autocmd FileType cs nnoremap <buffer> <Leader>fs :OmniSharpFindSymbol<CR>
+  autocmd FileType cs nnoremap <buffer> <Leader>fu :OmniSharpFindUsages<CR>
+  autocmd FileType cs nnoremap <buffer> <Leader>fm :OmniSharpFindMembers<CR>
+
+  " server
+  autocmd FileType cs nnoremap <buffer> <Leader>ss :OmniSharpStartServer<CR>
+  autocmd FileType cs nnoremap <buffer> <Leader>sp :OmniSharpStopServer<CR>
+
+  " syntax
+  autocmd FileType cs nnoremap <buffer> <Leader>th :OmniSharpHighlightTypes<CR>
+  autocmd FileType cs nnoremap <buffer> <Leader>tf :OmniSharpCodeFormat<CR>mzgg=G`z
+augroup END
 
 " FUNCTIONS
 function! ToggleNERDTreeFind()
