@@ -10,11 +10,13 @@ Plug 'tpope/vim-commentary'
 " looks
 Plug 'morhetz/gruvbox'
 " completion
-Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
+" Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
+Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
 " typescript
 Plug 'HerringtonDarkholme/yats.vim'
 " c#
 Plug 'OmniSharp/omnisharp-vim'
+Plug 'w0rp/ale'
 call plug#end()
 
 let mapleader=" "
@@ -27,6 +29,8 @@ let g:NERDTreeShowHidden = 1
 let g:NERDTreeWinSize = 60
 
 let g:gruvbox_contrast_dark = 'hard'
+
+let g:coc_force_debug = 1
 
 filetype plugin on
 
@@ -53,8 +57,11 @@ set statusline=%r%m%t%=%{StatusDiagnostic()}
 set fillchars=vert:\¦,stlnc:-,stl:-
 
 " let g:OmniSharp_server_use_mono = 1
+let g:OmniSharp_server_stdio = 1
 let g:OmniSharp_selector_ui = 'fzf'
 let g:OmniSharp_timeout = 5
+let g:OmniSharp_highlight_types = 1
+let g:ale_linters = { 'cs': ['OmniSharp'], 'typescript': [], 'ts': [], 'scss': [], 'html': [], 'css': [] }
 
 hi SignColumn guibg=NONE
 hi StatusLine guibg=NONE
@@ -62,6 +69,9 @@ hi CursorLineNr guibg=NONE
 hi StatusLine guibg=0 guifg=#fabd2f gui=NONE
 hi StatusLineNC guibg=0 guifg=#7c6f64 gui=NONE
 hi VertSplit guifg=#7c6f64
+
+hi ALEErrorSign guibg=NONE guifg=#e75640
+hi ALEWarningSign guibg=NONE guifg=#f1be4f
 
 nnoremap <C-l> <C-w>l
 nnoremap <C-h> <C-w>h
@@ -93,23 +103,13 @@ command! -bang -nargs=* GGrep
 augroup omnisharp_commands
   autocmd!
 
+  autocmd BufEnter *.cs call OmniSharp#HighlightBuffer()
+
   " core
-  autocmd FileType cs nnoremap <buffer> <Leader>gt :OmniSharpTypeLookup<CR>
   autocmd FileType cs nnoremap <buffer> <Leader>gd :OmniSharpGotoDefinition<CR>
   autocmd FileType cs noremap <buffer> <Leader>ga :OmniSharpGetCodeActions<CR>
   autocmd FileType cs nnoremap <buffer> <Leader>gh :OmniSharpDocumentation<CR>
   autocmd FileType cs noremap <buffer> <Leader>gs :OmniSharpSignatureHelp<CR>
-  autocmd FileType cs nnoremap <buffer> <F2> :OmniSharpRename<CR>
-
-  " search
-  autocmd FileType cs nnoremap <buffer> <Leader>fi :OmniSharpFindImplementations<CR>
-  autocmd FileType cs nnoremap <buffer> <Leader>fs :OmniSharpFindSymbol<CR>
-  autocmd FileType cs nnoremap <buffer> <Leader>fu :OmniSharpFindUsages<CR>
-  autocmd FileType cs nnoremap <buffer> <Leader>fm :OmniSharpFindMembers<CR>
-
-  " server
-  autocmd FileType cs nnoremap <buffer> <Leader>ss :OmniSharpStartServer<CR>
-  autocmd FileType cs nnoremap <buffer> <Leader>sp :OmniSharpStopServer<CR>
 
   " syntax
   autocmd FileType cs nnoremap <buffer> <Leader>th :OmniSharpHighlightTypes<CR>
