@@ -1,0 +1,10 @@
+{
+  "tsserver.orgnizeImportOnSave": true,
+  "coc.preferences.formatOnSaveFiletypes": [
+    "typescript",
+    "css",
+    "scss",
+    "json",
+    "html"
+  ]
+}
