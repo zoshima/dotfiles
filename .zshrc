@@ -1,5 +1,8 @@
 export ZSH="/Users/kdi/.oh-my-zsh"
 
+export PATH="$PATH:/Users/kdi/.flutterbin/flutter/bin"
+export PATH="$PATH":"$HOME/.pub-cache/bin"
+
 ZSH_THEME="veles"
 
 plugins=(

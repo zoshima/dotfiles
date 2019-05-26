@@ -10,9 +10,11 @@ Plug 'tpope/vim-commentary'
 " looks
 Plug 'morhetz/gruvbox'
 " completion
-Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
+Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
 " typescript
 Plug 'HerringtonDarkholme/yats.vim'
+" dart
+Plug 'dart-lang/dart-vim-plugin'
 call plug#end()
 
 let mapleader=" "
@@ -25,6 +27,8 @@ let g:NERDTreeShowHidden = 1
 let g:NERDTreeWinSize = 60
 
 let g:gruvbox_contrast_dark = 'hard'
+
+let g:coc_force_debug = 1
 
 filetype plugin on
 
