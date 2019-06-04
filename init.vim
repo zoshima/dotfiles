@@ -18,8 +18,8 @@ Plug 'dart-lang/dart-vim-plugin'
 " typescript
 Plug 'HerringtonDarkholme/yats.vim'
 " c#
-Plug 'OmniSharp/omnisharp-vim'
-Plug 'w0rp/ale'
+" Plug 'OmniSharp/omnisharp-vim'
+" Plug 'w0rp/ale'
 call plug#end()
 
 let mapleader=" "

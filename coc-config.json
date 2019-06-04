@@ -6,5 +6,20 @@
     "scss",
     "json",
     "html"
-  ]
+  ],
+  "languageserver": {
+    "dart": {
+      "command": "dart_language_server",
+      "args": [],
+      "trace.server": "verbose",
+      "filetypes": ["dart"],
+      "initializationOptions": {},
+      "settings": {
+        "dart": {
+          "validation": {},
+          "completion": {}
+        }
+      }
+    }
+  }
 }
