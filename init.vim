@@ -13,12 +13,12 @@ Plug 'morhetz/gruvbox'
 Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
 " typescript
 Plug 'HerringtonDarkholme/yats.vim'
-" c#
-Plug 'OmniSharp/omnisharp-vim'
-" Plug 'w0rp/ale'
 " dart
 Plug 'dart-lang/dart-vim-plugin'
-
+" typescript
+Plug 'HerringtonDarkholme/yats.vim'
+" c#
+Plug 'OmniSharp/omnisharp-vim'
 call plug#end()
 
 let mapleader=" "
