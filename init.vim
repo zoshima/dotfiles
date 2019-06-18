@@ -10,13 +10,15 @@ Plug 'tpope/vim-commentary'
 " looks
 Plug 'morhetz/gruvbox'
 " completion
-" Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
 Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
 " typescript
 Plug 'HerringtonDarkholme/yats.vim'
 " c#
 Plug 'OmniSharp/omnisharp-vim'
-Plug 'w0rp/ale'
+" Plug 'w0rp/ale'
+" dart
+Plug 'dart-lang/dart-vim-plugin'
+
 call plug#end()
 
 let mapleader=" "
@@ -29,8 +31,6 @@ let g:NERDTreeShowHidden = 1
 let g:NERDTreeWinSize = 60
 
 let g:gruvbox_contrast_dark = 'hard'
-
-let g:coc_force_debug = 1
 
 filetype plugin on
 
@@ -55,13 +55,16 @@ set hidden
 set termguicolors
 set statusline=%r%m%t%=%{StatusDiagnostic()}
 set fillchars=vert:\¦,stlnc:-,stl:-
+set mouse=a
+set updatetime=300
+set shortmess+=c
 
 " let g:OmniSharp_server_use_mono = 1
 let g:OmniSharp_server_stdio = 1
 let g:OmniSharp_selector_ui = 'fzf'
 let g:OmniSharp_timeout = 5
 let g:OmniSharp_highlight_types = 1
-let g:ale_linters = { 'cs': ['OmniSharp'], 'typescript': [], 'ts': [], 'scss': [], 'html': [], 'css': [] }
+" let g:ale_linters = { 'cs': ['OmniSharp'], 'typescript': [], 'ts': [], 'scss': [], 'html': [], 'css': [] }
 
 hi SignColumn guibg=NONE
 hi StatusLine guibg=NONE
@@ -70,8 +73,8 @@ hi StatusLine guibg=0 guifg=#fabd2f gui=NONE
 hi StatusLineNC guibg=0 guifg=#7c6f64 gui=NONE
 hi VertSplit guifg=#7c6f64
 
-hi ALEErrorSign guibg=NONE guifg=#e75640
-hi ALEWarningSign guibg=NONE guifg=#f1be4f
+" hi ALEErrorSign guibg=NONE guifg=#e75640
+" hi ALEWarningSign guibg=NONE guifg=#f1be4f
 
 nnoremap <C-l> <C-w>l
 nnoremap <C-h> <C-w>h
@@ -92,12 +95,15 @@ nmap <leader>gd <Plug>(coc-definition)
 nmap <leader>gy <Plug>(coc-type-definition)
 nmap <leader>gi <Plug>(coc-implementation)
 nmap <leader>gr <Plug>(coc-references)
-nmap <leader>qf <Plug>(coc-fix-current)
+nmap <leader>gf <Plug>(coc-fix-current)
+
+nmap <leader>ce :CocList diagnostics<CR>
+nmap <leader>co :CocList outline<CR>
 
 " COMMANDS
 command! -bang -nargs=* GGrep
 			\ call fzf#vim#grep(
-			\   'git grep --line-number '.shellescape(<q-args>), 0,
+			\   'git grep --basic-regexp --line-number '.shellescape(<q-args>), 0,
 			\   { 'dir': systemlist('git rev-parse --show-toplevel')[0] }, <bang>0)
 
 augroup omnisharp_commands
@@ -135,10 +141,10 @@ function! SwitchAngularComponentBuffer()
     if file_extension == "ts"
       let target_buffer = target_buffer . ".html"
     elseif file_extension == "html"
-      " let target_buffer = target_buffer . ".ts"
-      let target_buffer = target_buffer . ".scss"
-    elseif file_extension == "scss"
       let target_buffer = target_buffer . ".ts"
+      " let target_buffer = target_buffer . ".scss"
+    " elseif file_extension == "scss"
+      " let target_buffer = target_buffer . ".ts"
     else
       echo "SACB: unsupported file extension: " . file_extension
       return
