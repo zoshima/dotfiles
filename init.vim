@@ -19,6 +19,8 @@ Plug 'dart-lang/dart-vim-plugin'
 Plug 'HerringtonDarkholme/yats.vim'
 " c#
 Plug 'OmniSharp/omnisharp-vim'
+" lint
+Plug 'w0rp/ale'
 call plug#end()
 
 let mapleader=" "
@@ -53,18 +55,24 @@ set clipboard=unnamed
 set completeopt=menu,longest
 set hidden
 set termguicolors
+" set statusline=%r%m%t%=%{StatusDiagnostic()}%{SyntasticStatuslineFlag()}
 set statusline=%r%m%t%=%{StatusDiagnostic()}
 set fillchars=vert:\¦,stlnc:-,stl:-
 set mouse=a
 set updatetime=300
 set shortmess+=c
+set incsearch
 
 " let g:OmniSharp_server_use_mono = 1
 let g:OmniSharp_server_stdio = 1
 let g:OmniSharp_selector_ui = 'fzf'
 let g:OmniSharp_timeout = 5
 let g:OmniSharp_highlight_types = 1
-" let g:ale_linters = { 'cs': ['OmniSharp'], 'typescript': [], 'ts': [], 'scss': [], 'html': [], 'css': [] }
+
+let g:ale_linters_explicit = 1
+let g:ale_linters = {
+\ 'cs': ['OmniSharp']
+\}
 
 hi SignColumn guibg=NONE
 hi StatusLine guibg=NONE
@@ -73,8 +81,8 @@ hi StatusLine guibg=0 guifg=#fabd2f gui=NONE
 hi StatusLineNC guibg=0 guifg=#7c6f64 gui=NONE
 hi VertSplit guifg=#7c6f64
 
-" hi ALEErrorSign guibg=NONE guifg=#e75640
-" hi ALEWarningSign guibg=NONE guifg=#f1be4f
+hi ALEErrorSign guibg=NONE guifg=#e75640
+hi ALEWarningSign guibg=NONE guifg=#f1be4f
 
 nnoremap <C-l> <C-w>l
 nnoremap <C-h> <C-w>h
