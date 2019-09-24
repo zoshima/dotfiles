@@ -37,6 +37,7 @@ ln -s ~/git/dotfiles/.gitconfig ~/.gitconfig
 ln -s ~/git/dotfiles/veles.zsh-theme ~/.oh-my-zsh/themes/veles.zsh-theme
 ln -s ~/git/dotfiles/.zshrc ~/.zshrc
 ln -s ~/git/dotfiles/.bash_profile ~/.bash_profile
+ln -s ~/git/dotfiles/scripts/dtf /usr/local/bin/dtf
 ```
 
 ## neovim

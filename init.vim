@@ -38,6 +38,7 @@ filetype plugin on
 
 colorscheme gruvbox
 
+set autoread
 set signcolumn=yes
 set background=dark
 set number relativenumber
@@ -55,7 +56,6 @@ set clipboard=unnamed
 set completeopt=menu,longest
 set hidden
 set termguicolors
-" set statusline=%r%m%t%=%{StatusDiagnostic()}%{SyntasticStatuslineFlag()}
 set statusline=%r%m%t%=%{StatusDiagnostic()}
 set fillchars=vert:\¦,stlnc:-,stl:-
 set mouse=a
@@ -63,7 +63,6 @@ set updatetime=300
 set shortmess+=c
 set incsearch
 
-" let g:OmniSharp_server_use_mono = 1
 let g:OmniSharp_server_stdio = 1
 let g:OmniSharp_selector_ui = 'fzf'
 let g:OmniSharp_timeout = 5
@@ -121,9 +120,10 @@ augroup omnisharp_commands
 
   " core
   autocmd FileType cs nnoremap <buffer> <Leader>gd :OmniSharpGotoDefinition<CR>
-  autocmd FileType cs noremap <buffer> <Leader>ga :OmniSharpGetCodeActions<CR>
+  autocmd FileType cs nnoremap <buffer> <Leader>ga :OmniSharpGetCodeActions<CR>
   autocmd FileType cs nnoremap <buffer> <Leader>gh :OmniSharpDocumentation<CR>
-  autocmd FileType cs noremap <buffer> <Leader>gs :OmniSharpSignatureHelp<CR>
+  autocmd FileType cs nnoremap <buffer> <Leader>gs :OmniSharpSignatureHelp<CR>
+  autocmd FileType cs nnoremap <buffer> <Leader>gr :OmniSharpFindUsages<CR>
 
   " syntax
   autocmd FileType cs nnoremap <buffer> <Leader>th :OmniSharpHighlightTypes<CR>
