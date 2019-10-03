@@ -13,14 +13,10 @@ Plug 'morhetz/gruvbox'
 Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
 " typescript
 Plug 'HerringtonDarkholme/yats.vim'
-" dart
-Plug 'dart-lang/dart-vim-plugin'
-" typescript
-Plug 'HerringtonDarkholme/yats.vim'
 " c#
 Plug 'OmniSharp/omnisharp-vim'
 " lint
-Plug 'w0rp/ale'
+Plug 'w0rp/ale', { 'for': 'cs' }
 call plug#end()
 
 let mapleader=" "
@@ -28,7 +24,7 @@ let mapleader=" "
 let g:NERDTreeMinimalUI = 1
 let g:NERDTreeDirArrows = 1
 let g:NERDTreeAutoDeleteBuffer = 1
-let g:NERDTreeQuitOnOpen = 1
+let g:NERDTreeQuitOnOpen = 0
 let g:NERDTreeShowHidden = 1
 let g:NERDTreeWinSize = 60
 
@@ -66,7 +62,7 @@ set incsearch
 let g:OmniSharp_server_stdio = 1
 let g:OmniSharp_selector_ui = 'fzf'
 let g:OmniSharp_timeout = 5
-let g:OmniSharp_highlight_types = 1
+let g:OmniSharp_highlight_types = 2
 
 let g:ale_linters_explicit = 1
 let g:ale_linters = {

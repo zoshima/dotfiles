@@ -58,9 +58,6 @@ hi StatusLine guibg=0 guifg=#fabd2f gui=NONE
 hi StatusLineNC guibg=0 guifg=#7c6f64 gui=NONE
 hi VertSplit guifg=#7c6f64
 
-hi ALEErrorSign guibg=NONE guifg=#e75640
-hi ALEWarningSign guibg=NONE guifg=#f1be4f
-
 nnoremap <C-l> <C-w>l
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
