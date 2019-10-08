@@ -15,12 +15,12 @@ git
 zsh
 zsh-autosuggestions
 zsh-completions
+zsh-syntax-highlighting
 fzf
 prettier
 yarn
 python
 neovim
-dart
 ```
 
 #### casks
@@ -33,11 +33,17 @@ font-fira-code
 ```sh
 ln -s ~/git/dotfiles/init.vim ~/.config/nvim/init.vim 
 ln -s ~/git/dotfiles/coc-config.json ~/.config/nvim/coc-settings.json
-ln -s ~/git/dotfiles/.gitconfig ~/.gitconfig
-ln -s ~/git/dotfiles/veles.zsh-theme ~/.oh-my-zsh/themes/veles.zsh-theme
+ln -s ~/git/dotfiles/.gitconfig ~/.config/git/.gitconfig
 ln -s ~/git/dotfiles/.zshrc ~/.zshrc
-ln -s ~/git/dotfiles/.bash_profile ~/.bash_profile
+```
+
+```sh
 ln -s ~/git/dotfiles/scripts/dtf /usr/local/bin/dtf
+ln -s ~/git/dotfiles/veles.zsh-theme ~/.oh-my-zsh/themes/veles.zsh-theme
+```
+
+```sh
+ln -s ~/git/dotfiles/.bash_profile ~/.bash_profile
 ```
 
 ## neovim
