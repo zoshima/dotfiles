@@ -1,57 +1,44 @@
-# nvim
+# macos
 ## homebrew
 ```sh
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 ```
 
+## shell
 ### oh-my-zsh
 ```sh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 ```
 
-### formulae
-```
-git
-zsh
+### packages
+#### cli
+```sh
 zsh-autosuggestions
 zsh-completions
 zsh-syntax-highlighting
-fzf
-prettier
-yarn
-python
-neovim
 ```
 
 #### casks
-```
+```sh
 iterm2
+```
+
+```sh
+tap homebrew/cask-fonts
 font-fira-code
 ```
 
-## links
+### links
 ```sh
-ln -s ~/git/dotfiles/init.vim ~/.config/nvim/init.vim 
-ln -s ~/git/dotfiles/coc-config.json ~/.config/nvim/coc-settings.json
-ln -s ~/git/dotfiles/.gitconfig ~/.config/git/.gitconfig
 ln -s ~/git/dotfiles/.zshrc ~/.zshrc
+ln -s ~/git/dotfiles/zoshima.zsh-theme ~/.oh-my-zsh/themes/zoshima.zsh-theme
+ln -s ~/git/dotfiles/.gitconfig ~/.gitconfig
 ```
 
-```sh
-ln -s ~/git/dotfiles/scripts/dtf /usr/local/bin/dtf
-ln -s ~/git/dotfiles/veles.zsh-theme ~/.oh-my-zsh/themes/veles.zsh-theme
-```
+### manual
+- import ~/git/dotfiles/zoshima.iterm-profile.json as profile in iterm2
 
-```sh
-ln -s ~/git/dotfiles/.bash_profile ~/.bash_profile
-```
-
-## neovim
-```sh
-brew install neovim
-pip3 install neovim
-yarn global add neovim
-```
+## nvim
 
 ### vim-plug
 ```sh
@@ -59,7 +46,49 @@ curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 ```
 
+### packages
+#### brew
+```sh
+neovim
+fzf
+```
+
+#### other
+```sh
+pip3 install neovim
+yarn global add neovim
+```
+
+### links
+#### core
+```sh
+ln -s ~/git/dotfiles/nvim/init.vim ~/.config/nvim/init.vim 
+```
+
+```
+:PlugInstall
+```
+
+#### typescript
+#### brew
+```sh
+yarn
+prettier
+```
+
+#### yarn
+```sh
+typescript
+```
+
+#### links
+```sh
+ln -s ~/git/dotfiles/nvim/init.ts.vim ~/.config/nvim/init.ts.vim 
+ln -s ~/git/dotfiles/coc-config.json ~/.config/nvim/coc-settings.json
+```
+
 ```
 :PlugInstall
 :UpdateRemotePlugins
+:CocInstall coc-json coc-css coc-tsserver
 ```

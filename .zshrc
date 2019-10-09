@@ -3,7 +3,7 @@ export ZSH="/Users/kdi/.oh-my-zsh"
 export PATH="$PATH:/Users/kdi/flutter/bin"
 export PATH="$PATH":"$HOME/.pub-cache/bin"
 
-ZSH_THEME="veles"
+ZSH_THEME="zoshima"
 
 plugins=(
   git

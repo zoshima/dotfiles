@@ -9,6 +9,10 @@ Plug 'kshenoy/vim-signature'
 Plug 'tpope/vim-commentary'
 " looks
 Plug 'morhetz/gruvbox'
+" ts
+if !empty(glob("$HOME/.config/nvim/init.ts.vim"))
+  source $HOME/.config/nvim/init.ts.vim
+endif
 call plug#end()
 
 let mapleader=" "
@@ -26,6 +30,7 @@ filetype plugin on
 
 colorscheme gruvbox
 
+set termguicolors
 set autoread
 set signcolumn=yes
 set background=dark
@@ -43,13 +48,12 @@ set noswapfile
 set clipboard=unnamed
 set completeopt=menu,longest
 set hidden
-set termguicolors
-set statusline=%r%m%t%=
-set fillchars=vert:\¦,stlnc:-,stl:-
 set mouse=a
 set updatetime=300
 set shortmess+=c
 set incsearch
+set fillchars=vert:\¦,stlnc:-,stl:-
+set statusline=%r%m%t%=
 
 hi SignColumn guibg=NONE
 hi StatusLine guibg=NONE
