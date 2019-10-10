@@ -1,3 +1,5 @@
+let mapleader=" "
+
 call plug#begin('~/.vim/plugged')
 " project
 Plug '/usr/local/opt/fzf'
@@ -9,13 +11,20 @@ Plug 'kshenoy/vim-signature'
 Plug 'tpope/vim-commentary'
 " looks
 Plug 'morhetz/gruvbox'
+" coc
+if !empty(glob("$HOME/.config/nvim/init.coc.vim"))
+  Plug 'neoclide/coc.nvim', {'branch': 'release'}
+endif
 " ts
 if !empty(glob("$HOME/.config/nvim/init.ts.vim"))
-  source $HOME/.config/nvim/init.ts.vim
+  Plug 'HerringtonDarkholme/yats.vim'
+endif
+" cs
+if !empty(glob("$HOME/.config/nvim/init.cs.vim"))
+  Plug 'OmniSharp/omnisharp-vim'
+  Plug 'w0rp/ale', { 'for': 'cs' }
 endif
 call plug#end()
-
-let mapleader=" "
 
 let g:NERDTreeMinimalUI = 1
 let g:NERDTreeDirArrows = 1
@@ -88,3 +97,17 @@ function! ToggleNERDTreeFind()
 		execute ':NERDTreeFind'
 	endif
 endfunction
+
+" SOURCES
+" coc
+if !empty(glob("$HOME/.config/nvim/init.coc.vim"))
+  source $HOME/.config/nvim/init.coc.vim
+endif
+" ts
+if !empty(glob("$HOME/.config/nvim/init.ts.vim"))
+  source $HOME/.config/nvim/init.ts.vim
+endif
+" cs
+if !empty(glob("$HOME/.config/nvim/init.cs.vim"))
+  source $HOME/.config/nvim/init.cs.vim
+endif

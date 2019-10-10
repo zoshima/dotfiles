@@ -84,6 +84,7 @@ typescript
 #### links
 ```sh
 ln -s ~/git/dotfiles/nvim/init.ts.vim ~/.config/nvim/init.ts.vim 
+ln -s ~/git/dotfiles/nvim/init.coc.vim ~/.config/nvim/init.coc.vim 
 ln -s ~/git/dotfiles/coc-config.json ~/.config/nvim/coc-settings.json
 ```
 
@@ -91,4 +92,14 @@ ln -s ~/git/dotfiles/coc-config.json ~/.config/nvim/coc-settings.json
 :PlugInstall
 :UpdateRemotePlugins
 :CocInstall coc-json coc-css coc-tsserver
+```
+
+#### cs
+```sh
+ln -s ~/git/dotfiles/nvim/init.cs.vim ~/.config/nvim/init.cs.vim 
+```
+
+```
+:PlugInstall
+:UpdateRemotePlugins
 ```
