@@ -83,6 +83,8 @@ nnoremap <Space>f :BLines<Space>
 nnoremap <Space>e :call ToggleNERDTreeFind()<CR>
 nnoremap <Space>, :noh<CR>
 
+tnoremap <Esc><Esc> <C-\><C-n>
+
 " COMMANDS
 command! -bang -nargs=* GGrep
 			\ call fzf#vim#grep(
