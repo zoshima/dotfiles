@@ -1,14 +1,20 @@
 set statusline=%r%m%t%=%{StatusDiagnostic()}
 
-nnoremap <leader>gh :call <SID>show_documentation()<CR>
-nnoremap <leader>ga <Plug>(coc-codeaction)
-nnoremap <leader>gd <Plug>(coc-definition)
-nnoremap <leader>gy <Plug>(coc-type-definition)
-nnoremap <leader>gi <Plug>(coc-implementation)
-nnoremap <leader>gr <Plug>(coc-references)
-nnoremap <leader>gf <Plug>(coc-fix-current)
-nnoremap <leader>ce :CocList diagnostics<CR>
-nnoremap <leader>co :CocList outline<CR>
+" documentation in preview
+nnoremap <silent> <leader>gh :call <SID>show_documentation()<CR>
+
+nmap <silent> <leader>ga <Plug>(coc-codeaction)
+nmap <silent> <leader>gf <Plug>(coc-fix-current)
+
+" goto
+nmap <silent> <leader>gd <Plug>(coc-definition)
+nmap <silent> <leader>gy <Plug>(coc-type-definition)
+nmap <silent> <leader>gi <Plug>(coc-implementation)
+nmap <silent> <leader>gr <Plug>(coc-references)
+
+" diagnostics
+nnoremap <silent> <leader>ce :CocList diagnostics<CR>
+nnoremap <silent> <leader>co :CocList outline<CR>
 
 function! s:show_documentation()
   if &filetype == 'vim'
