@@ -76,6 +76,11 @@ nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 
+noremap <silent> <C-S-Left> :vertical resize +5<CR>
+noremap <silent> <C-S-Right> :vertical resize -5<CR>
+noremap <silent> <C-S-Up> :resize +5<CR>
+noremap <silent> <C-S-Down> :resize -5<CR>
+
 nnoremap <Space>p :GFiles<CR>
 nnoremap <Space>b :Buffers<CR>
 nnoremap <Space>F :GGrep<Space>
