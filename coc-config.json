@@ -1,12 +1,13 @@
 {
-  "tsserver.orgnizeImportOnSave": true,
   "coc.preferences.formatOnSaveFiletypes": [
     "typescript",
+    "typescriptreact",
+    "tsx",
     "css",
     "scss",
     "json",
     "html",
     "cs"
   ],
-  "eslint.filetypes": ["javascript", "javascriptreact", "typescript"]
+  "eslint.filetypes": ["javascript", "javascriptreact", "typescript", "typescriptreact"]
 }
