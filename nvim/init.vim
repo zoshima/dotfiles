@@ -76,12 +76,19 @@ nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 
+noremap <silent> <C-S-Left> :vertical resize +5<CR>
+noremap <silent> <C-S-Right> :vertical resize -5<CR>
+noremap <silent> <C-S-Up> :resize +5<CR>
+noremap <silent> <C-S-Down> :resize -5<CR>
+
 nnoremap <Space>p :GFiles<CR>
 nnoremap <Space>b :Buffers<CR>
 nnoremap <Space>F :GGrep<Space>
 nnoremap <Space>f :BLines<Space>
 nnoremap <Space>e :call ToggleNERDTreeFind()<CR>
 nnoremap <Space>, :noh<CR>
+
+tnoremap <C-_> <C-\><C-n>
 
 " COMMANDS
 command! -bang -nargs=* GGrep
@@ -99,10 +106,6 @@ function! ToggleNERDTreeFind()
 endfunction
 
 " SOURCES
-" coc
-if !empty(glob("$HOME/.config/nvim/init.coc.vim"))
-  source $HOME/.config/nvim/init.coc.vim
-endif
 " ts
 if !empty(glob("$HOME/.config/nvim/init.ts.vim"))
   source $HOME/.config/nvim/init.ts.vim
@@ -110,4 +113,8 @@ endif
 " cs
 if !empty(glob("$HOME/.config/nvim/init.cs.vim"))
   source $HOME/.config/nvim/init.cs.vim
+endif
+" coc
+if !empty(glob("$HOME/.config/nvim/init.coc.vim"))
+  source $HOME/.config/nvim/init.coc.vim
 endif
