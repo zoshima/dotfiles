@@ -2,7 +2,7 @@ let mapleader=" "
 
 call plug#begin('~/.vim/plugged')
 " project
-Plug '/usr/local/opt/fzf'
+Plug 'junegunn/fzf', { 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-fugitive'

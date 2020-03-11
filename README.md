@@ -103,3 +103,37 @@ ln -s ~/git/dotfiles/nvim/init.cs.vim ~/.config/nvim/init.cs.vim
 :PlugInstall
 :UpdateRemotePlugins
 ```
+
+# windows
+## terminal
+install microsoft terminal
+
+## nvim
+install python with pip
+
+```sh
+pip install neovim
+```
+
+download compiled binaries from https://github.com/neovim/neovim/wiki/Installing-Neovim
+
+extract to ``C:\Program Files\Neovim``
+
+add ``C:\Program Files\Neovim\bin`` to path
+
+add init.vim to ``%userprofile%\AppData\Local\nvim\``
+
+change some paths in init.vim:
+```vim
+call plug#begin('~/AppData/Local/nvim/plugged')
+if !empty(glob("~/AppData/Local/nvim/init.coc.vim"))
+if !empty(glob("~/AppData/Local/nvim/init.ts.vim"))
+if !empty(glob("~/AppData/Local/nvim/init.cs.vim"))
+```
+
+open nvim.init and run
+```vim
+:PlugInstall
+:UpdateRemotePlugins
+:CocInstall coc-json coc-css coc-tsserver
+```
