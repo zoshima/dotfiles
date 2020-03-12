@@ -1,7 +1,7 @@
 export ZSH="/Users/kdi/.oh-my-zsh"
 
-export PATH="$PATH:/Users/kdi/flutter/bin"
 export PATH="$PATH":"$HOME/.pub-cache/bin"
+export PATH="$PATH":"$HOME/bin"
 
 ZSH_THEME="zoshima"
 
