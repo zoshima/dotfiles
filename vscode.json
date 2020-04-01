@@ -1,0 +1,21 @@
+{
+  "telemetry.enableCrashReporter": false,
+  "telemetry.enableTelemetry": false,
+  "editor.autoClosingBrackets": "never",
+  "editor.autoClosingOvertype": "never",
+  "editor.autoClosingQuotes": "never",
+  "html.autoClosingTags": false,
+  "javascript.autoClosingTags": false,
+  "javascript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": false,
+  "typescript.autoClosingTags": false,
+  "editor.lineNumbers": "relative",
+  "editor.tabSize": 2,
+  "editor.minimap.enabled": false,
+  "vim.useSystemClipboard": true,
+  "breadcrumbs.enabled": false,
+  "editor.formatOnSave": true,
+  "workbench.editor.enablePreview": false,
+  "workbench.editor.enablePreviewFromQuickOpen": false,
+  "workbench.editor.showIcons": false,
+  "workbench.colorTheme": "Gruvbox Dark (Hard)"
+}
