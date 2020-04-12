@@ -8,6 +8,5 @@
     "json",
     "html",
     "cs"
-  ],
-  "eslint.filetypes": ["javascript", "javascriptreact", "typescript", "typescriptreact"]
+  ]
 }

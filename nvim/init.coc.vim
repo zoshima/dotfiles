@@ -1,5 +1,8 @@
 set statusline=%r%m%t%=%{StatusDiagnostic()}
 
+hi CocErrorSign guibg=NONE guifg=#e75640
+hi CocWarningSign guibg=NONE guifg=#f1be4f
+
 " documentation in preview
 nnoremap <silent> <leader>gh :call <SID>show_documentation()<CR>
 
