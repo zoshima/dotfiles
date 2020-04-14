@@ -6,6 +6,7 @@ Plug 'junegunn/fzf', { 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
 "editor 
 Plug 'kshenoy/vim-signature'
 Plug 'tpope/vim-commentary'
@@ -64,12 +65,23 @@ set incsearch
 set fillchars=vert:\¦,stlnc:-,stl:-
 set statusline=%r%m%t%=
 
+" colors
+" gray      #7c6f64
+" red       #fb4934
+" green     #b8bb26
+" yellow    #fabd2f
+
 hi SignColumn guibg=NONE
 hi StatusLine guibg=NONE
 hi CursorLineNr guibg=NONE
 hi StatusLine guibg=0 guifg=#fabd2f gui=NONE
 hi StatusLineNC guibg=0 guifg=#7c6f64 gui=NONE
 hi VertSplit guifg=#7c6f64
+
+hi GitGutterAdd guibg=0 guifg=#b8bb26
+hi GitGutterChange guibg=0 guifg=#fabd2f
+hi GitGutterDelete guibg=0 guifg=#fb4934
+hi GitGutterChangeDelete guibg=0
 
 nnoremap <C-l> <C-w>l
 nnoremap <C-h> <C-w>h
