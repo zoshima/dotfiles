@@ -18,4 +18,4 @@ source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 source ~/bin/aliases.sh
 
-bindkey '^L' autosuggest-accept
+bindkey '^K' autosuggest-accept

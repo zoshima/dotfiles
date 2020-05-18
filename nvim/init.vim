@@ -100,7 +100,7 @@ nnoremap <Space>f :BLines<Space>
 nnoremap <Space>e :call ToggleNERDTreeFind()<CR>
 nnoremap <Space>, :noh<CR>
 
-tnoremap <C-_> <C-\><C-n>
+tnoremap <C-n> <C-\><C-n>
 
 " COMMANDS
 command! -bang -nargs=* GGrep

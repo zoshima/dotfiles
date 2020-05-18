@@ -26,4 +26,6 @@ augroup omnisharp_commands
   " syntax
   autocmd FileType cs nnoremap <buffer> <Leader>th :OmniSharpHighlightTypes<CR>
   autocmd FileType cs nnoremap <buffer> <Leader>tf :OmniSharpCodeFormat<CR>mzgg=G`z
+
+  autocmd FileType cs nnoremap <buffer> <Leader>ge :OmniSharpGlobalCodeCheck<CR>
 augroup END
