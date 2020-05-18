@@ -88,6 +88,10 @@ ln -s ~/git/dotfiles/nvim/init.coc.vim ~/.config/nvim/init.coc.vim
 ln -s ~/git/dotfiles/coc-config.json ~/.config/nvim/coc-settings.json
 ```
 
+```sh
+ln -s ~/git/dotfiles/nvim/vscode.json ~/Library/Application\ Support/Code/User/settings.json
+```
+
 ```
 :PlugInstall
 :UpdateRemotePlugins
