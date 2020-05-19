@@ -89,7 +89,7 @@ ln -s ~/git/dotfiles/coc-config.json ~/.config/nvim/coc-settings.json
 ```
 
 ```sh
-ln -s ~/git/dotfiles/nvim/vscode.json ~/Library/Application\ Support/Code/User/settings.json
+ln -s ~/git/dotfiles/vscode.json ~/Library/Application\ Support/Code/User/settings.json
 ```
 
 ```
