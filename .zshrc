@@ -4,6 +4,7 @@ export PATH="$PATH":"$HOME/.pub-cache/bin"
 export PATH="$PATH":"$HOME/bin"
 
 ZSH_THEME="zoshima"
+DOTNET_CLI_TELEMETRY_OPTOUT=1
 
 plugins=(
   git

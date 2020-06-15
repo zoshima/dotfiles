@@ -18,5 +18,6 @@
   "workbench.editor.enablePreviewFromQuickOpen": false,
   "workbench.editor.showIcons": false,
   "workbench.colorTheme": "Gruvbox Dark (Hard)",
-  "workbench.editor.showTabs": false
+  "workbench.editor.showTabs": false,
+  "workbench.activityBar.visible": false
 }
