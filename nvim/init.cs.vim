@@ -2,6 +2,8 @@ let g:OmniSharp_server_stdio = 1
 let g:OmniSharp_selector_ui = 'fzf'
 let g:OmniSharp_timeout = 5
 let g:OmniSharp_highlight_types = 2
+let g:OmniSharp_highlighting = 2
+let g:OmniSharp_popup = 0
 
 let g:ale_linters_explicit = 1
 let g:ale_linters = {
@@ -13,8 +15,6 @@ hi ALEWarningSign guibg=NONE guifg=#f1be4f
 
 augroup omnisharp_commands
   autocmd!
-
-  autocmd BufEnter *.cs call OmniSharp#HighlightBuffer()
 
   " core
   autocmd FileType cs nnoremap <buffer> <Leader>gd :OmniSharpGotoDefinition<CR>
