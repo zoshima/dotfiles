@@ -19,5 +19,5 @@
   "workbench.editor.showIcons": false,
   "workbench.colorTheme": "Gruvbox Dark (Hard)",
   "workbench.editor.showTabs": false,
-  "workbench.activityBar.visible": false
+  "workbench.activityBar.visible": true
 }
