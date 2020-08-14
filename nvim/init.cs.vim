@@ -1,7 +1,12 @@
 let g:OmniSharp_server_stdio = 1
 let g:OmniSharp_selector_ui = 'fzf'
 let g:OmniSharp_timeout = 5
-let g:OmniSharp_popup = 0
+" let g:OmniSharp_popup = 0
+
+" let g:OmniSharp_popup_options = {
+" \ 'winblend': 30,
+" \ 'winhl': 'Normal:Normal'
+" \}
 
 let g:ale_linters_explicit = 1
 let g:ale_linters = {

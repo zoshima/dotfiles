@@ -19,5 +19,6 @@
   "workbench.editor.showIcons": false,
   "workbench.colorTheme": "Gruvbox Dark (Hard)",
   "workbench.editor.showTabs": false,
-  "workbench.activityBar.visible": true
+  "workbench.activityBar.visible": true,
+  "vim.foldfix": true
 }

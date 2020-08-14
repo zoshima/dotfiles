@@ -3,6 +3,9 @@ export ZSH="/Users/kdi/.oh-my-zsh"
 export PATH="$PATH":"$HOME/.pub-cache/bin"
 export PATH="$PATH":"$HOME/bin"
 
+# .NET Core SDK tools
+export PATH="$PATH:/Users/kdi/.dotnet/tools"
+
 ZSH_THEME="zoshima"
 DOTNET_CLI_TELEMETRY_OPTOUT=1
 FUNCTIONS_CORE_TOOLS_TELEMETRY_OPTOUT=1

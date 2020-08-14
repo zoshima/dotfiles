@@ -6,7 +6,6 @@ Plug 'junegunn/fzf', { 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-fugitive'
-" Plug 'airblade/vim-gitgutter'
 "editor 
 Plug 'kshenoy/vim-signature'
 Plug 'tpope/vim-commentary'
@@ -21,10 +20,10 @@ if !empty(glob("$HOME/.config/nvim/init.ts.vim"))
   Plug 'HerringtonDarkholme/yats.vim'
 endif
 " cs
-if !empty(glob("$HOME/.config/nvim/init.cs.vim"))
-  Plug 'OmniSharp/omnisharp-vim'
-  Plug 'w0rp/ale', { 'for': 'cs' }
-endif
+" if !empty(glob("$HOME/.config/nvim/init.cs.vim"))
+  " Plug 'OmniSharp/omnisharp-vim'
+  " Plug 'w0rp/ale', { 'for': 'cs' }
+" endif
 call plug#end()
 
 let g:NERDTreeMinimalUI = 1
@@ -35,6 +34,8 @@ let g:NERDTreeShowHidden = 1
 let g:NERDTreeWinSize = 60
 
 let g:gruvbox_contrast_dark = 'hard'
+
+let g:fzf_layout = {'up':'~90%', 'window': { 'width': 0.8, 'height': 0.8,'yoffset':0.5,'xoffset': 0.5,  'border': 'sharp' } }
 
 filetype plugin on
 
@@ -83,6 +84,8 @@ hi GitGutterChange guibg=0 guifg=#fabd2f
 hi GitGutterDelete guibg=0 guifg=#fb4934
 hi GitGutterChangeDelete guibg=0
 
+hi SignatureMarkText guibg=NONE guifg=#8ec081
+
 nnoremap <C-l> <C-w>l
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
@@ -97,10 +100,12 @@ nnoremap <Space>p :GFiles<CR>
 nnoremap <Space>b :Buffers<CR>
 nnoremap <Space>F :GGrep<Space>
 nnoremap <Space>f :BLines<Space>
-nnoremap <Space>e :call ToggleNERDTreeFind()<CR>
+nnoremap <silent><Space>e :call ToggleNERDTreeFind()<CR>
 nnoremap <Space>, :noh<CR>
 
 tnoremap <C-n> <C-\><C-n>
+
+nnoremap * *``
 
 " COMMANDS
 command! -bang -nargs=* GGrep
@@ -122,10 +127,10 @@ endfunction
 if !empty(glob("$HOME/.config/nvim/init.ts.vim"))
   source $HOME/.config/nvim/init.ts.vim
 endif
-" cs
-if !empty(glob("$HOME/.config/nvim/init.cs.vim"))
-  source $HOME/.config/nvim/init.cs.vim
-endif
+" " cs
+" if !empty(glob("$HOME/.config/nvim/init.cs.vim"))
+"   source $HOME/.config/nvim/init.cs.vim
+" endif
 " coc
 if !empty(glob("$HOME/.config/nvim/init.coc.vim"))
   source $HOME/.config/nvim/init.coc.vim
