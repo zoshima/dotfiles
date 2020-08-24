@@ -19,6 +19,50 @@
   "workbench.editor.showIcons": false,
   "workbench.colorTheme": "Gruvbox Dark (Hard)",
   "workbench.editor.showTabs": false,
-  "workbench.activityBar.visible": true,
-  "vim.foldfix": true
+  "workbench.activityBar.visible": false,
+  "workbench.list.keyboardNavigation": "highlight",
+  "gitlens.codeLens.enabled": false,
+  "vim.foldfix": true,
+  "vim.leader": " ",
+  "vim.normalModeKeyBindingsNonRecursive": [
+    {
+      "before": [
+        "<leader>",
+        "g",
+        "b"
+      ],
+      "commands": [
+        "gitlens.toggleFileBlame"
+      ]
+    },
+    {
+      "before": [
+        "g",
+        "r"
+      ],
+      "commands": [
+        "editor.action.goToReferences"
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "b",
+        "d"
+      ],
+      "commands": [
+        "workbench.action.closeOtherEditors"
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "w",
+        "d"
+      ],
+      "commands": [
+        "workbench.action.closeEditorsInGroup"
+      ]
+    }
+  ],
 }
