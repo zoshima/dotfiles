@@ -1,0 +1,15 @@
+OPTIONS=windowtype:curses
+OPTIONS=symset:curses
+
+OPTIONS=align_message:bottom 
+OPTIONS=align_status:left 
+OPTIONS=perm_invent
+
+OPTIONS=popup_dialog
+
+OPTIONS=term_cols:170 
+OPTIONS=term_rows:37 
+OPTIONS=windowborders:3
+
+OPTIONS=splash_screen
+OPTIONS=guicolor
