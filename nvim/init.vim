@@ -102,7 +102,7 @@ noremap <silent> <C-S-Down> :resize -5<CR>
 nnoremap <Space>p :GFiles<CR>
 nnoremap <Space>b :Buffers<CR>
 nnoremap <Space>F :GGrep<Space>
-nnoremap <Space>f :BLines<Space>
+nnoremap <Space>f :BLines<CR>
 nnoremap <silent><Space>e :call ToggleNERDTreeFind()<CR>
 nnoremap <Space>, :noh<CR>
 
