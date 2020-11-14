@@ -1,3 +1,5 @@
+let g:coc_global_extensions=[ 'coc-prettier', 'coc-eslint', 'coc-tsserver', 'coc-json', 'coc-css' ]
+
 set statusline=%r%m%t%=%{StatusDiagnostic()}
 
 hi CocErrorSign guibg=NONE guifg=#e75640

@@ -7,6 +7,8 @@ export PATH="$PATH":"$HOME/bin"
 export PATH="$PATH:/Users/kdi/.dotnet/tools"
 
 ZSH_THEME="zoshima"
+ZSH_DISABLE_COMPFIX="true"
+
 DOTNET_CLI_TELEMETRY_OPTOUT=1
 FUNCTIONS_CORE_TOOLS_TELEMETRY_OPTOUT=1
 
