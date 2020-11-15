@@ -12,6 +12,6 @@ set nofoldenable
 set noswapfile 
 set completeopt=menu,longest 
 set hidden 
-set clipboard=unnamedplus
+set clipboard=unnamed
 set paste
 set hlsearch
