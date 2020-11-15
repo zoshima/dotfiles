@@ -6,6 +6,14 @@ export PATH="$PATH":"$HOME/bin"
 # .NET Core SDK tools
 export PATH="$PATH:/Users/kdi/.dotnet/tools"
 
+# Java
+export PATH="$PATH:/usr/local/opt/openjdk@8/bin"
+export CPPFLAGS="-I/usr/local/opt/openjdk@8/include"
+
+# Android
+export PATH="$PATH":"/Users/kdi/android-sdk/cmdline-tools/latest/bin"
+export ANDROID_SDK_ROOT="/Users/kdi/android-sdk"
+
 ZSH_THEME="zoshima"
 ZSH_DISABLE_COMPFIX="true"
 
