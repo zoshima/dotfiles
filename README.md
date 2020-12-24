@@ -1,4 +1,8 @@
 # macos
+# cleanup
+defaults write com.apple.dock persistent-apps -array
+killall Dock
+
 ## homebrew
 ```sh
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
