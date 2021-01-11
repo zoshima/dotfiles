@@ -20,6 +20,10 @@ endif
 if !empty(glob("$HOME/.config/nvim/init.ts.vim"))
   Plug 'HerringtonDarkholme/yats.vim'
 endif
+if !empty(glob("$HOME/.config/nvim/init.cs.vim"))
+  Plug 'OmniSharp/omnisharp-vim'
+  Plug 'w0rp/ale', { 'for': 'cs' }
+endif
 call plug#end()
 
 let g:NERDTreeMinimalUI = 1
@@ -128,4 +132,8 @@ endif
 " coc
 if !empty(glob("$HOME/.config/nvim/init.coc.vim"))
   source $HOME/.config/nvim/init.coc.vim
+endif
+" c#
+if !empty(glob("$HOME/.config/nvim/init.cs.vim"))
+  source $HOME/.config/nvim/init.cs.vim
 endif
