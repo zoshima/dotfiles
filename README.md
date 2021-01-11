@@ -39,6 +39,10 @@ ln -s ~/git/dotfiles/.gitconfig ~/.gitconfig
 ### manual
 - import ~/git/dotfiles/zoshima.iterm-profile.json as profile in iterm2
 
+### cscreen
+cscreen -l
+cscreen -s 1c81b4cd -x 3840 -y 1080 -r 144
+
 ## nvim
 
 ### vim-plug
