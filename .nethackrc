@@ -1,15 +1,19 @@
 # names
 OPTIONS=name:Zosima
+OPTIONS=fruit:Skruf White S2
 OPTIONS=dogname:Sharik
-OPTIONS=catname:Kote
-OPTIONS=horsename:Herp
+OPTIONS=catname:Behemoth
+OPTIONS=horsename:Derp
 
-# gameplay
+# autopickup
 OPTIONS=autopickup
-OPTIONS=pickup_types:$?!/="+
+OPTIONS=pickup_types:$/=%+
 OPTIONS=pickup_thrown
-OPTIONS=pickup_burden:S
-AUTOPICKUP_EXCEPTION=">scroll of scare monster"
+OPTIONS=pickup_burden:U
+
+AUTOPICKUP_EXCEPTION=">scroll .* scare monster"
+AUTOPICKUP_EXCEPTION="> corpse"
+AUTOPICKUP_EXCEPTION="> named !!c"
 
 # ui
 OPTIONS=windowtype:curses
@@ -26,7 +30,7 @@ OPTIONS=popup_dialog
 # status
 OPTIONS=statushilites
 
-# HP
+# hp
 OPTIONS=hilite_status:hitpoints/100%/grey&normal
 OPTIONS=hilite_status:hitpoints/<100%/green&normal
 OPTIONS=hilite_status:hitpoints/<66%/yellow&normal
@@ -34,70 +38,86 @@ OPTIONS=hilite_status:hitpoints/<50%/orange&normal
 OPTIONS=hilite_status:hitpoints/<33%/red&bold
 OPTIONS=hilite_status:hitpoints/<15%/red&inverse
 
-## Pw
+## power
 OPTIONS=hilite_status:power/100%/grey&normal
 OPTIONS=hilite_status:power/<100%/green&normal
 OPTIONS=hilite_status:power/<66%/yellow&normal
 OPTIONS=hilite_status:power/<50%/orange&normal
 OPTIONS=hilite_status:power/<33%/red&bold
 
-## Carry
+## weight
 OPTIONS=hilite_status:cap/burdened/yellow/stressed/orange/strained/red&bold/overtaxed/red&inverse/overloaded/red&inverse&blink
 
-## Hunger
+## hunger
 OPTIONS=hilite_status:hunger/satiated/yellow/hungry/orange/weak/red&bold/fainting/red&inverse/fainted/red&inverse&blink
 
-## Mental
+## condition
 OPTIONS=hilite_status:condition/hallu/yellow
 OPTIONS=hilite_status:condition/conf/orange
 OPTIONS=hilite_status:condition/stun/red&bold
-
-## Health
 OPTIONS=hilite_status:condition/termill/red&inverse
 OPTIONS=hilite_status:condition/foodpois/red&inverse
 OPTIONS=hilite_status:condition/slime/red&inverse
 
-# Str, Con, Dex, Int, Wis, Cha
+# statis
 OPTIONS=hilite_status:characteristics/up/green/down/red
 
-# gold
+# $
 OPTIONS=hilite_status: gold/up/yellow/down/brown
 
-# menu colors
-OPTIONS=menucolors
-MENUCOLOR=" blessed "=green
-MENUCOLOR=" holy "=blue
-MENUCOLOR=" cursed "=red
-MENUCOLOR=" unholy "=red
-MENUCOLOR=" cursed .* (being worn)"=red&underline
+# menu
+OPTIONS=color, menucolors
 
-# Make Vegan GREEN & BOLD
-MENUCOLOR="(food |cram |K-|C-)ration|gunyoki"=green&bold
-MENUCOLOR="lembas wafer|melon|carrot|tin .* spinach"=green&bold
-MENUCOLOR=" oranges?( named.*)?$"=green&bold
-MENUCOLOR=" pears?( named.*)?$"=green&bold
-MENUCOLOR=" apple|banana|kelp|eucalyptus|garlic|wolfsbane"=green&bold
-MENUCOLOR=" muffin"=green&bold
-MENUCOLOR="(tin of )?(gelatinous cube|acid blob|quivering blob)( corpse)?"=green&bold
-MENUCOLOR="(tin of )?(blue|spotted|ochre) jelly( corpse)?"=green&bold
-MENUCOLOR="(tin of )?lichen|shrieker|violet fungus|(brown|yellow|green|red) mold( corpse)?"=green&bold
+## named
+MENUCOLOR=".* named.*"=white
+MENUCOLOR=".* named !!c.*"=orange
 
-# Shiny things
-MENUCOLOR=" lamp"=yellow
-MENUCOLOR=" candle"=yellow
-MENUCOLOR=" magic lamp|lamp .* magic"=yellow&bold
-#MENUCOLOR=" gold piece"=yellow
+## worn & worn named
+MENUCOLOR=".* \(.*\).*"=gray&underline
+MENUCOLOR=".* named .*\(.*\).*"=white&underline
 
-# Dangerous with Bag of Holding
-MENUCOLOR=" cursed.* bag .* holding"=orange&underline
-MENUCOLOR=" bag .* tricks"=orange&underline
-MENUCOLOR=" wand of [Cc]ancel.*"=orange&underline
-MENUCOLOR=" wand called [Cc]ancel.*"=orange&underline
-MENUCOLOR=" wand .* van"=orange&underline
-MENUCOLOR=" wand called .* vanish( .*)?$"=orange&underline
+# blessed & worn blessed
+MENUCOLOR=" blessed"=cyan
+MENUCOLOR=".* blessed.*\(.*\).*"=cyan&underline
 
-# Really bad cursed things to have
-MENUCOLOR="[Ll]oadstone"=orange&underline
-MENUCOLOR=" cursed.* luck(stone)?($| )"=orange&bold
-MENUCOLOR=" cursed.* (Bell of Opening|silver bell|Candelabrum of Invocation|candelabrum|Book of the Dead|papyrus spellbook)"=orange&bold
-MENUCOLOR=" cursed.* unicorn horn"=orange&bold
+# holy & worn holy
+MENUCOLOR=" holy"=yellow
+MENUCOLOR=".* holy.*\(.*\).*"=yellow&underline
+
+# cursed & worn cursed
+MENUCOLOR=" cursed"=orange
+MENUCOLOR=".* (cursed|!!c).*\(.*\).*"=orange&underline
+
+# unholy & worn unholy
+MENUCOLOR=" unholy"=orange
+MENUCOLOR=".* unholy.*\(.*\).*"=orange&underline
+
+# vegan
+MENUCOLOR="Skruf.*"=green
+MENUCOLOR="(food |cram |K-|C-)ration|gunyoki"=green
+MENUCOLOR="lembas wafer|melon|carrot|tin .* spinach"=green
+MENUCOLOR=" oranges?( named.*)?$"=green
+MENUCOLOR=" pears?( named.*)?$"=green
+MENUCOLOR=" apple|banana|kelp|eucalyptus|garlic|wolfsbane"=green
+MENUCOLOR=" muffin"=green
+MENUCOLOR="(tin of )?(gelatinous cube|acid blob|quivering blob)( corpse)?"=green
+MENUCOLOR="(tin of )?(blue|spotted|ochre) jelly( corpse)?"=green
+MENUCOLOR="(tin of )?lichen|shrieker|violet fungus|(brown|yellow|green|red) mold( corpse)?"=green
+
+# vegetarian
+MENUCOLOR="egg|pancake|fortune cookie|candy bar|royal jelly|cream pie|candle"=green
+MENUCOLOR="(tin of )?brown pudding|gray ooze( corpse)?"=green
+
+# bag of holding danger
+MENUCOLOR=" cursed.* bag .* holding"=red
+MENUCOLOR=" bag .* tricks"=red
+MENUCOLOR=" wand of [Cc]ancel.*"=red
+MENUCOLOR=" wand called [Cc]ancel.*"=red
+MENUCOLOR=" wand .* van"=red
+MENUCOLOR=" wand called .* vanish( .*)?$"=red
+
+# to drop
+MENUCOLOR="[Ll]oadstone"=red&underline
+MENUCOLOR=" cursed.* luck(stone)?($| )"=red&underline
+MENUCOLOR=" cursed.* (Bell of Opening|silver bell|Candelabrum of Invocation|candelabrum|Book of the Dead|papyrus spellbook)"=red&underline
+MENUCOLOR=" cursed.* unicorn horn"=red&underline
