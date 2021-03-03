@@ -9,6 +9,7 @@
     "html",
     "cs"
   ],
+  "deno.enable": true,
   "languageserver": {
     "terraform": {
       "command": "terraform-ls",
