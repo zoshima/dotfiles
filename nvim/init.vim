@@ -41,30 +41,36 @@ let g:fzf_layout = {'up':'~90%', 'window': { 'width': 0.8, 'height': 0.8,'yoffse
 
 filetype plugin on
 
+if (has("termguicolors"))
+  set termguicolors
+endif
+
 colorscheme gruvbox
 
-set termguicolors
-set autoread
 set signcolumn=yes
-set background=dark
 set number relativenumber
+
 set expandtab
 set tabstop=2
 set shiftwidth=2
+
 set splitbelow
 set splitright
-set previewheight=5
+
 set pumheight=5 
+
 set foldmethod=syntax
 set nofoldenable
+
 set noswapfile
+
 set clipboard=unnamed
-set completeopt=menu,longest
+
+set completeopt=menuone,longest
+
 set hidden
-set mouse=a
-set updatetime=300
-set shortmess+=c
-set incsearch
+set mouse=nvc
+
 set fillchars=vert:\¦,stlnc:-,stl:-
 set statusline=%r%m%t%=
 
@@ -80,11 +86,6 @@ hi CursorLineNr guibg=NONE
 hi StatusLine guibg=0 guifg=#fabd2f gui=NONE
 hi StatusLineNC guibg=0 guifg=#7c6f64 gui=NONE
 hi VertSplit guifg=#7c6f64
-
-hi GitGutterAdd guibg=0 guifg=#b8bb26
-hi GitGutterChange guibg=0 guifg=#fabd2f
-hi GitGutterDelete guibg=0 guifg=#fb4934
-hi GitGutterChangeDelete guibg=0
 
 hi SignatureMarkText guibg=NONE guifg=#8ec081
 

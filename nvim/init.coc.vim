@@ -1,6 +1,6 @@
 let g:coc_global_extensions=[ 'coc-prettier', 'coc-eslint', 'coc-tsserver', 'coc-json', 'coc-css' ]
 
-set statusline=%r%m%t%=%{StatusDiagnostic()}
+set statusline+=%{StatusDiagnostic()}
 
 hi CocErrorSign guibg=NONE guifg=#e75640
 hi CocWarningSign guibg=NONE guifg=#f1be4f
@@ -34,14 +34,11 @@ function! StatusDiagnostic() abort
   let info = get(b:, 'coc_diagnostic_info', {})
   if empty(info) | return '' | endif
   let msgs = []
-
   if get(info, 'error', 0)
-    call add(msgs, '[E:' . info['error'] . ']')
+    call add(msgs, 'E' . info['error'])
   endif
-
   if get(info, 'warning', 0)
-    call add(msgs, '[W:' . info['warning'] . ']')
+    call add(msgs, 'W' . info['warning'])
   endif
-
-  return join(msgs, ''). '' . get(g:, 'coc_status', '')
+  return join(msgs, ' '). ' ' . get(g:, 'coc_status', '')
 endfunction
