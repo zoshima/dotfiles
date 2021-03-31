@@ -37,6 +37,8 @@ font-fira-code
 ln -s ~/git/dotfiles/.vimrc  ~/.vimrc
 ln -s ~/git/dotfiles/.zshrc ~/.zshrc
 ln -s ~/git/dotfiles/zoshima.zsh-theme ~/.oh-my-zsh/themes/zoshima.zsh-theme
+ln -s ~/git/dotfiles/.tmux.conf ~/.tmux.conf
+ln -s ~/git/dotfiles/.alacritty.yml ~/.alacritty.yml
 ln -s ~/git/dotfiles/.gitconfig ~/.gitconfig
 ```
 
