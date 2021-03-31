@@ -7,9 +7,9 @@
     "scss",
     "json",
     "html",
-    "cs"
+    "cs",
+    "rust"
   ],
-  "deno.enable": true,
   "languageserver": {
     "terraform": {
       "command": "terraform-ls",
