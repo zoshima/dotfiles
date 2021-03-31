@@ -33,8 +33,6 @@ let g:NERDTreeQuitOnOpen = 1
 let g:NERDTreeShowHidden = 1
 let g:NERDTreeWinSize = 60
 
-let g:gruvbox_contrast_dark = 'hard'
-
 let g:markdown_fenced_languages = ['html', 'python', 'bash=sh', 'js=javascript', 'ts=typescript', 'json']
 
 let g:fzf_layout = {'up':'~90%', 'window': { 'width': 0.8, 'height': 0.8,'yoffset':0.5,'xoffset': 0.5,  'border': 'sharp' } }

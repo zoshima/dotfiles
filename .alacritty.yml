@@ -48,7 +48,7 @@ font:
 
 colors:
   primary:
-    background: '#1d2021'
+    background: '#282828'
     foreground: '#d6d6d6'
 
     dim_foreground:    '#dbdbdb'
