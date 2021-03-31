@@ -25,6 +25,8 @@ zsh-syntax-highlighting
 #### casks
 ```sh
 iterm2
+alacritty
+tmux
 ```
 
 ```sh
