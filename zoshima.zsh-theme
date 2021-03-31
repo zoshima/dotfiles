@@ -1,9 +1,9 @@
 # color vars
-eval col_main='$FG[109]'
-eval col_branch='$FG[149]'
-eval col_jobs='$FG[168]'
-eval col_dirty='$FG[124]'
-eval col_backdrop='$FG[250]'
+eval col_main='$FG[004]'
+eval col_backdrop='$FG[008]'
+eval col_branch='$FG[003]'
+eval col_jobs='$FG[001]'
+eval col_dirty='$FG[009]'
 eval col_foreground='$FG[007]'
 
 # left prompt
