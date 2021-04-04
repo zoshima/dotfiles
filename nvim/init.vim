@@ -4,36 +4,17 @@ call plug#begin('~/.vim/plugged')
 " project
 Plug 'junegunn/fzf', { 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
-Plug 'scrooloose/nerdtree'
-Plug 'tpope/vim-fugitive'
 "editor 
 Plug 'kshenoy/vim-signature'
 Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-markdown'
 " looks
 Plug 'morhetz/gruvbox'
-" coc
-if !empty(glob("$HOME/.config/nvim/init.coc.vim"))
-  Plug 'neoclide/coc.nvim', {'branch': 'release'}
-endif
-" ts
-if !empty(glob("$HOME/.config/nvim/init.ts.vim"))
-  Plug 'HerringtonDarkholme/yats.vim'
-endif
-if !empty(glob("$HOME/.config/nvim/init.cs.vim"))
-  Plug 'OmniSharp/omnisharp-vim'
-  Plug 'w0rp/ale', { 'for': 'cs' }
-endif
+" lsp
+Plug 'neovim/nvim-lspconfig'
 call plug#end()
 
-let g:NERDTreeMinimalUI = 1
-let g:NERDTreeDirArrows = 1
-let g:NERDTreeAutoDeleteBuffer = 1
-let g:NERDTreeQuitOnOpen = 1
-let g:NERDTreeShowHidden = 1
-let g:NERDTreeWinSize = 60
-
-let g:markdown_fenced_languages = ['html', 'python', 'bash=sh', 'js=javascript', 'ts=typescript', 'json']
+let g:netrw_banner = 0
+let g:netrw_liststyle = 1
 
 let g:fzf_layout = {'up':'~90%', 'window': { 'width': 0.8, 'height': 0.8,'yoffset':0.5,'xoffset': 0.5,  'border': 'sharp' } }
 
@@ -42,8 +23,6 @@ filetype plugin on
 if (has("termguicolors"))
   set termguicolors
 endif
-
-colorscheme gruvbox
 
 set signcolumn=yes
 set number relativenumber
@@ -64,19 +43,21 @@ set noswapfile
 
 set clipboard=unnamed
 
-set completeopt=menuone,longest
+set completeopt=menuone,longest,noinsert,noselect
 
 set hidden
 set mouse=nvc
 
 set fillchars=vert:\¦,stlnc:-,stl:-
-set statusline=%r%m%t%=
+set statusline=%!v:lua.statusline()
 
-" colors
+" COLOR SCHEME
 " gray      #7c6f64
 " red       #fb4934
 " green     #b8bb26
 " yellow    #fabd2f
+"
+colorscheme gruvbox
 
 hi SignColumn guibg=NONE
 hi StatusLine guibg=NONE
@@ -84,8 +65,12 @@ hi CursorLineNr guibg=NONE
 hi StatusLine guibg=0 guifg=#fabd2f gui=NONE
 hi StatusLineNC guibg=0 guifg=#7c6f64 gui=NONE
 hi VertSplit guifg=#7c6f64
-
 hi SignatureMarkText guibg=NONE guifg=#8ec081
+
+" MAPPINGS
+nnoremap * *``
+
+tnoremap <C-n> <C-\><C-n>
 
 nnoremap <C-l> <C-w>l
 nnoremap <C-h> <C-w>h
@@ -99,40 +84,45 @@ noremap <silent> <C-S-Down> :resize -5<CR>
 
 nnoremap <Space>p :GFiles<CR>
 nnoremap <Space>b :Buffers<CR>
-nnoremap <Space>F :GGrep<Space>
+nnoremap <Space>F :ggrep<Space>
 nnoremap <Space>f :BLines<CR>
-nnoremap <silent><Space>e :call ToggleNERDTreeFind()<CR>
+nnoremap <silent><Space>e :E<CR>
 nnoremap <Space>, :noh<CR>
 
-tnoremap <C-n> <C-\><C-n>
-
-nnoremap * *``
+nnoremap ga <cmd>lua vim.lsp.buf.code_action()<CR>
+nnoremap gd <cmd>lua vim.lsp.buf.definition()<CR>
+nnoremap gD <cmd>lua vim.lsp.buf.declaration()<CR>
+nnoremap gh <cmd>lua vim.lsp.buf.hover()<CR>
+nnoremap gH <cmd>lua vim.lsp.buf.signature_help()<CR>
+nnoremap gr <cmd>lua vim.lsp.buf.references()<CR>
+nnoremap gi <cmd>lua vim.lsp.buf.implementation()<CR>
+nnoremap gf <cmd>lua vim.lsp.buf.formatting()<CR>
 
 " COMMANDS
-command! -bang -nargs=* GGrep
+command! -bang -nargs=* Ggrep
 			\ call fzf#vim#grep(
 			\   'git grep --basic-regexp --line-number '.shellescape(<q-args>), 0,
 			\   { 'dir': systemlist('git rev-parse --show-toplevel')[0] }, <bang>0)
 
-" FUNCTIONS
-function! ToggleNERDTreeFind()
-	if g:NERDTree.IsOpen() && bufwinnr(t:NERDTreeBufName) == winnr()
-		execute ':NERDTreeClose'
-	else
-		execute ':NERDTreeFind'
-	endif
-endfunction
+command! -bang -nargs=1 Gcomp
+      \ new | 0read ! git show <q-args>:#
 
-" SOURCES
-" ts
-if !empty(glob("$HOME/.config/nvim/init.ts.vim"))
-  source $HOME/.config/nvim/init.ts.vim
-endif
-" coc
-if !empty(glob("$HOME/.config/nvim/init.coc.vim"))
-  source $HOME/.config/nvim/init.coc.vim
-endif
-" c#
-if !empty(glob("$HOME/.config/nvim/init.cs.vim"))
-  source $HOME/.config/nvim/init.cs.vim
-endif
+lua << EOF
+function _G.statusline()
+  local left = '%r%m%t'
+  local right = ''
+
+  if not vim.tbl_isempty(vim.lsp.buf_get_clients()) then
+    local clients = vim.lsp.buf_get_clients()
+
+    for k, v in ipairs(clients) do
+      right = right .. '['..v.name..']'
+    end
+  end
+
+  return string.format('%s%s%s', left, '%=', right);
+end
+EOF
+
+" lsp
+luafile $HOME/git/dotfiles/nvim/lspconfig.lua
