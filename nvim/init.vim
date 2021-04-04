@@ -55,7 +55,7 @@ set hidden
 set mouse=nvc
 
 set fillchars=vert:\¦,stlnc:-,stl:-
-set statusline=%r%m%t%=
+set statusline=%!v:lua.statusline()
 
 " COLOR SCHEME
 " gray      #7c6f64
@@ -119,6 +119,23 @@ function! ToggleNERDTreeFind()
 		execute ':NERDTreeFind'
 	endif
 endfunction
+
+lua << EOF
+function _G.statusline()
+  local left = '%r%m%t'
+  local right = ''
+
+  if not vim.tbl_isempty(vim.lsp.buf_get_clients(0)) then
+    local clients = vim.lsp.get_active_clients()
+
+    for k, v in ipairs(clients) do
+      right = right .. '['..v.name..']'
+    end
+  end
+
+  return string.format('%s%s%s', left, '%=', right);
+end
+EOF
 
 " lsp
 luafile $HOME/git/dotfiles/nvim/lspconfig.lua
