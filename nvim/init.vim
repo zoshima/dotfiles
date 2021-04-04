@@ -125,8 +125,8 @@ function _G.statusline()
   local left = '%r%m%t'
   local right = ''
 
-  if not vim.tbl_isempty(vim.lsp.buf_get_clients(0)) then
-    local clients = vim.lsp.get_active_clients()
+  if not vim.tbl_isempty(vim.lsp.buf_get_clients()) then
+    local clients = vim.lsp.buf_get_clients()
 
     for k, v in ipairs(clients) do
       right = right .. '['..v.name..']'
