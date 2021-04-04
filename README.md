@@ -47,7 +47,6 @@ cscreen -s 1c81b4cd -x 3840 -y 1080 -r 144
 
 ## nvim
 
-### vim-plug
 ```sh
 sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
@@ -71,8 +70,11 @@ yarn global add typescript-language-server
 ```
 
 ### cs
-find /path/to/omnisharp-osx | xargs xattr -r -d com.apple.quarantine
+download omnisharp-osx to ``~/.omnisharp``
 
+```sh
+find ~/.omnisharp | xargs xattr -r -d com.apple.quarantine
+```
 
 ### rust
 ```sh

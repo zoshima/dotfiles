@@ -30,8 +30,6 @@ if (has("termguicolors"))
   set termguicolors
 endif
 
-colorscheme gruvbox
-
 set signcolumn=yes
 set number relativenumber
 
@@ -59,11 +57,13 @@ set mouse=nvc
 set fillchars=vert:\¦,stlnc:-,stl:-
 set statusline=%r%m%t%=
 
-" colors
+" COLOR SCHEME
 " gray      #7c6f64
 " red       #fb4934
 " green     #b8bb26
 " yellow    #fabd2f
+"
+colorscheme gruvbox
 
 hi SignColumn guibg=NONE
 hi StatusLine guibg=NONE
@@ -71,8 +71,12 @@ hi CursorLineNr guibg=NONE
 hi StatusLine guibg=0 guifg=#fabd2f gui=NONE
 hi StatusLineNC guibg=0 guifg=#7c6f64 gui=NONE
 hi VertSplit guifg=#7c6f64
-
 hi SignatureMarkText guibg=NONE guifg=#8ec081
+
+" MAPPINGS
+nnoremap * *``
+
+tnoremap <C-n> <C-\><C-n>
 
 nnoremap <C-l> <C-w>l
 nnoremap <C-h> <C-w>h
@@ -91,9 +95,15 @@ nnoremap <Space>f :BLines<CR>
 nnoremap <silent><Space>e :call ToggleNERDTreeFind()<CR>
 nnoremap <Space>, :noh<CR>
 
-tnoremap <C-n> <C-\><C-n>
-
-nnoremap * *``
+nnoremap <silent> <leader>ga <cmd>lua vim.lsp.buf.code_action()<CR>
+nnoremap <silent> <leader>gd <cmd>lua vim.lsp.buf.definition()<CR>
+nnoremap <silent> <leader>gD <cmd>lua vim.lsp.buf.declaration()<CR>
+nnoremap <silent> <leader>gh <cmd>lua vim.lsp.buf.hover()<CR>
+nnoremap <silent> <leader>gH <cmd>lua vim.lsp.buf.signature_help()<CR>
+nnoremap <silent> <leader>gr <cmd>lua vim.lsp.buf.references()<CR>
+nnoremap <silent> <leader>gi <cmd>lua vim.lsp.buf.implementation()<CR>
+nnoremap <silent> <C-n> <cmd>lua vim.lsp.diagnostic.goto_prev()<CR>
+nnoremap <silent> <C-p> <cmd>lua vim.lsp.diagnostic.goto_next()<CR>
 
 " COMMANDS
 command! -bang -nargs=* GGrep
@@ -110,11 +120,5 @@ function! ToggleNERDTreeFind()
 	endif
 endfunction
 
-" SOURCES
-source $HOME/git/dotfiles/nvim/lsp-config.vim
-
 " lsp
-luafile $HOME/git/dotfiles/nvim/lsp.lua
-
-" autocmd BufEnter * lua require'completion'.on_attach()
-autocmd Filetype cs setlocal omnifunc=v:lua.vim.lsp.omnifunc
+luafile $HOME/git/dotfiles/nvim/lspconfig.lua
