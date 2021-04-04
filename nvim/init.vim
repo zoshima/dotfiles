@@ -9,21 +9,10 @@ Plug 'tpope/vim-fugitive'
 "editor 
 Plug 'kshenoy/vim-signature'
 Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-markdown'
 " looks
 Plug 'morhetz/gruvbox'
-" coc
-if !empty(glob("$HOME/.config/nvim/init.coc.vim"))
-  Plug 'neoclide/coc.nvim', {'branch': 'release'}
-endif
-" ts
-if !empty(glob("$HOME/.config/nvim/init.ts.vim"))
-  Plug 'HerringtonDarkholme/yats.vim'
-endif
-if !empty(glob("$HOME/.config/nvim/init.cs.vim"))
-  Plug 'OmniSharp/omnisharp-vim'
-  Plug 'w0rp/ale', { 'for': 'cs' }
-endif
+" lsp
+Plug 'neovim/nvim-lspconfig'
 call plug#end()
 
 let g:NERDTreeMinimalUI = 1
@@ -32,8 +21,6 @@ let g:NERDTreeAutoDeleteBuffer = 1
 let g:NERDTreeQuitOnOpen = 1
 let g:NERDTreeShowHidden = 1
 let g:NERDTreeWinSize = 60
-
-let g:markdown_fenced_languages = ['html', 'python', 'bash=sh', 'js=javascript', 'ts=typescript', 'json']
 
 let g:fzf_layout = {'up':'~90%', 'window': { 'width': 0.8, 'height': 0.8,'yoffset':0.5,'xoffset': 0.5,  'border': 'sharp' } }
 
@@ -64,7 +51,7 @@ set noswapfile
 
 set clipboard=unnamed
 
-set completeopt=menuone,longest
+set completeopt=menuone,longest,noinsert,noselect
 
 set hidden
 set mouse=nvc
@@ -124,15 +111,10 @@ function! ToggleNERDTreeFind()
 endfunction
 
 " SOURCES
-" ts
-if !empty(glob("$HOME/.config/nvim/init.ts.vim"))
-  source $HOME/.config/nvim/init.ts.vim
-endif
-" coc
-if !empty(glob("$HOME/.config/nvim/init.coc.vim"))
-  source $HOME/.config/nvim/init.coc.vim
-endif
-" c#
-if !empty(glob("$HOME/.config/nvim/init.cs.vim"))
-  source $HOME/.config/nvim/init.cs.vim
-endif
+source $HOME/git/dotfiles/nvim/lsp-config.vim
+
+" lsp
+luafile $HOME/git/dotfiles/nvim/lsp.lua
+
+" autocmd BufEnter * lua require'completion'.on_attach()
+autocmd Filetype cs setlocal omnifunc=v:lua.vim.lsp.omnifunc
