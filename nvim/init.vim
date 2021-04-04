@@ -4,7 +4,6 @@ call plug#begin('~/.vim/plugged')
 " project
 Plug 'junegunn/fzf', { 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
-Plug 'scrooloose/nerdtree'
 "editor 
 Plug 'kshenoy/vim-signature'
 Plug 'tpope/vim-commentary'
@@ -14,12 +13,8 @@ Plug 'morhetz/gruvbox'
 Plug 'neovim/nvim-lspconfig'
 call plug#end()
 
-let g:NERDTreeMinimalUI = 1
-let g:NERDTreeDirArrows = 1
-let g:NERDTreeAutoDeleteBuffer = 1
-let g:NERDTreeQuitOnOpen = 1
-let g:NERDTreeShowHidden = 1
-let g:NERDTreeWinSize = 60
+let g:netrw_banner = 0
+let g:netrw_liststyle = 1
 
 let g:fzf_layout = {'up':'~90%', 'window': { 'width': 0.8, 'height': 0.8,'yoffset':0.5,'xoffset': 0.5,  'border': 'sharp' } }
 
@@ -91,7 +86,7 @@ nnoremap <Space>p :GFiles<CR>
 nnoremap <Space>b :Buffers<CR>
 nnoremap <Space>F :ggrep<Space>
 nnoremap <Space>f :BLines<CR>
-nnoremap <silent><Space>e :call ToggleNERDTreeFind()<CR>
+nnoremap <silent><Space>e :E<CR>
 nnoremap <Space>, :noh<CR>
 
 nnoremap ga <cmd>lua vim.lsp.buf.code_action()<CR>
@@ -111,15 +106,6 @@ command! -bang -nargs=* Ggrep
 
 command! -bang -nargs=1 Gcomp
       \ new | 0read ! git show <q-args>:#
-
-" FUNCTIONS
-function! ToggleNERDTreeFind()
-	if g:NERDTree.IsOpen() && bufwinnr(t:NERDTreeBufName) == winnr()
-		execute ':NERDTreeClose'
-	else
-		execute ':NERDTreeFind'
-	endif
-endfunction
 
 lua << EOF
 function _G.statusline()
