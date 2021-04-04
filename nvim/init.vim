@@ -107,6 +107,9 @@ command! -bang -nargs=* Ggrep
 command! -bang -nargs=1 Gcomp
       \ new | 0read ! git show <q-args>:#
 
+command! -bang -nargs=0 Prettier
+      \ %!prettier --stdin-filepath %
+
 lua << EOF
 function _G.statusline()
   local left = '%r%m%t'
