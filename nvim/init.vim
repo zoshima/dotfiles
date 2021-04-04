@@ -5,7 +5,6 @@ call plug#begin('~/.vim/plugged')
 Plug 'junegunn/fzf', { 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
 Plug 'scrooloose/nerdtree'
-Plug 'tpope/vim-fugitive'
 "editor 
 Plug 'kshenoy/vim-signature'
 Plug 'tpope/vim-commentary'
@@ -90,7 +89,7 @@ noremap <silent> <C-S-Down> :resize -5<CR>
 
 nnoremap <Space>p :GFiles<CR>
 nnoremap <Space>b :Buffers<CR>
-nnoremap <Space>F :GGrep<Space>
+nnoremap <Space>F :ggrep<Space>
 nnoremap <Space>f :BLines<CR>
 nnoremap <silent><Space>e :call ToggleNERDTreeFind()<CR>
 nnoremap <Space>, :noh<CR>
@@ -105,10 +104,13 @@ nnoremap gi <cmd>lua vim.lsp.buf.implementation()<CR>
 nnoremap gf <cmd>lua vim.lsp.buf.formatting()<CR>
 
 " COMMANDS
-command! -bang -nargs=* GGrep
+command! -bang -nargs=* Ggrep
 			\ call fzf#vim#grep(
 			\   'git grep --basic-regexp --line-number '.shellescape(<q-args>), 0,
 			\   { 'dir': systemlist('git rev-parse --show-toplevel')[0] }, <bang>0)
+
+command! -bang -nargs=1 Gcomp
+      \ new | 0read ! git show <q-args>:#
 
 " FUNCTIONS
 function! ToggleNERDTreeFind()
