@@ -1,4 +1,4 @@
-let g:coc_global_extensions=[ 'coc-prettier', 'coc-eslint', 'coc-tsserver', 'coc-json', 'coc-css' ]
+let g:coc_global_extensions=[ 'coc-prettier', 'coc-eslint', 'coc-tsserver', 'coc-json', 'coc-css', 'coc-rust-analyzer' ]
 
 set statusline+=%{StatusDiagnostic()}
 
