@@ -7,6 +7,7 @@ Plug 'junegunn/fzf.vim'
 "editor 
 Plug 'kshenoy/vim-signature'
 Plug 'tpope/vim-commentary'
+Plug 'sbdchd/neoformat'
 " looks
 Plug 'morhetz/gruvbox'
 " lsp
