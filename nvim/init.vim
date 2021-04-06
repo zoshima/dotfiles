@@ -85,7 +85,7 @@ noremap <silent> <C-S-Down> :resize -5<CR>
 
 nnoremap <Space>p :GFiles<CR>
 nnoremap <Space>b :Buffers<CR>
-nnoremap <Space>F :ggrep<Space>
+nnoremap <Space>F :Ggrep<Space>
 nnoremap <Space>f :BLines<CR>
 nnoremap <silent><Space>e :E<CR>
 nnoremap <Space>, :noh<CR>
