@@ -4,18 +4,26 @@ call plug#begin('~/.vim/plugged')
 " project
 Plug 'junegunn/fzf', { 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
+Plug 'preservim/nerdtree'
 "editor 
 Plug 'kshenoy/vim-signature'
 Plug 'tpope/vim-commentary'
-Plug 'sbdchd/neoformat'
+Plug 'tpope/vim-fugitive'
 " looks
 Plug 'morhetz/gruvbox'
 " lsp
+Plug 'nvim-lua/completion-nvim'
 Plug 'neovim/nvim-lspconfig'
 call plug#end()
 
-let g:netrw_banner = 0
 let g:netrw_liststyle = 1
+
+let g:NERDTreeMinimalUI = 1
+let g:NERDTreeDirArrows = 1
+let g:NERDTreeAutoDeleteBuffer = 1
+let g:NERDTreeQuitOnOpen = 1
+let g:NERDTreeShowHidden = 1
+let g:NERDTreeWinSize = 60
 
 let g:fzf_layout = {'up':'~90%', 'window': { 'width': 0.8, 'height': 0.8,'yoffset':0.5,'xoffset': 0.5,  'border': 'sharp' } }
 
@@ -68,6 +76,11 @@ hi StatusLineNC guibg=0 guifg=#7c6f64 gui=NONE
 hi VertSplit guifg=#7c6f64
 hi SignatureMarkText guibg=NONE guifg=#8ec081
 
+hi LspDiagnosticsDefaultError guibg=NONE guifg=#fb4934
+hi LspDiagnosticsSignError guibg=NONE guifg=#fb4934
+hi LspDiagnosticsDefaultWarning guibg=NONE guifg=#fabd2f
+hi LspDiagnosticsSignWarning guibg=NONE guifg=#fabd2f
+
 " MAPPINGS
 nnoremap * *``
 
@@ -85,9 +98,10 @@ noremap <silent> <C-S-Down> :resize -5<CR>
 
 nnoremap <Space>p :GFiles<CR>
 nnoremap <Space>b :Buffers<CR>
-nnoremap <Space>F :Ggrep<Space>
+nnoremap <Space>F :Ggrepc<Space>
 nnoremap <Space>f :BLines<CR>
-nnoremap <silent><Space>e :E<CR>
+" nnoremap <silent><Space>e :E<CR>
+nnoremap <silent><Space>e :call ToggleNERDTreeFind()<CR>
 nnoremap <Space>, :noh<CR>
 
 nnoremap ga <cmd>lua vim.lsp.buf.code_action()<CR>
@@ -98,9 +112,15 @@ nnoremap gH <cmd>lua vim.lsp.buf.signature_help()<CR>
 nnoremap gr <cmd>lua vim.lsp.buf.references()<CR>
 nnoremap gi <cmd>lua vim.lsp.buf.implementation()<CR>
 nnoremap gf <cmd>lua vim.lsp.buf.formatting()<CR>
+vnoremap gf <cmd>lua vim.lsp.buf.range_formatting()<CR>
+
+nnoremap z/ <cmd>lua vim.lsp.diagnostic.set_loclist()<CR>
+nnoremap zn <cmd>lua vim.lsp.diagnostic.goto_next()<CR>
+nnoremap zp <cmd>lua vim.lsp.diagnostic.goto_prev()<CR>
+nnoremap zh <cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>
 
 " COMMANDS
-command! -bang -nargs=* Ggrep
+command! -bang -nargs=* Ggrepc
 			\ call fzf#vim#grep(
 			\   'git grep --basic-regexp --line-number '.shellescape(<q-args>), 0,
 			\   { 'dir': systemlist('git rev-parse --show-toplevel')[0] }, <bang>0)
@@ -110,6 +130,17 @@ command! -bang -nargs=1 Gcomp
 
 command! -bang -nargs=0 Prettier
       \ %!prettier --stdin-filepath %
+
+autocmd BufEnter * lua require'completion'.on_attach()
+
+" FUNCTIONS
+function! ToggleNERDTreeFind()
+	if g:NERDTree.IsOpen() && bufwinnr(t:NERDTreeBufName) == winnr()
+		execute ':NERDTreeClose'
+	else
+		execute ':NERDTreeFind'
+	endif
+endfunction
 
 lua << EOF
 function _G.statusline()

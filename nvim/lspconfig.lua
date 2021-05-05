@@ -31,11 +31,18 @@ local prettier = {
   formatStdin = true
 }
 
+local eslint = {
+  lintCommand = "eslint_d -f unix --stdin --stdin-filename ${INPUT}",
+  lintIgnoreExitCode = true,
+  lintStdin = true,
+  lintFormats = {"%f:%l:%c: %m"},
+}
+
 local languages = {
-    typescript = {prettier},
-    javascript = {prettier},
-    typescriptreact = {prettier},
-    javascriptreact = {prettier},
+    typescript = {prettier, eslint},
+    javascript = {prettier, eslint},
+    typescriptreact = {prettier, eslint},
+    javascriptreact = {prettier, eslint},
     yaml = {prettier},
     json = {prettier},
     html = {prettier},
