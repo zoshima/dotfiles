@@ -114,6 +114,8 @@ nnoremap gi <cmd>lua vim.lsp.buf.implementation()<CR>
 nnoremap gf <cmd>lua vim.lsp.buf.formatting()<CR>
 vnoremap gf <cmd>lua vim.lsp.buf.range_formatting()<CR>
 
+vnoremap gn <cmd>lua vim.lsp.buf.rename()<CR>
+
 nnoremap z/ <cmd>lua vim.lsp.diagnostic.set_loclist()<CR>
 nnoremap zn <cmd>lua vim.lsp.diagnostic.goto_next()<CR>
 nnoremap zp <cmd>lua vim.lsp.diagnostic.goto_prev()<CR>

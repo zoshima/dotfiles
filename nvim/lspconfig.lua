@@ -20,6 +20,16 @@ nvim_lsp.omnisharp.setup({
   cmd = { omnisharp_bin, "--languageserver", "--hostPID", tostring(pid) };
 })
 
+-- c
+nvim_lsp.ccls.setup({
+  on_attach = on_attach;
+  init_options = {
+    cache = {
+      directory = ".ccls-cache";
+    };
+  }
+})
+
 -- rust
 nvim_lsp.rust_analyzer.setup({
   on_attach = on_attach;
