@@ -27,6 +27,9 @@ nvim_lsp.ccls.setup({
     cache = {
       directory = ".ccls-cache";
     };
+    highlight = {
+      lsRanges = true
+    };
   }
 })
 

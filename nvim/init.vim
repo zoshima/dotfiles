@@ -11,6 +11,7 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 " looks
 Plug 'morhetz/gruvbox'
+Plug 'jackguo380/vim-lsp-cxx-highlight'
 " lsp
 Plug 'nvim-lua/completion-nvim'
 Plug 'neovim/nvim-lspconfig'
