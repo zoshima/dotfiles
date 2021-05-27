@@ -15,9 +15,13 @@ nvim_lsp.tsserver.setup({
 
 -- c#
 local omnisharp_bin = "/Users/kdi/.omnisharp/run"
+local pid = vim.fn.getpid()
 nvim_lsp.omnisharp.setup({
   on_attach = on_attach;
   cmd = { omnisharp_bin, "--languageserver", "--hostPID", tostring(pid) };
+  highlight = {
+    lsRanges = true
+  }
 })
 
 -- c
