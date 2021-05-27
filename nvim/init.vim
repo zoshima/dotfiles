@@ -26,7 +26,7 @@ if (has("termguicolors"))
   set termguicolors
 endif
 
-set signcolumn=yes
+set signcolumn=no
 set number relativenumber
 
 set expandtab
@@ -51,7 +51,6 @@ set hidden
 set mouse=nvc
 
 set fillchars=vert:\¦,stlnc:-,stl:-
-set statusline=%!v:lua.statusline()
 
 " COLOR SCHEME
 " gray      #7c6f64
@@ -64,7 +63,7 @@ colorscheme gruvbox
 hi SignColumn guibg=NONE
 hi StatusLine guibg=NONE
 hi CursorLineNr guibg=NONE
-hi StatusLine guibg=0 guifg=#fabd2f gui=NONE
+hi StatusLine guibg=0 guifg=#7c6f64 gui=NONE
 hi StatusLineNC guibg=0 guifg=#7c6f64 gui=NONE
 hi VertSplit guifg=#7c6f64
 hi SignatureMarkText guibg=NONE guifg=#8ec081
@@ -73,6 +72,10 @@ hi LspDiagnosticsDefaultError guibg=NONE guifg=#fb4934
 hi LspDiagnosticsSignError guibg=NONE guifg=#fb4934
 hi LspDiagnosticsDefaultWarning guibg=NONE guifg=#fabd2f
 hi LspDiagnosticsSignWarning guibg=NONE guifg=#fabd2f
+
+hi Pmenu guibg=#3c3836 guifg=#bdae93
+
+hi StatusLineFileName guibg=0 guifg=#fabd2f gui=NONE
 
 " MAPPINGS
 nnoremap * *``
@@ -125,31 +128,51 @@ command! -bang -nargs=1 Gcomp
 command! -bang -nargs=0 Prettier
       \ %!prettier --stdin-filepath %
 
+" AU
 autocmd BufEnter * lua require'completion'.on_attach()
 
-" FUNCTIONS
-function! ToggleNERDTreeFind()
-	if g:NERDTree.IsOpen() && bufwinnr(t:NERDTreeBufName) == winnr()
-		execute ':NERDTreeClose'
-	else
-		execute ':NERDTreeFind'
-	endif
-endfunction
+augroup QuickFixWindow
+  " autocmd FileType qf nnoremap <buffer> <C-k> :ccl<CR>:lcl<CR>
+  autocmd FileType qf nnoremap <buffer> <Esc> :ccl<CR>:lcl<CR>
+augroup END
+
+augroup StatusLine 
+  au!
+  au WinEnter,BufEnter * setlocal statusline=%!v:lua.statusline('active')
+  au WinLeave,BufLeave * setlocal statusline=%!v:lua.statusline('inactive')
+augroup END
 
 lua << EOF
-function _G.statusline()
-  local left = '%r%m%t'
+function _G.statusline(mode)
+  local filename = '%t'
+
+  if mode == 'active' then
+    filename = '%#StatusLineFileName#' .. filename .. '%#StatusLine#'
+  end
+
+  local left = '-%r%m'
   local right = ''
 
-  if not vim.tbl_isempty(vim.lsp.buf_get_clients()) then
-    local clients = vim.lsp.buf_get_clients()
+  if not vim.tbl_isempty(vim.lsp.buf_get_clients(0)) then
+    local clients = vim.lsp.buf_get_clients(0)
+
+    local num_errs = vim.lsp.diagnostic.get_count(0, [[Error]])
+    local num_warns = vim.lsp.diagnostic.get_count(0, [[Warning]])
+
+    if num_errs > 0 then
+      right = right .. '[%#LspDiagnosticsSignError#' .. num_errs .. 'e%#StatusLine#]'
+    end
+
+    if num_warns > 0 then
+      right = right .. '[%#LspDiagnosticsSignWarning#' .. num_warns .. 'w%#StatusLine#]'
+    end
 
     for k, v in ipairs(clients) do
       right = right .. '['..v.name..']'
     end
   end
 
-  return string.format('%s%s%s', left, '%=', right);
+  return string.format('%s[%s]%s%s', left, filename, '%=', right .. '-');
 end
 EOF
 
