@@ -145,34 +145,34 @@ augroup END
 lua << EOF
 function _G.statusline(mode)
   local filename = '%t'
+  local location = '[%l:%c]'
+  local left = '%r%m'
+  local right = ''
 
   if mode == 'active' then
     filename = '%#StatusLineFileName#' .. filename .. '%#StatusLine#'
-  end
 
-  local left = '-%r%m'
-  local right = ''
+    if not vim.tbl_isempty(vim.lsp.buf_get_clients(0)) then
+      local clients = vim.lsp.buf_get_clients(0)
 
-  if not vim.tbl_isempty(vim.lsp.buf_get_clients(0)) then
-    local clients = vim.lsp.buf_get_clients(0)
+      local num_errs = vim.lsp.diagnostic.get_count(0, [[Error]])
+      local num_warns = vim.lsp.diagnostic.get_count(0, [[Warning]])
 
-    local num_errs = vim.lsp.diagnostic.get_count(0, [[Error]])
-    local num_warns = vim.lsp.diagnostic.get_count(0, [[Warning]])
+      if num_errs > 0 then
+        right = right .. '[%#LspDiagnosticsSignError#' .. num_errs .. 'e%#StatusLine#]'
+      end
 
-    if num_errs > 0 then
-      right = right .. '[%#LspDiagnosticsSignError#' .. num_errs .. 'e%#StatusLine#]'
-    end
+      if num_warns > 0 then
+        right = right .. '[%#LspDiagnosticsSignWarning#' .. num_warns .. 'w%#StatusLine#]'
+      end
 
-    if num_warns > 0 then
-      right = right .. '[%#LspDiagnosticsSignWarning#' .. num_warns .. 'w%#StatusLine#]'
-    end
-
-    for k, v in ipairs(clients) do
-      right = right .. '['..v.name..']'
+      for k, v in ipairs(clients) do
+        right = right .. '['..v.name..']'
+      end
     end
   end
 
-  return string.format('%s[%s]%s%s', left, filename, '%=', right .. '-');
+  return string.format('-%s[%s]%s%s%s', left, filename, location, '%=', right .. '-');
 end
 EOF
 
