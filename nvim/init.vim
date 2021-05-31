@@ -4,19 +4,27 @@ call plug#begin('~/.vim/plugged')
 " project
 Plug 'junegunn/fzf', { 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
+Plug 'preservim/nerdtree'
 "editor 
 Plug 'kshenoy/vim-signature'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 " looks
 Plug 'morhetz/gruvbox'
-" lsp
-Plug 'neovim/nvim-lspconfig'
 Plug 'jackguo380/vim-lsp-cxx-highlight'
+" lsp
 Plug 'nvim-lua/completion-nvim'
+Plug 'neovim/nvim-lspconfig'
 call plug#end()
 
 let g:netrw_liststyle = 1
+
+let g:NERDTreeMinimalUI = 1
+let g:NERDTreeDirArrows = 1
+let g:NERDTreeAutoDeleteBuffer = 1
+let g:NERDTreeQuitOnOpen = 1
+let g:NERDTreeShowHidden = 1
+let g:NERDTreeWinSize = 60
 
 let g:fzf_layout = {'up':'~90%', 'window': { 'width': 0.8, 'height': 0.8,'yoffset':0.5,'xoffset': 0.5,  'border': 'sharp' } }
 
@@ -96,7 +104,8 @@ nnoremap <Space>p :GFiles<CR>
 nnoremap <Space>b :Buffers<CR>
 nnoremap <Space>F :Ggrepc<Space>
 nnoremap <Space>f :BLines<CR>
-nnoremap <silent><Space>e :E<CR>
+" nnoremap <silent><Space>e :E<CR>
+nnoremap <silent><Space>e :call ToggleNERDTreeFind()<CR>
 nnoremap <Space>, :noh<CR>
 
 nnoremap ga <cmd>lua vim.lsp.buf.code_action()<CR>
