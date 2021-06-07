@@ -137,6 +137,14 @@ command! -bang -nargs=1 Gcomp
 command! -bang -nargs=0 Prettier
       \ %!prettier --stdin-filepath %
 
+function! ToggleNERDTreeFind()
+	if g:NERDTree.IsOpen() && bufwinnr(t:NERDTreeBufName) == winnr()
+		execute ':NERDTreeClose'
+	else
+		execute ':NERDTreeFind'
+	endif
+endfunction
+
 " AU
 autocmd BufEnter * lua require'completion'.on_attach()
 
