@@ -88,6 +88,8 @@ hi StatusLineFileName guibg=0 guifg=#fabd2f gui=NONE
 " MAPPINGS
 nnoremap * *``
 
+nnoremap <Space> <Nop>
+
 tnoremap <C-n> <C-\><C-n>
 
 nnoremap <C-l> <C-w>l
