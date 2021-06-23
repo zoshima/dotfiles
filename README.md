@@ -1,6 +1,7 @@
 # macos
 # cleanup
 defaults write com.apple.dock persistent-apps -array
+defaults write com.apple.Finder QuitMenuItem 1
 killall Dock
 
 ## homebrew
