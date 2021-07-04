@@ -117,10 +117,10 @@ nnoremap gh <cmd>lua vim.lsp.buf.hover()<CR>
 nnoremap gH <cmd>lua vim.lsp.buf.signature_help()<CR>
 nnoremap gr <cmd>lua vim.lsp.buf.references()<CR>
 nnoremap gi <cmd>lua vim.lsp.buf.implementation()<CR>
+nnoremap gn <cmd>lua vim.lsp.buf.rename()<CR>
 nnoremap gf <cmd>lua vim.lsp.buf.formatting()<CR>
-vnoremap gf <cmd>lua vim.lsp.buf.range_formatting()<CR>
 
-vnoremap gn <cmd>lua vim.lsp.buf.rename()<CR>
+vnoremap gf <cmd>lua vim.lsp.buf.range_formatting()<CR>
 
 nnoremap z/ <cmd>lua vim.lsp.diagnostic.set_loclist()<CR>
 nnoremap zn <cmd>lua vim.lsp.diagnostic.goto_next()<CR>
