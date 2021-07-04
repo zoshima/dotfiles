@@ -1,3 +1,6 @@
+bindkey "^[[1;3C" forward-word
+bindkey "^[[1;3D" backward-word
+
 # oh my zsh
 export ZSH="/Users/$USER/.oh-my-zsh"
 
