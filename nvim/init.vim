@@ -27,6 +27,7 @@ let g:NERDTreeShowHidden = 1
 let g:NERDTreeWinSize = 60
 
 let g:fzf_layout = {'up':'~90%', 'window': { 'width': 0.8, 'height': 0.8,'yoffset':0.5,'xoffset': 0.5,  'border': 'sharp' } }
+let g:fzf_preview_window = ['up:80%', 'ctrl-h']
 
 filetype plugin on
 
@@ -59,6 +60,9 @@ set hidden
 set mouse=nvc
 
 set fillchars=vert:\¦,stlnc:-,stl:-
+
+set exrc
+set secure
 
 " COLOR SCHEME
 " gray      #7c6f64
@@ -103,11 +107,20 @@ noremap <silent> <C-S-Up> :resize +5<CR>
 noremap <silent> <C-S-Down> :resize -5<CR>
 
 nnoremap <Space>p :GFiles<CR>
+nnoremap <Space>P :Commands<CR>
+
 nnoremap <Space>b :Buffers<CR>
+
+nnoremap <Space>m :Marks<CR>
+
+nnoremap <Space>C :Commits<CR>
+nnoremap <Space>c :BCommits<CR>
+
 nnoremap <Space>F :Ggrepc<Space>
 nnoremap <Space>f :BLines<CR>
-" nnoremap <silent><Space>e :E<CR>
+
 nnoremap <silent><Space>e :call ToggleNERDTreeFind()<CR>
+" nnoremap <silent><Space>e :E<CR>
 nnoremap <Space>, :noh<CR>
 
 nnoremap ga <cmd>lua vim.lsp.buf.code_action()<CR>
