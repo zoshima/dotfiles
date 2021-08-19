@@ -19,9 +19,6 @@ local pid = vim.fn.getpid()
 nvim_lsp.omnisharp.setup({
   on_attach = on_attach;
   cmd = { omnisharp_bin, "--languageserver", "--hostPID", tostring(pid) };
-  highlight = {
-    lsRanges = true
-  }
 })
 
 -- c
@@ -30,9 +27,6 @@ nvim_lsp.ccls.setup({
   init_options = {
     cache = {
       directory = ".ccls-cache";
-    };
-    highlight = {
-      lsRanges = true
     };
   }
 })
@@ -73,5 +67,5 @@ nvim_lsp.efm.setup({
     filetypes = vim.tbl_keys(languages),
     init_options = {documentFormatting = true, codeAction = true},
     settings = {languages = languages, log_level = 1, log_file = '~/efm.log'},
-    on_attach = on_attach
+    -- on_attach = on_attach
 })

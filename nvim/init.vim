@@ -11,10 +11,11 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 " looks
 Plug 'morhetz/gruvbox'
-Plug 'jackguo380/vim-lsp-cxx-highlight'
 " lsp
 Plug 'nvim-lua/completion-nvim'
 Plug 'neovim/nvim-lspconfig'
+" syntax
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
 call plug#end()
 
 let g:netrw_liststyle = 1
@@ -60,9 +61,6 @@ set hidden
 set mouse=nvc
 
 set fillchars=vert:\¦,stlnc:-,stl:-
-
-set exrc
-set secure
 
 " COLOR SCHEME
 " gray      #7c6f64
@@ -274,3 +272,8 @@ EOF
 
 " lsp
 luafile $HOME/git/dotfiles/nvim/lspconfig.lua
+
+" treesitter
+luafile $HOME/git/dotfiles/nvim/tsconfig.lua
+
+set exrc secure
