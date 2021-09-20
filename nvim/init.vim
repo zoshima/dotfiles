@@ -5,6 +5,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'junegunn/fzf', { 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
 Plug 'preservim/nerdtree'
+Plug 'preservim/tagbar'
 "editor 
 Plug 'kshenoy/vim-signature'
 Plug 'tpope/vim-commentary'
@@ -116,6 +117,8 @@ nnoremap <Space>c :BCommits<CR>
 
 nnoremap <Space>F :Ggrepc<Space>
 nnoremap <Space>f :BLines<CR>
+
+nnoremap <Space>t :TagbarToggle<CR>
 
 nnoremap <silent><Space>e :call ToggleNERDTreeFind()<CR>
 " nnoremap <silent><Space>e :E<CR>
