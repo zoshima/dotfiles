@@ -4,13 +4,17 @@ local on_attach = function(_, bufnr)
   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 end
 
--- typescript
-nvim_lsp.tsserver.setup({
+-- deno
+nvim_lsp.denols.setup({
   on_attach = on_attach;
-  function(client, bufnr) 
-    client.resolved_capabilities.document_formatting = false
-    on_attach(client, bufnr)
-  end
+  cmd = { "deno", "lsp" },
+  filetypes = { "typescript" },
+  init_options = {
+    enable = true,
+    lint = false,
+    unstable = false
+  },
+  root_dir = nvim_lsp.util.root_pattern(".denomrk")
 })
 
 -- c#
@@ -31,10 +35,29 @@ nvim_lsp.ccls.setup({
   }
 })
 
--- rust
-nvim_lsp.rust_analyzer.setup({
-  on_attach = on_attach;
+-- golang
+nvim_lsp.gopls.setup({
+  cmd = {"gopls", "serve"},
+  settings = {
+    gopls = {
+      analyses = {
+        unusedparams = true,
+      },
+      staticcheck = true,
+    }
+  }
 })
+
+-- typescript
+nvim_lsp.tsserver.setup({
+  on_attach = on_attach,
+  root_dir = nvim_lsp.util.root_pattern("package.json"),
+  function(client, bufnr) 
+    client.resolved_capabilities.document_formatting = false
+    on_attach(client, bufnr)
+  end
+})
+
 
 -- efm
 local prettier = {
@@ -63,7 +86,7 @@ local languages = {
 }
 
 nvim_lsp.efm.setup({
-    -- root_dir = nvim_lsp.util.root_pattern("yarn.lock", ".git"),
+    root_dir = nvim_lsp.util.root_pattern("package.json"),
     filetypes = vim.tbl_keys(languages),
     init_options = {documentFormatting = true, codeAction = true},
     settings = {languages = languages, log_level = 1, log_file = '~/efm.log'},
