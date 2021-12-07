@@ -2,7 +2,7 @@ bindkey "^[[1;3C" forward-word
 bindkey "^[[1;3D" backward-word
 
 # oh my zsh
-export ZSH="/Users/$USER/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 
 ZSH_THEME="zoshima"
 ZSH_DISABLE_COMPFIX="true"
@@ -17,7 +17,7 @@ source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 bindkey '^K' autosuggest-accept
 
 # dotnet core
-export PATH="$PATH:/Users/$USER/.dotnet/tools"
+export PATH="$PATH:$HOME/.dotnet/tools"
 
 DOTNET_CLI_TELEMETRY_OPTOUT=1
 FUNCTIONS_CORE_TOOLS_TELEMETRY_OPTOUT=1
