@@ -27,6 +27,4 @@ export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk1.8.0_301.jdk/Contents/Ho
 
 # custom
 export PATH="$PATH":"$HOME/.pub-cache/bin"
-export PATH="$PATH":"$HOME/bin"
-
-source ~/bin/aliases.sh
+export PATH="$PATH":"$HOME/.local/bin"
