@@ -13,7 +13,9 @@ Plug 'tpope/vim-fugitive'
 " looks
 Plug 'morhetz/gruvbox'
 " lsp
-Plug 'nvim-lua/completion-nvim'
+" Plug 'nvim-lua/completion-nvim'
+Plug 'hrsh7th/nvim-cmp'
+Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'neovim/nvim-lspconfig'
 " syntax
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
@@ -223,7 +225,7 @@ function! SwitchTemplateComponent()
 endfunction
 
 " AU
-autocmd BufEnter * lua require'completion'.on_attach()
+" autocmd BufEnter * lua require'completion'.on_attach()
 
 autocmd FileType typescript,html nnoremap <silent><Space>s :call SwitchTemplateComponent()<CR>
 autocmd FileType cpp nnoremap <silent><Space>s :call SwitchHeaderSource()<CR>

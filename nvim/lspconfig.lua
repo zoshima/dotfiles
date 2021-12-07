@@ -1,11 +1,46 @@
 local nvim_lsp = require'lspconfig'
 
+-- nvim-cmp
+require'cmp'.setup {
+  sources = {
+    { name = 'nvim_lsp' }
+  }
+}
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
+
 local on_attach = function(_, bufnr)
   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 end
 
+-- golang
+nvim_lsp.gopls.setup({
+  on_attach = on_attach;
+  capabilities = capabilities,
+  cmd = {"gopls", "serve"},
+  settings = {
+    gopls = {
+      analyses = {
+        unusedparams = true,
+      },
+      staticcheck = true,
+    }
+  }
+})
+
+-- python
+nvim_lsp.pylsp.setup({
+  capabilities = capabilities,
+  on_attach = on_attach;
+  cmd = { "pylsp" },
+  filetypes = { "python" },
+  root_dir = nvim_lsp.util.root_pattern("requirements.txt"),
+  single_file_support = true
+})
+
 -- deno
 nvim_lsp.denols.setup({
+  capabilities = capabilities,
   on_attach = on_attach;
   cmd = { "deno", "lsp" },
   filetypes = { "typescript" },
@@ -14,7 +49,7 @@ nvim_lsp.denols.setup({
     lint = false,
     unstable = false
   },
-  root_dir = nvim_lsp.util.root_pattern(".denomrk")
+  root_dir = nvim_lsp.util.root_pattern(".denoroot")
 })
 
 -- c#
@@ -35,19 +70,6 @@ nvim_lsp.ccls.setup({
   }
 })
 
--- golang
-nvim_lsp.gopls.setup({
-  cmd = {"gopls", "serve"},
-  settings = {
-    gopls = {
-      analyses = {
-        unusedparams = true,
-      },
-      staticcheck = true,
-    }
-  }
-})
-
 -- typescript
 nvim_lsp.tsserver.setup({
   on_attach = on_attach,
@@ -58,37 +80,36 @@ nvim_lsp.tsserver.setup({
   end
 })
 
+-- -- efm
+-- local prettier = {
+--   formatCommand = "prettier --stdin-filepath ${INPUT}",
+--   formatStdin = true
+-- }
 
--- efm
-local prettier = {
-  formatCommand = "prettier --stdin-filepath ${INPUT}",
-  formatStdin = true
-}
+-- local eslint = {
+--   lintCommand = "eslint_d -f unix --stdin --stdin-filename ${INPUT}",
+--   lintIgnoreExitCode = true,
+--   lintStdin = true,
+--   lintFormats = {"%f:%l:%c: %m"},
+-- }
 
-local eslint = {
-  lintCommand = "eslint_d -f unix --stdin --stdin-filename ${INPUT}",
-  lintIgnoreExitCode = true,
-  lintStdin = true,
-  lintFormats = {"%f:%l:%c: %m"},
-}
+-- local languages = {
+--     typescript = {prettier, eslint},
+--     javascript = {prettier, eslint},
+--     typescriptreact = {prettier, eslint},
+--     javascriptreact = {prettier, eslint},
+--     yaml = {prettier},
+--     json = {prettier},
+--     html = {prettier},
+--     scss = {prettier},
+--     css = {prettier},
+--     markdown = {prettier},
+-- }
 
-local languages = {
-    typescript = {prettier, eslint},
-    javascript = {prettier, eslint},
-    typescriptreact = {prettier, eslint},
-    javascriptreact = {prettier, eslint},
-    yaml = {prettier},
-    json = {prettier},
-    html = {prettier},
-    scss = {prettier},
-    css = {prettier},
-    markdown = {prettier},
-}
-
-nvim_lsp.efm.setup({
-    root_dir = nvim_lsp.util.root_pattern("package.json"),
-    filetypes = vim.tbl_keys(languages),
-    init_options = {documentFormatting = true, codeAction = true},
-    settings = {languages = languages, log_level = 1, log_file = '~/efm.log'},
-    -- on_attach = on_attach
-})
+-- nvim_lsp.efm.setup({
+--     root_dir = nvim_lsp.util.root_pattern("package.json"),
+--     filetypes = vim.tbl_keys(languages),
+--     init_options = {documentFormatting = true, codeAction = true},
+--     settings = {languages = languages, log_level = 1, log_file = '~/efm.log'},
+--     -- on_attach = on_attach
+-- })
