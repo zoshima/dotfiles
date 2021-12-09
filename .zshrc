@@ -9,10 +9,10 @@ ZSH_DISABLE_COMPFIX="true"
 
 plugins=(
   git
+  zsh-autosuggestions
 )
 
 source $ZSH/oh-my-zsh.sh
-source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 bindkey '^K' autosuggest-accept
 
@@ -28,3 +28,7 @@ export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk1.8.0_301.jdk/Contents/Ho
 # custom
 export PATH="$PATH":"$HOME/.pub-cache/bin"
 export PATH="$PATH":"$HOME/.local/bin"
+
+# default editor
+export VISUAL=nvim
+export EDITOR="$VISUAL"
