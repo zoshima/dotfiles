@@ -56,7 +56,7 @@ set nofoldenable
 
 set noswapfile
 
-set clipboard=unnamed
+set clipboard=unnamedplus
 
 set completeopt=menuone,longest,noinsert,noselect
 
