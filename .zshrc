@@ -12,6 +12,10 @@ plugins=(
   zsh-autosuggestions
 )
 
+if [ `uname` = 'Darwin' ]; then
+  source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+fi
+
 source $ZSH/oh-my-zsh.sh
 
 bindkey '^K' autosuggest-accept
