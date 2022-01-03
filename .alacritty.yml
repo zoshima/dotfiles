@@ -21,15 +21,15 @@ scrolling:
 
 font:
   normal:
-    family: Fira Code
+    family: Roboto Mono
     style: Regular
 
   bold:
-    family: Fira Code
+    family: Roboto Mono
     style: Bold
 
   italic:
-    family: Fira Code
+    family: Roboto Mono
     style: Bold Italic
 
   size: 12.0

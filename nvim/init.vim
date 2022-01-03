@@ -60,7 +60,7 @@ set completeopt=menuone,longest,noinsert,noselect
 set hidden
 set mouse=nvc
 
-set fillchars=vert:\¦,stlnc:-,stl:-
+set fillchars=vert:\╎,stlnc:-,stl:-
 
 " COLOR SCHEME
 " gray      #7c6f64
