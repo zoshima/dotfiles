@@ -1,14 +1,5 @@
 local nvim_lsp = require'lspconfig'
 
--- nvim-cmp
-require'cmp'.setup {
-  sources = {
-    { name = 'nvim_lsp' }
-  }
-}
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
-
 local on_attach = function(_, bufnr)
   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 end
@@ -16,7 +7,6 @@ end
 -- golang
 nvim_lsp.gopls.setup({
   on_attach = on_attach;
-  capabilities = capabilities,
   cmd = {"gopls", "serve"},
   settings = {
     gopls = {
@@ -30,7 +20,6 @@ nvim_lsp.gopls.setup({
 
 -- python
 nvim_lsp.pylsp.setup({
-  capabilities = capabilities,
   on_attach = on_attach;
   cmd = { "pylsp" },
   filetypes = { "python" },
@@ -40,7 +29,6 @@ nvim_lsp.pylsp.setup({
 
 -- deno
 nvim_lsp.denols.setup({
-  capabilities = capabilities,
   on_attach = on_attach;
   cmd = { "deno", "lsp" },
   filetypes = { "typescript" },
