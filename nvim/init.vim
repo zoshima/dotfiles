@@ -242,11 +242,35 @@ augroup StatusLine
 augroup END
 
 lua << EOF
+
+function dump(o)
+   if type(o) == 'table' then
+      local s = '{ '
+      for k,v in pairs(o) do
+         if type(k) ~= 'number' then k = '"'..k..'"' end
+         s = s .. '['..k..'] = ' .. dump(v) .. ','
+      end
+      return s .. '} '
+   else
+      return tostring(o)
+   end
+end
+
 function _G.statusline(mode)
   local filename = '%t'
   local location = '[%l:%c]'
   local left = '%r%m'
   local right = ''
+
+  function table_length(table)
+    local n = 0
+
+    for _ in pairs(table) do
+      n = n + 1
+    end
+
+    return n
+  end
 
   if mode == 'active' then
     filename = '%#StatusLineFileName#' .. filename .. '%#StatusLine#'
@@ -254,8 +278,11 @@ function _G.statusline(mode)
     if not vim.tbl_isempty(vim.lsp.buf_get_clients(0)) then
       local clients = vim.lsp.buf_get_clients(0)
 
-      local num_errs = vim.lsp.diagnostic.get_count(0, [[Error]])
-      local num_warns = vim.lsp.diagnostic.get_count(0, [[Warning]])
+      local errs = vim.diagnostic.get(0, { severity = vim.diagnostic.severity.ERROR })
+      local warns = vim.diagnostic.get(0, { severity = vim.diagnostic.severity.WARN })
+
+      local num_errs = table_length(errs)
+      local num_warns = table_length(warns)
 
       if num_errs > 0 then
         right = right .. '[%#LspDiagnosticsSignError#' .. num_errs .. 'e%#StatusLine#]'
