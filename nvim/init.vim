@@ -160,72 +160,8 @@ function! ToggleNERDTreeFind()
 	endif
 endfunction
 
-function! SwitchHeaderSource()
-  let file_extension = expand("%:e")
-
-  if file_extension == "h" || file_extension == "cpp"
-    let target_buffer = expand("%:t:r")
-
-    if file_extension == "cpp"
-      let target_buffer = target_buffer . ".h"
-    elseif file_extension == "h"
-      let target_buffer = target_buffer . ".cpp"
-    endif
-
-    if bufnr(target_buffer) >= 0
-      silent execute "buffer" bufnr(target_buffer)
-    else 
-      let project_dir = trim(system("git rev-parse --show-toplevel"))
-      let find_cmd = printf("find %s -name \"%s\" | grep -m1 .", project_dir, target_buffer)
-      let target_file = trim(system(find_cmd))
-
-      if len(target_file) != 0 && filereadable(target_file)
-        silent execute "edit" target_file
-      else
-        echo "File not found: " . target_buffer
-      endif
-    endif
-  endif
-endfunction
-
-function! SwitchTemplateComponent()
-  let file_name = expand("%:t") 
-
-  echo file_name
-
-  if match(file_name, "^.*\.component\.[a-z]*$") != -1
-    let file_extension = expand("%:e")
-    let target_buffer = expand("%:t:r")
-
-    if file_extension == "ts"
-      let target_buffer = target_buffer . ".html"
-    elseif file_extension == "html"
-      let target_buffer = target_buffer . ".ts"
-      " let target_buffer = target_buffer . ".scss"
-    " elseif file_extension == "scss"
-      " let target_buffer = target_buffer . ".ts"
-    else
-      echo "Unsupported file extension: " . file_extension
-      return
-    endif
-
-    let target_file = expand("%:p:h") . "/" . target_buffer
-
-    if bufnr(target_buffer) >= 0
-      silent execute "buffer" bufnr(target_buffer)
-    elseif filereadable(target_file)
-      silent execute "edit" target_file
-    else
-      echo "File not found: " . target_file
-    endif
-  endif
-endfunction
-
 " AU
 " autocmd BufEnter * lua require'completion'.on_attach()
-
-autocmd FileType typescript,html nnoremap <silent><Space>s :call SwitchTemplateComponent()<CR>
-autocmd FileType cpp nnoremap <silent><Space>s :call SwitchHeaderSource()<CR>
 
 augroup QuickFixWindow
   " autocmd FileType qf nnoremap <buffer> <C-k> :ccl<CR>:lcl<CR>
@@ -239,20 +175,6 @@ augroup StatusLine
 augroup END
 
 lua << EOF
-
-function dump(o)
-   if type(o) == 'table' then
-      local s = '{ '
-      for k,v in pairs(o) do
-         if type(k) ~= 'number' then k = '"'..k..'"' end
-         s = s .. '['..k..'] = ' .. dump(v) .. ','
-      end
-      return s .. '} '
-   else
-      return tostring(o)
-   end
-end
-
 function _G.statusline(mode)
   local filename = '%t'
   local location = '[%l:%c]'

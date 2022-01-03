@@ -40,24 +40,6 @@ nvim_lsp.denols.setup({
   root_dir = nvim_lsp.util.root_pattern(".denoroot")
 })
 
--- c#
-local omnisharp_bin = "/Users/kdi/.omnisharp/run"
-local pid = vim.fn.getpid()
-nvim_lsp.omnisharp.setup({
-  on_attach = on_attach;
-  cmd = { omnisharp_bin, "--languageserver", "--hostPID", tostring(pid) };
-})
-
--- c
-nvim_lsp.ccls.setup({
-  on_attach = on_attach;
-  init_options = {
-    cache = {
-      directory = ".ccls-cache";
-    };
-  }
-})
-
 -- typescript
 nvim_lsp.tsserver.setup({
   on_attach = on_attach,
@@ -67,37 +49,3 @@ nvim_lsp.tsserver.setup({
     on_attach(client, bufnr)
   end
 })
-
--- -- efm
--- local prettier = {
---   formatCommand = "prettier --stdin-filepath ${INPUT}",
---   formatStdin = true
--- }
-
--- local eslint = {
---   lintCommand = "eslint_d -f unix --stdin --stdin-filename ${INPUT}",
---   lintIgnoreExitCode = true,
---   lintStdin = true,
---   lintFormats = {"%f:%l:%c: %m"},
--- }
-
--- local languages = {
---     typescript = {prettier, eslint},
---     javascript = {prettier, eslint},
---     typescriptreact = {prettier, eslint},
---     javascriptreact = {prettier, eslint},
---     yaml = {prettier},
---     json = {prettier},
---     html = {prettier},
---     scss = {prettier},
---     css = {prettier},
---     markdown = {prettier},
--- }
-
--- nvim_lsp.efm.setup({
---     root_dir = nvim_lsp.util.root_pattern("package.json"),
---     filetypes = vim.tbl_keys(languages),
---     init_options = {documentFormatting = true, codeAction = true},
---     settings = {languages = languages, log_level = 1, log_file = '~/efm.log'},
---     -- on_attach = on_attach
--- })
