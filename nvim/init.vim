@@ -16,6 +16,11 @@ Plug 'morhetz/gruvbox'
 Plug 'neovim/nvim-lspconfig'
 " syntax
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
+" nvim-cmp
+Plug 'hrsh7th/nvim-cmp'
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'saadparwaiz1/cmp_luasnip'
+Plug 'L3MON4D3/LuaSnip'
 call plug#end()
 
 let g:netrw_liststyle = 1
@@ -226,5 +231,8 @@ luafile $HOME/git/dotfiles/nvim/lspconfig.lua
 
 " treesitter
 luafile $HOME/git/dotfiles/nvim/tsconfig.lua
+
+" nvim-cmp
+luafile $HOME/git/dotfiles/nvim/nvim-cmp.lua
 
 set exrc secure
