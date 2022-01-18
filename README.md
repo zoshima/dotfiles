@@ -1,5 +1,17 @@
+# windows (wsl)
+## Xming
+### .profile
+```
+DISPLAY=$(route.exe print | grep 0.0.0.0 | head -1 | awk '{print $4}'):0.0
+```
+
+### shell
+```
+sudo apt install xclip
+```
+
 # macos
-# cleanup
+## cleanup
 defaults write com.apple.dock persistent-apps -array
 defaults write com.apple.Finder QuitMenuItem 1
 killall Dock
@@ -63,21 +75,4 @@ ln -s ~/git/dotfiles/nvim/init.vim ~/.config/nvim/init.vim
 
 ```
 :PlugInstall
-```
-
-### typescript
-```sh
-yarn global add typescript-language-server
-```
-
-### cs
-download omnisharp-osx to ``~/.omnisharp``
-
-```sh
-find ~/.omnisharp | xargs xattr -r -d com.apple.quarantine
-```
-
-### rust
-```sh
-brew install rust-analyzer
 ```
