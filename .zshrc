@@ -7,11 +7,6 @@ export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="zoshima"
 ZSH_DISABLE_COMPFIX="true"
 
-plugins=(
-  git
-  zsh-autosuggestions
-)
-
 if [ `uname` = 'Darwin' ]; then
   plugins=(
     git
