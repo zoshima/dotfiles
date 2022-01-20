@@ -128,23 +128,6 @@ nnoremap <silent><Space>e :call ToggleNERDTreeFind()<CR>
 " nnoremap <silent><Space>e :E<CR>
 nnoremap <Space>, :noh<CR>
 
-nnoremap ga <cmd>lua vim.lsp.buf.code_action()<CR>
-nnoremap gd <cmd>lua vim.lsp.buf.definition()<CR>
-nnoremap gD <cmd>lua vim.lsp.buf.declaration()<CR>
-nnoremap gh <cmd>lua vim.lsp.buf.hover()<CR>
-nnoremap gH <cmd>lua vim.lsp.buf.signature_help()<CR>
-nnoremap gr <cmd>lua vim.lsp.buf.references()<CR>
-nnoremap gi <cmd>lua vim.lsp.buf.implementation()<CR>
-nnoremap gn <cmd>lua vim.lsp.buf.rename()<CR>
-nnoremap gf <cmd>lua vim.lsp.buf.formatting()<CR>
-
-vnoremap gf <cmd>lua vim.lsp.buf.range_formatting()<CR>
-
-nnoremap z/ <cmd>lua vim.lsp.diagnostic.set_loclist()<CR>
-nnoremap zn <cmd>lua vim.lsp.diagnostic.goto_next()<CR>
-nnoremap zp <cmd>lua vim.lsp.diagnostic.goto_prev()<CR>
-nnoremap zh <cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>
-
 " COMMANDS
 command! -bang -nargs=* Ggrepc
 			\ call fzf#vim#grep(
@@ -165,74 +148,19 @@ function! ToggleNERDTreeFind()
 	endif
 endfunction
 
-" AU
-" autocmd BufEnter * lua require'completion'.on_attach()
-
 augroup QuickFixWindow
   " autocmd FileType qf nnoremap <buffer> <C-k> :ccl<CR>:lcl<CR>
   autocmd FileType qf nnoremap <buffer> <Esc> :ccl<CR>:lcl<CR>
 augroup END
 
-augroup StatusLine 
-  au!
-  au WinEnter,BufEnter * setlocal statusline=%!v:lua.statusline('active')
-  au WinLeave,BufLeave * setlocal statusline=%!v:lua.statusline('inactive')
-augroup END
-
-lua << EOF
-function _G.statusline(mode)
-  local filename = '%t'
-  local location = '[%l:%c]'
-  local left = '%r%m'
-  local right = ''
-
-  function table_length(table)
-    local n = 0
-
-    for _ in pairs(table) do
-      n = n + 1
-    end
-
-    return n
-  end
-
-  if mode == 'active' then
-    filename = '%#StatusLineFileName#' .. filename .. '%#StatusLine#'
-
-    if not vim.tbl_isempty(vim.lsp.buf_get_clients(0)) then
-      local clients = vim.lsp.buf_get_clients(0)
-
-      local errs = vim.diagnostic.get(0, { severity = vim.diagnostic.severity.ERROR })
-      local warns = vim.diagnostic.get(0, { severity = vim.diagnostic.severity.WARN })
-
-      local num_errs = table_length(errs)
-      local num_warns = table_length(warns)
-
-      if num_errs > 0 then
-        right = right .. '[%#LspDiagnosticsSignError#' .. num_errs .. 'e%#StatusLine#]'
-      end
-
-      if num_warns > 0 then
-        right = right .. '[%#LspDiagnosticsSignWarning#' .. num_warns .. 'w%#StatusLine#]'
-      end
-
-      for k, v in ipairs(clients) do
-        right = right .. '['..v.name..']'
-      end
-    end
-  end
-
-  return string.format('-%s[%s]%s%s%s', left, filename, location, '%=', right .. '-');
-end
-EOF
-
 " lsp
 luafile $HOME/git/dotfiles/nvim/lspconfig.lua
+
+" statusline
+luafile $HOME/git/dotfiles/nvim/statusline.lua
 
 " treesitter
 luafile $HOME/git/dotfiles/nvim/tsconfig.lua
 
 " nvim-cmp
 luafile $HOME/git/dotfiles/nvim/nvim-cmp.lua
-
-set exrc secure

@@ -4,6 +4,27 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
 
 local on_attach = function(_, bufnr)
+  local function map_keys(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
+
+  local opts = { noremap=true }
+
+  map_keys('n', 'ga', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
+  map_keys('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
+  map_keys('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
+  map_keys('n', 'gh', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
+  map_keys('n', 'gH', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
+  map_keys('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
+  map_keys('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
+  map_keys('n', 'gn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
+  map_keys('n', 'gf', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
+
+  map_keys('n', 'z/', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
+  map_keys('n', 'zn', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
+  map_keys('n', 'zp', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
+  map_keys('n', 'zh', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
+
+  map_keys('v', 'gf', '<cmd>lua vim.lsp.buf.range_formatting()<CR>', opts)
+
   vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
   vim.api.nvim_command("au BufWritePost <buffer> lua vim.lsp.buf.formatting_sync()")
 end
