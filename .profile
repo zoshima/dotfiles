@@ -17,7 +17,7 @@ if [ -n "$BASH_VERSION" ]; then
 fi
 
 # wsl2+xming display
-if [ -d /proc ] && [ grep -q WSL2 /proc/version ]; then
+if [ -n "$WSL_DISTRO_NANME" ]; then
     # execute route.exe in the windows to determine its IP address
     DISPLAY=$(route.exe print | grep 0.0.0.0 | head -1 | awk '{print $4}'):0.0
 fi
