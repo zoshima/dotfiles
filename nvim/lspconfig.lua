@@ -51,7 +51,19 @@ lspconfig.pylsp.setup({
   cmd = { "pylsp" },
   filetypes = { "python" },
   root_dir = lspconfig.util.root_pattern("requirements.txt"),
-  single_file_support = true
+  single_file_support = true,
+  settings = {
+    pylsp = {
+      plugins = {
+        pycodestyle = {
+          enabled = true,
+          ignore = {
+            "E501"
+          }
+        }
+      }
+    }
+  }
 })
 
 -- -- deno
