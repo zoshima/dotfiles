@@ -35,6 +35,9 @@ let g:NERDTreeWinSize = 60
 let g:fzf_layout = {'up':'~90%', 'window': { 'width': 0.8, 'height': 0.8,'yoffset':0.5,'xoffset': 0.5,  'border': 'sharp' } }
 let g:fzf_preview_window = ['up:80%', 'ctrl-h']
 
+let g:tagbar_width = 60
+let g:tagbar_position = 'topleft vertical'
+
 filetype plugin on
 
 if (has("termguicolors"))
@@ -122,7 +125,7 @@ nnoremap <Space>c :BCommits<CR>
 nnoremap <Space>F :Ggrepc<Space>
 nnoremap <Space>f :BLines<CR>
 
-nnoremap <Space>t :TagbarToggle<CR>
+nnoremap <Space>t :call ToggleTagbarFind()<CR>
 
 nnoremap <silent><Space>e :call ToggleNERDTreeFind()<CR>
 " nnoremap <silent><Space>e :E<CR>
@@ -146,6 +149,14 @@ function! ToggleNERDTreeFind()
 	else
 		execute ':NERDTreeFind'
 	endif
+endfunction
+
+function! ToggleTagbarFind()
+  if tagbar#IsOpen() 
+    execute ':TagbarClose'
+  else
+    execute ':TagbarOpenAutoClose'
+  endif
 endfunction
 
 augroup QuickFixWindow
