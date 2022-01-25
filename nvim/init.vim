@@ -5,7 +5,8 @@ call plug#begin('~/.vim/plugged')
 Plug 'junegunn/fzf', { 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
 Plug 'preservim/nerdtree'
-Plug 'preservim/tagbar'
+" Plug 'preservim/tagbar'
+Plug 'liuchengxu/vista.vim'
 "editor 
 Plug 'kshenoy/vim-signature'
 Plug 'tpope/vim-commentary'
@@ -35,8 +36,15 @@ let g:NERDTreeWinSize = 60
 let g:fzf_layout = {'up':'~90%', 'window': { 'width': 0.8, 'height': 0.8,'yoffset':0.5,'xoffset': 0.5,  'border': 'sharp' } }
 let g:fzf_preview_window = ['up:80%', 'ctrl-h']
 
-let g:tagbar_width = 60
-let g:tagbar_position = 'topleft vertical'
+" let g:tagbar_width = 60
+" let g:tagbar_position = 'topleft vertical'
+
+let g:vista_default_executive = 'nvim_lsp'
+let g:vista_icon_indent = ["->", " "]
+let g:vista#renderer#enable_icon = 0
+let g:vista_executive_for = {
+  \ 'vim': 'ctags',
+  \ }
 
 filetype plugin on
 
@@ -113,7 +121,8 @@ noremap <silent> <C-S-Up> :resize +5<CR>
 noremap <silent> <C-S-Down> :resize -5<CR>
 
 nnoremap <Space>p :GFiles<CR>
-nnoremap <Space>P :Commands<CR>
+" nnoremap <Space>P :Commands<CR>
+nnoremap <Space>P :Vista finder nvim_lsp<CR>
 
 nnoremap <Space>b :Buffers<CR>
 
@@ -125,7 +134,8 @@ nnoremap <Space>c :BCommits<CR>
 nnoremap <Space>F :Ggrepc<Space>
 nnoremap <Space>f :BLines<CR>
 
-nnoremap <Space>t :call ToggleTagbarFind()<CR>
+" nnoremap <Space>t :call ToggleTagbarFind()<CR>
+nnoremap <Space>t :Vista!!<CR>
 
 nnoremap <silent><Space>e :call ToggleNERDTreeFind()<CR>
 " nnoremap <silent><Space>e :E<CR>
