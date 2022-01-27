@@ -41,6 +41,10 @@ let g:fzf_preview_window = ['up:80%', 'ctrl-h']
 
 let g:vista_default_executive = 'nvim_lsp'
 let g:vista_icon_indent = ["->", " "]
+let g:vista_sidebar_width = 60
+let g:vista_blink = [0, 0]
+let g:vista_echo_cursor = 0
+let g:vista_close_on_jump = 1
 let g:vista#renderer#enable_icon = 0
 let g:vista_executive_for = {
   \ 'vim': 'ctags',
