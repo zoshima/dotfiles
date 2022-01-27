@@ -121,8 +121,7 @@ noremap <silent> <C-S-Up> :resize +5<CR>
 noremap <silent> <C-S-Down> :resize -5<CR>
 
 nnoremap <Space>p :GFiles<CR>
-" nnoremap <Space>P :Commands<CR>
-nnoremap <Space>P :Vista finder nvim_lsp<CR>
+nnoremap <Space>P :Commands<CR>
 
 nnoremap <Space>b :Buffers<CR>
 
@@ -136,6 +135,7 @@ nnoremap <Space>f :BLines<CR>
 
 " nnoremap <Space>t :call ToggleTagbarFind()<CR>
 nnoremap <Space>t :Vista!!<CR>
+nnoremap <Space>T :Vista finder nvim_lsp<CR>
 
 nnoremap <silent><Space>e :call ToggleNERDTreeFind()<CR>
 " nnoremap <silent><Space>e :E<CR>
