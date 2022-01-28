@@ -18,10 +18,10 @@ local on_attach = function(_, bufnr)
   map_keys('n', 'gn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
   map_keys('n', 'gf', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
 
-  map_keys('n', 'z/', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
-  map_keys('n', 'zn', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
-  map_keys('n', 'zp', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
-  map_keys('n', 'zh', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
+  map_keys('n', 'z/', '<cmd>lua vim.diagnostic.set_loclist()<CR>', opts)
+  map_keys('n', 'zn', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
+  map_keys('n', 'zp', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
+  map_keys('n', 'zh', '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
 
   map_keys('v', 'gf', '<cmd>lua vim.lsp.buf.range_formatting()<CR>', opts)
 
