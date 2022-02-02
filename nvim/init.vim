@@ -81,6 +81,7 @@ set hidden
 set mouse=nvc
 
 set fillchars=vert:\╎,stlnc:-,stl:-
+set listchars=tab:<->,space:_
 
 " COLOR SCHEME
 " gray      #7c6f64
