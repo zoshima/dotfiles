@@ -148,9 +148,9 @@ nnoremap <Space>, :noh<CR>
 
 " COMMANDS
 command! -bang -nargs=* Ggrepc
-			\ call fzf#vim#grep(
-			\   'git grep --basic-regexp --line-number '.shellescape(<q-args>), 0,
-			\   { 'dir': systemlist('git rev-parse --show-toplevel')[0] }, <bang>0)
+      \ call fzf#vim#grep(
+      \   'git grep --basic-regexp --line-number '.shellescape(<q-args>), 0,
+      \   { 'dir': systemlist('git rev-parse --show-toplevel')[0] }, <bang>0)
 
 command! -bang -nargs=1 Gcomp
       \ new | 0read ! git show <q-args>:#
@@ -159,11 +159,11 @@ command! -bang -nargs=0 Prettier
       \ %!prettier --stdin-filepath %
 
 function! ToggleNERDTreeFind()
-	if g:NERDTree.IsOpen() && bufwinnr(t:NERDTreeBufName) == winnr()
-		execute ':NERDTreeClose'
-	else
-		execute ':NERDTreeFind'
-	endif
+  if g:NERDTree.IsOpen() && bufwinnr(t:NERDTreeBufName) == winnr()
+    execute ':NERDTreeClose'
+  else
+    execute ':NERDTreeFind'
+  endif
 endfunction
 
 function! ToggleTagbarFind()
