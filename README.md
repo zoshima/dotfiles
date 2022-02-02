@@ -62,16 +62,17 @@ cscreen -s 1c81b4cd -x 3840 -y 1080 -r 144
 ## nvim
 
 ```sh
-sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
-       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+git clone --depth 1 https://github.com/wbthomason/packer.nvim ~/.local/share/nvim/site/pack/packer/start/packer.nvim
 ```
 
 ```sh
 brew install neovim --HEAD
+brew install rg
 ```
 
 ```sh
 ln -s ~/git/dotfiles/nvim/init.vim ~/.config/nvim/init.vim 
+ln -s ~/git/dotfiles/nvim/lua ~/.config/nvim/lua
 ```
 
 ```
