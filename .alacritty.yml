@@ -14,6 +14,7 @@ window:
 
   # dynamic_padding: true
   # decorations: none
+  # opacity: 1
 
 scrolling:
   history: 50000
@@ -55,5 +56,3 @@ colors:
     bright_foreground: '#d9d9d9'
     dim_background:    '#202020'
     bright_background: '#3a3a3a'
-
-background_opacity: 1
