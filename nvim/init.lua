@@ -29,11 +29,17 @@ vim.g.mapleader = " "
 -- globals: nvim_tree
 vim.g.nvim_tree_quit_on_open = 1
 vim.g.nvim_tree_disable_window_picker = 1
+vim.g.nvim_tree_show_icons = {
+  git = 0,
+  folders = 0,
+  files = 0,
+  folder_arrows = 0,
+}
 
 -- globals: Vista
 vim.g.vista_default_executive = "nvim_lsp"
 vim.g.vista_icon_indent = {"->", " "}
-vim.g.vista_sidebar_width = 60
+vim.g.vista_sidebar_width = 30
 vim.g.vista_blink = {0, 0}
 vim.g.vista_echo_cursor = 0
 vim.g.vista_close_on_jump = 1
@@ -75,7 +81,7 @@ map('n', '<Space>c', ':Telescope git_bcommits<CR>')
 map('n', '<Space>t', ':Vista!!<CR>')
 map('n', '<Space>T', ':Vista finder nvim_lsp<CR>')
 
-map('n', '<Space>e', ':NvimTreeToggle<CR>')
+map('n', '<Space>e', ':NvimTreeFindFileToggle<CR>')
 map('n', '<Space>,', ':noh<CR>')
 
 vim.cmd([[
@@ -115,8 +121,4 @@ vim.cmd([[
   augroup END
 ]])
 
-require("lsp")
-require("nvim-cmp")
-require("statusline")
-require("tsconfig")
-require("nvimtree")
+require("init")
