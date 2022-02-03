@@ -25,15 +25,10 @@ vim.opt.listchars = "tab:<->,space:_"
 
 -- globals
 vim.g.mapleader = " "
-vim.g.netrw_liststyle = 1
 
--- globals: NERDTree
-vim.g.NERDTreeMinimalUI = 1
-vim.g.NERDTreeDirArrows = 1
-vim.g.NERDTreeAutoDeleteBuffer = 1
-vim.g.NERDTreeQuitOnOpen = 1
-vim.g.NERDTreeShowHidden = 1
-vim.g.NERDTreeWinSize = 60
+-- globals: nvim_tree
+vim.g.nvim_tree_quit_on_open = 1
+vim.g.nvim_tree_disable_window_picker = 1
 
 -- globals: Vista
 vim.g.vista_default_executive = "nvim_lsp"
@@ -80,7 +75,7 @@ map('n', '<Space>c', ':Telescope git_bcommits<CR>')
 map('n', '<Space>t', ':Vista!!<CR>')
 map('n', '<Space>T', ':Vista finder nvim_lsp<CR>')
 
-map('n', '<Space>e', ':call ToggleNERDTreeFind()<CR>')
+map('n', '<Space>e', ':NvimTreeToggle<CR>')
 map('n', '<Space>,', ':noh<CR>')
 
 vim.cmd([[
@@ -114,14 +109,6 @@ vim.cmd([[
   command! -bang -nargs=0 Prettier
         \ %!prettier --stdin-filepath %
 
-  function! ToggleNERDTreeFind()
-    if g:NERDTree.IsOpen() && bufwinnr(t:NERDTreeBufName) == winnr()
-      execute ":NERDTreeClose"
-    else
-      execute ":NERDTreeFind"
-    endif
-  endfunction
-
   augroup QuickFixWindow
     " autocmd FileType qf nnoremap <buffer> <C-k> :ccl<CR>:lcl<CR>
     autocmd FileType qf nnoremap <buffer> <Esc> :ccl<CR>:lcl<CR>
@@ -132,3 +119,4 @@ require("lsp")
 require("nvim-cmp")
 require("statusline")
 require("tsconfig")
+require("nvimtree")
