@@ -5,9 +5,9 @@
 DISPLAY=$(route.exe print | grep 0.0.0.0 | head -1 | awk '{print $4}'):0.0
 ```
 
-### shell
+### choco
 ```
-sudo apt install xclip
+choco install alacritty win32yank
 ```
 
 # macos
@@ -65,9 +65,9 @@ cscreen -s 1c81b4cd -x 3840 -y 1080 -r 144
 git clone --depth 1 https://github.com/wbthomason/packer.nvim ~/.local/share/nvim/site/pack/packer/start/packer.nvim
 ```
 
-```sh
-brew install neovim --HEAD
-brew install rg
+```packages
+neovim
+rg
 ```
 
 ```sh
@@ -76,5 +76,5 @@ ln -s ~/git/dotfiles/nvim/lua ~/.config/nvim/lua
 ```
 
 ```
-:PlugInstall
+:PackerSync
 ```
