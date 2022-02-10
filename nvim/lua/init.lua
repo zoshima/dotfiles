@@ -1,5 +1,4 @@
 require("lspconf")
 require("statusline")
-require("cmpconf")
 require("treesitterconf")
 require("treeconf")

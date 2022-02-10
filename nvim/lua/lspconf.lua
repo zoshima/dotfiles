@@ -1,7 +1,4 @@
 local lspconfig = require("lspconfig")
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-
-capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
 
 local on_attach = function(_, bufnr)
   local function map_keys(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
@@ -32,7 +29,6 @@ end
 -- golang
 lspconfig.gopls.setup {
   on_attach = on_attach,
-  capabilities = capabilities,
   cmd = {"gopls", "serve"},
   settings = {
     gopls = {
@@ -47,7 +43,6 @@ lspconfig.gopls.setup {
 -- python
 lspconfig.pylsp.setup({
   on_attach = on_attach,
-  capabilities = capabilities,
   cmd = { "pylsp" },
   filetypes = { "python" },
   root_dir = lspconfig.util.root_pattern("requirements.txt"),
@@ -69,7 +64,6 @@ lspconfig.pylsp.setup({
 -- lua
 lspconfig.sumneko_lua.setup({
   on_attach = on_attach,
-  capabilities = capabilities,
   settings = {
     Lua = {
       runtime = {
