@@ -108,6 +108,9 @@ vim.cmd([[
 
   hi StatusLineFileName guibg=0 guifg=#fabd2f gui=NONE
 
+  autocmd! ColorScheme * highlight NormalFloat guifg=NONE guibg=#7c6f64
+  autocmd! ColorScheme * highlight FloatBorder guifg=#7c6f64 guibg=NONE
+
   " COMMANDS
   command! -bang -nargs=1 Gcomp
         \ new | 0read ! git show <q-args>:#
