@@ -124,4 +124,4 @@ vim.cmd([[
   augroup END
 ]])
 
-require("init")
+require("statusline")
