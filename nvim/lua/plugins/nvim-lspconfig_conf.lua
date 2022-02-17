@@ -1,4 +1,7 @@
 local lspconfig = require("lspconfig")
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+
+capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 
 local on_attach = function(_, bufnr)
   local function map_keys(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
@@ -45,8 +48,9 @@ function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
 end
 
 -- golang
-lspconfig.gopls.setup {
+lspconfig.gopls.setup({
   on_attach = on_attach,
+  capabilities = capabilities,
   cmd = {"gopls", "serve"},
   settings = {
     gopls = {
@@ -56,11 +60,12 @@ lspconfig.gopls.setup {
       staticcheck = true,
     }
   }
-}
+})
 
 -- python
 lspconfig.pylsp.setup({
   on_attach = on_attach,
+  capabilities = capabilities,
   cmd = { "pylsp" },
   filetypes = { "python" },
   root_dir = lspconfig.util.root_pattern("requirements.txt"),
@@ -82,6 +87,7 @@ lspconfig.pylsp.setup({
 -- lua
 lspconfig.sumneko_lua.setup({
   on_attach = on_attach,
+  capabilities = capabilities,
   settings = {
     Lua = {
       runtime = {
@@ -100,26 +106,3 @@ lspconfig.sumneko_lua.setup({
     }
   }
 })
-
--- -- deno
--- lspconfig.denols.setup({
---   on_attach = on_attach,
---   cmd = { "deno", "lsp" },
---   filetypes = { "typescript" },
---   init_options = {
---     enable = true,
---     lint = false,
---     unstable = false
---   },
---   root_dir = lspconfig.util.root_pattern(".denoroot")
--- })
-
--- -- typescript
--- lspconfig.tsserver.setup({
---   on_attach = on_attach,
---   root_dir = lspconfig.util.root_pattern("package.json"),
---   function(client, bufnr) 
---     client.resolved_capabilities.document_formatting = false
---     on_attach(client, bufnr)
---   end
--- })

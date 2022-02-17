@@ -24,6 +24,12 @@ return require("packer").startup(function(use)
     "neovim/nvim-lspconfig",
     config = function() require('plugins.nvim-lspconfig_conf') end
   };
+  --completion
+  use {
+    "hrsh7th/nvim-cmp",
+    requires = { { "hrsh7th/cmp-nvim-lsp", "hrsh7th/cmp-vsnip", "hrsh7th/vim-vsnip" } },
+    config = function() require("plugins.nvim-cmp_conf") end
+  }
   -- syntax
   use {
     "nvim-treesitter/nvim-treesitter",
