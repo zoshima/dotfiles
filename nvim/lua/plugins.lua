@@ -4,7 +4,10 @@ return require("packer").startup(function(use)
   use 'wbthomason/packer.nvim'
 
   -- navigation
-  use "kyazdani42/nvim-tree.lua"
+  use {
+    "kyazdani42/nvim-tree.lua",
+    config = function() require('plugins.nvim-tree_conf') end
+  };
   use "liuchengxu/vista.vim";
   use {
     'nvim-telescope/telescope.nvim',
@@ -17,7 +20,13 @@ return require("packer").startup(function(use)
   -- looks
   use "morhetz/gruvbox";
   -- lsp
-  use "neovim/nvim-lspconfig";
+  use {
+    "neovim/nvim-lspconfig",
+    config = function() require('plugins.nvim-lspconfig_conf') end
+  };
   -- syntax
-  use "nvim-treesitter/nvim-treesitter";
+  use {
+    "nvim-treesitter/nvim-treesitter",
+    config = function() require('plugins.nvim-treesitter_conf') end
+  };
 end)
