@@ -27,8 +27,6 @@ vim.opt.listchars = "tab:<->,space:_"
 vim.g.mapleader = " "
 
 -- globals: nvim_tree
-vim.g.nvim_tree_quit_on_open = 1
-vim.g.nvim_tree_disable_window_picker = 1
 vim.g.nvim_tree_show_icons = {
   git = 0,
   folders = 0,
