@@ -8,7 +8,6 @@ return require("packer").startup(function(use)
     "kyazdani42/nvim-tree.lua",
     config = function() require('plugins.nvim-tree_conf') end
   };
-  use "liuchengxu/vista.vim";
   use {
     'nvim-telescope/telescope.nvim',
     requires = { {'nvim-lua/plenary.nvim'} }

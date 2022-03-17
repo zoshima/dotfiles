@@ -34,15 +34,6 @@ vim.g.nvim_tree_show_icons = {
   folder_arrows = 0,
 }
 
--- globals: Vista
-vim.g.vista_default_executive = "nvim_lsp"
-vim.g.vista_icon_indent = {"->", " "}
-vim.g.vista_sidebar_width = 30
-vim.g.vista_blink = {0, 0}
-vim.g.vista_echo_cursor = 0
-vim.g.vista_close_on_jump = 1
-vim.g.vista_executive_for = { vim = "ctags" }
-
 -- functions
 local function map(mode, lhs, rhs, opts)
   local options = {noremap = true}
@@ -75,9 +66,7 @@ map('n', '<Space>b', ':Telescope buffers<CR>')
 map('n', '<Space>m', ':Telescope marks<CR>')
 map('n', '<Space>C', ':Telescope git_commits<CR>')
 map('n', '<Space>c', ':Telescope git_bcommits<CR>')
-
-map('n', '<Space>t', ':Vista!!<CR>')
-map('n', '<Space>T', ':Vista finder nvim_lsp<CR>')
+map('n', '<Space>t', ':Telescope lsp_document_symbols<CR>')
 
 map('n', '<Space>e', ':NvimTreeFindFileToggle<CR>')
 map('n', '<Space>,', ':noh<CR>')
@@ -112,9 +101,6 @@ vim.cmd([[
   " COMMANDS
   command! -bang -nargs=1 Gcomp
         \ new | 0read ! git show <q-args>:#
-
-  command! -bang -nargs=0 Prettier
-        \ %!prettier --stdin-filepath %
 
   augroup QuickFixWindow
     " autocmd FileType qf nnoremap <buffer> <C-k> :ccl<CR>:lcl<CR>
