@@ -20,7 +20,7 @@ vim.opt.clipboard = "unnamedplus"
 vim.opt.completeopt = { "menuone", "longest", "noinsert", "noselect" }
 vim.opt.hidden = true
 vim.opt.mouse = "nvc"
-vim.opt.fillchars = "vert:╎,stlnc:-,stl:-"
+vim.opt.fillchars = "vert:|,stlnc:-,stl:-"
 vim.opt.listchars = "tab:<->,space:_"
 
 -- globals

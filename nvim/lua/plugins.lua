@@ -10,25 +10,30 @@ return require("packer").startup(function(use)
   };
   use {
     'nvim-telescope/telescope.nvim',
-    requires = { {'nvim-lua/plenary.nvim'} }
+    requires = { {'nvim-lua/plenary.nvim'} },
+    config = function() require('plugins.nvim-telescope') end
   }
+
   -- editor
-  use "kshenoy/vim-signature";
   use "tpope/vim-commentary";
   use "tpope/vim-fugitive";
+
   -- looks
   use "morhetz/gruvbox";
+
   -- lsp
   use {
     "neovim/nvim-lspconfig",
     config = function() require('plugins.nvim-lspconfig_conf') end
   };
+
   --completion
   use {
     "hrsh7th/nvim-cmp",
     requires = { { "hrsh7th/cmp-nvim-lsp", "hrsh7th/cmp-vsnip", "hrsh7th/vim-vsnip" } },
     config = function() require("plugins.nvim-cmp_conf") end
   }
+
   -- syntax
   use {
     "nvim-treesitter/nvim-treesitter",
