@@ -33,7 +33,7 @@ font:
     family: Roboto Mono
     style: Bold Italic
 
-  size: 13.0
+  size: 12.0
 
   offset:
     x: 0
@@ -56,3 +56,6 @@ colors:
     bright_foreground: '#d9d9d9'
     dim_background:    '#202020'
     bright_background: '#3a3a3a'
+
+key_bindings:
+  - { key: F11, action: ToggleFullscreen }
