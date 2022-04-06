@@ -56,3 +56,6 @@ colors:
     bright_foreground: '#d9d9d9'
     dim_background:    '#202020'
     bright_background: '#3a3a3a'
+
+key_bindings:
+  - { key: F11, action: ToggleFullscreen }
