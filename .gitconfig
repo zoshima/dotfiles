@@ -1,8 +1,5 @@
 [credential]
   helper = cache
-[user]
-  email = dmykras@gmail.com
-  name = Dmytro Krasovsky
 [log]
   date = format:%d.%m %H:%M
 [format]
