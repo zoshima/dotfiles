@@ -27,13 +27,13 @@ font:
 
   bold:
     family: Roboto Mono
-    style: Bold
+    style: Italic
 
   italic:
     family: Roboto Mono
-    style: Bold Italic
+    style: Thin
 
-  size: 13.0
+  size: 12.0
 
   offset:
     x: 0

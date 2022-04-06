@@ -1,5 +1,4 @@
 require("nvim-tree").setup({
-  auto_close = true,
   view = {
     relativenumber = true,
     width = 40
@@ -14,4 +13,11 @@ require("nvim-tree").setup({
   },
 })
 
+vim.g.nvim_tree_show_icons = {
+  git = 0,
+  folders = 0,
+  files = 0,
+  folder_arrows = 0,
+}
 
+MapKey("n", "<Space>e", ":NvimTreeFindFileToggle<CR>")
