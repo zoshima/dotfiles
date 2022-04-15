@@ -22,15 +22,9 @@ killall Dock
 ```
 
 ## shell
-### oh-my-zsh
+### fish
 ```sh
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-```
-
-### packages
-#### cli
-```sh
-zsh-autosuggestions
+ln -s ~/git/dotfiles/config.fish ~/.config/fish/config.fish
 ```
 
 #### casks
@@ -47,9 +41,6 @@ font-fira-code
 ### links
 ```sh
 ln -s ~/git/dotfiles/.vimrc  ~/.vimrc
-ln -s ~/git/dotfiles/.zshrc ~/.zshrc
-ln -s ~/git/dotfiles/.profile ~/.profile
-ln -s ~/git/dotfiles/zoshima.zsh-theme ~/.oh-my-zsh/themes/zoshima.zsh-theme
 ln -s ~/git/dotfiles/.tmux.conf ~/.tmux.conf
 ln -s ~/git/dotfiles/.alacritty.yml ~/.alacritty.yml
 ln -s ~/git/dotfiles/.gitconfig ~/.gitconfig
