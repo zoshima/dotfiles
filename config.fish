@@ -10,3 +10,7 @@ set -x EDITOR "$VISUAL"
 function ll
     ls -lh $argv
 end
+
+# Fish git prompt
+set __fish_git_prompt_showdirtystate 'yes'
+set __fish_git_prompt_showcolorhints 'yes'
