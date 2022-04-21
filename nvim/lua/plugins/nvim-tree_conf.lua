@@ -22,7 +22,14 @@ vim.g.nvim_tree_show_icons = {
   git = 0,
   folders = 0,
   files = 0,
-  folder_arrows = 0,
+  folder_arrows = 1,
+}
+
+vim.g.nvim_tree_icons = {
+  folder = {
+    default = "+",
+    open = "-",
+  }
 }
 
 MapKey("n", "<Space>e", ":NvimTreeFindFileToggle<CR>")
