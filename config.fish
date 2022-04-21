@@ -14,3 +14,5 @@ end
 # Fish git prompt
 set __fish_git_prompt_showdirtystate 'yes'
 set __fish_git_prompt_showcolorhints 'yes'
+
+fish_vi_key_bindings
