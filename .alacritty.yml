@@ -52,10 +52,29 @@ colors:
     background: '#1E1E1E'
     foreground: '#D4D4D4'
 
-    dim_foreground:    '#dbdbdb'
-    bright_foreground: '#d9d9d9'
-    dim_background:    '#202020'
-    bright_background: '#3a3a3a'
+  cursor:
+    text: '#d4d4d4'
+    cursor: '#d4d4d4'
+
+  normal:
+    black:   '#1e1e1e'
+    red:     '#f44747'
+    green:   '#608b4e'
+    yellow:  '#dcdcaa'
+    blue:    '#569cd6'
+    magenta: '#c678dd'
+    cyan:    '#56b6c2'
+    white:   '#d4d4d4'
+
+  bright:
+    black:   '#545454'
+    red:     '#f44747'
+    green:   '#608b4e'
+    yellow:  '#dcdcaa'
+    blue:    '#569cd6'
+    magenta: '#c678dd'
+    cyan:    '#56b6c2'
+    white:   '#d4d4d4'
 
 key_bindings:
   - { key: F11, action: ToggleFullscreen }
