@@ -1,7 +1,7 @@
 require("nvim-tree").setup({
   renderer = {
     indent_markers = {
-      enable = true
+      enable = false
     }
   },
   view = {
@@ -22,14 +22,14 @@ vim.g.nvim_tree_show_icons = {
   git = 0,
   folders = 0,
   files = 0,
-  folder_arrows = 1,
+  folder_arrows = 0,
 }
 
-vim.g.nvim_tree_icons = {
-  folder = {
-    default = "+",
-    open = "-",
-  }
-}
+-- vim.g.nvim_tree_icons = {
+--   folder = {
+--     default = "+",
+--     open = "-",
+--   }
+-- }
 
 MapKey("n", "<Space>e", ":NvimTreeFindFileToggle<CR>")
