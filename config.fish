@@ -20,7 +20,7 @@ function zos_prompt_jobs
 end
 
 function zos_prompt_user
-  printf "%s%s@%s%s%s" (set_color green) $USER $hostname (set_color normal)
+  printf "%s%s@%s%s%s" (set_color green) $USER (prompt_hostname) (set_color normal)
 end
 
 function zos_prompt_pwd
