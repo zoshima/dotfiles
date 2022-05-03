@@ -23,3 +23,14 @@ vim.highlight.create('LspDiagnosticsSignWarning', { guibg = 0, guifg = c.vscYell
 --
 -- vim.highlight.create('VertSplit', { guifg = c.vscLightRed })
 -- vim.highlight.create('SignatureMarkText', { guibg = 0, guifg = c.vscPink })
+
+vim.highlight.create('NvimTreeRootFolder', { guibg = 0, guifg = c.vscGray })
+vim.highlight.create('NvimTreeFolderName', { guibg = 0, guifg = c.vscBlue })
+vim.highlight.create('NvimTreeOpenedFolderName', { guibg = 0, guifg = c.vscLightBlue })
+vim.highlight.create('NvimTreeEmptyFolderName', { guibg = 0, guifg = c.vscLightBlue })
+vim.highlight.create('NvimTreeSpecialFile', { guibg = 0, guifg = c.vscLightGreen })
+vim.highlight.create('NvimTreeExecFile', { guibg = 0, guifg = c.vscLightRed })
+vim.highlight.create('NvimTreeSymlink', { guibg = 0, guifg = c.vscOrange })
+vim.highlight.create('NvimTreeOpenedFile', { guibg = 0, guifg = c.vscPink })
+vim.highlight.create('NvimTreeImageFile', { guibg = 0, guifg = c.vscYellow })
+-- vim.highlight.create('NvimTreeIndentMarker', { guibg = 0, guifg = c.vscYellow })
