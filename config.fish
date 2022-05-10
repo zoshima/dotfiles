@@ -7,6 +7,10 @@ set -x PATH "$PATH:/usr/local/go/bin"
 set -x VISUAL vim
 set -x EDITOR "$VISUAL"
 
+if test -n "$WSL_DISTRO_NAME"
+  set -x DISPLAY "$(route.exe print | grep 0.0.0.0 | head -1 | awk '{print $4}'):0.0"
+end
+
 function ll
     ls -lh $argv
 end
