@@ -1,10 +1,12 @@
 local lspconfig = require("lspconfig")
+local lspinstaller = require("nvim-lsp-installer")
+local cmp = require("cmp_nvim_lsp")
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
+capabilities = cmp.update_capabilities(capabilities)
 
 local on_attach = function(_, bufnr)
-  local opts = { noremap=true }
+  local opts = { noremap = true }
 
   MapKey("n", "ga", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
   MapKey("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
@@ -27,62 +29,28 @@ local on_attach = function(_, bufnr)
   vim.api.nvim_command("au BufWritePost <buffer> lua vim.lsp.buf.formatting_sync()")
 end
 
--- golang
-lspconfig.gopls.setup({
-  on_attach = on_attach,
-  capabilities = capabilities,
-  cmd = {"gopls", "serve"},
-  settings = {
-    gopls = {
-      analyses = {
-        unusedparams = true,
-      },
-      staticcheck = true,
-    }
-  }
-})
+lspinstaller.setup({})
 
--- python
-lspconfig.pylsp.setup({
-  on_attach = on_attach,
-  capabilities = capabilities,
-  cmd = { "pylsp" },
-  filetypes = { "python" },
-  root_dir = lspconfig.util.root_pattern("requirements.txt"),
-  single_file_support = true,
-  settings = {
-    pylsp = {
-      plugins = {
-        pycodestyle = {
-          enabled = true,
-          ignore = {
-            "E501"
-          }
-        }
+local installed_servers = lspinstaller.get_installed_servers()
+for i = 1, #installed_servers do
+  local server_name = installed_servers[i].name
+  local opts = {
+    on_attach = on_attach,
+    capabilities = capabilities,
+  }
+
+  if server_name == "sumneko_lua" then
+    opts.settings = {
+      Lua = {
+        diagnostics = {
+          globals = { "vim" }
+        },
+        telemetry = {
+          enable = false,
+        },
       }
     }
-  }
-})
+  end
 
--- lua
-lspconfig.sumneko_lua.setup({
-  on_attach = on_attach,
-  capabilities = capabilities,
-  settings = {
-    Lua = {
-      runtime = {
-        version = "LuaJIT",
-        path = vim.split(package.path, ";"),
-      },
-      diagnostics = {
-        globals = {"vim"}
-      },
-      workspace = {
-        library = vim.api.nvim_get_runtime_file("", true),
-      },
-      telemetry = {
-        enable = false,
-      },
-    }
-  }
-})
+  lspconfig[server_name].setup(opts)
+end
