@@ -18,7 +18,7 @@ vim.opt.clipboard = "unnamedplus"
 vim.opt.completeopt = { "menuone", "longest", "noinsert", "noselect" }
 vim.opt.hidden = true
 vim.opt.mouse = "nvc"
-vim.opt.fillchars = "vert:|,stlnc:-,stl:-"
+vim.opt.fillchars = "vert: ,stlnc:.,stl:."
 vim.opt.listchars = "tab:<->,space:_"
 
 -- globals
@@ -26,7 +26,7 @@ vim.g.mapleader = " "
 
 -- functions
 function MapKey(mode, lhs, rhs, opts)
-  local options = {noremap = true}
+  local options = { noremap = true }
   if opts then options = vim.tbl_extend("force", options, opts) end
   vim.api.nvim_set_keymap(mode, lhs, rhs, options)
 end

@@ -43,5 +43,5 @@ function _G.statusline(mode)
     end
   end
 
-  return string.format("-%s[%s]%s%s%s", left, filename, location, "%=", right .. "-");
+  return string.format("%s[%s]%s%s%s", left, filename, location, "%=", right .. "");
 end
