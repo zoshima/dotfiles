@@ -49,7 +49,7 @@ font:
 
 colors:
   primary:
-    background: '#202124'
+    background: '#1e1e1e'
     foreground: '#D4D4D4'
 
 key_bindings:
