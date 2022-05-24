@@ -57,3 +57,4 @@ vim.cmd([[
 ]])
 
 require("statusline")
+require("tabline")

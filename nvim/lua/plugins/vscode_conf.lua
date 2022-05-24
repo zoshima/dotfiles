@@ -13,6 +13,10 @@ vim.highlight.create('StatusLineNC', { guibg = 0, guifg = c.vscLineNumber })
 vim.highlight.create('StatusLineFileName', { guibg = 0, guifg = c.vscYellowOrange })
 vim.highlight.create('StatusLineModified', { guibg = 0, guifg = c.vscYellowOrange })
 
+vim.highlight.create('TabLine', { guibg = 0, guifg = c.vscLineNumber })
+vim.highlight.create('TabLineFill', { guibg = 0, guifg = c.vscLineNumber })
+vim.highlight.create('TabLineSel', { guibg = 0, guifg = c.vscYellowOrange })
+
 vim.highlight.create('LspDiagnosticsDefaultError', { guibg = 0, guifg = c.vscLightRed })
 vim.highlight.create('LspDiagnosticsSignError', { guibg = 0, guifg = c.vscLightRed })
 vim.highlight.create('LspDiagnosticsDefaultWarning', { guibg = 0, guifg = c.vscYellow })
