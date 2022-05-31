@@ -2,7 +2,28 @@ require("nvim-tree").setup({
   renderer = {
     indent_markers = {
       enable = false
-    }
+    },
+    icons = {
+      show = {
+        file = false,
+        folder = false,
+        folder_arrow = false,
+        git = true,
+      },
+      glyphs = {
+        default = "",
+        symlink = "",
+        git = {
+          unstaged = "*",
+          staged = "+",
+          unmerged = "?",
+          renamed = "->",
+          untracked = "?",
+          deleted = "-",
+          ignored = "_"
+        },
+      },
+    },
   },
   view = {
     relativenumber = true,
@@ -17,19 +38,5 @@ require("nvim-tree").setup({
     },
   },
 })
-
-vim.g.nvim_tree_show_icons = {
-  git = 0,
-  folders = 0,
-  files = 0,
-  folder_arrows = 0,
-}
-
--- vim.g.nvim_tree_icons = {
---   folder = {
---     default = "+",
---     open = "-",
---   }
--- }
 
 MapKey("n", "<Space>e", ":NvimTreeFindFileToggle<CR>")
