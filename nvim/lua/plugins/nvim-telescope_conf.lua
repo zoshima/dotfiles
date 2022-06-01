@@ -13,7 +13,7 @@ require("telescope").setup({
 MapKey("n", "<Space>p", ":Telescope git_files<CR>")
 MapKey("n", "<Space>P", ":Telescope commands<CR>")
 MapKey("n", "<Space>F", ":Telescope live_grep<CR>")
-MapKey("n", "<Space>f", ":Telescope grep_string<CR>")
+MapKey("n", "<Space>f", ":Telescope current_buffer_fuzzy_find<CR>")
 MapKey("n", "<Space>b", ":Telescope buffers<CR>")
 MapKey("n", "<Space>m", ":Telescope marks<CR>")
 MapKey("n", "<Space>C", ":Telescope git_commits<CR>")
