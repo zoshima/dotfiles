@@ -50,6 +50,28 @@ for i = 1, #installed_servers do
         },
       }
     }
+  elseif server_name == "efm" then
+    local prettier = {
+      formatCommand = "prettier --stdin-filepath ${INPUT}",
+      formatStdin = true
+    }
+
+    opts.init_options = {
+      documentFormatting = true,
+      document_formatting = true,
+    }
+
+    opts.filetypes = {
+      "html",
+      "css",
+    }
+
+    opts.settings = {
+      languages = {
+        html = { prettier },
+        css = { prettier },
+      },
+    }
   end
 
   lspconfig[server_name].setup(opts)
