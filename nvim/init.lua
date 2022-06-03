@@ -56,5 +56,13 @@ vim.cmd([[
         \ new | 0read ! git show <q-args>:#
 ]])
 
+-- nnoremap gp :silent %!prettier --stdin-filepath %<CR>
+vim.api.nvim_create_user_command(
+  "Prettier",
+  "%!prettier --stdin-filepath %",
+  { bang = true }
+)
+
+
 require("statusline")
 require("tabline")
