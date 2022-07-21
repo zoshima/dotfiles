@@ -6,7 +6,7 @@ cmp.setup({
       vim.fn["vsnip#anonymous"](args.body)
     end,
   },
-  mapping = {
+  mapping = cmp.mapping.preset.insert({
     ["<C-p>"] = cmp.mapping.select_prev_item(),
     ["<C-n>"] = cmp.mapping.select_next_item(),
     ["<C-d>"] = cmp.mapping.scroll_docs(-4),
@@ -21,9 +21,11 @@ cmp.setup({
       behavior = cmp.ConfirmBehavior.Insert,
       select = true,
     }
-  },
-  sources = {
+  }),
+  sources = cmp.config.sources({
     { name = "nvim_lsp" },
     { name = "vsnip" },
-  },
+  }, {
+    { name="buffer" }
+  }),
 })
