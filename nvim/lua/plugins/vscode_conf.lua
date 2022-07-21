@@ -6,6 +6,8 @@ require("vscode").setup({
   transparent = true,
   disable_nvimtree_bg = true,
   group_overrides = {
+    ModeMsg = { fg = c.vscGray },
+    -- MsgArea = { fg = c.vscGray },
     -- status line
     EndOfBuffer = { fg = c.vscLineNumber },
     StatusLine = { fg = c.vscLineNumber },

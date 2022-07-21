@@ -38,7 +38,7 @@ function _G.statusline(mode)
       end
 
       for _, v in ipairs(clients) do
-        right = right .. "["..v.name.."]"
+        right = right .. "[" .. v.name .. "]"
       end
     end
   end
