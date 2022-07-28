@@ -18,8 +18,15 @@ vim.opt.clipboard = "unnamedplus"
 vim.opt.completeopt = { "menuone", "longest", "noinsert", "noselect" }
 vim.opt.hidden = true
 vim.opt.mouse = "nvc"
-vim.opt.fillchars = "vert:|,stl:-,stlnc:-"
-vim.opt.listchars = "tab:<->,space:_"
+vim.opt.listchars = {
+  tab = "<->",
+  space = "_",
+}
+vim.opt.fillchars = {
+  vert = "|",
+  stl = "-",
+  stlnc = "-",
+}
 
 -- globals
 vim.g.mapleader = " "
@@ -65,4 +72,4 @@ vim.api.nvim_create_user_command(
 
 
 require("statusline")
-require("tabline")
+-- require("tabline")

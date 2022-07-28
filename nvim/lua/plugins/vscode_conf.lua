@@ -10,7 +10,7 @@ require("vscode").setup({
     -- MsgArea = { fg = c.vscGray },
     -- status line
     EndOfBuffer = { fg = c.vscLineNumber },
-    StatusLine = { fg = c.vscLineNumber },
+    StatusLine = { fg = "#5b5b5b", bg = c.vscNone },
     StatusLineNC = { fg = c.vscLineNumber },
     StatusLineFileName = { fg = c.vscYellowOrange },
     StatusLineModified = { fg = c.vscYellowOrange },
