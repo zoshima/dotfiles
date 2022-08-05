@@ -16,7 +16,6 @@ return require("packer").startup(function(use)
 
   -- editor
   use "tpope/vim-commentary";
-  use "tpope/vim-fugitive";
 
   -- looks
   use {
@@ -27,16 +26,8 @@ return require("packer").startup(function(use)
   -- lsp
   use {
     "neovim/nvim-lspconfig",
-    requires = { { "williamboman/nvim-lsp-installer" } },
     config = function() require("plugins.nvim-lspconfig_conf") end
   };
-
-  --completion
-  use {
-    "hrsh7th/nvim-cmp",
-    requires = { { "hrsh7th/cmp-nvim-lsp", "hrsh7th/cmp-vsnip", "hrsh7th/vim-vsnip" } },
-    config = function() require("plugins.nvim-cmp_conf") end
-  }
 
   -- syntax
   use {

@@ -1,9 +1,4 @@
 local lspconfig = require("lspconfig")
-local lspinstaller = require("nvim-lsp-installer")
-local cmp = require("cmp_nvim_lsp")
-
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = cmp.update_capabilities(capabilities)
 
 local on_attach = function(_, bufnr)
   local opts = { noremap = true }
@@ -29,28 +24,20 @@ local on_attach = function(_, bufnr)
   vim.api.nvim_command("au BufWritePost <buffer> lua vim.lsp.buf.formatting_sync()")
 end
 
-lspinstaller.setup({})
-
-local installed_servers = lspinstaller.get_installed_servers()
-for i = 1, #installed_servers do
-  local server_name = installed_servers[i].name
-  local opts = {
-    on_attach = on_attach,
-    capabilities = capabilities,
-  }
-
-  if server_name == "sumneko_lua" then
-    opts.settings = {
-      Lua = {
-        diagnostics = {
-          globals = { "vim" }
-        },
-        telemetry = {
-          enable = false,
-        },
-      }
+lspconfig.sumneko_lua.setup({
+  on_attach = on_attach,
+  settings = {
+    Lua = {
+      diagnostics = {
+        globals = { "vim" }
+      },
+      telemetry = {
+        enable = false,
+      },
     }
-  end
+  },
+})
 
-  lspconfig[server_name].setup(opts)
-end
+lspconfig.gopls.setup({
+  on_attach = on_attach,
+})
