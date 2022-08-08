@@ -57,6 +57,10 @@ MapKey("n", "<C-S-Down>", ":resize -5<CR>")
 
 MapKey("n", "<Space>,", ":noh<CR>")
 
+MapKey("n", "<F5>", ":!make run<CR>")
+MapKey("n", "<F6>", ":!make build<CR>")
+MapKey("n", "<F7>", ":!make test<CR>")
+
 vim.cmd([[
   " COMMANDS
   command! -bang -nargs=1 Gcomp

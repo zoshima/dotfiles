@@ -14,7 +14,7 @@ window:
     x: 8
     y: 8
 
-  decorations: buttonless
+  # decorations: buttonless
   # opacity: 0.95
 
 scrolling:
