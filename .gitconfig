@@ -6,3 +6,6 @@
   pretty = format:%C(dim white)%h%Creset%C(cyan) %ad %C(yellow)%<(7,trunc)%aN %C(reset)%s%C(red)% gD% D
 [pull]
 	rebase = false
+[user]
+	name = zoshima
+	email = dmykras@gmail.com
