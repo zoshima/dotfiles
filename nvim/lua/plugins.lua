@@ -16,6 +16,7 @@ return require("packer").startup(function(use)
 
   -- editor
   use "tpope/vim-commentary";
+  use "tpope/vim-fugitive";
 
   -- looks
   use {
