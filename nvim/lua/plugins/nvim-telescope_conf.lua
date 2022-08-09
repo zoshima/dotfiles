@@ -8,6 +8,12 @@ require("telescope").setup({
     border = {},
     borderchars = { "-", "|", "-", "|", "|", "|", "|", "|" },
   },
+    pickers = {
+      buffers = {
+        sort_lastused = true,
+        ignore_current_buffer = true,
+      },
+    },
 })
 
 MapKey("n", "<Space>p", ":Telescope git_files<CR>")
