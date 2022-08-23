@@ -41,40 +41,45 @@ local conf = {
   WildMenu = { fg = c.None, bg = c.Slate },
 
   -- syntax
-  Comment = { fg = c.GreenDark, bg = c.None, italic = true },
+  Comment = { fg = c.Comment, bg = c.None, italic = true },
+  SpecialComment = { fg = c.Comment, bg = c.None },
+
+  Include = { fg = c.Builtin, bg = c.None },
+  Statement = { fg = c.Builtin, bg = c.None },
+  Conditional = { fg = c.Builtin, bg = c.None },
+  Repeat = { fg = c.Builtin, bg = c.None },
+  Label = { fg = c.Builtin, bg = c.None },
+  Exception = { fg = c.Builtin, bg = c.None },
+  PreProc = { fg = c.Builtin, bg = c.None },
+  Define = { fg = c.Builtin, bg = c.None },
+  Macro = { fg = c.Builtin, bg = c.None },
+
+  Keyword = { fg = c.Keyword, bg = c.None },
+
+  Function = { fg = c.Function, bg = c.None },
+
   Constant = { fg = c.BlueLight, bg = c.None },
-  String = { fg = c.OrangeDark, bg = c.None },
-  Character = { fg = c.OrangeDark, bg = c.None },
-  Number = { fg = c.GreenLight, bg = c.None },
-  Boolean = { fg = c.BlueLight, bg = c.None },
-  Float = { fg = c.GreenLight, bg = c.None },
   Identifier = { fg = c.BlueLight, bg = c.None },
-  Function = { fg = c.YellowDark, bg = c.None },
-  Statement = { fg = c.PinkDark, bg = c.None },
-  Conditional = { fg = c.PinkDark, bg = c.None },
-  Repeat = { fg = c.PinkDark, bg = c.None },
-  Label = { fg = c.PinkDark, bg = c.None },
-  Operator = { fg = c.FG, bg = c.None },
-  Keyword = { fg = c.BlueDark, bg = c.None },
-  Exception = { fg = c.PinkDark, bg = c.None },
-  PreProc = { fg = c.PinkDark, bg = c.None },
-  Include = { fg = c.PinkDark, bg = c.None },
-  Define = { fg = c.PinkDark, bg = c.None },
-  Macro = { fg = c.PinkDark, bg = c.None },
-  Type = { fg = c.Eucalyptus, bg = c.None },
   StorageClass = { fg = c.BlueLight, bg = c.None },
   Structure = { fg = c.BlueLight, bg = c.None },
   Typedef = { fg = c.BlueLight, bg = c.None },
+
+  String = { fg = c.OrangeDark, bg = c.None },
+  Character = { fg = c.OrangeDark, bg = c.None },
+  Number = { fg = c.GreenLight, bg = c.None },
+  Boolean = { fg = c.GreenLight, bg = c.None },
+  Float = { fg = c.GreenLight, bg = c.None },
+  Operator = { fg = c.FG, bg = c.None },
+  Type = { fg = c.Eucalyptus, bg = c.None },
   Special = { fg = c.YellowOrange, bg = c.None },
   SpecialChar = { fg = c.FG, bg = c.None },
   Tag = { fg = c.FG, bg = c.None },
   Delimiter = { fg = c.FG, bg = c.None },
-  SpecialComment = { fg = c.GreenDark, bg = c.None },
   Debug = { fg = c.FG, bg = c.None },
   Underlined = { fg = c.None, bg = c.None, underline = true },
   Conceal = { fg = c.FG, bg = c.BG },
   Ignore = { fg = c.FG, bg = c.None },
-  Error = { fg = c.RedDark, bg = c.BG, undercurl = true, sp = c.RedDark },
+  Error = { fg = c.RedLight, bg = c.BG, undercurl = true, sp = c.RedDark },
   Todo = { fg = c.YellowOrange, bg = c.BG, bold = true },
   SpellBad = { fg = c.RedDark, bg = c.BG, undercurl = true, sp = c.RedDark },
   SpellCap = { fg = c.RedDark, bg = c.BG, undercurl = true, sp = c.RedDark },
@@ -85,8 +90,8 @@ local conf = {
   -- lsp
   LspDiagnosticsDefaultError = { fg = c.RedLight },
   LspDiagnosticsSignError = { fg = c.RedLight },
-  LspDiagnosticsDefaultWarning = { fg = c.YellowDark },
-  LspDiagnosticsSignWarning = { fg = c.YellowDark },
+  LspDiagnosticsDefaultWarning = { fg = c.Function },
+  LspDiagnosticsSignWarning = { fg = c.Function },
 
   -- nvim tree
   NvimTreeRootFolder = { fg = c.GreyLight },
@@ -96,8 +101,13 @@ local conf = {
   NvimTreeSpecialFile = { fg = c.GreenLight },
   NvimTreeExecFile = { fg = c.RedLight },
   NvimTreeSymlink = { fg = c.OrangeDark },
-  NvimTreeOpenedFile = { fg = c.PinkDark },
-  NvimTreeImageFile = { fg = c.YellowDark },
+  NvimTreeOpenedFile = { fg = c.Builtin },
+  NvimTreeImageFile = { fg = c.Function },
+
+  -- treesitter
+  -- TSVariable = { fg = c.FG, bg = c.None },
+  -- TSProperty = { fg = c.BlueLight, bg = c.None },
+  TSConstBuiltin = { fg = c.GreenLight, bg = c.None },
 }
 
 for k, v in pairs(conf) do

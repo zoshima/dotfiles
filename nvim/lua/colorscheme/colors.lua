@@ -30,6 +30,15 @@ local colors = {
   PinkDark = '#C586C0',
 
   Eucalyptus = '#4EC9B0',
+
+  Comment = "#6A9955",
+  Builtin = "#C586C0",
+  Keyword = '#569cd6',
+  Function = '#DCDCAA',
+  -- Variable
+  -- Param
+  -- Const
+  -- Type
 }
 
 return colors
