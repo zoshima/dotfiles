@@ -19,10 +19,10 @@ return require("packer").startup(function(use)
   use "tpope/vim-fugitive";
 
   -- looks
-  use {
-    "Mofiqul/vscode.nvim",
-    config = function() require("plugins.vscode_conf") end
-  }
+  -- use {
+  --   "Mofiqul/vscode.nvim",
+  --   config = function() require("plugins.vscode_conf") end
+  -- }
 
   -- lsp
   use {
