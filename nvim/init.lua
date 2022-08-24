@@ -77,4 +77,3 @@ vim.api.nvim_create_user_command(
 
 require("statusline")
 require("colorscheme")
--- require("tabline")
