@@ -76,10 +76,10 @@ local conf = {
   Whitespace = { fg = c.Gray },
 
   -- lsp
-  LspDiagnosticsDefaultError = { fg = c.TartOrange },
-  LspDiagnosticsSignError = { fg = c.TartOrange },
-  LspDiagnosticsDefaultWarning = { fg = c.Cream },
-  LspDiagnosticsSignWarning = { fg = c.Cream },
+  DiagnosticError = { fg = c.TartOrange },
+  DiagnosticWarn = { fg = c.Cream },
+  DiagnosticInfo = { fg = c.WinterWizard },
+  DiagnosticHint = { fg = c.DarkBlueGray },
 
   -- nvim tree
   NvimTreeRootFolder = { fg = c.LightGray },

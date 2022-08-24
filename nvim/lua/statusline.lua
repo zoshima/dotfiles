@@ -30,11 +30,11 @@ function _G.statusline(mode)
       local num_warns = tableLen(warns)
 
       if num_errs > 0 then
-        right = right .. "[%#LspDiagnosticsSignError#" .. num_errs .. "e%#StatusLine#]"
+        right = right .. "[%#DiagnosticError#" .. num_errs .. "e%#StatusLine#]"
       end
 
       if num_warns > 0 then
-        right = right .. "[%#LspDiagnosticsSignWarning#" .. num_warns .. "w%#StatusLine#]"
+        right = right .. "[%#DiagnosticWarn#" .. num_warns .. "w%#StatusLine#]"
       end
 
       for _, v in ipairs(clients) do
