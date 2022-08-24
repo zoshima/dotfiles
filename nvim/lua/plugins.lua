@@ -18,12 +18,6 @@ return require("packer").startup(function(use)
   use "tpope/vim-commentary";
   use "tpope/vim-fugitive";
 
-  -- looks
-  -- use {
-  --   "Mofiqul/vscode.nvim",
-  --   config = function() require("plugins.vscode_conf") end
-  -- }
-
   -- lsp
   use {
     "neovim/nvim-lspconfig",
@@ -35,6 +29,4 @@ return require("packer").startup(function(use)
     "nvim-treesitter/nvim-treesitter",
     config = function() require("plugins.nvim-treesitter_conf") end
   };
-
-  use "nvim-treesitter/playground";
 end)
