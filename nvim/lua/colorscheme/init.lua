@@ -17,6 +17,7 @@ local conf = {
   Visual = { fg = c.None, bg = c.Slate },
   VisualNOS = { fg = c.None, bg = c.Slate },
   NonText = { fg = c.None, bg = c.None },
+  Folded = { fg = c.FG, bg = c.Slate },
 
   -- syntax
   Operator = { fg = c.FG, bg = c.None },
