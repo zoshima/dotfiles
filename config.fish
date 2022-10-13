@@ -29,7 +29,7 @@ function zos_prompt_user
 end
 
 function zos_prompt_pwd
-  printf "%s%s%s" (set_color blue) (prompt_pwd) (set_color normal)
+  printf "%s%s%s" (set_color cyan) (prompt_pwd) (set_color normal)
 end
 
 function fish_prompt

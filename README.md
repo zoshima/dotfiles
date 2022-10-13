@@ -62,7 +62,7 @@ rg
 ```
 
 ```sh
-ln -s ~/git/dotfiles/nvim/init.vim ~/.config/nvim/init.vim 
+ln -s ~/git/dotfiles/nvim/init.lua ~/.config/nvim/init.lua 
 ln -s ~/git/dotfiles/nvim/lua ~/.config/nvim/lua
 ```
 
