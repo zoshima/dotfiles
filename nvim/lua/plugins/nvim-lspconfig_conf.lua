@@ -24,20 +24,10 @@ local on_attach = function(_, bufnr)
   vim.api.nvim_command("au BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()")
 end
 
-lspconfig.sumneko_lua.setup({
+lspconfig.gopls.setup({
   on_attach = on_attach,
-  settings = {
-    Lua = {
-      diagnostics = {
-        globals = { "vim" }
-      },
-      telemetry = {
-        enable = false,
-      },
-    }
-  },
 })
 
-lspconfig.gopls.setup({
+lspconfig.pyright.setup({
   on_attach = on_attach,
 })
