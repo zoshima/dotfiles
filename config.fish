@@ -1,8 +1,12 @@
 set -x PATH $PATH c
 
+# profile
+set -x PATH "$PATH":"$HOME/.local/bin"
+set -x PATH "$PATH":"$HOME/bin"
+
+# go
 set -x GOPATH "$HOME/go"
 set -x PATH "$PATH":"$HOME/go/bin"
-set -x PATH "$PATH":"$HOME/.local/bin"
 set -x PATH "$PATH:/usr/local/go/bin"
 
 set -x VISUAL vim
@@ -39,5 +43,6 @@ end
 # Fish git prompt
 set __fish_git_prompt_showdirtystate 'yes'
 set __fish_git_prompt_showcolorhints 'yes'
+set __fish_git_prompt_shorten_branch_len 20
 
 fish_vi_key_bindings
