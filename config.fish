@@ -1,20 +1,21 @@
 set -x PATH $PATH c
 
 # profile
-set -x PATH "$PATH":"$HOME/.local/bin"
 set -x PATH "$PATH":"$HOME/bin"
+
+# python
+set -x PATH "$PATH":"$HOME/.local/bin"
 
 # go
 set -x GOPATH "$HOME/go"
 set -x PATH "$PATH":"$HOME/go/bin"
 set -x PATH "$PATH:/usr/local/go/bin"
 
-set -x VISUAL vim
-set -x EDITOR "$VISUAL"
+# rust
+set -x PATH "$PATH":"$HOME/.cargo/bin"
 
-# if test -n "$WSL_DISTRO_NAME"
-#   set -x DISPLAY "$(route.exe print | grep 0.0.0.0 | head -1 | awk '{print $4}'):0.0"
-# end
+set -x VISUAL nvim
+set -x EDITOR "$VISUAL"
 
 function ll
     ls -lh $argv
