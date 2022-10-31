@@ -31,3 +31,7 @@ lspconfig.gopls.setup({
 lspconfig.pyright.setup({
   on_attach = on_attach,
 })
+
+lspconfig.tsserver.setup({
+  on_attach = on_attach,
+})
