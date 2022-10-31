@@ -81,7 +81,7 @@ local conf = {
   DiagnosticError = { fg = c.TartOrange },
   DiagnosticWarn = { fg = c.Cream },
   DiagnosticInfo = { fg = c.WinterWizard },
-  DiagnosticHint = { fg = c.DarkBlueGray },
+  DiagnosticHint = { fg = c.Cream },
 
   -- nvim tree
   NvimTreeRootFolder = { fg = c.LightGray },
