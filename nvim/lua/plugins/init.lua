@@ -24,12 +24,6 @@ return require("packer").startup(function(use)
     config = function() require("plugins.nvim-lspconfig_conf") end
   };
 
-  -- completion
-  use { 
-    "ms-jpq/coq_nvim", 
-    branch = "coq" 
-  };
-
   -- syntax
   use {
     "nvim-treesitter/nvim-treesitter",
