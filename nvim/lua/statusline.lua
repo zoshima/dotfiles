@@ -20,6 +20,8 @@ function _G.statusline(mode)
   if mode == "active" then
     filename = "%#StatusLineFileName#" .. filename .. "%#StatusLine#"
 
+    left = "[" .. vim.fn.mode() .. "]" .. left
+
     if not vim.tbl_isempty(vim.lsp.buf_get_clients(0)) then
       local clients = vim.lsp.buf_get_clients(0)
 

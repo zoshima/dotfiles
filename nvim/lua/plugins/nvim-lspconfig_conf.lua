@@ -21,7 +21,7 @@ local on_attach = function(_, bufnr)
   MapKey("v", "gf", "<cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
 
   vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
-  vim.api.nvim_command("au BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()")
+  vim.api.nvim_command("au BufWritePre <buffer> lua vim.lsp.buf.format()")
 end
 
 lspconfig.gopls.setup({
