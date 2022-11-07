@@ -20,6 +20,8 @@ local colors = {
   LightGray = "#d4d4d4",
   Eucalyptus = "#4EC9B0",
   Cream = "#DCDCAA",
+
+  Accent = "#d4d4d4",
 }
 
 return colors
