@@ -2,7 +2,7 @@ vim.api.nvim_command("au WinEnter,BufEnter * setlocal statusline=%!v:lua.statusl
 vim.api.nvim_command("au WinLeave,BufLeave * setlocal statusline=%!v:lua.statusline('inactive')")
 
 function _G.statusline(mode)
-  local filename = "%t"
+  local filename = "[%t]"
   local location = "[%l:%c]"
   local left = "%r%m"
   local right = ""
@@ -43,5 +43,5 @@ function _G.statusline(mode)
     end
   end
 
-  return string.format("-%s[%s][%s]%s%s%s", left, filename, vim.fn.mode(), location, "%=", right .. "-");
+  return string.format("-%s%s[%s]%s%s%s", left, filename, vim.fn.mode(), location, "%=", right .. "-");
 end
