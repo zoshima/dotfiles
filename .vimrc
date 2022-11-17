@@ -15,3 +15,5 @@ set hidden
 set clipboard=unnamedplus
 set paste
 set hlsearch
+
+syntax on
