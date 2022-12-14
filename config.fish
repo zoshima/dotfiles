@@ -14,7 +14,7 @@ set -x PATH "$PATH:/usr/local/go/bin"
 # rust
 set -x PATH "$PATH":"$HOME/.cargo/bin"
 
-set -x VISUAL vim
+set -x VISUAL nvim
 set -x EDITOR "$VISUAL"
 
 function ll
