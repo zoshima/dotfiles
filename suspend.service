@@ -1,0 +1,12 @@
+[Unit]
+Description=Suspend if inactive
+
+[Service]
+User=root
+Environment=DISPLAY=:0
+ExecStart=/home/kdi/git/dotfiles/scripts/suspend.sh
+Restart=always
+RestartSec=60
+
+[Install]
+WantedBy=multi-user.target

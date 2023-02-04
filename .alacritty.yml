@@ -34,7 +34,7 @@ font:
     family: Roboto Mono
     style: Thin
 
-  size: 11.0
+  # size: 10.0
 
   offset:
     x: 0
@@ -50,8 +50,8 @@ font:
 
 colors:
   primary:
-    background: '#1c1c1c'
-    foreground: '#D4D4D4'
+    background: "#1c1c1c"
+    foreground: "#D4D4D4"
 
 key_bindings:
   - { key: F11, action: ToggleFullscreen }

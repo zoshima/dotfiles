@@ -2,7 +2,6 @@ vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
 require("nvim-tree").setup({
-  open_on_setup = true,
   renderer = {
     indent_markers = {
       enable = false
@@ -44,3 +43,7 @@ require("nvim-tree").setup({
 })
 
 MapKey("n", "<Space>e", ":NvimTreeFindFileToggle<CR>")
+
+vim.api.nvim_create_autocmd({ "VimEnter" }, { callback = function()
+  require("nvim-tree.api").tree.open()
+end})
