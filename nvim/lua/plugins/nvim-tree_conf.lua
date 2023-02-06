@@ -44,6 +44,14 @@ require("nvim-tree").setup({
 
 MapKey("n", "<Space>e", ":NvimTreeFindFileToggle<CR>")
 
-vim.api.nvim_create_autocmd({ "VimEnter" }, { callback = function()
+vim.api.nvim_create_autocmd({ "VimEnter" }, { callback = function(data)
+  local is_dir = vim.fn.isdirectory(data.file) == 1
+
+  if not is_dir then
+    return
+  end
+
+  vim.cmd.cd(data.file)
+
   require("nvim-tree.api").tree.open()
 end})
