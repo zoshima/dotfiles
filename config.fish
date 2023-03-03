@@ -21,24 +21,25 @@ function ll
     ls -lh $argv
 end
 
-function zos_prompt_jobs
-  set -l num_jobs (jobs | wc -l | xargs)
+function zos_prompt 
+	# user	
+  printf "%s%s@%s%s%s:" (set_color green) $USER (prompt_hostname) (set_color normal)
 
+	# dir
+  printf "%s%s%s" (set_color cyan) (prompt_pwd) (set_color normal)
+
+	# jobs
+  set -l num_jobs (jobs | wc -l | xargs)
   if test $num_jobs -ne 0
     printf "%s[%s]%s" (set_color yellow) $num_jobs (set_color normal)
-  end
-end
+	end
 
-function zos_prompt_user
-  printf "%s%s@%s%s%s" (set_color green) $USER (prompt_hostname) (set_color normal)
-end
-
-function zos_prompt_pwd
-  printf "%s%s%s" (set_color cyan) (prompt_pwd) (set_color normal)
+	# git
+	printf "%s" (fish_git_prompt)
 end
 
 function fish_prompt
-  printf '%s:%s%s%s$ ' (zos_prompt_user) (zos_prompt_pwd) (zos_prompt_jobs) (fish_git_prompt)
+  printf "%s\n%s\$%s " (zos_prompt) (set_color yellow) (set_color normal)
 end
 
 # Fish git prompt
