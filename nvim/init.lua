@@ -4,7 +4,7 @@ require("plugins")
 vim.opt.termguicolors = true
 vim.opt.signcolumn = "no"
 vim.opt.cursorline = true
-vim.opt.cmdheight = 0
+vim.opt.cmdheight = 1
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.expandtab = true
