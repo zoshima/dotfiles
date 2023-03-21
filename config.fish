@@ -45,6 +45,6 @@ end
 # Fish git prompt
 set __fish_git_prompt_showdirtystate 'yes'
 set __fish_git_prompt_showcolorhints 'yes'
-set __fish_git_prompt_shorten_branch_len 20
+set __fish_git_prompt_shorten_branch_len 30
 
 fish_vi_key_bindings
