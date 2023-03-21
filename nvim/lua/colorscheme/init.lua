@@ -1,105 +1,129 @@
 local c = require('colorscheme.colors')
 
 local conf = {
-  { Name = "Normal", Value = { fg = c.FG, bg = c.BG } },
-  { Name = "EndOfBuffer", Value = { fg = c.Gray } },
-  { Name = "LineNr", Value = { fg = c.Gray, bg = c.BG } },
-  { Name = "CursorLine", Value = { bg = c.BG } },
-  { Name = "CursorLineNr", Value = { fg = c.Accent } },
-  { Name = "Pmenu", Value = { fg = c.FG, bg = c.Slate } },
-  { Name = "PmenuSel", Value = { fg = c.Slate, bg = c.FG } },
-  { Name = "PmenuSbar", Value = { fg = c.None, bg = c.Slate } },
-  { Name = "PmenuThumb", Value = { fg = c.None, bg = c.FG } },
-  { Name = "VertSplit", Value = { fg = c.Gray, bg = c.None } },
-  { Name = "StatusLine", Value = { fg = c.Gray2, bg = c.None } },
-  { Name = "StatusLineNC", Value = { fg = c.Gray } },
-  { Name = "StatusLineFileName", Value = { fg = c.Accent } },
-  { Name = "StatusLineModified", Value = { fg = c.Cream } },
-  { Name = "Visual", Value = { fg = c.None, bg = c.Slate } },
-  { Name = "VisualNOS", Value = { fg = c.None, bg = c.Slate } },
-  { Name = "NonText", Value = { fg = c.None, bg = c.None } },
-  { Name = "Folded", Value = { fg = c.FG, bg = c.Slate } },
-  { Name = "Search", Value = { fg = c.BG, bg = c.Cream } },
+  None = {
+    { Name = "NonText" },
 
-  -- syntax
-  { Name = "Operator", Value = { fg = c.FG, bg = c.None } },
-  { Name = "SpecialChar", Value = { fg = c.FG, bg = c.None } },
-  { Name = "Tag", Value = { fg = c.FG, bg = c.None } },
-  { Name = "Delimiter", Value = { fg = c.FG, bg = c.None } },
-  { Name = "Debug", Value = { fg = c.FG, bg = c.None } },
-  { Name = "Conceal", Value = { fg = c.FG, bg = c.BG } },
-  { Name = "Ignore", Value = { fg = c.FG, bg = c.None } },
-  { Name = "Comment", Value = { fg = c.RussianGreen, bg = c.None } },
-  { Name = "SpecialComment", Value = { fg = c.RussianGreen, bg = c.None } },
+    { Name = "Underlined", Value = { underline = true } },
 
-  { Name = "Include", Value = { fg = c.LightMossGreen, bg = c.None } },
-  { Name = "Label", Value = { fg = c.LightMossGreen, bg = c.None } },
-  { Name = "PreProc", Value = { fg = c.LightMossGreen, bg = c.None } },
-  { Name = "Define", Value = { fg = c.LightMossGreen, bg = c.None } },
-  { Name = "Macro", Value = { fg = c.LightMossGreen, bg = c.None } },
+    { Name = "PmenuThumb", Value = { bg = c.Gray } },
+    { Name = "PmenuSbar", Value = { bg = c.Gray } },
+    { Name = "Visual", Value = { bg = c.Gray } },
+    { Name = "VisualNOS", Value = { bg = c.Gray } },
+  },
+  Black = {
+    { Name = "Search", Value = { bg = c.Yellow } },
+    { Name = "PmenuSel", Value = { bg = c.White } },
+  },
+  White = {
+    { Name = "Identifier" },
+    { Name = "Constant" },
 
-  { Name = "Keyword", Value = { fg = c.CarolinaBlue, bg = c.None } },
-  { Name = "Statement", Value = { fg = c.CarolinaBlue, bg = c.None } },
-  { Name = "Conditional", Value = { fg = c.CarolinaBlue, bg = c.None } },
-  { Name = "Repeat", Value = { fg = c.CarolinaBlue, bg = c.None } },
+    { Name = "CursorLineNr" },
+    { Name = "Normal"},
+    { Name = "Pmenu", Value = { bg = c.Black } },
+    { Name = "Folded", Value = { bg = c.Black } },
+    { Name = "StatusLineFileName" },
+    { Name = "Operator" },
+    { Name = "SpecialChar" },
+    { Name = "Tag" },
+    { Name = "Delimiter" },
+    { Name = "Debug" },
+    { Name = "Conceal"},
+    { Name = "Ignore" },
+  },
+  Gray = {
+    { Name = "EndOfBuffer" },
+    { Name = "LineNr"},
+    { Name = "VertSplit" },
+    { Name = "StatusLineNC" },
+    { Name = "Whitespace" },
+    { Name = "NvimTreeRootFolder" },
+    { Name = "StatusLine"},
+  },
+  Red = {
+    { Name = "SpellBad", Value = { undercurl = true, sp = c.Red } },
+    { Name = "SpellCap", Value = { undercurl = true, sp = c.Red } },
+    { Name = "SpellRare", Value = { undercurl = true, sp = c.Red } },
+    { Name = "SpellLocal", Value = { undercurl = true, sp = c.Red } },
 
-  { Name = "Function", Value = { fg = c.Cream, bg = c.None } },
+    { Name = "Error", Value = { undercurl = true, sp = c.Red } },
+    { Name = "Exception" },
 
-  { Name = "Constant", Value = { fg = c.WinterWizard, bg = c.None } },
-  { Name = "Identifier", Value = { fg = c.WinterWizard, bg = c.None } },
-  { Name = "StorageClass", Value = { fg = c.WinterWizard, bg = c.None } },
-  { Name = "Structure", Value = { fg = c.WinterWizard, bg = c.None } },
-  { Name = "Typedef", Value = { fg = c.WinterWizard, bg = c.None } },
+    { Name = "ErrorMsg"},
+    { Name = "WarningMsg", Value = { bold = true } },
 
-  { Name = "String", Value = { fg = c.AntiqueBrass, bg = c.None } },
-  { Name = "Character", Value = { fg = c.AntiqueBrass, bg = c.None } },
+    { Name = "DiagnosticError" },
+    { Name = "NvimTreeExecFile" },
+  },
+  Green = {
+    { Name = "Comment" },
+    { Name = "SpecialComment" },
+  },
+  Yellow = {
+    { Name = "String" },
+    { Name = "Character" },
+    { Name = "Number" },
+    { Name = "Boolean" },
+    { Name = "Float" },
+    { Name = "Special" },
 
-  { Name = "Number", Value = { fg = c.Burlywood, bg = c.None } },
-  { Name = "Boolean", Value = { fg = c.Burlywood, bg = c.None } },
-  { Name = "Float", Value = { fg = c.Burlywood, bg = c.None } },
+    { Name = "NvimTreeSymlink" },
+  },
+  Blue = {
+    { Name = "Function" },
 
-  { Name = "Special", Value = { fg = c.Cream, bg = c.None } },
-  { Name = "Todo", Value = { fg = c.Cream, bg = c.BG, bold = true } },
+    { Name = "StorageClass" },
+    { Name = "Structure" },
 
-  { Name = "SpellBad", Value = { fg = c.FuzzyWuzzy, bg = c.BG, undercurl = true, sp = c.FuzzyWuzzy } },
-  { Name = "SpellCap", Value = { fg = c.FuzzyWuzzy, bg = c.BG, undercurl = true, sp = c.FuzzyWuzzy } },
-  { Name = "SpellRare", Value = { fg = c.FuzzyWuzzy, bg = c.BG, undercurl = true, sp = c.FuzzyWuzzy } },
-  { Name = "SpellLocal", Value = { fg = c.FuzzyWuzzy, bg = c.BG, undercurl = true, sp = c.FuzzyWuzzy } },
+    { Name = "DiagnosticInfo" },
 
-  { Name = "Type", Value = { fg = c.Eucalyptus, bg = c.None } },
+    { Name = "NvimTreeFolderName" },
+    { Name = "NvimTreeOpenedFolderName" },
+    { Name = "NvimTreeEmptyFolderName" },
+    { Name = "NvimTreeOpenedFile" },
+  },
+  Magenta = {
+    { Name = "StatusLineModified" },
 
-  { Name = "Underlined", Value = { fg = c.None, bg = c.None, underline = true } },
+    { Name = "Todo", Value = { bold = true } },
 
-  { Name = "Error", Value = { fg = c.TartOrange, bg = c.BG, undercurl = true, sp = c.FuzzyWuzzy } },
-  { Name = "Exception", Value = { fg = c.TartOrange, bg = c.None } },
+    { Name = "DiagnosticWarn" },
+    { Name = "DiagnosticHint" },
 
-  { Name = "ErrorMsg", Value = { fg = c.TartOrange, bg = c.BG } },
-  { Name = "WarningMsg", Value = { fg = c.FuzzyWuzzy, bg = c.BG, bold = true } },
-
-  { Name = "Whitespace", Value = { fg = c.Gray } },
-
-  -- lsp
-  { Name = "DiagnosticError", Value = { fg = c.TartOrange } },
-  { Name = "DiagnosticWarn", Value = { fg = c.Cream } },
-  { Name = "DiagnosticInfo", Value = { fg = c.WinterWizard } },
-  { Name = "DiagnosticHint", Value = { fg = c.Cream } },
-
-  -- nvim tree
-  { Name = "NvimTreeRootFolder", Value = { fg = c.LightGray } },
-  { Name = "NvimTreeFolderName", Value = { fg = c.CarolinaBlue } },
-  { Name = "NvimTreeOpenedFolderName", Value = { fg = c.CarolinaBlue } },
-  { Name = "NvimTreeEmptyFolderName", Value = { fg = c.CarolinaBlue } },
-  { Name = "NvimTreeSpecialFile", Value = { fg = c.Burlywood } },
-  { Name = "NvimTreeExecFile", Value = { fg = c.TartOrange } },
-  { Name = "NvimTreeSymlink", Value = { fg = c.AntiqueBrass } },
-  { Name = "NvimTreeOpenedFile", Value = { fg = c.WinterWizard } },
-  { Name = "NvimTreeImageFile", Value = { fg = c.Cream } },
-
-  -- treesitter
-  { Name = "TSConstBuiltin", Value = { fg = c.Burlywood, bg = c.None } },
-  { Name = "@text.title", Value = { link = "Identifier" } }, -- placeholders in html
+    { Name = "NvimTreeSpecialFile" },
+    { Name = "NvimTreeImageFile" },
+  },
+  Cyan = {
+    { Name = "Include" },
+    { Name = "Label" },
+    { Name = "PreProc" },
+    { Name = "Define" },
+    { Name = "Macro" },
+    { Name = "Keyword" },
+    { Name = "Statement" },
+    { Name = "Conditional" },
+    { Name = "Repeat" },
+  },
+  Teal = {
+    { Name = "Type" },
+    { Name = "Typedef" },
+  }
 }
 
-for i, v in ipairs(conf) do
-  vim.api.nvim_set_hl(0, v.Name, v.Value)
+for col_name, values in pairs(conf) do
+  for i, v in ipairs(values) do
+    if v.Value then
+      value = v.Value
+    else 
+      value = { bg = c.None }
+    end
+
+    value.fg = c[col_name]
+
+    vim.api.nvim_set_hl(0, v.Name, value)
+  end
 end
+
+vim.api.nvim_set_hl(0, "CursorLine", { bg = c.None })
+
