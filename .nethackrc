@@ -18,6 +18,7 @@ AUTOPICKUP_EXCEPTION="> named !!c"
 # ui
 OPTIONS=windowtype:curses
 OPTIONS=windowborders:1
+OPTIONS=guicolor:1
 
 OPTIONS=symset:plain
 
@@ -29,6 +30,9 @@ OPTIONS=popup_dialog
 
 # status
 OPTIONS=statushilites
+
+# misc
+OPTIONS=nolegacy
 
 # hp
 OPTIONS=hilite_status:hitpoints/100%/grey&normal
