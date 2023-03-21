@@ -6,13 +6,14 @@ local colors = {
 
   Gray = "#616161",
 
-  Red = "#ef9a9a",
-  Green = "#4caf50",
+  Red = "#e57373",
+  Green = "#81c784",
   Yellow = "#dce775",
-  Blue = "#90caf9",
-  Magenta = "#ce93d8",
-  Cyan = "#00bcd4",
-  Teal = "#1de9b6",
+  Blue = "#64b5f6",
+  Magenta = "#ba68c8",
+
+  Cyan = "#4dd0e1",
+  Teal = "#4db6ac",
 }
 
 return colors
