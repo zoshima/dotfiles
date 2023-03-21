@@ -39,7 +39,7 @@ local conf = {
     { Name = "StatusLineNC" },
     { Name = "Whitespace" },
     { Name = "NvimTreeRootFolder" },
-    { Name = "StatusLine"},
+    { Name = "StatusLine", Value = { nocombine = true } },
   },
   Red = {
     { Name = "SpellBad", Value = { undercurl = true, sp = c.Red } },
@@ -84,6 +84,8 @@ local conf = {
     { Name = "NvimTreeOpenedFile" },
   },
   Magenta = {
+    { Name = "Title" },
+
     { Name = "StatusLineModified" },
 
     { Name = "Todo", Value = { bold = true } },
