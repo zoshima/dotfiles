@@ -9,12 +9,17 @@ require("telescope").setup({
     borderchars = { "-", "|", "-", "|", "|", "|", "|", "|" },
     layout_strategy = "vertical",
   },
-    pickers = {
-      buffers = {
-        sort_lastused = true,
-        ignore_current_buffer = true,
-      },
+  pickers = {
+    buffers = {
+      sort_lastused = true,
+      ignore_current_buffer = true,
     },
+    live_grep = {
+      additional_args = function(opts)
+        return { "--hidden" }
+      end
+    },
+  },
 })
 
 MapKey("n", "<Space>p", ":Telescope git_files<CR>")
