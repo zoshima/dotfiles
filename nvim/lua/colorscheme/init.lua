@@ -17,6 +17,8 @@ local conf = {
   Gray = {
     { Name = "DiagnosticHint" },
 
+    { Name = "TelescopeBorder" },
+
     -- UI
     { Name = "StatusLine", Value = { nocombine = true } },
     { Name = "StatusLineNC" },
