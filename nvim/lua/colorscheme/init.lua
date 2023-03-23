@@ -1,116 +1,138 @@
 local c = require('colorscheme.colors')
+c["None"] = "NONE"
+c["Black"] = "#000000"
+c["White"] = "#FFFFFF"
+c["Gray"] = "#616161"
 
 local conf = {
   None = {
-    { Name = "NonText" },
-
-    { Name = "Underlined", Value = { underline = true } },
-
     { Name = "PmenuThumb", Value = { bg = c.Gray } },
     { Name = "PmenuSbar", Value = { bg = c.Gray } },
     { Name = "Visual", Value = { bg = c.Gray } },
     { Name = "VisualNOS", Value = { bg = c.Gray } },
   },
-  Black = {
-    { Name = "Search", Value = { bg = c.Yellow } },
-    { Name = "PmenuSel", Value = { bg = c.White } },
-  },
-  White = {
-    { Name = "Identifier" },
-    { Name = "Constant" },
 
-    { Name = "CursorLineNr" },
-    { Name = "Normal"},
-    { Name = "Pmenu", Value = { bg = c.Black } },
-    { Name = "Folded", Value = { bg = c.Black } },
-    { Name = "StatusLineFileName" },
-    { Name = "Operator" },
-    { Name = "SpecialChar" },
-    { Name = "Tag" },
-    { Name = "Delimiter" },
-    { Name = "Debug" },
-    { Name = "Conceal"},
-    { Name = "Ignore" },
+  Black = {
   },
   Gray = {
-    { Name = "EndOfBuffer" },
-    { Name = "LineNr"},
-    { Name = "VertSplit" },
-    { Name = "StatusLineNC" },
-    { Name = "Whitespace" },
-    { Name = "NvimTreeRootFolder" },
+    { Name = "DiagnosticHint" },
+
+    -- UI
     { Name = "StatusLine", Value = { nocombine = true } },
+    { Name = "StatusLineNC" },
+    { Name = "LineNr"},
+    { Name = "NonText" },
+    { Name = "VertSplit" },
+
+    -- syntax
+    { Name = "Ignore" }, -- blank, hidden, ignored
   },
+  White = {
+    -- UI
+    { Name = "Normal"},
+    { Name = "CursorLineNr" },
+    { Name = "StatusLineFileName" },
+    { Name = "Pmenu" },
+    { Name = "PmenuSel", Value = { reverse = true } },
+
+    -- syntax
+    { Name = "Delimiter" }, -- (), [], {} etc
+    { Name = "Operator" }, -- >, = etc
+  },
+
   Red = {
-    { Name = "SpellBad", Value = { undercurl = true, sp = c.Red } },
-    { Name = "SpellCap", Value = { undercurl = true, sp = c.Red } },
-    { Name = "SpellRare", Value = { undercurl = true, sp = c.Red } },
-    { Name = "SpellLocal", Value = { undercurl = true, sp = c.Red } },
-
-    { Name = "Error", Value = { undercurl = true, sp = c.Red } },
-    { Name = "Exception" },
-
-    { Name = "ErrorMsg"},
-    { Name = "WarningMsg", Value = { bold = true } },
-
-    { Name = "DiagnosticError" },
     { Name = "NvimTreeExecFile" },
+    { Name = "DiagnosticError" },
+
+     -- UI
+    { Name = "ErrorMsg"}, -- err in output
+
+    -- syntax
+    { Name = "Error" }, -- any erronous construct
   },
+  Pink = {
+  },
+  Purple = {
+  },
+
+  DeepPurple = {
+    -- syntax
+    { Name = "Todo" }, -- extra attention
+    { Name = "Underlined" }, -- outstanding text, html links
+  },
+  Indigo = {
+  },
+  Blue = {
+    { Name = "DiagnosticInfo" },
+
+    -- syntax
+    { Name = "PreProc" }, -- #include, #define
+    { Name = "Statement" }, -- if, then, for, while, case
+    { Name = "Title" }, -- titles in MD etc
+  },
+
+  LightBlue = {
+    { Name = "NvimTreeFolderName" },
+    { Name = "NvimTreeOpenedFolderName" },
+    { Name = "NvimTreeEmptyFolderName" },
+
+    -- syntax
+    { Name = "Identifier" }, -- variable names
+    { Name = "Constant" }, -- String, Character, Number etc...
+  },
+  Cyan = {
+  },
+  Teal = {
+    { Name = "NvimTreeSymlink" },
+
+    -- syntax
+    { Name = "Type" }, -- int, long, char...
+  },
+
   Green = {
+    { Name = "NvimTreeOpenedFile" },
+
+    -- syntax
     { Name = "Comment" },
-    { Name = "SpecialComment" },
   },
+  LightGreen = {
+  },
+  Lime = {
+  },
+
   Yellow = {
+    { Name = "NvimTreeSpecialFile" },
+
+    { Name = "DiagnosticWarn" },
+
+    -- UI
+    { Name = "WarningMsg" },
+
+    -- syntax
+    { Name = "Function" }, -- function names
+    { Name = "Special" }, -- any special symbol
+  },
+  Amber = {
+    { Name = "Search", Value = { standout = true } },
+  },
+  Orange = {
+    { Name = "NvimTreeImageFile" },
+
+    -- syntax
     { Name = "String" },
     { Name = "Character" },
     { Name = "Number" },
     { Name = "Boolean" },
     { Name = "Float" },
-    { Name = "Special" },
-
-    { Name = "NvimTreeSymlink" },
   },
-  Blue = {
-    { Name = "Function" },
 
-    { Name = "StorageClass" },
-    { Name = "Structure" },
-
-    { Name = "DiagnosticInfo" },
-
-    { Name = "NvimTreeFolderName" },
-    { Name = "NvimTreeOpenedFolderName" },
-    { Name = "NvimTreeEmptyFolderName" },
-    { Name = "NvimTreeOpenedFile" },
+  DeepOrange = {
   },
-  Magenta = {
-    { Name = "Title" },
-
-    { Name = "StatusLineModified" },
-
-    { Name = "Todo", Value = { bold = true } },
-
-    { Name = "DiagnosticWarn" },
-    { Name = "DiagnosticHint" },
-
-    { Name = "NvimTreeSpecialFile" },
-    { Name = "NvimTreeImageFile" },
+  Brown = {
+    { Name = "Folded", Value = {} },
   },
-  Cyan = {
-    { Name = "Include" },
-    { Name = "Label" },
-    { Name = "PreProc" },
-    { Name = "Define" },
-    { Name = "Macro" },
-    { Name = "Keyword" },
-    { Name = "Statement" },
-    { Name = "Conditional" },
-    { Name = "Repeat" },
+  BlueGray = {
   },
-  Teal = {
-    { Name = "Type" },
-    { Name = "Typedef" },
-  }
 }
 
 for col_name, values in pairs(conf) do
