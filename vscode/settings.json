@@ -1,0 +1,138 @@
+{
+  // misc
+  "telemetry.telemetryLevel": "off",
+  "breadcrumbs.enabled": true,
+  "diffEditor.renderSideBySide": false,
+  "security.workspace.trust.untrustedFiles": "open",
+  "security.workspace.trust.enabled": false,
+  "window.commandCenter": false,
+  "window.menuBarVisibility": "toggle",
+  // explorer
+  "explorer.openEditors.visible": 0,
+  // window
+  "window.title": "${rootName}${separator}${activeEditorShort}",
+  // "window.zoomLevel": 1.5,
+  // editor
+  // "editor.fontSize": 13,
+  "editor.wordWrap": "on",
+  "editor.stickyScroll.enabled": true,
+  "editor.detectIndentation": true,
+  "editor.insertSpaces": true,
+  "editor.fontFamily": "'Roboto Mono', monospace",
+  "editor.lineNumbers": "relative",
+  "editor.tabSize": 2,
+  "editor.minimap.enabled": false,
+  "editor.formatOnSave": true,
+  "editor.rulers": [100],
+  "editor.suggestSelection": "first",
+  "editor.autoClosingDelete": "never",
+  "editor.autoSurround": "never",
+  "editor.autoClosingBrackets": "never",
+  "editor.autoClosingOvertype": "never",
+  "editor.autoClosingQuotes": "never",
+  // testing
+  "testing.openTesting": "neverOpen",
+  "testing.automaticallyOpenPeekView": "never",
+  // debug
+  "debug.openExplorerOnEnd": true,
+  // workbench
+  // "workbench.panel.opensMaximized": "always",
+  "workbench.layoutControl.enabled": false,
+  "workbench.editor.splitSizing": "split",
+  "workbench.editor.enablePreview": false,
+  "workbench.editor.enablePreviewFromQuickOpen": false,
+  "workbench.editor.showIcons": false,
+  "workbench.editor.showTabs": false,
+  "workbench.startupEditor": "none",
+  "workbench.editor.untitled.hint": "hidden",
+  "workbench.list.typeNavigationMode": "trigger",
+  "workbench.colorCustomizations": {
+    "statusBar.foreground": "#C8C8C8",
+    "statusBar.background": "#252526",
+    "statusBarItem.remoteForeground": "#C8C8C8",
+    "statusBarItem.remoteBackground": "#252526",
+    "statusBar.noFolderBackground": "#252526",
+    "activityBar.background": "#252526",
+    "contrastBorder": "#C8C8C820",
+    "panel.background": "#252526"
+  },
+  // vim
+  "vim.leader": "<space>",
+  "vim.hlsearch": true,
+  "vim.showcmd": true,
+  "vim.useSystemClipboard": true,
+  "vim.foldfix": true,
+  "vim.handleKeys": {
+    "<C-j>": false,
+    "u": false,
+    "C-r": false
+  },
+  "vim.normalModeKeyBindingsNonRecursive": [
+    {
+      "before": ["<leader>", ","],
+      "commands": [":noh"]
+    },
+    {
+      "before": ["g", "r"],
+      "commands": ["editor.action.goToReferences"]
+    },
+    {
+      "before": ["g", "f"],
+      "commands": ["editor.action.formatDocument"]
+    },
+    {
+      "before": ["z", "n"],
+      "commands": ["editor.action.marker.next"]
+    },
+    {
+      "before": ["z", "p"],
+      "commands": ["editor.action.marker.prev"]
+    },
+    {
+      "before": ["u"],
+      "commands": ["undo"]
+    },
+    {
+      "before": ["c-r"],
+      "commands": ["redo"]
+    }
+  ],
+  // formatters
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.black-formatter"
+  },
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[scss]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  // etc & plugins
+  "go.toolsManagement.autoUpdate": true,
+  "redhat.telemetry.enabled": false,
+  "C_Cpp.clang_format_fallbackStyle": "Google",
+  "C_Cpp.clang_format_style": "Google",
+  "git.openRepositoryInParentFolders": "never",
+  "git.confirmSync": false,
+  "python.analysis.diagnosticSeverityOverrides": {
+    "reportGeneralTypeIssues": "warning"
+  }
+}
