@@ -1,8 +1,8 @@
 [credential]
   helper = cache
 [log]
-  date = format:%d.%m %H:%M
+  date = format:%Y-%m-%d %H:%M
 [format]
-  pretty = format:%C(dim white)%h%Creset%C(cyan) %ad %C(yellow)%<(7,trunc)%aN %C(reset)%s%C(red)% gD% D
+  pretty = format:%C(dim)%h %ad %C(reset cyan bold)%aN %C(blue)%gD%D\n\t%C(reset)%s
 [pull]
 	rebase = false
