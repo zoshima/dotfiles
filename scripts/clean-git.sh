@@ -1,25 +1,25 @@
-#!/bin/zsh
+#!/bin/bash
 branches=( $( git branch --format='%(refname:short)' ) )
 current_branch=$(git branch --show-current)
 prompt=true
 deleted_count=0
 
-for branch in $branches; do
+for branch in "${branches[@]}"; do
   if [ $branch = $current_branch ] || [ $branch = "master" ]; then
     echo "skipping '$branch'"
     continue
   fi
 
   if [ $prompt = true ]; then
-    read response\?"delete '$branch' (Y/N/y/n)? "
+    read -p "delete '$branch' (Y/N/y/n)? "
 
-    case $response in
+    case $REPLY in
       y|Y) 
         git branch -D $branch
 
         deleted_count=$((deleted_count+1))
 
-        if [ $response = "Y" ]; then
+        if [[ $response = "Y" ]]; then
           prompt=false
         fi
         ;;
