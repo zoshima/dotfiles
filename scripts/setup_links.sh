@@ -2,6 +2,7 @@
 
 rm  ~/.vimrc || true
 rm  ~/.gitconfig || true
+rm  ~/.bashrc || true
 
 ln -s ~/git/dotfiles/.vimrc  ~/.vimrc
 ln -s ~/git/dotfiles/.gitconfig ~/.gitconfig
