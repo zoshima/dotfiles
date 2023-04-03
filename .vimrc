@@ -9,11 +9,13 @@ set previewheight=5
 set pumheight=5  
 set foldmethod=syntax 
 set nofoldenable 
-set noswapfile 
 set completeopt=menu,longest 
 set hidden 
 set clipboard=unnamedplus
 set paste
 set hlsearch
+
+set noswapfile 
+set viminfofile=NONE
 
 syntax on
