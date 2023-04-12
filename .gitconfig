@@ -6,3 +6,5 @@
   pretty = format:%C(dim)%h %ad %C(reset cyan bold)%aN %C(blue)%gD%D\n\t%C(reset)%s
 [pull]
 	rebase = false
+#[url "ssh://git@gitlab.npolar.no/"]
+#	insteadOf = https://gitlab.npolar.no/

@@ -2,5 +2,3 @@ export PS1="\[$(tput bold)\]\[\033[38;5;6m\]\u\[$(tput sgr0)\]@\h:\[$(tput sgr0)
 
 alias ls="ls --color=auto"
 alias ll="ls -al"
-
-export PATH="$PATH:/home/kdi/.local/bin"
