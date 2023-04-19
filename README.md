@@ -1,24 +1,48 @@
-## links
-
+# btrfs
+## list
 ```sh
-ln -s ~/git/dotfiles/.vimrc  ~/.vimrc
-ln -s ~/git/dotfiles/.tmux.conf ~/.tmux.conf
-ln -s ~/git/dotfiles/.alacritty.yml ~/.alacritty.yml
-ln -s ~/git/dotfiles/.gitconfig ~/.gitconfig
+btrfs subvolume list /.snapshots
 ```
-
-## nvim
-
+## probe
 ```sh
-git clone --depth 1 https://github.com/wbthomason/packer.nvim ~/.local/share/nvim/site/pack/packer/start/packer.nvim
+btrfs subvolume show /.snapshots/{snapshot}
+btrfs filesystem du -s /.snapshots/{snapshot}
 ```
-
-```packages
-neovim
-ripgrep
-```
-
+## create
 ```sh
-ln -s ~/git/dotfiles/nvim/init.lua ~/.config/nvim/init.lua
-ln -s ~/git/dotfiles/nvim/lua ~/.config/nvim/lua
+btrfs subvolume snapshot /home /.snapshots/{snapshot}
 ```
+### readonly
+```sh
+btrfs subvolume snapshot -r /home /.snapshots/{snapshot}
+```
+## remove
+```sh
+btrfs subvolume delete /.snapshots/{snapshot} # or just rm
+```
+## recover
+mount in /etc/fstab
+```sh
+rsync -avz /.snapshots/{snapshot} /home
+```
+### delete new files at destination
+```sh
+rsync -avz --delete /.snapshots/{snapshot} /home 
+```
+
+# pacman
+pacman -Syu {package}	Install (and update package list)
+pacman -S {package}	Install only
+pacman -Rsc {package}	Uninstall
+pacman -Ss <keywords>	Search
+pacman -Syu	Upgrade everything
+
+pacman -Qe	List explictly-installed packages
+pacman -Ql {package}	What files does this package have?
+pacman -Qii {package}	List information on package
+pacman -Qo <file>	Who owns this file?
+pacman -Qs <query>	Search installed packages for keywords
+
+pacman -Qdt	List unneeded packages
+pacman -Rns $(pacman -Qdtq)	Uninstall unneeded packages
+Avoid orphans by using pacman -Rsc to remove packages, which will remove unneeded dependencies.
