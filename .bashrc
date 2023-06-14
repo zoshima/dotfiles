@@ -14,9 +14,14 @@ set_prompt() {
 	prompt="$F_BOLD$F_GREEN\$$F_RESET"
 
 	export PS1="$user@$host:$directory$num_jobs$git_branch\n$prompt "
+	export PS2="$F_BOLD$F_GREEN> $F_RESET"
 }
+
+export EDITOR=vim
 
 alias ls="ls --color=auto"
 alias ll="ls -al"
+
+alias manpac="vim ~/Documents/pacman.txt"
 
 set_prompt
