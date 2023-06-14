@@ -22,6 +22,6 @@ export EDITOR=vim
 alias ls="ls --color=auto"
 alias ll="ls -al"
 
-alias manpac="vim ~/Documents/pacman.txt"
+alias manpac="vim ~/git/dotfiles/notes/pacman.txt"
 
 set_prompt

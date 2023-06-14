@@ -1,0 +1,18 @@
+pacman -Syu # (install)
+pacman -Rsn # (uninstall)
+
+pacman -Ss # (search)
+pacman -Si # (package info)
+pacman -Sii # (packages depending on #)
+
+pacman -Qs # (search installed)
+pacman -Qi # (installed package info)
+
+pacman -Qe (list explicitly installed)
+pacman -Sl # (list repository)
+pacman -Ql # (list package files)
+
+pacman -Qdt (list unneeded)
+pacman -Rsn $(pacman -Qdtq) (remove unneeded)
+
+pacman -Qo # (package owner)
