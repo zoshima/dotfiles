@@ -40,6 +40,8 @@ local conf = {
     -- syntax
     { Name = "Delimiter" }, -- (), [], {} etc
     { Name = "Operator" }, -- >, = etc
+    { Name = "Identifier" }, -- variable names
+    { Name = "Constant" }, -- String, Character, Number etc...
   },
 
   Red = {
@@ -67,30 +69,23 @@ local conf = {
   Blue = {
     { Name = "DiagnosticInfo" },
 
-    -- syntax
     { Name = "PreProc" }, -- #include, #define
     { Name = "Statement" }, -- if, then, for, while, case
-    { Name = "Title" }, -- titles in MD etc
   },
-
   LightBlue = {
+    { Name = "NvimTreeSymlink" },
     { Name = "NvimTreeFolderName" },
     { Name = "NvimTreeOpenedFolderName" },
     { Name = "NvimTreeEmptyFolderName" },
 
     -- syntax
-    { Name = "Identifier" }, -- variable names
-    { Name = "Constant" }, -- String, Character, Number etc...
+    { Name = "Title" }, -- titles in MD etc
+    { Name = "Type" }, -- int, long, char...
   },
   Cyan = {
   },
   Teal = {
-    { Name = "NvimTreeSymlink" },
-
-    -- syntax
-    { Name = "Type" }, -- int, long, char...
   },
-
   Green = {
     { Name = "NvimTreeOpenedFile" },
 
@@ -101,7 +96,6 @@ local conf = {
   },
   Lime = {
   },
-
   Yellow = {
     { Name = "NvimTreeSpecialFile" },
 
@@ -127,7 +121,6 @@ local conf = {
     { Name = "Boolean" },
     { Name = "Float" },
   },
-
   DeepOrange = {
   },
   Brown = {

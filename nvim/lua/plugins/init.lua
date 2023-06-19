@@ -14,7 +14,7 @@ return require("packer").startup(function(use)
     config = function() require("plugins.nvim-telescope_conf") end
   }
 
-  -- editor
+  -- qol
   use "tpope/vim-commentary";
 
   -- lsp
@@ -26,7 +26,7 @@ return require("packer").startup(function(use)
   -- syntax
   use {
     "nvim-treesitter/nvim-treesitter",
-    requires = { { "nvim-treesitter/playground" } },
+    -- requires = { { "nvim-treesitter/playground" } },
     config = function() require("plugins.nvim-treesitter_conf") end
   };
 end)
