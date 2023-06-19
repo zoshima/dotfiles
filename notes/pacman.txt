@@ -9,6 +9,7 @@ pacman -Qs # (search installed)
 pacman -Qi # (installed package info)
 
 pacman -Qe (list explicitly installed)
+pacman -Qe (list foreign)
 pacman -Sl # (list repository)
 pacman -Ql # (list package files)
 
