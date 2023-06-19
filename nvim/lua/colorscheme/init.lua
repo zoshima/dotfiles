@@ -68,9 +68,6 @@ local conf = {
   },
   Blue = {
     { Name = "DiagnosticInfo" },
-
-    { Name = "PreProc" }, -- #include, #define
-    { Name = "Statement" }, -- if, then, for, while, case
   },
   LightBlue = {
     { Name = "NvimTreeSymlink" },
@@ -79,20 +76,20 @@ local conf = {
     { Name = "NvimTreeEmptyFolderName" },
 
     -- syntax
-    { Name = "Title" }, -- titles in MD etc
-    { Name = "Type" }, -- int, long, char...
+    { Name = "PreProc" }, -- #include, #define
+    { Name = "Statement" }, -- if, then, for, while, case
   },
   Cyan = {
   },
   Teal = {
   },
   Green = {
-    { Name = "NvimTreeOpenedFile" },
-
-    -- syntax
-    { Name = "Comment" },
   },
   LightGreen = {
+    { Name = "NvimTreeOpenedFile" },
+
+    { Name = "Title" }, -- titles in MD etc
+    { Name = "Type" }, -- int, long, char...
   },
   Lime = {
   },
@@ -127,6 +124,7 @@ local conf = {
     { Name = "Folded", Value = {} },
   },
   BlueGray = {
+    { Name = "Comment" },
   },
 }
 
