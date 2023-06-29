@@ -1,6 +1,6 @@
 local lspconfig = require("lspconfig")
 
-local on_attach = function(_, bufnr)
+local on_attach = function(_, bufnr, skip_autoformat)
   local opts = { noremap = true }
 
   MapKey("n", "ga", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
@@ -11,27 +11,47 @@ local on_attach = function(_, bufnr)
   MapKey("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
   MapKey("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
   MapKey("n", "gn", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
-  MapKey("n", "gf", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
 
   MapKey("n", "z/", "<cmd>lua vim.diagnostic.set_loclist()<CR>", opts)
   MapKey("n", "zn", "<cmd>lua vim.diagnostic.goto_next()<CR>", opts)
   MapKey("n", "zp", "<cmd>lua vim.diagnostic.goto_prev()<CR>", opts)
   MapKey("n", "zh", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
 
+  MapKey("n", "gf", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
   MapKey("v", "gf", "<cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
 
   vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
-  vim.api.nvim_command("au BufWritePre <buffer> lua vim.lsp.buf.format()")
+
+  if skip_autoformat ~= true then
+    vim.api.nvim_command("au BufWritePre <buffer> lua vim.lsp.buf.format()")
+  end
 end
 
 lspconfig.gopls.setup({
   on_attach = on_attach,
 })
 
-lspconfig.pyright.setup({
-  on_attach = on_attach,
+lspconfig.tsserver.setup({
+  on_attach = function(_, bufnr) 
+    on_attach(_, bufnr, true)
+  end
 })
 
-lspconfig.tsserver.setup({
-  on_attach = on_attach,
+vim.api.nvim_create_user_command(
+  "Prettier",
+  "%!prettier --stdin-filepath %",
+  { bang = true }
+)
+
+vim.api.nvim_create_autocmd("BufWritePre", { 
+  pattern = { 
+    "*.json",
+    "*.css", 
+    "*.scss", 
+    "*.html", 
+    "*.js", 
+    "*.ts", 
+  },
+  command = "Prettier"
 })
+

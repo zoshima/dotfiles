@@ -62,19 +62,5 @@ MapKey("n", "<F5>", ":!make run<CR>")
 MapKey("n", "<F6>", ":!make build<CR>")
 MapKey("n", "<F7>", ":!make test<CR>")
 
-vim.cmd([[
-  " COMMANDS
-  command! -bang -nargs=1 Gcomp
-        \ new | 0read ! git show <q-args>:#
-]])
-
--- nnoremap gp :silent %!prettier --stdin-filepath %<CR>
-vim.api.nvim_create_user_command(
-  "Prettier",
-  "%!prettier --stdin-filepath %",
-  { bang = true }
-)
-
-
 require("statusline")
 require("colorscheme")
