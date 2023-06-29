@@ -3,9 +3,11 @@ c["None"] = "NONE"
 c["Black"] = "#000000"
 c["White"] = "#FFFFFF"
 c["Gray"] = "#616161"
+c["GnomeGray"] = "#2e2e2e"
 
 local conf = {
   None = {
+    { Name = "Pmenu", Value = { bg = c.GnomeGray } },
     { Name = "PmenuThumb", Value = { bg = c.Gray } },
     { Name = "PmenuSbar", Value = { bg = c.Gray } },
     { Name = "Visual", Value = { bg = c.Gray } },

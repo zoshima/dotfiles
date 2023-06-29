@@ -1,13 +1,13 @@
 window:
   dimensions:
-    columns: 100
-    lines: 35
+    columns: 120
+    lines: 30
 
   dynamic_title: true
 
-  position:
-    x: 1000
-    y: 200
+  # position:
+  #   x: 1000
+  #   y: 200
 
   # dynamic_padding: true
   padding:
@@ -34,7 +34,7 @@ font:
     family: Roboto Mono
     style: Thin
 
-  # size: 10.0
+  # size: 13.0
 
   offset:
     x: 0

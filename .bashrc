@@ -20,6 +20,7 @@ set_prompt() {
 }
 
 export EDITOR=vim
+export PATH="$PATH:~/.local/bin"
 
 alias ls="ls --color=auto"
 alias ll="ls -al"
@@ -28,3 +29,7 @@ alias manpac="vim ~/git/dotfiles/notes/pacman.txt"
 alias vim="nvim"
 
 set_prompt
+
+
+# Load Angular CLI autocompletion.
+source <(ng completion script)
