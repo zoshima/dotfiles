@@ -1,7 +1,7 @@
 vim.cmd("packadd packer.nvim")
 
 return require("packer").startup(function(use)
-  use "wbthomason/packer.nvim"
+  use "wbthomason/packer.nvim";
 
   -- navigation
   use {
@@ -12,7 +12,7 @@ return require("packer").startup(function(use)
     "nvim-telescope/telescope.nvim",
     requires = { { "nvim-lua/plenary.nvim" } },
     config = function() require("plugins.nvim-telescope_conf") end
-  }
+  };
 
   -- qol
   use "tpope/vim-commentary";

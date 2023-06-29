@@ -37,12 +37,6 @@ lspconfig.tsserver.setup({
   end
 })
 
-vim.api.nvim_create_user_command(
-  "Prettier",
-  "%!prettier --stdin-filepath %",
-  { bang = true }
-)
-
 vim.api.nvim_create_autocmd("BufWritePre", { 
   pattern = { 
     "*.json",
@@ -52,6 +46,10 @@ vim.api.nvim_create_autocmd("BufWritePre", {
     "*.js", 
     "*.ts", 
   },
-  command = "Prettier"
+  callback = function() 
+    local view = vim.fn.winsaveview()
+    vim.cmd(":silent %!prettier --stdin-filepath %")
+    vim.fn.winrestview(view)
+  end
 })
 
