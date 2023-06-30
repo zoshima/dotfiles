@@ -20,6 +20,7 @@ return require("packer").startup(function(use)
   -- lsp
   use {
     "neovim/nvim-lspconfig",
+    requires = { { "prettier/vim-prettier" } },
     config = function() require("plugins.nvim-lspconfig_conf") end
   };
 

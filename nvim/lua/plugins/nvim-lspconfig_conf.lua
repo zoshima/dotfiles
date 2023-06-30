@@ -1,6 +1,6 @@
 local lspconfig = require("lspconfig")
 
-local on_attach = function(_, bufnr, skip_autoformat)
+local on_attach = function(bufnr)
   local opts = { noremap = true }
 
   MapKey("n", "ga", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
@@ -21,35 +21,43 @@ local on_attach = function(_, bufnr, skip_autoformat)
   MapKey("v", "gf", "<cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
 
   vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
+end
 
-  if skip_autoformat ~= true then
+local set_auto_formatter = function(formatter)
+  if formatter == 'lsp' then
     vim.api.nvim_command("au BufWritePre <buffer> lua vim.lsp.buf.format()")
+  elseif formatter == 'prettier' then
+    vim.api.nvim_command("au BufWritePre <buffer> PrettierAsync")
   end
 end
 
 lspconfig.gopls.setup({
-  on_attach = on_attach,
+  on_attach = function(_, bufnr) 
+    on_attach(bufnr)
+    set_auto_formatter('lsp')
+  end
 })
 
 lspconfig.tsserver.setup({
   on_attach = function(_, bufnr) 
-    on_attach(_, bufnr, true)
+    on_attach(bufnr)
+    set_auto_formatter('prettier')
   end
 })
 
-vim.api.nvim_create_autocmd("BufWritePre", { 
-  pattern = { 
-    "*.json",
-    "*.css", 
-    "*.scss", 
-    "*.html", 
-    "*.js", 
-    "*.ts", 
-  },
-  callback = function() 
-    local view = vim.fn.winsaveview()
-    vim.cmd(":silent %!prettier --stdin-filepath %")
-    vim.fn.winrestview(view)
-  end
-})
+-- vim.api.nvim_create_autocmd("BufWritePre", { 
+--   pattern = { 
+--     "*.json",
+--     "*.css", 
+--     "*.scss", 
+--     "*.html", 
+--     "*.js", 
+--     "*.ts", 
+--   },
+--   callback = function() 
+--     local view = vim.fn.winsaveview()
+--     vim.cmd(":silent %!prettier --stdin-filepath %")
+--     vim.fn.winrestview(view)
+--   end
+-- })
 
