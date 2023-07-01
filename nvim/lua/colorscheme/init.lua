@@ -8,8 +8,9 @@ c["GnomeGray"] = "#2e2e2e"
 local conf = {
   None = {
     { Name = "Pmenu", Value = { bg = c.GnomeGray } },
-    { Name = "PmenuThumb", Value = { bg = c.Gray } },
+    { Name = "PmenuThumb", Value = { bg = c.White } },
     { Name = "PmenuSbar", Value = { bg = c.Gray } },
+    { Name = "PmenuSel", Value = { reverse = true } },
     { Name = "Visual", Value = { bg = c.Gray } },
     { Name = "VisualNOS", Value = { bg = c.Gray } },
   },
@@ -36,8 +37,6 @@ local conf = {
     { Name = "Normal"},
     { Name = "CursorLineNr" },
     { Name = "StatusLineFileName" },
-    { Name = "Pmenu" },
-    { Name = "PmenuSel", Value = { reverse = true } },
 
     -- syntax
     { Name = "Delimiter" }, -- (), [], {} etc
