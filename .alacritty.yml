@@ -51,7 +51,7 @@ font:
 colors:
   primary:
     background: "#1c1c1c"
-    foreground: "#D4D4D4"
+    foreground: "#FFFFFF"
 
 key_bindings:
   - { key: F11, action: ToggleFullscreen }
