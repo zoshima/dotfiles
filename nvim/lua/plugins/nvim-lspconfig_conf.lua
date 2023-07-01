@@ -42,7 +42,10 @@ lspconfig.tsserver.setup({
   on_attach = function(_, bufnr) 
     on_attach(bufnr)
     set_auto_formatter('prettier')
-  end
+  end,
+  init_options = {
+    completionDisableFilterText = true,
+  },
 })
 
 -- vim.api.nvim_create_autocmd("BufWritePre", { 

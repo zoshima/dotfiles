@@ -29,7 +29,3 @@ alias manpac="vim ~/git/dotfiles/notes/pacman.txt"
 alias vim="nvim"
 
 set_prompt
-
-
-# Load Angular CLI autocompletion.
-source <(ng completion script)

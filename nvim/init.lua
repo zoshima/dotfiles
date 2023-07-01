@@ -17,7 +17,7 @@ vim.opt.foldmethod = "indent"
 vim.opt.foldenable = false
 vim.opt.swapfile = false
 vim.opt.clipboard = "unnamedplus"
-vim.opt.completeopt = { "menuone", "longest", "noinsert", "noselect" }
+vim.opt.completeopt = { "menuone", "preview", "noselect", "noinsert" }
 vim.opt.mouse = "a"
 vim.opt.listchars = {
   tab = "<->",
@@ -61,6 +61,10 @@ MapKey("n", "<Space>,", ":noh<CR>")
 MapKey("n", "<F5>", ":!make run<CR>")
 MapKey("n", "<F6>", ":!make build<CR>")
 MapKey("n", "<F7>", ":!make test<CR>")
+
+MapKey("n", "<Esc>", ":pclose<CR>")
+
+MapKey("i", "<C-N>", "<C-X><C-O>")
 
 require("statusline")
 require("colorscheme")
