@@ -1,3 +1,4 @@
+
 set_prompt() {
 	F_RESET="$(tput sgr0)"
 	F_BOLD="$(tput bold)"
@@ -8,14 +9,25 @@ set_prompt() {
   F_GREEN="$(tput setaf 114)"
   F_ORANGE="$(tput setaf 215)"
 
+  git_status() {
+    if [ $(git branch 2>/dev/null | wc -l) -gt 0 ]; then
+      git_branch="$(git rev-parse --abbrev-ref HEAD)"
+
+      if [ $(git status --porcelain | wc -l) -gt 0 ]; then
+        git_branch="$git_branch$F_ORANGE*$F_RESET"
+      fi
+
+      echo "($git_branch)"
+    fi
+  }
+
 	user="$F_BOLD$F_LIGHT_BLUE\u$F_RESET"
 	host="\h"
 	directory="$F_RESET$F_BOLD$F_BLUE\w$F_RESET"
 	num_jobs="$F_ORANGE\$([ \j -gt 0 ] && echo [\j])$F_RESET"
-	git_branch="\$(git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/')"
 	prompt="$F_BOLD$F_YELLOW\$$F_RESET"
 
-	export PS1="$user@$host:$directory$num_jobs$git_branch\n$prompt "
+  export PS1="$user@$host:$directory$num_jobs\$(git_status)\n$prompt "
 	export PS2="$F_BOLD$F_YELLOW> $F_RESET"
 }
 
