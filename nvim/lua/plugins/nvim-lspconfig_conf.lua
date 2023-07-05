@@ -32,14 +32,14 @@ local set_auto_formatter = function(formatter)
 end
 
 lspconfig.gopls.setup({
-  on_attach = function(_, bufnr) 
+  on_attach = function(_, bufnr)
     on_attach(bufnr)
     set_auto_formatter('lsp')
   end
 })
 
 lspconfig.tsserver.setup({
-  on_attach = function(_, bufnr) 
+  on_attach = function(_, bufnr)
     on_attach(bufnr)
     set_auto_formatter('prettier')
   end,
@@ -48,18 +48,40 @@ lspconfig.tsserver.setup({
   },
 })
 
-vim.api.nvim_create_autocmd("BufWritePre", { 
-  pattern = { 
+lspconfig.lua_ls.setup({
+  on_attach = function(_, bufnr)
+    on_attach(bufnr)
+    set_auto_formatter('lsp')
+  end,
+  settings = {
+    Lua = {
+      runtime = {
+        version = "LuaJIT",
+      },
+      diagnostics = {
+        globals = { "vim" },
+      },
+      workspace = {
+        library = vim.api.nvim_get_runtime_file("", true),
+      },
+      telemetry = {
+        enable = false,
+      }
+    },
+  }
+})
+
+vim.api.nvim_create_autocmd("BufWritePre", {
+  pattern = {
     "*.json",
-    "*.css", 
-    "*.scss", 
-    "*.html", 
+    "*.css",
+    "*.scss",
+    "*.html",
   },
   command = "PrettierAsync"
-  -- callback = function() 
+  -- callback = function()
   --   local view = vim.fn.winsaveview()
   --   vim.cmd(":silent %!prettier --stdin-filepath %")
   --   vim.fn.winrestview(view)
   -- end
 })
-

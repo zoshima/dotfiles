@@ -1,5 +1,3 @@
-require("plugins")
-
 -- options
 vim.opt.termguicolors = true
 vim.opt.signcolumn = "no"
@@ -39,6 +37,28 @@ function MapKey(mode, lhs, rhs, opts)
   vim.api.nvim_set_keymap(mode, lhs, rhs, options)
 end
 
+function OpenComponent(extension)
+  local file_name = vim.fn.expand("%:t")
+  local match = vim.fn.match(file_name, "^.*\\.component\\.[a-z]*$")
+
+  if match == -1 then
+    return
+  end
+
+  local target_buffer = vim.fn.expand("%:t:r") .. extension
+  local target_file = vim.fn.expand("%:p:h") .. "/" .. target_buffer
+  local target_buffer_no = vim.fn.bufnr(target_buffer)
+  local is_readable = vim.fn.filereadable(target_file)
+
+  if target_buffer_no >= 0 then
+    vim.cmd('silent execute "buffer" ' .. target_buffer_no)
+  elseif is_readable == 1 then
+    vim.cmd('e ' .. target_file)
+  else
+    print("file not readable: " .. target_file)
+  end
+end
+
 -- mappings
 MapKey("n", "*", "*``")
 
@@ -58,6 +78,10 @@ MapKey("n", "<C-S-Down>", ":resize -5<CR>")
 
 MapKey("n", "<Space>,", ":noh<CR>")
 
+MapKey("n", "<Space>ah", ":lua OpenComponent('.html')<CR>")
+MapKey("n", "<Space>at", ":lua OpenComponent('.ts')<CR>")
+MapKey("n", "<Space>ac", ":lua OpenComponent('.scss')<CR>")
+
 MapKey("n", "<F5>", ":!make run<CR>")
 MapKey("n", "<F6>", ":!make build<CR>")
 MapKey("n", "<F7>", ":!make test<CR>")
@@ -68,3 +92,4 @@ MapKey("i", "<C-N>", "<C-X><C-O>")
 
 require("statusline")
 require("colorscheme")
+require("plugins")
