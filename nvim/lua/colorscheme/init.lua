@@ -118,6 +118,7 @@ local conf = {
     { Name = "Number" },
     { Name = "Boolean" },
     { Name = "Float" },
+    { Name = "Special" }, -- any special symbol
   },
   DeepOrange = {
   },
