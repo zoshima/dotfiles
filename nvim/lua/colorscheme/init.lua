@@ -39,10 +39,10 @@ local conf = {
     { Name = "StatusLineFileName" },
 
     -- syntax
-    { Name = "Delimiter" }, -- (), [], {} etc
     { Name = "Operator" }, -- >, = etc
-    { Name = "Identifier" }, -- variable names
-    { Name = "Constant" }, -- String, Character, Number etc...
+    { Name = "Identifier" }, -- [Identifier, Function]
+    { Name = "Constant" }, -- [String, Character, Number, Boolean, Float]
+    { Name = "Delimiter" },
   },
 
   Red = {
@@ -61,9 +61,6 @@ local conf = {
   },
 
   DeepPurple = {
-    -- syntax
-    { Name = "Todo" }, -- extra attention
-    { Name = "Underlined" }, -- outstanding text, html links
   },
   Indigo = {
   },
@@ -77,12 +74,17 @@ local conf = {
     { Name = "NvimTreeEmptyFolderName" },
 
     -- syntax
-    { Name = "PreProc" }, -- #include, #define
-    { Name = "Statement" }, -- if, then, for, while, case
+    { Name = "PreProc" }, -- [Include, Define, Macro, PreCondit]
+    { Name = "Statement" }, -- [Conditional, Repeat, Label, Operator, Keyword, Exception]
+    { Name = "Special" }, -- [SpecialChar, Tag, Delimiter, SpecialComment, Debug]
   },
   Cyan = {
   },
   Teal = {
+    -- syntax
+    { Name = "Todo" }, -- extra attention
+    { Name = "Underlined" }, -- outstanding text, html links
+    { Name = "Search", Value = { standout = true } },
   },
   Green = {
   },
@@ -90,7 +92,7 @@ local conf = {
     { Name = "NvimTreeOpenedFile" },
 
     { Name = "Title" }, -- titles in MD etc
-    { Name = "Type" }, -- int, long, char...
+    { Name = "Type" }, -- [StorageClass, Structure, Typedef]
   },
   Lime = {
   },
@@ -104,10 +106,8 @@ local conf = {
 
     -- syntax
     { Name = "Function" }, -- function names
-    { Name = "Special" }, -- any special symbol
   },
   Amber = {
-    { Name = "Search", Value = { standout = true } },
   },
   Orange = {
     { Name = "NvimTreeImageFile" },
