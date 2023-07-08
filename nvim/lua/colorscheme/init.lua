@@ -61,9 +61,6 @@ local conf = {
   },
 
   DeepPurple = {
-    -- syntax
-    { Name = "Todo" }, -- extra attention
-    { Name = "Underlined" }, -- outstanding text, html links
   },
   Indigo = {
   },
@@ -83,6 +80,9 @@ local conf = {
   Cyan = {
   },
   Teal = {
+    -- syntax
+    { Name = "Todo" }, -- extra attention
+    { Name = "Underlined" }, -- outstanding text, html links
   },
   Green = {
   },
@@ -104,7 +104,6 @@ local conf = {
 
     -- syntax
     { Name = "Function" }, -- function names
-    { Name = "Special" }, -- any special symbol
   },
   Amber = {
     { Name = "Search", Value = { standout = true } },
@@ -118,6 +117,7 @@ local conf = {
     { Name = "Number" },
     { Name = "Boolean" },
     { Name = "Float" },
+    { Name = "Special" }, -- any special symbol
   },
   DeepOrange = {
   },
