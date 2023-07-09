@@ -50,7 +50,7 @@ font:
 
 colors:
   primary:
-    background: "#1c1c1c"
+    background: "#1C1C1C"
     foreground: "#FFFFFF"
 
 key_bindings:
