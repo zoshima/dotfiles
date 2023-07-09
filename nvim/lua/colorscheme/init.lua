@@ -31,6 +31,7 @@ local conf = {
     { Name = "Operator" },   -- >, = etc
     { Name = "Identifier" }, -- [Identifier, Function]
     { Name = "Constant" },   -- [String, Character, Number, Boolean, Float]
+    { Name = "Delimiter" },
   },
   LightGray = {
   },
@@ -63,7 +64,9 @@ local conf = {
     { Name = "ErrorMsg" }, -- err in output
 
     -- syntax
-    { Name = "Error" }, -- any erronous construct
+    { Name = "PreProc" },   -- [Include, Define, Macro, PreCondit]
+    { Name = "Statement" }, -- [Conditional, Repeat, Label, Operator, Keyword, Exception]
+    { Name = "Error" },     -- any erronous construct
   },
   Green = {
     -- plugin
@@ -86,9 +89,8 @@ local conf = {
     { Name = "NvimTreeEmptyFolderName" },
 
     -- syntax
-    { Name = "PreProc" },   -- [Include, Define, Macro, PreCondit]
-    { Name = "Statement" }, -- [Conditional, Repeat, Label, Operator, Keyword, Exception]
-    { Name = "Delimiter" },   
+    { Name = "Title" }, -- titles in MD etc
+    { Name = "Type" },  -- [StorageClass, Structure, Typedef]
   },
 
   Purple = {
@@ -101,12 +103,10 @@ local conf = {
     { Name = "NvimTreeSpecialFile" },
 
     -- syntax
-    { Name = "Title" }, -- titles in MD etc
-    { Name = "Type" },  -- [StorageClass, Structure, Typedef]
   },
   Yellow = {
     { Name = "DiagnosticWarn" },
-    
+
     -- plugin
     { Name = "NvimTreeImageFile" },
 
@@ -114,9 +114,9 @@ local conf = {
     { Name = "WarningMsg" },
 
     -- syntax
-    { Name = "Search",    Value = { standout = true } },
+    { Name = "Search",           Value = { standout = true } },
     { Name = "Function" }, -- function names
-    { Name = "Special" },   -- [SpecialChar, Tag, Delimiter, SpecialComment, Debug]
+    { Name = "Special" },  -- [SpecialChar, Tag, Delimiter, SpecialComment, Debug]
   },
 }
 

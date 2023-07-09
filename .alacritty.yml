@@ -34,7 +34,7 @@ font:
     family: Roboto Mono
     style: Thin
 
-  # size: 13.0
+  size: 13.0
 
   offset:
     x: 0
