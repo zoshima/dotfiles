@@ -31,10 +31,13 @@ local conf = {
     { Name = "Operator" },   -- >, = etc
     { Name = "Identifier" }, -- [Identifier, Function]
     { Name = "Constant" },   -- [String, Character, Number, Boolean, Float]
-    { Name = "Delimiter" },
+  },
+  LightGray = {
   },
   Gray = {
     { Name = "DiagnosticHint" },
+
+    -- plugin
     { Name = "TelescopeBorder" },
 
     -- UI
@@ -51,8 +54,10 @@ local conf = {
   },
 
   Red = {
-    { Name = "NvimTreeExecFile" },
     { Name = "DiagnosticError" },
+
+    -- plugin
+    { Name = "NvimTreeExecFile" },
 
     -- UI
     { Name = "ErrorMsg" }, -- err in output
@@ -61,8 +66,8 @@ local conf = {
     { Name = "Error" }, -- any erronous construct
   },
   Green = {
+    -- plugin
     { Name = "NvimTreeOpenedFile" },
-
 
     -- syntax
     { Name = "String" },
@@ -74,6 +79,7 @@ local conf = {
   Blue = {
     { Name = "DiagnosticInfo" },
 
+    -- plugin
     { Name = "NvimTreeSymlink" },
     { Name = "NvimTreeFolderName" },
     { Name = "NvimTreeOpenedFolderName" },
@@ -82,33 +88,35 @@ local conf = {
     -- syntax
     { Name = "PreProc" },   -- [Include, Define, Macro, PreCondit]
     { Name = "Statement" }, -- [Conditional, Repeat, Label, Operator, Keyword, Exception]
-    { Name = "Special" },   -- [SpecialChar, Tag, Delimiter, SpecialComment, Debug]
+    { Name = "Delimiter" },   
   },
 
   Purple = {
     -- syntax
     { Name = "Todo" },       -- extra attention
     { Name = "Underlined" }, -- outstanding text, html links
-    { Name = "Search",    Value = { standout = true } },
   },
   Cyan = {
+    -- plugin
     { Name = "NvimTreeSpecialFile" },
-
-    { Name = "DiagnosticWarn" },
 
     -- syntax
     { Name = "Title" }, -- titles in MD etc
     { Name = "Type" },  -- [StorageClass, Structure, Typedef]
   },
   Yellow = {
+    { Name = "DiagnosticWarn" },
+    
+    -- plugin
     { Name = "NvimTreeImageFile" },
 
     -- UI
     { Name = "WarningMsg" },
 
     -- syntax
+    { Name = "Search",    Value = { standout = true } },
     { Name = "Function" }, -- function names
-    { Name = "Special" }, -- any special symbol
+    { Name = "Special" },   -- [SpecialChar, Tag, Delimiter, SpecialComment, Debug]
   },
 }
 
