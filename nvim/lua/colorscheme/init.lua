@@ -1,13 +1,25 @@
-local c = require('colorscheme.colors')
+local c = {
+  None = "NONE",
+  White = "WHITE",
+
+  Red = 1,
+  Green = 2,
+  Yellow = 3,
+  Blue = 4,
+  Purple = 5,
+  Cyan = 6,
+  LightGray = 7,
+  Gray = 8,
+}
 
 local conf = {
   None = {
-    { Name = "Pmenu",      Value = { bg = c.Gray } },
-    { Name = "PmenuThumb", Value = { bg = c.White } },
-    { Name = "PmenuSbar",  Value = { bg = c.Gray } },
+    { Name = "Pmenu",      Value = { ctermbg = c.Gray } },
+    { Name = "PmenuThumb", Value = { ctermbg = c.White } },
+    { Name = "PmenuSbar",  Value = { ctermbg = c.Gray } },
     { Name = "PmenuSel",   Value = { reverse = true } },
-    { Name = "Visual",     Value = { bg = c.Gray } },
-    { Name = "VisualNOS",  Value = { bg = c.Gray } },
+    { Name = "Visual",     Value = { ctermbg = c.Gray } },
+    { Name = "VisualNOS",  Value = { ctermbg = c.Gray } },
   },
   White = {
     -- UI
@@ -51,8 +63,13 @@ local conf = {
   Green = {
     { Name = "NvimTreeOpenedFile" },
 
-    { Name = "Title" }, -- titles in MD etc
-    { Name = "Type" },  -- [StorageClass, Structure, Typedef]
+
+    -- syntax
+    { Name = "String" },
+    { Name = "Character" },
+    { Name = "Number" },
+    { Name = "Boolean" },
+    { Name = "Float" },
   },
   Blue = {
     { Name = "DiagnosticInfo" },
@@ -68,32 +85,29 @@ local conf = {
     { Name = "Special" },   -- [SpecialChar, Tag, Delimiter, SpecialComment, Debug]
   },
 
-  Pink = {
+  Purple = {
     -- syntax
     { Name = "Todo" },       -- extra attention
     { Name = "Underlined" }, -- outstanding text, html links
     { Name = "Search",    Value = { standout = true } },
   },
-  Yellow = {
+  Cyan = {
     { Name = "NvimTreeSpecialFile" },
 
     { Name = "DiagnosticWarn" },
+
+    -- syntax
+    { Name = "Title" }, -- titles in MD etc
+    { Name = "Type" },  -- [StorageClass, Structure, Typedef]
+  },
+  Yellow = {
+    { Name = "NvimTreeImageFile" },
 
     -- UI
     { Name = "WarningMsg" },
 
     -- syntax
     { Name = "Function" }, -- function names
-  },
-  Orange = {
-    { Name = "NvimTreeImageFile" },
-
-    -- syntax
-    { Name = "String" },
-    { Name = "Character" },
-    { Name = "Number" },
-    { Name = "Boolean" },
-    { Name = "Float" },
     { Name = "Special" }, -- any special symbol
   },
 }
@@ -105,13 +119,13 @@ for col_name, values in pairs(conf) do
     if v.Value then
       value = v.Value
     else
-      value = { bg = c.None }
+      value = { ctermbg = c.None }
     end
 
-    value.fg = c[col_name]
+    value.ctermfg = c[col_name]
 
     vim.api.nvim_set_hl(0, v.Name, value)
   end
 end
 
-vim.api.nvim_set_hl(0, "CursorLine", { bg = c.None })
+vim.api.nvim_set_hl(0, "CursorLine", { ctermbg = c.None })

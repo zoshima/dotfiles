@@ -1,5 +1,5 @@
 -- options
-vim.opt.termguicolors = true
+vim.opt.termguicolors = false
 vim.opt.signcolumn = "no"
 vim.opt.cursorline = true
 vim.opt.cmdheight = 1
