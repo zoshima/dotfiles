@@ -31,6 +31,9 @@ set_prompt() {
 	export PS2="$F_BOLD$F_YELLOW> $F_RESET"
 }
 
+export HISTSIZE=-1
+export HISTFILESIZE=-1
+
 export EDITOR=vim
 export PATH="$PATH:~/.local/bin"
 
