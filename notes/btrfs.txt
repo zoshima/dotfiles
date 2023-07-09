@@ -1,0 +1,31 @@
+# btrfs
+## list
+```sh
+btrfs subvolume list /.snapshots
+```
+## probe
+```sh
+btrfs subvolume show /.snapshots/{snapshot}
+btrfs filesystem du -s /.snapshots/{snapshot}
+```
+## create
+```sh
+btrfs subvolume snapshot /home /.snapshots/{snapshot}
+```
+### readonly
+```sh
+btrfs subvolume snapshot -r /home /.snapshots/{snapshot}
+```
+## remove
+```sh
+btrfs subvolume delete /.snapshots/{snapshot} # or just rm
+```
+## recover
+mount in /etc/fstab
+```sh
+rsync -avz /.snapshots/{snapshot} /home
+```
+### delete new files at destination
+```sh
+rsync -avz --delete /.snapshots/{snapshot} /home 
+```
