@@ -52,6 +52,12 @@ function SwitchExtension(extension)
   end
 end
 
+function ShowHighlightInfo(extension)
+  local result = vim.treesitter.get_captures_at_cursor(0)
+  print(vim.inspect(result))
+end
+
+
 -- mappings
 MapKey("n", "*", "*``")
 
@@ -74,6 +80,8 @@ MapKey("n", "<Space>,", ":noh<CR>")
 MapKey("n", "<Space>ah", ":lua SwitchExtension('.html')<CR>")
 MapKey("n", "<Space>at", ":lua SwitchExtension('.ts')<CR>")
 MapKey("n", "<Space>ac", ":lua SwitchExtension('.scss')<CR>")
+
+MapKey("n", "g?", ":lua ShowHighlightInfo()<CR>")
 
 MapKey("n", "<F5>", ":!make run<CR>")
 MapKey("n", "<F6>", ":!make build<CR>")
