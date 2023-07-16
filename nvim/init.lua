@@ -77,11 +77,11 @@ MapKey("n", "<C-S-Down>", ":resize -5<CR>")
 
 MapKey("n", "<Space>,", ":noh<CR>")
 
-MapKey("n", "<Space>ah", ":lua SwitchExtension('.html')<CR>")
-MapKey("n", "<Space>at", ":lua SwitchExtension('.ts')<CR>")
-MapKey("n", "<Space>ac", ":lua SwitchExtension('.scss')<CR>")
-
 MapKey("n", "g?", ":lua ShowHighlightInfo()<CR>")
+
+MapKey("n", "<F1>", ":lua SwitchExtension('.ts')<CR>")
+MapKey("n", "<F2>", ":lua SwitchExtension('.html')<CR>")
+MapKey("n", "<F3>", ":lua SwitchExtension('.scss')<CR>")
 
 MapKey("n", "<F5>", ":!make run<CR>")
 MapKey("n", "<F6>", ":!make build<CR>")
