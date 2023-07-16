@@ -1,6 +1,8 @@
 local lspconfig = require("lspconfig")
 
-local on_attach = function(bufnr)
+local on_attach = function(client, bufnr)
+  client.server_capabilities.semanticTokensProvider = nil
+
   local opts = { noremap = true }
 
   MapKey("n", "ga", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
@@ -32,15 +34,15 @@ local set_auto_formatter = function(formatter)
 end
 
 lspconfig.gopls.setup({
-  on_attach = function(_, bufnr)
-    on_attach(bufnr)
+  on_attach = function(client, bufnr)
+    on_attach(client, bufnr)
     set_auto_formatter('lsp')
   end
 })
 
 lspconfig.tsserver.setup({
-  on_attach = function(_, bufnr)
-    on_attach(bufnr)
+  on_attach = function(client, bufnr)
+    on_attach(client, bufnr)
     set_auto_formatter('prettier')
   end,
   init_options = {
@@ -49,8 +51,8 @@ lspconfig.tsserver.setup({
 })
 
 lspconfig.lua_ls.setup({
-  on_attach = function(_, bufnr)
-    on_attach(bufnr)
+  on_attach = function(client, bufnr)
+    on_attach(client, bufnr)
     set_auto_formatter('lsp')
   end,
   settings = {

@@ -3,19 +3,15 @@ vim.cmd("packadd packer.nvim")
 return require("packer").startup(function(use)
   use "wbthomason/packer.nvim";
 
+  -- qol
+  use "tpope/vim-commentary";
+
   -- navigation
-  use {
-    "kyazdani42/nvim-tree.lua",
-    config = function() require("plugins.nvim-tree_conf") end
-  };
   use {
     "nvim-telescope/telescope.nvim",
     requires = { { "nvim-lua/plenary.nvim" } },
     config = function() require("plugins.nvim-telescope_conf") end
   };
-
-  -- qol
-  use "tpope/vim-commentary";
 
   -- lsp
   use {
