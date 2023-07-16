@@ -47,7 +47,6 @@ local conf = {
 
     -- syntax
     { Name = "Operator" },   -- >, = etc
-    { Name = "Conditional" },   -- >, = etc
     { Name = "Identifier" }, -- [Identifier, Function]
     { Name = "Delimiter" },
   },
@@ -96,6 +95,7 @@ local conf = {
     -- syntax
     { Name = "Function" }, -- function names
     { Name = "Special" },  -- [SpecialChar, Tag, Delimiter, SpecialComment, Debug]
+    { Name = "Search", Value = { standout = true } },
   },
   BrightYellow = {
     { Name = "DiagnosticWarn" },
@@ -122,8 +122,6 @@ local conf = {
   },
 
   Cyan = {
-    -- syntax
-    { Name = "Search",           Value = { standout = true } },
   },
   BrightCyan = {
   },
