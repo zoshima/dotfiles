@@ -6,12 +6,12 @@ local on_attach = function(client, bufnr)
   local opts = { noremap = true }
 
   MapKey("n", "ga", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
-  MapKey("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
-  MapKey("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
+  -- MapKey("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
+  -- MapKey("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
   MapKey("n", "gh", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
   MapKey("n", "gH", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
-  MapKey("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
-  MapKey("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
+  -- MapKey("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
+  -- MapKey("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
   MapKey("n", "gn", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
 
   MapKey("n", "z/", "<cmd>lua vim.diagnostic.set_loclist()<CR>", opts)
