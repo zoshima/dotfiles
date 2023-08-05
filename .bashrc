@@ -38,6 +38,5 @@ alias ls="ls --color=auto"
 alias ll="ls -al"
 
 alias manpac="vim ~/git/dotfiles/notes/pacman.txt"
-alias vim="nvim"
 
 set_prompt
