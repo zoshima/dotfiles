@@ -1,10 +1,10 @@
 set_prompt() {
-	F_RESET="$(tput sgr0)"
-	F_BOLD="$(tput bold)"
-  F_RED="$(tput setaf 1)"
-  F_GREEN="$(tput setaf 2)"
-  F_YELLOW="$(tput setaf 3)"
-  F_BLUE="$(tput setaf 4)"
+  F_RESET='\[$(tput sgr0)\]'
+  F_BOLD='\[$(tput bold)\]'
+  F_RED='\[$(tput setaf 1)\]'
+  F_GREEN='\[$(tput setaf 2)\]'
+  F_YELLOW='\[$(tput setaf 3)\]'
+  F_BLUE='\[$(tput setaf 4)\]'
 
   git_status() {
     if [ $(git branch 2>/dev/null | wc -l) -gt 0 ]; then
@@ -24,7 +24,7 @@ set_prompt() {
 	num_jobs="$F_YELLOW\$([ \j -gt 0 ] && echo [\j])$F_RESET"
 	prompt="$F_BOLD$F_YELLOW\$$F_RESET"
 
-  export PS1="$user@$host:$directory$num_jobs\$(git_status)\n$prompt "
+  export PS1="$user@$host:$directory$num_jobs$(git_status)\n$prompt "
 	export PS2="$F_BOLD$F_YELLOW> $F_RESET"
 }
 
