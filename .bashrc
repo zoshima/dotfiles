@@ -8,13 +8,13 @@ set_prompt() {
 
   git_status() {
     if [ $(git branch 2>/dev/null | wc -l) -gt 0 ]; then
-      git_branch="$(git rev-parse --abbrev-ref HEAD)"
+      echo -n "($(git rev-parse --abbrev-ref HEAD)"
 
       if [ $(git status --porcelain | wc -l) -gt 0 ]; then
-        git_branch="$git_branch$F_RED*$F_RESET"
+        echo -n "$(tput setaf 1)*$(tput sgr0)"
       fi
 
-      echo "($git_branch)"
+      echo -n ")"
     fi
   }
 
@@ -24,7 +24,7 @@ set_prompt() {
 	num_jobs="$F_YELLOW\$([ \j -gt 0 ] && echo [\j])$F_RESET"
 	prompt="$F_BOLD$F_YELLOW\$$F_RESET"
 
-  export PS1="$user@$host:$directory$num_jobs$(git_status)\n$prompt "
+  export PS1="$user@$host:$directory$num_jobs\$(git_status)\n$prompt "
 	export PS2="$F_BOLD$F_YELLOW> $F_RESET"
 }
 
