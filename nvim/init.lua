@@ -54,11 +54,10 @@ function SwitchExtension(extension)
   end
 end
 
-function ShowHighlightInfo(extension)
+function ShowHighlightInfo()
   local result = vim.treesitter.get_captures_at_cursor(0)
   print(vim.inspect(result))
 end
-
 
 -- mappings
 MapKey("n", "*", "*``")
