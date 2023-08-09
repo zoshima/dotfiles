@@ -22,7 +22,7 @@ local c = {
   Cyan = 6,
   BrightCyan = 14,
 
-  White = 6, -- bright gray
+  White = 6,        -- bright gray
   BrightWhite = 15, -- white
 }
 
@@ -54,10 +54,8 @@ local conf = {
   Black = {
   },
   BrightBlack = {
-    { Name = "DiagnosticHint" },
-
     -- UI
-    { Name = "StatusLine",     Value = { nocombine = true } },
+    { Name = "StatusLine",  Value = { nocombine = true } },
     { Name = "StatusLineNC" },
     { Name = "LineNr" },
     { Name = "NonText" },
@@ -81,12 +79,12 @@ local conf = {
     { Name = "ErrorMsg" }, -- err in output
 
     -- syntax
-    { Name = "Error" },     -- any erronous construct
+    { Name = "Error" }, -- any erronous construct
   },
 
   Green = {
     -- syntax
-    { Name = "Constant" },   -- [String, Character, Number, Boolean, Float]
+    { Name = "Constant" }, -- [String, Character, Number, Boolean, Float]
   },
   BrightGreen = {
   },
@@ -95,7 +93,7 @@ local conf = {
     -- syntax
     { Name = "Function" }, -- function names
     { Name = "Special" },  -- [SpecialChar, Tag, Delimiter, SpecialComment, Debug]
-    { Name = "Search", Value = { standout = true } },
+    { Name = "Search",  Value = { standout = true } },
   },
   BrightYellow = {
     { Name = "DiagnosticWarn" },
@@ -124,6 +122,7 @@ local conf = {
   Cyan = {
   },
   BrightCyan = {
+    { Name = "DiagnosticHint" },
   },
 }
 
