@@ -12,6 +12,7 @@ require("nvim-treesitter.configs").setup({
     "scss",
     "go",
     "python",
+    "yaml",
   },
   ignore_install = { "t32" },
   highlight = {
