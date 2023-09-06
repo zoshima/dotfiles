@@ -14,7 +14,7 @@ window:
     x: 8
     y: 8
 
-  # decorations: buttonless
+  # decorations: none
   # opacity: 0.95
 
 scrolling:
@@ -34,7 +34,7 @@ font:
     family: Roboto Mono
     style: Thin
 
-  # size: 11.0
+  # size: 12.0
 
   offset:
     x: 0

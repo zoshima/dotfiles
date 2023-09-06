@@ -22,7 +22,7 @@ local c = {
   Cyan = 6,
   BrightCyan = 14,
 
-  White = 6,        -- bright gray
+  White = 7,        -- bright gray
   BrightWhite = 15, -- white
 }
 
