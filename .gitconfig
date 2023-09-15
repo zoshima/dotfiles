@@ -6,5 +6,3 @@
   pretty = format:%C(dim)%h %ad %C(reset green bold)%aN %C(blue)%gD%D\n\t%C(reset)%s
 [pull]
 	rebase = false
-[safe]
-	directory = /opt/flutter
