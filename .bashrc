@@ -42,6 +42,8 @@ export HISTFILESIZE=-1
 export EDITOR=vim
 export PATH="$PATH:~/.local/bin"
 
+export WINIT_UNIX_BACKEND=x11
+
 alias ls="ls --color=auto"
 alias ll="ls -al"
 
