@@ -47,6 +47,8 @@ export WINIT_UNIX_BACKEND=x11
 alias ls="ls --color=auto"
 alias ll="ls -al"
 
+alias hx="helix"
+
 alias manpac="vim ~/git/dotfiles/notes/pacman.txt"
 
 set_prompt
