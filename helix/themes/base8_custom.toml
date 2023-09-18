@@ -1,0 +1,58 @@
+"ui.menu" = { fg = "white", bg = "black" }
+"ui.menu.selected" = { modifiers = ["reversed"]}
+"ui.linenr" = { fg = "gray" }
+"ui.linenr.selected" = { fg = "white",  modifiers = ["bold"] }
+"ui.popup" = { bg = "black" }
+"ui.window" = { fg = "gray" }
+"ui.selection" = { modifiers = ["reversed"] }
+"ui.statusline" = { fg = "white" }
+"ui.statusline.inactive" = { fg = "gray" }
+
+"attribute" = "yellow"
+"type" = "cyan"
+"type.builtin" = { fg = "blue", modifiers = [ "italic" ] }
+"constructor" = "yellow"
+"constant" = "green"
+"constant.builtin" = { fg = "green", modifiers = [ "italic" ] }
+"string" = "green"
+"comment" = "gray"
+"variable" = "white"
+"variable.builtin" = { fg = "red", modifiers = [ "italic" ] }
+"label" = "magenta"
+# "punctuation" = "magenta"
+"keyword" = "red"
+# "operator" = "magenta"
+"function" = "yellow"
+"function.builtin" = { fg = "yellow", modifiers = [ "italic" ] }
+"tag" = "red"
+"namespace" = "gray"
+"special" = "magenta"
+# "markup" = "magenta"
+
+"diff.plus" = "light-green"
+"diff.delta" = "light-blue"
+"diff.minus" = "light-red"
+
+"debug" = "light-gray"
+"info" = "light-cyan"
+"hint" = "light-blue"
+"warning" = "light-yellow"
+"error" = "light-red"
+
+"diagnostic" = { underline = { color = "light-gray", style = "curl" }}
+"diagnostic.info" = { underline = { color = "light-cyan", style = "curl" }}
+"diagnostic.unnecessary" = { underline = { color = "light-cyan", style = "curl" }}
+"diagnostic.hint" = { underline = { color = "light-blue", style = "curl" }}
+"diagnostic.deprecated" = { underline = { color = "light-yellow", style = "curl" }}
+"diagnostic.warning" = { underline = { color = "light-yellow", style = "curl" }}
+"diagnostic.error" = { underline = { color = "light-red", style = "curl" }}
+
+"markup.heading" = "cyan"
+"markup.list" = "yellow"
+"markup.bold" = { fg = "white", modifiers = ["bold"] }
+"markup.italic" = { fg = "white", modifiers = ["italic"] }
+"markup.strikethrough" = { modifiers = ["crossed_out"] }
+"markup.link.url" = { fg = "cyan" }
+"markup.link.text" = "green"
+"markup.quote" = { fg = "green", modifiers = ["italic"] }
+"markup.raw" = { fg = "green", modifiers = ["italic"] }
