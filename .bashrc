@@ -36,6 +36,10 @@ set_prompt() {
 	export PS2="$F_BOLD$F_YELLOW> $F_RESET"
 }
 
+ffind () {
+  find . -iname "*$1*" 2>/dev/null
+}
+
 export HISTSIZE=-1
 export HISTFILESIZE=-1
 
@@ -46,8 +50,6 @@ export WINIT_UNIX_BACKEND=x11
 
 alias ls="ls --color=auto"
 alias ll="ls -al"
-
-alias hx="helix"
 
 alias manpac="vim ~/git/dotfiles/notes/pacman.txt"
 
