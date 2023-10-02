@@ -29,6 +29,7 @@ local c = {
 local conf = {
   None = {
     { Name = "CursorLine" },
+    { Name = "TabLineFill" },
     { Name = "Pmenu",      Value = { ctermbg = c.BrightBlack } },
     { Name = "PmenuThumb", Value = { ctermbg = c.BrightWhite } },
     { Name = "PmenuSbar",  Value = { ctermbg = c.BrightBlack } },
@@ -41,6 +42,7 @@ local conf = {
   },
   BrightWhite = {
     -- UI
+    { Name = "TabLineSel" },
     { Name = "Normal" },
     { Name = "CursorLineNr" },
     { Name = "StatusLineFileName" },
@@ -55,6 +57,7 @@ local conf = {
   },
   BrightBlack = {
     -- UI
+    { Name = "TabLine" },
     { Name = "StatusLine",  Value = { nocombine = true } },
     { Name = "StatusLineNC" },
     { Name = "LineNr" },
