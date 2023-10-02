@@ -43,7 +43,7 @@ ffind () {
 export HISTSIZE=-1
 export HISTFILESIZE=-1
 
-export EDITOR=vim
+export EDITOR=nvim
 export PATH="$PATH:~/.local/bin"
 
 export WINIT_UNIX_BACKEND=x11
@@ -54,3 +54,5 @@ alias ll="ls -al"
 alias manpac="vim ~/git/dotfiles/notes/pacman.txt"
 
 set_prompt
+
+test -f ~/.env && source ~/.env
