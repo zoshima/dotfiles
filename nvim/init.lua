@@ -2,7 +2,7 @@
 vim.opt.termguicolors = false
 vim.opt.signcolumn = "no"
 vim.opt.cursorline = true
-vim.opt.cmdheight = 1
+vim.opt.cmdheight = 0
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.expandtab = true
@@ -17,6 +17,7 @@ vim.opt.swapfile = false
 vim.opt.clipboard = "unnamedplus"
 vim.opt.completeopt = { "menuone", "noselect", "noinsert" }
 vim.opt.mouse = "a"
+vim.opt.scrolloff = 2
 vim.opt.listchars = {
   tab = "<->",
   space = "_",
@@ -29,7 +30,7 @@ vim.opt.fillchars = {
 
 -- globals
 vim.g.mapleader = " "
-vim.g.netrw_banner = 0
+-- vim.g.netrw_banner = 0
 vim.g.netrw_liststyle = 3
 
 -- functions
