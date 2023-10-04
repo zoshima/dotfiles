@@ -71,8 +71,6 @@ local conf = {
   },
 
   Red = {
-    { Name = "NvimTreeExecFile" },
-
     -- syntax
     { Name = "PreProc" },   -- [Include, Define, Macro, PreCondit]
     { Name = "Statement" }, -- [Conditional, Repeat, Label, Operator, Keyword, Exception]
@@ -95,12 +93,10 @@ local conf = {
   },
 
   Yellow = {
-    { Name = "NvimTreeSpecialFile" },
-
     -- syntax
     { Name = "Function" }, -- function names
     { Name = "Special" },  -- [SpecialChar, Tag, Delimiter, SpecialComment, Debug]
-    { Name = "Search",             Value = { standout = true } },
+    { Name = "Search",  Value = { standout = true } },
   },
   BrightYellow = {
     { Name = "DiagnosticWarn" },
@@ -110,10 +106,6 @@ local conf = {
   },
 
   Blue = {
-    { Name = "NvimTreeFolderName" },
-    { Name = "NvimTreeOpenedFolderName" },
-    { Name = "NvimTreeEmptyFolderName" },
-
     -- syntax
     { Name = "Title" }, -- titles in MD etc
     { Name = "Type" },  -- [StorageClass, Structure, Typedef]
@@ -132,7 +124,6 @@ local conf = {
   },
 
   Cyan = {
-    { Name = "NvimTreeSymlink" },
   },
   BrightCyan = {
     { Name = "DiagnosticHint" },
