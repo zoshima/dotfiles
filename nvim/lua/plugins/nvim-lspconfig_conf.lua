@@ -1,6 +1,6 @@
 local lspconfig = require("lspconfig")
 
-local on_attach = function(client, bufnr)
+local on_attach = function(client, bufnr, fmt)
   client.server_capabilities.semanticTokensProvider = nil
 
   local opts = { noremap = true }
@@ -19,31 +19,25 @@ local on_attach = function(client, bufnr)
   MapKey("n", "zp", "<cmd>lua vim.diagnostic.goto_prev()<CR>", opts)
   MapKey("n", "zh", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
 
-  MapKey("n", "gf", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
-  MapKey("v", "gf", "<cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
+  if fmt == true then
+    MapKey("n", "gf", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
+    MapKey("v", "gf", "<cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
+
+    vim.api.nvim_command("au BufWritePre <buffer> lua vim.lsp.buf.format()")
+  end
 
   vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 end
 
-local set_auto_formatter = function(formatter)
-  if formatter == 'lsp' then
-    vim.api.nvim_command("au BufWritePre <buffer> lua vim.lsp.buf.format()")
-  elseif formatter == 'prettier' then
-    vim.api.nvim_command("au BufWritePre <buffer> PrettierAsync")
-  end
-end
-
 lspconfig.gopls.setup({
   on_attach = function(client, bufnr)
-    on_attach(client, bufnr)
-    set_auto_formatter('lsp')
+    on_attach(client, bufnr, true)
   end
 })
 
 lspconfig.tsserver.setup({
   on_attach = function(client, bufnr)
     on_attach(client, bufnr)
-    set_auto_formatter('prettier')
   end,
   init_options = {
     completionDisableFilterText = true,
@@ -52,8 +46,7 @@ lspconfig.tsserver.setup({
 
 lspconfig.lua_ls.setup({
   on_attach = function(client, bufnr)
-    on_attach(client, bufnr)
-    set_auto_formatter('lsp')
+    on_attach(client, bufnr, true)
   end,
   settings = {
     Lua = {
@@ -75,6 +68,8 @@ lspconfig.lua_ls.setup({
 
 vim.api.nvim_create_autocmd("BufWritePre", {
   pattern = {
+    "*.ts",
+    "*.js",
     "*.json",
     "*.css",
     "*.scss",
