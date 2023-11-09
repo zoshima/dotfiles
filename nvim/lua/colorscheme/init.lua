@@ -2,45 +2,29 @@ local c = {
   None = "NONE",
 
   Black = 0,
-  BrightBlack = 8, -- gray
+  White = 15,
+  Gray = 8,
 
   Red = 1,
-  BrightRed = 9,
-
   Green = 2,
-  BrightGreen = 10,
-
   Yellow = 3,
-  BrightYellow = 11,
-
   Blue = 4,
-  BrightBlue = 12,
-
   Purple = 5,
-  BrightPurple = 13,
-
   Cyan = 6,
-  BrightCyan = 14,
-
-  White = 7,        -- bright gray
-  BrightWhite = 15, -- white
 }
 
 local conf = {
   None = {
     { Name = "CursorLine" },
     { Name = "TabLineFill" },
-    { Name = "Pmenu",      Value = { ctermbg = c.BrightBlack } },
-    { Name = "PmenuThumb", Value = { ctermbg = c.BrightWhite } },
-    { Name = "PmenuSbar",  Value = { ctermbg = c.BrightBlack } },
+    { Name = "Pmenu",      Value = { ctermbg = c.Gray } },
+    { Name = "PmenuThumb", Value = { ctermbg = c.White } },
+    { Name = "PmenuSbar",  Value = { ctermbg = c.Gray } },
     { Name = "PmenuSel",   Value = { reverse = true } },
-    { Name = "Visual",     Value = { ctermbg = c.BrightBlack } },
-    { Name = "VisualNOS",  Value = { ctermbg = c.BrightBlack } },
+    { Name = "Visual",     Value = { ctermbg = c.Gray } },
+    { Name = "VisualNOS",  Value = { ctermbg = c.Gray } },
   },
-
   White = {
-  },
-  BrightWhite = {
     -- UI
     { Name = "TabLineSel" },
     { Name = "Normal" },
@@ -52,10 +36,9 @@ local conf = {
     { Name = "Identifier" }, -- [Identifier, Function]
     { Name = "Delimiter" },
   },
-
   Black = {
   },
-  BrightBlack = {
+  Gray = {
     -- UI
     { Name = "TabLine" },
     { Name = "StatusLine",  Value = { nocombine = true } },
@@ -69,47 +52,36 @@ local conf = {
     { Name = "Comment" },
     { Name = "Folded" },
   },
-
   Red = {
-    { Name = "NvimTreeExecFile" },
-
-    -- syntax
-    { Name = "PreProc" },   -- [Include, Define, Macro, PreCondit]
-    { Name = "Statement" }, -- [Conditional, Repeat, Label, Operator, Keyword, Exception]
-  },
-  BrightRed = {
     { Name = "DiagnosticError" },
+    { Name = "NvimTreeExecFile" },
 
     -- UI
     { Name = "ErrorMsg" }, -- err in output
 
     -- syntax
-    { Name = "Error" }, -- any erronous construct
+    { Name = "PreProc" },   -- [Include, Define, Macro, PreCondit]
+    { Name = "Statement" }, -- [Conditional, Repeat, Label, Operator, Keyword, Exception]
+    { Name = "Error" },     -- any erronous construct
   },
-
   Green = {
     -- syntax
     { Name = "Constant" }, -- [String, Character, Number, Boolean, Float]
   },
-  BrightGreen = {
-  },
-
   Yellow = {
+    { Name = "DiagnosticWarn" },
     { Name = "NvimTreeSpecialFile" },
+
+    -- UI
+    { Name = "WarningMsg" },
 
     -- syntax
     { Name = "Function" }, -- function names
     { Name = "Special" },  -- [SpecialChar, Tag, Delimiter, SpecialComment, Debug]
     { Name = "Search",             Value = { standout = true } },
   },
-  BrightYellow = {
-    { Name = "DiagnosticWarn" },
-
-    -- UI
-    { Name = "WarningMsg" },
-  },
-
   Blue = {
+    { Name = "DiagnosticInfo" },
     { Name = "NvimTreeFolderName" },
     { Name = "NvimTreeOpenedFolderName" },
     { Name = "NvimTreeEmptyFolderName" },
@@ -118,24 +90,15 @@ local conf = {
     { Name = "Title" }, -- titles in MD etc
     { Name = "Type" },  -- [StorageClass, Structure, Typedef]
   },
-  BrightBlue = {
-
-    { Name = "DiagnosticInfo" },
-  },
-
   Purple = {
     -- syntax
     { Name = "Todo" },       -- extra attention
     { Name = "Underlined" }, -- outstanding text, html links
+    { Name = "Spell" },
   },
-  BrightPurple = {
-  },
-
   Cyan = {
-    { Name = "NvimTreeSymlink" },
-  },
-  BrightCyan = {
     { Name = "DiagnosticHint" },
+    { Name = "NvimTreeSymlink" },
   },
 }
 

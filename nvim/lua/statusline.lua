@@ -1,7 +1,7 @@
-vim.api.nvim_command("au WinEnter,BufEnter * setlocal statusline=%!v:lua.sline('active')")
-vim.api.nvim_command("au WinLeave,BufLeave * setlocal statusline=%!v:lua.sline('inactive')")
+vim.api.nvim_command("au WinEnter,BufEnter * setlocal statusline=%!v:lua.statusline('active')")
+vim.api.nvim_command("au WinLeave,BufLeave * setlocal statusline=%!v:lua.statusline('inactive')")
 
-function _G.sline(mode)
+function _G.statusline(mode)
   local filename = "[%t]"
   local location = "[%l:%c]"
   local left = "%r%m"
