@@ -26,10 +26,16 @@ local on_attach = function(client, bufnr, fmt)
     vim.api.nvim_command("au BufWritePre <buffer> lua vim.lsp.buf.format()")
   end
 
-  vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
+  -- vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 end
 
 lspconfig.gopls.setup({
+  on_attach = function(client, bufnr)
+    on_attach(client, bufnr, true)
+  end
+})
+
+lspconfig.rust_analyzer.setup({
   on_attach = function(client, bufnr)
     on_attach(client, bufnr, true)
   end
