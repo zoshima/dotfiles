@@ -134,6 +134,9 @@ local tsconf = {
     { Name = "@constant.builtin" },
     { Name = "@variable.builtin" },
   },
+  Function = {
+    { Name = "@function.macro" },
+  }
 }
 
 for group_name, values in pairs(tsconf) do
