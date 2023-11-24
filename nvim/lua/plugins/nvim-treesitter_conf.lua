@@ -13,6 +13,7 @@ require("nvim-treesitter.configs").setup({
     "go",
     "python",
     "yaml",
+    "rust",
   },
   ignore_install = { "t32" },
   highlight = {
