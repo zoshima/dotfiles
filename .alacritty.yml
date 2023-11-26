@@ -1,3 +1,6 @@
+shell:
+  program: "wsl ~ -u kdi"
+
 window:
   dimensions:
     columns: 120
@@ -34,7 +37,7 @@ font:
     family: Roboto Mono
     style: Thin
 
-  size: 13.0
+  #size: 13.0
 
   offset:
     x: 0
@@ -46,12 +49,35 @@ font:
 
   # use_thin_strokes: true
 
-# draw_bold_text_with_bright_colors: true
+draw_bold_text_with_bright_colors: true
+
+key_bindings:
+  - { key: F11, action: ToggleFullscreen }
 
 colors:
   primary:
     background: "#212121"
     foreground: "#fafafa"
 
-key_bindings:
-  - { key: F11, action: ToggleFullscreen }
+  # material 300
+  normal:
+    black:   '#000000'
+    red:     '#E57373'
+    green:   '#81C784'
+    yellow:  '#FFF176'
+    blue:    '#64B5F6'
+    magenta: '#BA68C8'
+    cyan:    '#4DD0E1'
+    white:   '#fafafa'
+
+  # material 500
+  bright:
+    black:   '#757575'
+    red:     '#F44336'
+    green:   '#4CAF50'
+    yellow:  '#FFEB3B'
+    blue:    '#2196F3'
+    magenta: '#E91E63'
+    cyan:    '#00BCD4'
+    white:   '#fafafa'
+

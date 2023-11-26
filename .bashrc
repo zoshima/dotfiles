@@ -5,6 +5,8 @@ set_prompt() {
   F_GREEN='\[$(tput setaf 2)\]'
   F_YELLOW='\[$(tput setaf 3)\]'
   F_BLUE='\[$(tput setaf 4)\]'
+  F_PURPLE='\[$(tput setaf 5)\]'
+  F_CYAN='\[$(tput setaf 6)\]'
 
   jobs_status() {
     num_jobs=$(jobs | wc -l)

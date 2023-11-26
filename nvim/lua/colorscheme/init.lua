@@ -32,8 +32,8 @@ local conf = {
     { Name = "StatusLineFileName" },
 
     -- syntax
-    { Name = "Operator" },   -- >, = etc
-    { Name = "Identifier" }, -- [Identifier, Function]
+    { Name = "Operator" }, -- >, = etc
+    { Name = "Identifier" },
     { Name = "Delimiter" },
   },
   Black = {
@@ -77,7 +77,6 @@ local conf = {
 
     -- syntax
     { Name = "Function" }, -- function names
-    { Name = "Special" },  -- [SpecialChar, Tag, Delimiter, SpecialComment, Debug]
     { Name = "Search",             Value = { standout = true } },
   },
   Blue = {
@@ -95,10 +94,13 @@ local conf = {
     { Name = "Todo" },       -- extra attention
     { Name = "Underlined" }, -- outstanding text, html links
     { Name = "Spell" },
+    { Name = "Special" },    -- [SpecialChar, Tag, Delimiter, SpecialComment, Debug]
   },
   Cyan = {
     { Name = "DiagnosticHint" },
     { Name = "NvimTreeSymlink" },
+
+    -- syntax
   },
 }
 
@@ -128,15 +130,28 @@ local tsconf = {
     { Name = "TelescopeMatching" },
   },
   Statement = {
-    { Name = "@type.qualifier" }
+    { Name = "@type.qualifier" },
+    { Name = "@storageclass" },
   },
   Constant = {
     { Name = "@constant.builtin" },
+  },
+  Variable = {
     { Name = "@variable.builtin" },
   },
   Function = {
     { Name = "@function.macro" },
-  }
+    { Name = "@function.builtin" },
+    { Name = "@constructor" },
+  },
+  Special = {
+    { Name = "@string.escape" },
+  },
+  Delimiter = {
+  },
+  Comment = {
+    { Name = "@namespace" },
+  },
 }
 
 for group_name, values in pairs(tsconf) do
