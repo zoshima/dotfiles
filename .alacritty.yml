@@ -62,22 +62,19 @@ colors:
   # material 300
   normal:
     black:   '#000000'
-    red:     '#E57373'
-    green:   '#81C784'
-    yellow:  '#FFF176'
-    blue:    '#64B5F6'
-    magenta: '#BA68C8'
-    cyan:    '#4DD0E1'
     white:   '#fafafa'
-
-  # material 500
+    red:     '#E57373'
+    green:   '#AED581'
+    yellow:  '#FFE082'
+    blue:    '#90CAF9'
+    magenta: '#CE93D8'
+    cyan:    '#4DD0E1'
   bright:
     black:   '#757575'
-    red:     '#F44336'
-    green:   '#4CAF50'
-    yellow:  '#FFEB3B'
-    blue:    '#2196F3'
-    magenta: '#E91E63'
-    cyan:    '#00BCD4'
     white:   '#fafafa'
-
+    red:     '#E57373'
+    green:   '#AED581'
+    yellow:  '#FFE082'
+    blue:    '#90CAF9'
+    magenta: '#CE93D8'
+    cyan:    '#4DD0E1'
