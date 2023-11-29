@@ -17,7 +17,7 @@ local conf = {
   None = {
     { Name = "CursorLine" },
     { Name = "TabLineFill" },
-    { Name = "Pmenu",      Value = { ctermbg = c.Gray } },
+    { Name = "Pmenu",      Value = { ctermbg = c.None } },
     { Name = "PmenuThumb", Value = { ctermbg = c.White } },
     { Name = "PmenuSbar",  Value = { ctermbg = c.Gray } },
     { Name = "PmenuSel",   Value = { reverse = true } },

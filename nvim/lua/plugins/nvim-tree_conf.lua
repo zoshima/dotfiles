@@ -28,8 +28,20 @@ require("nvim-tree").setup({
   },
   view = {
     relativenumber = true,
-    width = 40,
-    cursorline = true,
+    -- width = 40,
+    -- cursorline = true,
+    float = {
+      enable = true,
+      quit_on_focus_loss = true,
+      open_win_config = {
+        relative = "editor",
+        border = "rounded",
+        width = 40,
+        height = 30,
+        row = 1,
+        col = 5,
+      },
+    },
   },
   actions = {
     open_file = {

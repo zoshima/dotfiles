@@ -5,8 +5,8 @@ require("telescope").setup({
         ["<esc>"] = require("telescope.actions").close
       }
     },
-    border = {},
-    borderchars = { "-", "|", "-", "|", "|", "|", "|", "|" },
+    -- border = {},
+    -- borderchars = { "-", "|", "-", "|", "|", "|", "|", "|" },
     layout_strategy = "vertical",
   },
   pickers = {
