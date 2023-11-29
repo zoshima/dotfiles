@@ -17,7 +17,8 @@ local conf = {
   None = {
     { Name = "CursorLine" },
     { Name = "TabLineFill" },
-    { Name = "Pmenu",      Value = { ctermbg = c.None } },
+    { Name = "Float" },
+    { Name = "Pmenu",      Value = { ctermbg = c.Gray } },
     { Name = "PmenuThumb", Value = { ctermbg = c.White } },
     { Name = "PmenuSbar",  Value = { ctermbg = c.Gray } },
     { Name = "PmenuSel",   Value = { reverse = true } },
@@ -147,7 +148,8 @@ local tsconf = {
   Special = {
     { Name = "@string.escape" },
   },
-  Delimiter = {
+  Float = {
+    { Name = "NvimTreeNormalFloat" },
   },
   Comment = {
     { Name = "@namespace" },
