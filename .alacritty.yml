@@ -1,5 +1,5 @@
-shell:
-  program: "wsl ~ -u kdi"
+# shell:
+#   program: "wsl ~ -u kdi"
 
 window:
   dimensions:
@@ -25,6 +25,8 @@ scrolling:
   multiplier: 3
 
 font:
+  size: 13.0
+
   normal:
     family: Roboto Mono
     style: Regular
@@ -36,8 +38,6 @@ font:
   italic:
     family: Roboto Mono
     style: Thin
-
-  #size: 13.0
 
   offset:
     x: 0
