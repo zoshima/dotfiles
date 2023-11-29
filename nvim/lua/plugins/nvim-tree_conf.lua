@@ -3,9 +3,6 @@ vim.g.loaded_netrwPlugin = 1
 
 require("nvim-tree").setup({
   renderer = {
-    indent_markers = {
-      enable = false
-    },
     icons = {
       show = {
         file = false,
@@ -13,6 +10,7 @@ require("nvim-tree").setup({
         folder_arrow = false,
         git = true,
       },
+      git_placement = "signcolumn",
       glyphs = {
         default = "",
         symlink = "",
@@ -30,7 +28,8 @@ require("nvim-tree").setup({
   },
   view = {
     relativenumber = true,
-    width = 40
+    width = 40,
+    cursorline = true,
   },
   actions = {
     open_file = {
