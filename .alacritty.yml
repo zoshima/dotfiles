@@ -64,9 +64,9 @@ colors:
     black:   '#000000'
     white:   '#fafafa'
     red:     '#E57373'
-    green:   '#AED581'
-    yellow:  '#FFE082'
-    blue:    '#90CAF9'
+    green:   '#81C784'
+    yellow:  '#FFD54F'
+    blue:    '#64B5F6'
     magenta: '#CE93D8'
     cyan:    '#4DD0E1'
   bright:

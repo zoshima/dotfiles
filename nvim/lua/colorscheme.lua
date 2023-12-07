@@ -134,6 +134,9 @@ local tsconf = {
     { Name = "@type.qualifier" },
     { Name = "@storageclass" },
   },
+  Type = {
+    { Name = "@namespace" },
+  },
   Constant = {
     { Name = "@constant.builtin" },
   },
@@ -152,7 +155,6 @@ local tsconf = {
     { Name = "NvimTreeNormalFloat" },
   },
   Comment = {
-    { Name = "@namespace" },
   },
 }
 
