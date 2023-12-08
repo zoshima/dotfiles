@@ -23,9 +23,9 @@ vim.opt.listchars = {
   space = "_",
 }
 vim.opt.fillchars = {
-  vert = "|",
-  stl = "-",
-  stlnc = "-",
+  -- vert = "|",
+  stl = "─",
+  stlnc = "─",
 }
 
 -- globals

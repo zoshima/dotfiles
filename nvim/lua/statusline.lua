@@ -1,16 +1,17 @@
-vim.api.nvim_command("au WinEnter,BufEnter * setlocal statusline=%!v:lua.statusline('active')")
-vim.api.nvim_command("au WinLeave,BufLeave * setlocal statusline=%!v:lua.statusline('inactive')")
+vim.api.nvim_command("au WinEnter,BufEnter * setlocal statusline=%!v:lua.Statusline('active')")
+vim.api.nvim_command("au WinLeave,BufLeave * setlocal statusline=%!v:lua.Statusline('inactive')")
 
-function _G.statusline(mode)
+function Statusline(mode)
+  local stl = "─"
   local filename = "[%t]"
   local location = "[%l:%c]"
   local left = "%r%m"
   local right = ""
 
-  local function tableLen(table)
+  local function tableLen(t)
     local n = 0
 
-    for _ in pairs(table) do
+    for _ in ipairs(t) do
       n = n + 1
     end
 
@@ -43,5 +44,5 @@ function _G.statusline(mode)
     end
   end
 
-  return string.format("-%s%s[%s]%s%s%s", left, filename, vim.fn.mode(), location, "%=", right .. "-");
+  return string.format("%s%s%s[%s]%s%s%s%s", stl, left, filename, vim.fn.mode(), location, "%=", right, stl);
 end

@@ -16,6 +16,7 @@ local c = {
 local conf = {
   None = {
     { Name = "CursorLine" },
+    { Name = "TabLine" },
     { Name = "TabLineFill" },
     { Name = "Float" },
     { Name = "Pmenu",      Value = { ctermbg = c.Gray } },
