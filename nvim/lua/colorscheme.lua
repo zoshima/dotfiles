@@ -43,11 +43,12 @@ local conf = {
   Gray = {
     -- UI
     { Name = "TabLine" },
-    { Name = "StatusLine",  Value = { nocombine = true } },
+    { Name = "StatusLine",   Value = { nocombine = true } },
     { Name = "StatusLineNC" },
     { Name = "LineNr" },
     { Name = "NonText" },
     { Name = "VertSplit" },
+    { Name = "MsgSeparator", Value = { underline = true } },
 
     -- syntax
     { Name = "Ignore" }, -- blank, hidden, ignored
