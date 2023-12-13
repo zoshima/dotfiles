@@ -25,7 +25,7 @@ scrolling:
   multiplier: 3
 
 font:
-  size: 13.0
+  size: 14.0
 
   normal:
     family: Roboto Mono

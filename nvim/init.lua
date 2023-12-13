@@ -40,6 +40,13 @@ function MapKey(mode, lhs, rhs, opts)
   vim.api.nvim_set_keymap(mode, lhs, rhs, options)
 end
 
+function FitSplit()
+  local line_len = vim.fn.col('$') + 3;
+  print(line_len);
+
+  vim.cmd('vertical resize ' .. line_len);
+end
+
 function SwitchExtension(extension)
   local target_buffer = vim.fn.expand("%:t:r") .. extension
   local target_file = vim.fn.expand("%:p:h") .. "/" .. target_buffer
@@ -71,6 +78,8 @@ MapKey("n", "<C-l>", "<C-w>l")
 MapKey("n", "<C-h>", "<C-w>h")
 MapKey("n", "<C-j>", "<C-w>j")
 MapKey("n", "<C-k>", "<C-w>k")
+
+MapKey("n", "<C-w>-", ":lua FitSplit()<CR>");
 
 MapKey("n", "<C-S-Left>", ":vertical resize +5<CR>")
 MapKey("n", "<C-S-Right>", ":vertical resize -5<CR>")
