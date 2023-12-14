@@ -36,11 +36,13 @@ local conf = {
     { Name = "StatusLineFileName" },
 
     -- syntax
-    { Name = "Operator" }, -- >, = etc
     { Name = "Identifier" },
-    { Name = "Delimiter" },
   },
   Black = {
+  },
+  LightGray = {
+    { Name = "Operator" }, -- >, = etc
+    { Name = "Delimiter" },
   },
   Gray = {
     -- UI
