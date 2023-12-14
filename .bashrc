@@ -1,12 +1,12 @@
 set_prompt() {
   F_RESET='\[$(tput sgr0)\]'
   F_BOLD='\[$(tput bold)\]'
-  F_RED='\[$(tput setaf 9)\]'
-  F_GREEN='\[$(tput setaf 10)\]'
-  F_YELLOW='\[$(tput setaf 11)\]'
-  F_BLUE='\[$(tput setaf 12)\]'
-  F_PURPLE='\[$(tput setaf 13)\]'
-  F_CYAN='\[$(tput setaf 14)\]'
+  F_RED='\[$(tput setaf 1)\]'
+  F_GREEN='\[$(tput setaf 2)\]'
+  F_YELLOW='\[$(tput setaf 3)\]'
+  F_BLUE='\[$(tput setaf 4)\]'
+  F_PURPLE='\[$(tput setaf 5)\]'
+  F_CYAN='\[$(tput setaf 6)\]'
 
   jobs_status() {
     num_jobs=$(jobs | wc -l)
