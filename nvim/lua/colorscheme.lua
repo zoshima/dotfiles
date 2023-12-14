@@ -7,12 +7,12 @@ local c = {
   LightGray = 7,
   Gray = 8,
 
-  Red = 9,
-  Green = 10,
-  Yellow = 11,
-  Blue = 12,
-  Purple = 13,
-  Cyan = 14,
+  Red = 1,
+  Green = 2,
+  Yellow = 3,
+  Blue = 4,
+  Purple = 5,
+  Cyan = 6,
 }
 
 local conf = {
