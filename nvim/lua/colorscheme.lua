@@ -70,7 +70,14 @@ vim.api.nvim_set_hl(0, "LineNr", { ctermfg = "DarkGray" })
 
 vim.api.nvim_set_hl(0, "MsgSeparator", { ctermfg = "DarkGray", underline = true })
 
-vim.api.nvim_set_hl(0, "NormalFloat", {}) -- nvim tree float
+-- nvim tree stuff
+vim.api.nvim_set_hl(0, "NormalFloat", {})
+vim.api.nvim_set_hl(0, "NvimTreeExecFile", { ctermfg = "DarkRed" })
+vim.api.nvim_set_hl(0, "NvimTreeSpecialFile", { ctermfg = "Magenta" })
+vim.api.nvim_set_hl(0, "NvimTreeSymlink", { ctermfg = "Cyan" })
+vim.api.nvim_set_hl(0, "NvimTreeFolderName", { ctermfg = "Blue" })
+vim.api.nvim_set_hl(0, "NvimTreeOpenedFolderName", { ctermfg = "Blue" })
+vim.api.nvim_set_hl(0, "NvimTreeEmptyFolderName", { ctermfg = "Blue" })
 
 -- links
 
