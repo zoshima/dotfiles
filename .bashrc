@@ -47,8 +47,8 @@ export HISTFILESIZE=-1
 
 export EDITOR=nvim
 
-export PATH="$PATH:~/.local/bin"
-export PATH="$PATH:~/go/bin"
+export PATH="$PATH:/home/$USER/.local/bin"
+export PATH="$PATH:/home/$USER/go/bin"
 
 export WINIT_UNIX_BACKEND=x11
 

@@ -1,7 +1,5 @@
 local lspconfig = require("lspconfig")
 
-vim.lsp.set_log_level("debug")
-
 local on_attach = function(client, bufnr, fmt)
   client.server_capabilities.semanticTokensProvider = nil
 
