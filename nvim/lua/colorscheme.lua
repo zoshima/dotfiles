@@ -1,171 +1,117 @@
-local c = {
-  None = "NONE",
+-- :h group-name
+-- :h gui-colors
 
-  Black = 16,
-  White = 15,
-
-  LightGray = 7,
-  Gray = 8,
-
-  Red = 1,
-  Green = 2,
-  Yellow = 3,
-  Blue = 4,
-  Purple = 5,
-  Cyan = 6,
-}
-
-local conf = {
-  None = {
-    { Name = "CursorLine" },
-    { Name = "Float" },
-    { Name = "Pmenu",      Value = { ctermbg = c.Gray } },
-    { Name = "PmenuThumb", Value = { ctermbg = c.White } },
-    { Name = "PmenuSbar",  Value = { ctermbg = c.Gray } },
-    { Name = "PmenuSel",   Value = { reverse = true } },
-    { Name = "Visual",     Value = { ctermbg = c.Gray } },
-    { Name = "VisualNOS",  Value = { ctermbg = c.Gray } },
-  },
+local syntax_colors = {
   White = {
-    -- UI
-    { Name = "TabLineSel" },
-    { Name = "Normal" },
-    { Name = "CursorLineNr" },
-    { Name = "StatusLineFileName" },
-
-    -- syntax
-    { Name = "Identifier" },
-  },
-  Black = {
-  },
-  LightGray = {
-    -- syntax
-    { Name = "Operator" }, -- >, = etc
-    { Name = "Delimiter" },
-  },
-  Gray = {
-    -- UI
-    { Name = "TabLine" },
-    { Name = "TabLineFill" },
-    { Name = "StatusLine",   Value = { nocombine = true } },
-    { Name = "StatusLineNC" },
-    { Name = "LineNr" },
-    { Name = "NonText" },
-    { Name = "VertSplit" },
-    { Name = "MsgSeparator", Value = { underline = true } },
-
-    -- syntax
-    { Name = "Ignore" }, -- blank, hidden, ignored
-    { Name = "Comment" },
-    { Name = "Folded" },
-  },
-  Red = {
-    { Name = "DiagnosticError" },
-    { Name = "NvimTreeExecFile" },
-
-    -- UI
-    { Name = "ErrorMsg" }, -- err in output
-
-    -- syntax
-    { Name = "PreProc" },   -- [Include, Define, Macro, PreCondit]
-    { Name = "Statement" }, -- [Conditional, Repeat, Label, Operator, Keyword, Exception]
-    { Name = "Error" },     -- any erronous construct
-  },
-  Green = {
-    -- syntax
-    { Name = "Constant" }, -- [String, Character, Number, Boolean, Float]
-  },
-  Yellow = {
-    { Name = "DiagnosticWarn" },
-    { Name = "NvimTreeSpecialFile" },
-
-    -- UI
-    { Name = "WarningMsg" },
-
-    -- syntax
-    { Name = "Function" }, -- function names
-    { Name = "Search",             Value = { standout = true } },
-  },
-  Blue = {
-    { Name = "DiagnosticInfo" },
-    { Name = "NvimTreeFolderName" },
-    { Name = "NvimTreeOpenedFolderName" },
-    { Name = "NvimTreeEmptyFolderName" },
-
-    -- syntax
-    { Name = "Title" }, -- titles in MD etc
-    { Name = "Type" },  -- [StorageClass, Structure, Typedef]
-  },
-  Purple = {
-    -- syntax
-    { Name = "Todo" },       -- extra attention
-    { Name = "Underlined" }, -- outstanding text, html links
-    { Name = "Spell" },
-    { Name = "Special" },    -- [SpecialChar, Tag, Delimiter, SpecialComment, Debug]
+    "Identifier",
   },
   Cyan = {
-    { Name = "DiagnosticHint" },
-    { Name = "NvimTreeSymlink" },
-
-    -- syntax
   },
-}
+  DarkGray = {
+    "NonText", -- ~ at EOF
+    "Comment",
+    "Ignore",
+    "Operator",  -- Statement group
+    "Delimiter", -- Special group
+  },
+  DarkGreen = {
+    "Constant",
+  },
+  DarkRed = {
+    "Statement",
+    "PreProc",
+    "Error",
+  },
+  DarkYellow = {
+    "Function", -- Identifier group
+  },
+  Blue = {
+    "Type",
+  },
+  Magenta = {
+    "Special",
+    "Underlined",
+  },
+  Brown = {
+    "Todo",
+  },
+};
 
-for col_name, values in pairs(conf) do
+for col_name, values in pairs(syntax_colors) do
   for _, v in ipairs(values) do
     local value
 
-    if v.Value then
-      value = v.Value
-    else
-      value = { ctermbg = c.None }
-    end
+    value = { ctermbg = "NONE" }
+    value.ctermfg = col_name
 
-    value.ctermfg = c[col_name]
-
-    vim.api.nvim_set_hl(0, v.Name, value)
+    vim.api.nvim_set_hl(0, v, value)
   end
 end
 
--- plugin links
+-- ui
+vim.api.nvim_set_hl(0, "Pmenu", { ctermbg = "DarkGray" })
+vim.api.nvim_set_hl(0, "PmenuThumb", { ctermbg = "White" })
+vim.api.nvim_set_hl(0, "PmenuSbar", { ctermbg = "DarkGray" })
+vim.api.nvim_set_hl(0, "PmenuSel", { reverse = true })
 
-local tsconf = {
+vim.api.nvim_set_hl(0, "TabLineFill", { ctermfg = "DarkGray" })
+vim.api.nvim_set_hl(0, "TabLineSel", { ctermfg = "White" })
+
+vim.api.nvim_set_hl(0, "StatusLine", { ctermfg = "DarkGray" })
+vim.api.nvim_set_hl(0, "StatusLineNC", { ctermfg = "DarkGray", nocombine = true })
+vim.api.nvim_set_hl(0, "StatusLineFileName", { ctermfg = "White" })
+
+vim.api.nvim_set_hl(0, "CursorLine", {})
+vim.api.nvim_set_hl(0, "CursorLineNr", { ctermfg = "White" })
+
+vim.api.nvim_set_hl(0, "VertSplit", { ctermfg = "DarkGray" })
+
+vim.api.nvim_set_hl(0, "LineNr", { ctermfg = "DarkGray" })
+
+vim.api.nvim_set_hl(0, "MsgSeparator", { ctermfg = "DarkGray", underline = true })
+
+vim.api.nvim_set_hl(0, "NormalFloat", {}) -- nvim tree float
+
+-- links
+
+local group_links = {
+  Error = {
+    "ErrorMsg",
+  },
+  Warning = {
+    "WarningMsg",
+  },
   VertSplit = {
-    { Name = "TelescopeBorder" },
+    "TelescopeBorder",
   },
   Search = {
-    { Name = "TelescopeMatching" },
+    "TelescopeMatching",
   },
   Statement = {
-    { Name = "@type.qualifier" },
-    { Name = "@storageclass" },
+    "@type.qualifier",
+    "@storageclass",
   },
   Type = {
-    { Name = "@namespace" },
+    "@namespace",
   },
   Constant = {
-    { Name = "@constant.builtin" },
+    "@constant.builtin",
   },
   Variable = {
-    { Name = "@variable.builtin" },
+    "@variable.builtin",
   },
   Function = {
-    { Name = "@function.macro" },
-    { Name = "@function.builtin" },
-    { Name = "@constructor" },
+    "@function.macro",
+    "@function.builtin",
+    "@constructor",
   },
   Special = {
-    { Name = "@string.escape" },
-  },
-  Float = {
-    { Name = "NvimTreeNormalFloat" },
-  },
-  Comment = {
+    "@string.escape",
   },
 }
 
-for group_name, values in pairs(tsconf) do
+for group_name, values in pairs(group_links) do
   for _, v in ipairs(values) do
-    vim.api.nvim_set_hl(0, v.Name, { link = group_name })
+    vim.api.nvim_set_hl(0, v, { link = group_name })
   end
 end
