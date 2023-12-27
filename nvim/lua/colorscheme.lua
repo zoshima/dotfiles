@@ -18,8 +18,6 @@ local c = {
 local conf = {
   None = {
     { Name = "CursorLine" },
-    { Name = "TabLine" },
-    { Name = "TabLineFill" },
     { Name = "Float" },
     { Name = "Pmenu",      Value = { ctermbg = c.Gray } },
     { Name = "PmenuThumb", Value = { ctermbg = c.White } },
@@ -41,12 +39,14 @@ local conf = {
   Black = {
   },
   LightGray = {
+    -- syntax
     { Name = "Operator" }, -- >, = etc
     { Name = "Delimiter" },
   },
   Gray = {
     -- UI
     { Name = "TabLine" },
+    { Name = "TabLineFill" },
     { Name = "StatusLine",   Value = { nocombine = true } },
     { Name = "StatusLineNC" },
     { Name = "LineNr" },

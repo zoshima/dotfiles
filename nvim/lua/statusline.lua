@@ -19,7 +19,7 @@ function Statusline(mode)
   end
 
   if mode == "active" then
-    filename = "%#StatusLineFileName#" .. filename .. "%#StatusLine#"
+    filename = "%#StatusLineFileName#" .. filename .. "%*"
 
     if not vim.tbl_isempty(vim.lsp.buf_get_clients(0)) then
       local clients = vim.lsp.buf_get_clients(0)
@@ -31,11 +31,11 @@ function Statusline(mode)
       local num_warns = tableLen(warns)
 
       if num_errs > 0 then
-        right = right .. "[%#DiagnosticError#" .. num_errs .. "e%#StatusLine#]"
+        right = right .. "[%#DiagnosticError#" .. num_errs .. "e%*]"
       end
 
       if num_warns > 0 then
-        right = right .. "[%#DiagnosticWarn#" .. num_warns .. "w%#StatusLine#]"
+        right = right .. "[%#DiagnosticWarn#" .. num_warns .. "w%*]"
       end
 
       for _, v in ipairs(clients) do
