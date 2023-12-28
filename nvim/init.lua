@@ -23,9 +23,9 @@ vim.opt.listchars = {
   space = "_",
 }
 vim.opt.fillchars = {
-  -- vert = "|",
-  stl = "─",
-  stlnc = "─",
+  vert = "|",
+  stl = "-",
+  stlnc = "-",
 }
 
 -- globals
@@ -97,6 +97,9 @@ MapKey("n", "<F3>", ":lua SwitchExtension('.scss')<CR>")
 MapKey("n", "<F5>", ":!make run<CR>")
 MapKey("n", "<F6>", ":!make build<CR>")
 MapKey("n", "<F7>", ":!make test<CR>")
+
+MapKey("n", "<F8>", ":so ~/git/dotfiles/nvim/lua/colorscheme.lua<CR>")
+MapKey("n", "<F9>", ":Telescope highlights<CR>")
 
 MapKey("n", "<Esc>", ":pclose<CR>")
 

@@ -1,39 +1,45 @@
 -- :h group-name
--- :h gui-colors
+-- :h cterm-colors
 
 local syntax_colors = {
   White = {
     "Identifier",
   },
-  Cyan = {
-  },
   DarkGray = {
     "NonText", -- ~ at EOF
     "Comment",
-    "Ignore",
-    "Operator",  -- Statement group
-    "Delimiter", -- Special group
   },
-  DarkGreen = {
+  LightGreen = {
+    "Number",
+    "Float",
+  },
+  Green = {
     "Constant",
   },
-  DarkRed = {
-    "Statement",
-    "PreProc",
-    "Error",
-  },
-  DarkYellow = {
+  Yellow = {
     "Function", -- Identifier group
+  },
+  Brown = {
+    "Todo",
+  },
+  Cyan = {
+    "PreProc",
+  },
+  LightMagenta = {
+    "Delimiter", -- Special group
+  },
+  Magenta = {
+    "Special",
   },
   Blue = {
     "Type",
   },
-  Magenta = {
-    "Special",
-    "Underlined",
+  LightRed = {
+    "Operator", -- Statement group
   },
-  Brown = {
-    "Todo",
+  Red = {
+    "Statement",
+    "Error",
   },
 };
 
@@ -49,10 +55,13 @@ for col_name, values in pairs(syntax_colors) do
 end
 
 -- ui
-vim.api.nvim_set_hl(0, "Pmenu", { ctermbg = "DarkGray" })
-vim.api.nvim_set_hl(0, "PmenuThumb", { ctermbg = "White" })
-vim.api.nvim_set_hl(0, "PmenuSbar", { ctermbg = "DarkGray" })
-vim.api.nvim_set_hl(0, "PmenuSel", { reverse = true })
+vim.api.nvim_set_hl(0, "Pmenu", { ctermbg = "Black" })
+vim.api.nvim_set_hl(0, "PmenuSbar", { ctermbg = "Black" })
+vim.api.nvim_set_hl(0, "PmenuThumb", { ctermbg = "Black", reverse = true })
+vim.api.nvim_set_hl(0, "PmenuSel", { ctermbg = "Black", reverse = true })
+
+vim.api.nvim_set_hl(0, "Visual", { ctermbg = "NONE", reverse = true })
+vim.api.nvim_set_hl(0, "Visual", { ctermbg = "NONE", reverse = true })
 
 vim.api.nvim_set_hl(0, "TabLineFill", { ctermfg = "DarkGray" })
 vim.api.nvim_set_hl(0, "TabLineSel", { ctermfg = "White" })
@@ -70,9 +79,25 @@ vim.api.nvim_set_hl(0, "LineNr", { ctermfg = "DarkGray" })
 
 vim.api.nvim_set_hl(0, "MsgSeparator", { ctermfg = "DarkGray", underline = true })
 
+vim.api.nvim_set_hl(0, "Underlined", { ctermfg = "Cyan", underline = true })
+
+vim.api.nvim_set_hl(0, "Search", { ctermbg = "NONE", reverse = true })
+
+-- diagnostics
+vim.api.nvim_set_hl(0, "DiagnosticError", { ctermfg = "Red" })
+vim.api.nvim_set_hl(0, "DiagnosticUnderlineError", { sp = "Red", undercurl = true })
+vim.api.nvim_set_hl(0, "DiagnosticWarn", { ctermfg = "Yellow" })
+vim.api.nvim_set_hl(0, "DiagnosticUnderlineWarn", { sp = "Yellow", undercurl = true })
+vim.api.nvim_set_hl(0, "DiagnosticInfo", { ctermfg = "Blue" })
+vim.api.nvim_set_hl(0, "DiagnosticUnderlineInfo", { sp = "Blue", undercurl = true })
+vim.api.nvim_set_hl(0, "DiagnosticHint", { ctermfg = "Cyan" })
+vim.api.nvim_set_hl(0, "DiagnosticUnderlineHint", { sp = "Cyan", undercurl = true })
+vim.api.nvim_set_hl(0, "DiagnosticOk", { ctermfg = "Green" })
+vim.api.nvim_set_hl(0, "DiagnosticUnderlineOk", { sp = "Green", undercurl = true })
+
 -- nvim tree stuff
-vim.api.nvim_set_hl(0, "NormalFloat", {})
-vim.api.nvim_set_hl(0, "NvimTreeExecFile", { ctermfg = "DarkRed" })
+vim.api.nvim_set_hl(0, "NvimTreeNormalFloat", { ctermbg = "NONE", ctermfg = "White" })
+vim.api.nvim_set_hl(0, "NvimTreeExecFile", { ctermfg = "Red" })
 vim.api.nvim_set_hl(0, "NvimTreeSpecialFile", { ctermfg = "Magenta" })
 vim.api.nvim_set_hl(0, "NvimTreeSymlink", { ctermfg = "Cyan" })
 vim.api.nvim_set_hl(0, "NvimTreeFolderName", { ctermfg = "Blue" })
@@ -99,7 +124,7 @@ local group_links = {
     "@storageclass",
   },
   Type = {
-    "@namespace",
+    "@type.builtin",
   },
   Constant = {
     "@constant.builtin",
@@ -108,8 +133,8 @@ local group_links = {
     "@variable.builtin",
   },
   Function = {
-    "@function.macro",
     "@function.builtin",
+    "@function.macro",
     "@constructor",
   },
   Special = {
