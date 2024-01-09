@@ -4,14 +4,11 @@
 local syntax_colors = {
   White = {
     "Identifier",
+    "Delimiter", -- Special group
   },
   DarkGray = {
     "NonText", -- ~ at EOF
     "Comment",
-  },
-  LightGreen = {
-    "Number",
-    "Float",
   },
   Green = {
     "Constant",
@@ -22,16 +19,13 @@ local syntax_colors = {
   Brown = {
     "Todo",
   },
-  Cyan = {
-    "PreProc",
-  },
-  LightMagenta = {
-    "Delimiter", -- Special group
-  },
   Magenta = {
     "Special",
   },
   Blue = {
+    "@type.builtin",
+  },
+  Cyan = {
     "Type",
   },
   LightRed = {
@@ -39,6 +33,7 @@ local syntax_colors = {
   },
   Red = {
     "Statement",
+    "PreProc",
     "Error",
   },
 };
@@ -124,7 +119,6 @@ local group_links = {
     "@storageclass",
   },
   Type = {
-    "@type.builtin",
   },
   Constant = {
     "@constant.builtin",
