@@ -35,6 +35,12 @@ lspconfig.gopls.setup({
   end
 })
 
+lspconfig.clangd.setup({
+  on_attach = function(client, bufnr)
+    on_attach(client, bufnr, true)
+  end
+})
+
 lspconfig.rust_analyzer.setup({
   on_attach = function(client, bufnr)
     on_attach(client, bufnr, true)

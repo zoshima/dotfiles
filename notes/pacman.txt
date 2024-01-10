@@ -13,6 +13,8 @@ pacman -Qe (list foreign)
 pacman -Sl # (list repository)
 pacman -Ql # (list package files)
 
+pacman -F # (query package files)
+
 pacman -Qdt (list unneeded)
 pacman -Rsn $(pacman -Qdtq) (remove unneeded)
 

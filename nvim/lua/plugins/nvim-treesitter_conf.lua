@@ -15,6 +15,8 @@ require("nvim-treesitter.configs").setup({
     "python",
     "yaml",
     "rust",
+    "c",
+    "cpp",
   },
   ignore_install = { "t32" },
   highlight = {
