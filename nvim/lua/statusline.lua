@@ -1,12 +1,15 @@
 vim.api.nvim_command("au WinEnter,BufEnter * setlocal statusline=%!v:lua.Statusline('active')")
 vim.api.nvim_command("au WinLeave,BufLeave * setlocal statusline=%!v:lua.Statusline('inactive')")
 
+local treesitter = require("nvim-treesitter");
+
 function Statusline(mode)
   local stl = "-"
   local filename = "[%t]"
   local location = "[%l:%c]"
   local left = "%r%m"
   local right = ""
+  local context = ""
 
   local function tableLen(t)
     local n = 0
@@ -20,6 +23,13 @@ function Statusline(mode)
 
   if mode == "active" then
     filename = "%#StatusLineFileName#" .. filename .. "%*"
+
+    local tsstatus = treesitter.statusline({
+      type_patterns = { 'function' }
+    })
+    if tsstatus ~= nil and tsstatus ~= "" then
+      context = "[" .. tsstatus .. "]"
+    end
 
     if not vim.tbl_isempty(vim.lsp.buf_get_clients(0)) then
       local clients = vim.lsp.buf_get_clients(0)
@@ -44,5 +54,6 @@ function Statusline(mode)
     end
   end
 
-  return string.format("%s%s%s[%s]%s%s%s%s", stl, left, filename, vim.fn.mode(), location, "%=", right, stl);
+  return string.format("%s%s%s[%s]%s%s%s%s%s", stl, left, filename, vim.fn.mode(), location, "%=", context,
+    right, stl);
 end
