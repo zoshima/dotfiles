@@ -8,7 +8,7 @@ return require("packer").startup(function(use)
 
   -- navigation
   use {
-    "kyazdani42/nvim-tree.lua",
+    "nvim-tree/nvim-tree.lua",
     config = function() require("plugins.nvim-tree_conf") end
   };
   use {
