@@ -105,7 +105,7 @@ MapKey("n", "<Esc>", ":pclose<CR>")
 
 MapKey("i", "<C-N>", "<C-X><C-O>")
 
-require("statusline")
-require("tabline")
-require("colorscheme")
 require("plugins")
+require("tabline")
+require("statusline")
+require("colorscheme")

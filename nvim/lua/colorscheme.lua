@@ -100,7 +100,7 @@ vim.api.nvim_set_hl(0, "NvimTreeOpenedFolderName", { ctermfg = "Blue" })
 vim.api.nvim_set_hl(0, "NvimTreeEmptyFolderName", { ctermfg = "Blue" })
 
 -- treesitter
-vim.api.nvim_set_hl(0, "TreesitterContext", { ctermbg = "NONE" })
+vim.api.nvim_set_hl(0, "TreesitterContext", { ctermbg = "NONE", nocombine = true })
 vim.api.nvim_set_hl(0, "TreesitterContextLineNumber", { ctermfg = "White" })
 
 -- links
