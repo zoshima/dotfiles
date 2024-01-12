@@ -25,6 +25,7 @@ function Statusline(mode)
     if not vim.tbl_isempty(vim.lsp.buf_get_clients(0)) then
       local clients = vim.lsp.buf_get_clients(0)
 
+      -- TODO 0.10: use vim.diagnostic.count
       local errs = vim.diagnostic.get(0, { severity = vim.diagnostic.severity.ERROR })
       local warns = vim.diagnostic.get(0, { severity = vim.diagnostic.severity.WARN })
 
