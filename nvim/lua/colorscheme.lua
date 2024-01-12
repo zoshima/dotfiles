@@ -99,8 +99,11 @@ vim.api.nvim_set_hl(0, "NvimTreeFolderName", { ctermfg = "Blue" })
 vim.api.nvim_set_hl(0, "NvimTreeOpenedFolderName", { ctermfg = "Blue" })
 vim.api.nvim_set_hl(0, "NvimTreeEmptyFolderName", { ctermfg = "Blue" })
 
--- links
+-- treesitter
+vim.api.nvim_set_hl(0, "TreesitterContext", { ctermbg = "NONE" })
+vim.api.nvim_set_hl(0, "TreesitterContextLineNumber", { ctermfg = "White" })
 
+-- links
 local group_links = {
   Error = {
     "ErrorMsg",
