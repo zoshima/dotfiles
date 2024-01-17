@@ -49,6 +49,7 @@ export EDITOR=nvim
 
 export PATH="$PATH:/home/$USER/.local/bin"
 export PATH="$PATH:/home/$USER/go/bin"
+export PATH="$PATH:/home/$USER/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin"
 
 export WINIT_UNIX_BACKEND=x11
 

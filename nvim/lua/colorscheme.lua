@@ -23,7 +23,7 @@ local syntax_colors = {
     "Special",
   },
   Blue = {
-    "@type.builtin",
+    "BuiltinType",
   },
   Cyan = {
     "Type",
@@ -74,7 +74,7 @@ vim.api.nvim_set_hl(0, "LineNr", { ctermfg = "DarkGray" })
 
 vim.api.nvim_set_hl(0, "MsgSeparator", { ctermfg = "DarkGray", underline = true })
 
-vim.api.nvim_set_hl(0, "Underlined", { ctermfg = "Cyan", underline = true })
+vim.api.nvim_set_hl(0, "Underlined", { underline = true })
 
 vim.api.nvim_set_hl(0, "Search", { ctermbg = "NONE", reverse = true })
 
@@ -122,6 +122,11 @@ local group_links = {
     "@storageclass",
   },
   Type = {
+    "@tag.attribute"
+  },
+  BuiltinType = {
+    "@type.builtin",
+    "tag",
   },
   Constant = {
     "@constant.builtin",
