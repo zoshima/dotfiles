@@ -53,7 +53,7 @@ export PATH="$PATH:/home/$USER/.rustup/toolchains/stable-x86_64-unknown-linux-gn
 
 export WINIT_UNIX_BACKEND=x11
 
-alias ls="ls --color=auto"
+alias ls="ls -h --time-style='+%F %T' --color=auto"
 alias ll="ls -al"
 
 alias manpac="$EDITOR ~/git/dotfiles/notes/pacman.txt"
