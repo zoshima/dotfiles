@@ -6,7 +6,7 @@ require("telescope").setup({
       }
     },
     border = true,
-    -- borderchars = { "-", "|", "-", "|", "|", "|", "|", "|" },
+    borderchars = { "-", "|", "-", "|", "|", "|", "|", "|" },
     layout_strategy = "flex",
   },
   pickers = {

@@ -1,10 +1,4 @@
 #!/bin/bash
-rm  ~/.alacritty.yml || true
-rm  ~/.tmux.conf || true
-
-ln -s ~/git/dotfiles/.alacritty.yml ~/.alacritty.yml
-ln -s ~/git/dotfiles/.tmux.conf ~/.tmux.conf
-
 rm -rf ~/.config/nvim || true
 rm -rf ~/.local/share/nvim/site/pack/packer || true
 
