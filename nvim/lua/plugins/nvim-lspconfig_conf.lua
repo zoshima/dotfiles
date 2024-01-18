@@ -35,12 +35,6 @@ lspconfig.gopls.setup({
   end
 })
 
-lspconfig.clangd.setup({
-  on_attach = function(client, bufnr)
-    on_attach(client, bufnr, true)
-  end
-})
-
 lspconfig.rust_analyzer.setup({
   on_attach = function(client, bufnr)
     on_attach(client, bufnr, true)
@@ -56,27 +50,27 @@ lspconfig.tsserver.setup({
   },
 })
 
-lspconfig.lua_ls.setup({
-  on_attach = function(client, bufnr)
-    on_attach(client, bufnr, true)
-  end,
-  settings = {
-    Lua = {
-      runtime = {
-        version = "LuaJIT",
-      },
-      diagnostics = {
-        globals = { "vim" },
-      },
-      workspace = {
-        library = vim.api.nvim_get_runtime_file("", true),
-      },
-      telemetry = {
-        enable = false,
-      }
-    },
-  }
-})
+-- lspconfig.lua_ls.setup({
+--   on_attach = function(client, bufnr)
+--     on_attach(client, bufnr, true)
+--   end,
+--   settings = {
+--     Lua = {
+--       runtime = {
+--         version = "LuaJIT",
+--       },
+--       diagnostics = {
+--         globals = { "vim" },
+--       },
+--       workspace = {
+--         library = vim.api.nvim_get_runtime_file("", true),
+--       },
+--       telemetry = {
+--         enable = false,
+--       }
+--     },
+--   }
+-- })
 
 vim.api.nvim_create_autocmd("BufWritePre", {
   pattern = {
