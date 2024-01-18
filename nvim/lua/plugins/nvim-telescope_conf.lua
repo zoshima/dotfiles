@@ -22,6 +22,7 @@ require("telescope").setup({
   },
 })
 
+MapKey("n", "<Space><Space>", ":Telescope resume<CR>")
 MapKey("n", "<Space>p", ":Telescope git_files<CR>")
 MapKey("n", "<Space>P", ":Telescope commands<CR>")
 MapKey("n", "<Space>F", ":Telescope live_grep<CR>")

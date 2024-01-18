@@ -74,7 +74,8 @@ MapKey("n", "*", "*``")
 
 MapKey("n", "<Space>", "<Nop>")
 
-MapKey("t", "<C-n>", "<C-\\><C-n>")
+-- MapKey("t", "<C-n>", "<C-\\><C-n>")
+MapKey("t", "<Esc>", "<C-\\><C-n>")
 
 MapKey("n", "<C-l>", "<C-w>l")
 MapKey("n", "<C-h>", "<C-w>h")
