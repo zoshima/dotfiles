@@ -25,4 +25,4 @@ require("nvim-treesitter.configs").setup({
   },
 })
 
-MapKey("n", "<C-H>", ":lua print(require('nvim-treesitter').statusline())<CR>", opts)
+MapKey("n", "<C-Space>", ":lua print(require('nvim-treesitter').statusline())<CR>", opts)
