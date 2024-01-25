@@ -20,6 +20,7 @@ vim.opt.clipboard = "unnamedplus"
 vim.opt.completeopt = { "menuone", "noselect", "noinsert" }
 vim.opt.mouse = "a"
 vim.opt.scrolloff = 2
+vim.opt.shadafile = "NONE"
 vim.opt.listchars = {
   tab = "<->",
   space = "_",
