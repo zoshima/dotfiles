@@ -69,6 +69,29 @@ function ShowHighlightInfo()
   print(vim.inspect(result))
 end
 
+function GitBlameLine() 
+  local line = unpack(vim.api.nvim_win_get_cursor(0))
+  local path = vim.fn.expand('%')
+
+  local blame = vim.fn.system("git blame --porcelain -L"..line..",+1 -- "..path)
+
+  print(blame)
+end
+
+function GitBlameSelection()
+  local vstart = vim.fn.getpos("'<")
+  local vend = vim.fn.getpos("'>")
+
+  local line_start = vstart[2]
+  local line_end = vend[2]
+
+  local path = vim.fn.expand('%')
+
+  local blame = vim.fn.system("git blame -L"..line_start..","..line_end.." "..path)
+
+  print(blame)
+end
+
 -- mappings
 MapKey("n", "*", "*``")
 
@@ -92,6 +115,8 @@ MapKey("n", "<C-S-Down>", ":resize -5<CR>")
 MapKey("n", "<Space>,", ":noh<CR>")
 
 MapKey("n", "g?", ":lua ShowHighlightInfo()<CR>")
+MapKey("n", "gb", ":lua GitBlameLine()<CR>")
+MapKey("v", "gb", ":lua GitBlameSelection()<CR>")
 
 MapKey("n", "<F1>", ":lua SwitchExtension('.ts')<CR>")
 MapKey("n", "<F2>", ":lua SwitchExtension('.html')<CR>")

@@ -142,6 +142,9 @@ local group_links = {
   Special = {
     "@string.escape",
   },
+  Todo = {
+    "@comment.todo"
+  },
 }
 
 for group_name, values in pairs(group_links) do
