@@ -27,7 +27,6 @@ return require("packer").startup(function(use)
   -- syntax
   use {
     "nvim-treesitter/nvim-treesitter",
-    requires = { { "nvim-treesitter/nvim-treesitter-context" } },
     config = function() require("plugins.nvim-treesitter_conf") end
   };
 end)

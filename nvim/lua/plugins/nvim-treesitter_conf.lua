@@ -3,6 +3,7 @@ require("nvim-treesitter.configs").setup({
   sync_install = true,
   auto_install = false,
   ensure_installed = {
+    "comment",
     "bash",
     "lua",
     "json",
@@ -23,11 +24,6 @@ require("nvim-treesitter.configs").setup({
     enable = true,
     additional_vim_regex_highlighting = false,
   },
-});
+})
 
-require("treesitter-context").setup({
-  enable = true,
-  max_lines = 1,
-  trim_scope = "inner",
-  mode = "topline",
-});
+MapKey("n", "<C-Space>", ":lua print(require('nvim-treesitter').statusline())<CR>", opts)

@@ -50,10 +50,10 @@ for col_name, values in pairs(syntax_colors) do
 end
 
 -- ui
-vim.api.nvim_set_hl(0, "Pmenu", { ctermbg = "Black" })
-vim.api.nvim_set_hl(0, "PmenuSbar", { ctermbg = "Black" })
-vim.api.nvim_set_hl(0, "PmenuThumb", { ctermbg = "Black", reverse = true })
-vim.api.nvim_set_hl(0, "PmenuSel", { ctermbg = "Black", reverse = true })
+vim.api.nvim_set_hl(0, "Pmenu", { ctermbg = "DarkGray" })
+vim.api.nvim_set_hl(0, "PmenuSbar", { ctermbg = "DarkGray" })
+vim.api.nvim_set_hl(0, "PmenuThumb", { ctermbg = "DarkGray", reverse = true })
+vim.api.nvim_set_hl(0, "PmenuSel", { ctermbg = "DarkGray", reverse = true })
 
 vim.api.nvim_set_hl(0, "Visual", { ctermbg = "NONE", reverse = true })
 vim.api.nvim_set_hl(0, "Visual", { ctermbg = "NONE", reverse = true })
@@ -141,6 +141,9 @@ local group_links = {
   },
   Special = {
     "@string.escape",
+  },
+  Todo = {
+    "@comment.todo"
   },
 }
 
