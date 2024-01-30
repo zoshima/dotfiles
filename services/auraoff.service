@@ -1,0 +1,8 @@
+[Unit]
+Description=Turn off Kingston Fury Beast DDR5 RGB LEDs
+
+[Service]
+ExecStart=/bin/auraoff.sh
+
+[Install]
+WantedBy=multi-user.target
