@@ -19,7 +19,7 @@ vim.opt.clipboard = "unnamedplus"
 -- TODO 0.10: add "popup"
 vim.opt.completeopt = { "menuone", "noselect", "noinsert" }
 vim.opt.mouse = "a"
-vim.opt.scrolloff = 2
+vim.opt.scrolloff = 1
 vim.opt.shadafile = "NONE"
 vim.opt.listchars = {
   tab = "<->",
