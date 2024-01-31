@@ -29,17 +29,17 @@ require("nvim-tree").setup({
   view = {
     relativenumber = true,
     width = 40,
-    -- float = {
-    --   enable = true,
-    --   quit_on_focus_loss = false,
-    --   open_win_config = {
-    --     relative = "editor",
-    --     border = "rounded",
-    --     width = 60,
-    --     row = 1,
-    --     col = 5,
-    --   },
-    -- },
+    float = {
+      enable = true,
+      quit_on_focus_loss = false,
+      open_win_config = {
+        relative = "editor",
+        border = "rounded",
+        width = 60,
+        row = 1,
+        col = 5,
+      },
+    },
   },
   actions = {
     open_file = {
