@@ -55,6 +55,8 @@ vim.api.nvim_set_hl(0, "PmenuSbar", { ctermbg = "DarkGray" })
 vim.api.nvim_set_hl(0, "PmenuThumb", { ctermbg = "DarkGray", reverse = true })
 vim.api.nvim_set_hl(0, "PmenuSel", { ctermbg = "DarkGray", reverse = true })
 
+vim.api.nvim_set_hl(0, "SignColumn", { ctermbg = "NONE" })
+
 vim.api.nvim_set_hl(0, "Visual", { ctermbg = "NONE", reverse = true })
 vim.api.nvim_set_hl(0, "Visual", { ctermbg = "NONE", reverse = true })
 
