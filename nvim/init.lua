@@ -11,7 +11,7 @@ vim.opt.shiftwidth = 2
 vim.opt.splitbelow = true
 vim.opt.splitright = true
 vim.opt.pumheight = 5
-vim.opt.foldmethod = "indent"
+vim.opt.foldmethod = "manual"
 vim.opt.foldenable = false
 vim.opt.swapfile = false
 -- TODO 0.10: check if https://neovim.io/doc/user/provider.html#clipboard-osc52 can be used
