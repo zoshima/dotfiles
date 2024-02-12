@@ -54,5 +54,10 @@ vim.api.nvim_create_autocmd("BufWritePre", {
     "*.scss",
     "*.html",
   },
-  command = "PrettierAsync"
+  -- command = ":silent %!npx prettier --stdin-filepath %"
+  callback = function()
+    local view = vim.fn.winsaveview()
+    vim.cmd(":silent %!npx prettier --stdin-filepath %")
+    vim.fn.winrestview(view)
+  end
 })
