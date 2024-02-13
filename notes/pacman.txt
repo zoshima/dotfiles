@@ -4,6 +4,7 @@ pacman -Rsn # (uninstall)
 pacman -Ss # (search)
 pacman -Si # (package info)
 pacman -Sii # (packages depending on #)
+pacman -Sg # (list group packages)
 
 pacman -Qs # (search installed)
 pacman -Qi # (installed package info)
@@ -12,6 +13,7 @@ pacman -Qe (list explicitly installed)
 pacman -Qe (list foreign)
 pacman -Sl # (list repository)
 pacman -Ql # (list package files)
+pacman -Qg # (list group packages)
 
 pacman -F # (query package files)
 
