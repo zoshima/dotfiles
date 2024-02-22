@@ -145,7 +145,8 @@ local group_links = {
     "@string.escape",
   },
   Todo = {
-    "@comment.todo"
+    "@comment.todo",
+    "label"
   },
 }
 
