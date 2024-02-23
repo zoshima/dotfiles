@@ -28,7 +28,6 @@ require("nvim-tree").setup({
   },
   view = {
     relativenumber = true,
-    height = "50%",
     float = {
       enable = true,
       quit_on_focus_loss = false,
