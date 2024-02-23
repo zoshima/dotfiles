@@ -28,7 +28,7 @@ require("nvim-tree").setup({
   },
   view = {
     relativenumber = true,
-    width = 40,
+    height = "50%",
     float = {
       enable = true,
       quit_on_focus_loss = false,
@@ -36,8 +36,7 @@ require("nvim-tree").setup({
         relative = "editor",
         border = "rounded",
         width = 60,
-        row = 1,
-        col = 5,
+        height = 20,
       },
     },
   },
@@ -52,17 +51,3 @@ require("nvim-tree").setup({
 })
 
 MapKey("n", "<Space>e", ":NvimTreeFindFileToggle<CR>")
-
--- vim.api.nvim_create_autocmd({ "VimEnter" }, {
---   callback = function(data)
---     local is_dir = vim.fn.isdirectory(data.file) == 1
-
---     if not is_dir then
---       return
---     end
-
---     vim.cmd.cd(data.file)
-
---     require("nvim-tree.api").tree.open()
---   end
--- })
