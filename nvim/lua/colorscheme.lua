@@ -4,7 +4,6 @@
 local syntax_colors = {
   White = {
     "Identifier",
-    "Delimiter", -- Special group
   },
   DarkGray = {
     "NonText", -- ~ at EOF
@@ -21,6 +20,9 @@ local syntax_colors = {
   },
   Magenta = {
     "Special",
+  },
+  LightGray = {
+    "Delimiter", -- Special group
   },
   Blue = {
     "BuiltinType",
@@ -145,7 +147,8 @@ local group_links = {
     "@string.escape",
   },
   Todo = {
-    "@comment.todo"
+    "@comment.todo",
+    "label"
   },
 }
 
