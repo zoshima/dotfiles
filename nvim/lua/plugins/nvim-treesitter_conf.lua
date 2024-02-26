@@ -15,6 +15,7 @@ require("nvim-treesitter.configs").setup({
     "go",
     "python",
     "yaml",
+    "toml",
     "sql",
     "rust",
     "c",
