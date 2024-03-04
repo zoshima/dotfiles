@@ -1,7 +1,8 @@
 [window]
 dimensions = { columns = 110, lines = 30 }
 position = { x = 0, y = 0}
-padding = { x = 8, y = 8 }
+padding = { x = 4, y = 4 }
+dynamic_padding = true
 resize_increments = true
 
 [font]
