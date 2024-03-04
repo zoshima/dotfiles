@@ -18,15 +18,14 @@ AUTOPICKUP_EXCEPTION="> named !!c"
 # ui
 OPTIONS=windowtype:curses
 OPTIONS=windowborders:1
-OPTIONS=guicolor:1
-
 OPTIONS=symset:plain
+OPTIONS=guicolor
+
+OPTIONS=popup_dialog
 
 OPTIONS=align_message:bottom 
 OPTIONS=align_status:left 
-OPTIONS=perm_invent
-
-OPTIONS=popup_dialog
+ OPTIONS=perm_invent
 
 # status
 OPTIONS=statushilites
