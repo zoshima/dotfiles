@@ -4,6 +4,7 @@ position = { x = 0, y = 0}
 padding = { x = 4, y = 4 }
 dynamic_padding = true
 resize_increments = true
+# decorations = "None"
 
 [font]
 size = 11

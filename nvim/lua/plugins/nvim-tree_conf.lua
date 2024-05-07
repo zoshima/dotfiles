@@ -50,3 +50,4 @@ require("nvim-tree").setup({
 })
 
 MapKey("n", "<Space>e", ":NvimTreeFindFileToggle<CR>")
+MapKey("n", "<Esc>", ":NvimTreeClose<CR>")

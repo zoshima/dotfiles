@@ -45,7 +45,7 @@ lspconfig.tsserver.setup({
   },
 })
 
-vim.api.nvim_create_autocmd("BufWritePre", {
+vim.api.nvim_create_autocmd("BufWritePost", {
   pattern = {
     "*.ts",
     "*.js",
@@ -56,8 +56,8 @@ vim.api.nvim_create_autocmd("BufWritePre", {
   },
   -- command = ":silent %!npx prettier --stdin-filepath %"
   callback = function()
-    local view = vim.fn.winsaveview()
-    vim.cmd(":silent %!npx prettier --stdin-filepath %")
-    vim.fn.winrestview(view)
+    -- local view = vim.fn.winsaveview()
+    vim.cmd(":silent !npx prettier % --write")
+    -- vim.fn.winrestview(view)
   end
 })
