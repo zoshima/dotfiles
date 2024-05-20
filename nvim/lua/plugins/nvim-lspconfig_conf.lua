@@ -11,11 +11,6 @@ local on_attach = function(client, bufnr, fmt)
   MapKey("i", "<C-H>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
   MapKey("n", "gn", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
 
-  MapKey("n", "z/", "<cmd>lua vim.diagnostic.set_loclist()<CR>", opts)
-  MapKey("n", "zn", "<cmd>lua vim.diagnostic.goto_next()<CR>", opts)
-  MapKey("n", "zp", "<cmd>lua vim.diagnostic.goto_prev()<CR>", opts)
-  MapKey("n", "zh", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
-
   if fmt == true then
     MapKey("n", "gf", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
     MapKey("v", "gf", "<cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)

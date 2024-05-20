@@ -31,7 +31,7 @@ MapKey("n", "<Space>b", ":Telescope buffers<CR>")
 MapKey("n", "<Space>m", ":Telescope marks<CR>")
 MapKey("n", "<Space>C", ":Telescope git_commits<CR>")
 MapKey("n", "<Space>c", ":Telescope git_bcommits<CR>")
-MapKey("n", "<Space>z", ":Telescope diagnostics<CR>")
+MapKey("n", "<Space>d", ":Telescope diagnostics<CR>")
 
 MapKey("n", "<Space>t", ":Telescope lsp_document_symbols<CR>")
 
