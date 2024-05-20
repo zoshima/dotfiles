@@ -16,8 +16,7 @@ vim.opt.foldenable = false
 vim.opt.swapfile = false
 -- TODO 0.10: check if https://neovim.io/doc/user/provider.html#clipboard-osc52 can be used
 vim.opt.clipboard = "unnamedplus"
--- TODO 0.10: add "popup"
-vim.opt.completeopt = { "menuone", "noselect", "noinsert" }
+vim.opt.completeopt = { "menuone", "noselect", "noinsert", "popup" }
 vim.opt.mouse = "a"
 vim.opt.scrolloff = 1
 vim.opt.shadafile = "NONE"
