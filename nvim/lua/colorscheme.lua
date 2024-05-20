@@ -75,7 +75,8 @@ vim.api.nvim_set_hl(0, "StatusLineFileName", { ctermfg = "White" })
 vim.api.nvim_set_hl(0, "CursorLine", {})
 vim.api.nvim_set_hl(0, "CursorLineNr", { ctermfg = "White" })
 
-vim.api.nvim_set_hl(0, "VertSplit", { ctermfg = "DarkGray" })
+vim.api.nvim_set_hl(0, "WinSeparator", { ctermfg = "DarkGray" })
+vim.api.nvim_set_hl(0, "MatchParen", { bold = true })
 
 vim.api.nvim_set_hl(0, "LineNr", { ctermfg = "DarkGray" })
 
