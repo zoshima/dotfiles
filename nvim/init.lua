@@ -14,7 +14,6 @@ vim.opt.pumheight = 5
 vim.opt.foldmethod = "manual"
 vim.opt.foldenable = false
 vim.opt.swapfile = false
--- TODO 0.10: check if https://neovim.io/doc/user/provider.html#clipboard-osc52 can be used
 vim.opt.clipboard = "unnamedplus"
 vim.opt.completeopt = { "menuone", "noselect", "noinsert", "popup" }
 vim.opt.mouse = "a"
