@@ -132,7 +132,7 @@ MapKey("n", "<Esc>", ":pclose<CR>")
 
 MapKey("n", "<BS>", "-")
 
-MapKey("i", "<C-N>", "<C-X><C-O>")
+-- MapKey("i", "<C-N>", "<C-X><C-O>")
 
 require("plugins")
 require("tabline")
