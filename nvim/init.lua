@@ -24,10 +24,11 @@ vim.opt.listchars = {
   space = "_",
 }
 vim.opt.fillchars = {
-  vert = "|",
-  stl = "-",
-  stlnc = "-",
+  -- vert = "|",
+  stl = "─",
+  -- stlnc = "-",
 }
+vim.opt.laststatus = 3
 
 -- globals
 vim.g.mapleader = " "

@@ -2,7 +2,7 @@ vim.api.nvim_command("au WinEnter,BufEnter * setlocal statusline=%!v:lua.Statusl
 vim.api.nvim_command("au WinLeave,BufLeave * setlocal statusline=%!v:lua.Statusline('inactive')")
 
 function Statusline(mode)
-  local stl = "-"
+  local stl = "─"
   local filename = "[%t]"
   local location = "[%l:%c]"
   local left = "%r%m"
