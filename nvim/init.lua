@@ -24,44 +24,22 @@ vim.opt.listchars = {
   space = "_",
 }
 vim.opt.fillchars = {
-  -- vert = "|",
-  stl = "─",
-  -- stlnc = "-",
+  vert = "|",
+  stl = "-",
+  stlnc = "-",
 }
-vim.opt.laststatus = 3
+-- vim.opt.laststatus = 3
 
 -- globals
 vim.g.mapleader = " "
 -- vim.g.netrw_banner = 0
--- vim.g.netrw_liststyle = 3
+vim.g.netrw_liststyle = 3
 
 -- functions
 function MapKey(mode, lhs, rhs, opts)
   local options = { noremap = true }
   if opts then options = vim.tbl_extend("force", options, opts) end
   vim.api.nvim_set_keymap(mode, lhs, rhs, options)
-end
-
-function FitSplit()
-  local line_len = vim.fn.col('$') + 3;
-  print(line_len);
-
-  vim.cmd('vertical resize ' .. line_len);
-end
-
-function SwitchExtension(extension)
-  local target_buffer = vim.fn.expand("%:t:r") .. extension
-  local target_file = vim.fn.expand("%:p:h") .. "/" .. target_buffer
-  local target_buffer_no = vim.fn.bufnr(target_buffer)
-  local is_readable = vim.fn.filereadable(target_file)
-
-  if target_buffer_no >= 0 then
-    vim.cmd('silent execute "buffer" ' .. target_buffer_no)
-  elseif is_readable == 1 then
-    vim.cmd('silent e ' .. target_file)
-  else
-    print("not found: " .. target_file)
-  end
 end
 
 function ShowHighlightInfo()
@@ -105,8 +83,6 @@ MapKey("n", "<C-h>", "<C-w>h")
 MapKey("n", "<C-j>", "<C-w>j")
 MapKey("n", "<C-k>", "<C-w>k")
 
-MapKey("n", "<C-w>-", ":lua FitSplit()<CR>");
-
 MapKey("n", "<C-S-Left>", ":vertical resize +5<CR>")
 MapKey("n", "<C-S-Right>", ":vertical resize -5<CR>")
 MapKey("n", "<C-S-Up>", ":resize +5<CR>")
@@ -114,26 +90,23 @@ MapKey("n", "<C-S-Down>", ":resize -5<CR>")
 
 MapKey("n", "<Space>,", ":noh<CR>")
 
+MapKey("n", "<Space>e", ":Ex<CR>")
+
 MapKey("n", "g?", ":lua ShowHighlightInfo()<CR>")
 MapKey("n", "gb", ":lua GitBlameLine()<CR>")
 MapKey("v", "gb", ":lua GitBlameSelection()<CR>")
-
-MapKey("n", "<F1>", ":lua SwitchExtension('.ts')<CR>")
-MapKey("n", "<F2>", ":lua SwitchExtension('.html')<CR>")
-MapKey("n", "<F3>", ":lua SwitchExtension('.scss')<CR>")
 
 MapKey("n", "<F5>", ":!make run<CR>")
 MapKey("n", "<F6>", ":!make build<CR>")
 MapKey("n", "<F7>", ":!make test<CR>")
 
 MapKey("n", "<F8>", ":so ~/git/dotfiles/nvim/lua/colorscheme.lua<CR>")
-MapKey("n", "<F9>", ":Telescope highlights<CR>")
 
 MapKey("n", "<Esc>", ":pclose<CR>")
 
 MapKey("n", "<BS>", "-")
 
--- MapKey("i", "<C-N>", "<C-X><C-O>")
+MapKey("i", "<C-c>", "<C-X><C-O>")
 
 require("plugins")
 require("tabline")

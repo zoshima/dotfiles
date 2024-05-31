@@ -4,25 +4,27 @@
 local syntax_colors = {
   White = {
     "Identifier",
+    "Variable",
   },
   DarkGray = {
     "NonText", -- ~ at EOF
     "Comment",
+  },
+  LightGray = {
+    "Delimiter", -- Special group
   },
   Green = {
     "Constant",
   },
   Yellow = {
     "Function", -- Identifier group
+    "Changed",
   },
   Brown = {
     "Todo",
   },
   Magenta = {
     "Special",
-  },
-  LightGray = {
-    "Delimiter", -- Special group
   },
   Blue = {
     "BuiltinType",
@@ -141,6 +143,7 @@ local group_links = {
     "@constant.builtin",
   },
   Variable = {
+    "@variable",
     "@variable.builtin",
   },
   Function = {

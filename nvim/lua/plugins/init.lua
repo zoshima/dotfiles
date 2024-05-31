@@ -5,10 +5,6 @@ return require("packer").startup(function(use)
 
   -- navigation
   use {
-    "nvim-tree/nvim-tree.lua",
-    config = function() require("plugins.nvim-tree_conf") end
-  };
-  use {
     "nvim-telescope/telescope.nvim",
     requires = { { "nvim-lua/plenary.nvim" } },
     config = function() require("plugins.nvim-telescope_conf") end
