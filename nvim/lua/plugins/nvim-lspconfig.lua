@@ -23,13 +23,13 @@ local on_attach = function(client, bufnr, fmt)
   end
 end
 
-lspconfig.gopls.setup({
+lspconfig.bashls.setup({
   on_attach = function(client, bufnr)
     on_attach(client, bufnr, true)
   end
 })
 
-lspconfig.rust_analyzer.setup({
+lspconfig.gopls.setup({
   on_attach = function(client, bufnr)
     on_attach(client, bufnr, true)
   end
