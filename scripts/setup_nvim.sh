@@ -1,4 +1,9 @@
 #!/bin/bash
+pushd ~/git/dotfiles
+git submodule init
+git submodule update
+popd
+
 rm -rf ~/.config/nvim || true
 
 mkdir -p ~/.config/nvim
