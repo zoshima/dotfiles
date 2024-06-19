@@ -1,3 +1,8 @@
+-- globals
+vim.g.mapleader = " "
+vim.g.netrw_liststyle = 3
+-- vim.g.netrw_banner = 0
+
 -- options
 vim.opt.termguicolors = false
 vim.opt.signcolumn = "no"
@@ -28,12 +33,6 @@ vim.opt.fillchars = {
   stl = "-",
   stlnc = "-",
 }
--- vim.opt.laststatus = 3
-
--- globals
-vim.g.mapleader = " "
--- vim.g.netrw_banner = 0
-vim.g.netrw_liststyle = 3
 
 -- functions
 function MapKey(mode, lhs, rhs, opts)
@@ -72,43 +71,33 @@ end
 
 -- mappings
 MapKey("n", "*", "*``")
-
 MapKey("n", "<Space>", "<Nop>")
-
--- MapKey("t", "<C-n>", "<C-\\><C-n>")
-MapKey("t", "<Esc>", "<C-\\><C-n>")
-
 MapKey("n", "<C-l>", "<C-w>l")
 MapKey("n", "<C-h>", "<C-w>h")
 MapKey("n", "<C-j>", "<C-w>j")
 MapKey("n", "<C-k>", "<C-w>k")
-
 MapKey("n", "<C-S-Left>", ":vertical resize +5<CR>")
 MapKey("n", "<C-S-Right>", ":vertical resize -5<CR>")
 MapKey("n", "<C-S-Up>", ":resize +5<CR>")
 MapKey("n", "<C-S-Down>", ":resize -5<CR>")
-
 MapKey("n", "<Space>,", ":noh<CR>")
-
 MapKey("n", "<Space>e", ":Ex<CR>")
-
 MapKey("n", "g?", ":lua ShowHighlightInfo()<CR>")
 MapKey("n", "gb", ":lua GitBlameLine()<CR>")
 MapKey("v", "gb", ":lua GitBlameSelection()<CR>")
-
 MapKey("n", "<F5>", ":!make run<CR>")
 MapKey("n", "<F6>", ":!make build<CR>")
 MapKey("n", "<F7>", ":!make test<CR>")
-
 MapKey("n", "<F8>", ":so ~/git/dotfiles/nvim/lua/colorscheme.lua<CR>")
-
 MapKey("n", "<Esc>", ":pclose<CR>")
-
 MapKey("n", "<BS>", "-")
-
 MapKey("i", "<C-c>", "<C-X><C-O>")
+MapKey("t", "<Esc>", "<C-\\><C-n>")
 
-require("plugins")
+-- require
 require("tabline")
 require("statusline")
 require("colorscheme")
+require("plugins.nvim-lspconfig")
+require("plugins.nvim-treesitter")
+require("plugins.telescope")
