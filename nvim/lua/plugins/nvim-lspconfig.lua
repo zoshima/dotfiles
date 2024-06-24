@@ -23,12 +23,6 @@ local on_attach = function(client, bufnr, fmt)
   end
 end
 
-lspconfig.bashls.setup({
-  on_attach = function(client, bufnr)
-    on_attach(client, bufnr, true)
-  end
-})
-
 lspconfig.gopls.setup({
   on_attach = function(client, bufnr)
     on_attach(client, bufnr, true)
