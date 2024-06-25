@@ -10,3 +10,6 @@
 [submodule "nvim/pack/nvim/start/telescope.nvim"]
 	path = nvim/pack/nvim/start/telescope.nvim
 	url = https://github.com/nvim-telescope/telescope.nvim.git
+[submodule "nvim/pack/nvim/start/oil.nvim"]
+	path = nvim/pack/nvim/start/oil.nvim
+	url = https://github.com/stevearc/oil.nvim.git
