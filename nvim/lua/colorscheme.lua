@@ -71,9 +71,9 @@ vim.api.nvim_set_hl(0, "Visual", { ctermbg = "NONE", reverse = true })
 vim.api.nvim_set_hl(0, "TabLineFill", { ctermfg = "DarkGray" })
 vim.api.nvim_set_hl(0, "TabLineSel", { ctermfg = "White" })
 
-vim.api.nvim_set_hl(0, "StatusLine", { ctermfg = "DarkGray" })
-vim.api.nvim_set_hl(0, "StatusLineNC", { ctermfg = "DarkGray", nocombine = true })
-vim.api.nvim_set_hl(0, "StatusLineFileName", { ctermfg = "White" })
+vim.api.nvim_set_hl(0, "StatusLine", { ctermfg = "DarkGray", ctermbg = "NONE" })
+vim.api.nvim_set_hl(0, "StatusLineFileName", { ctermfg = "White"  })
+-- vim.api.nvim_set_hl(0, "StatusLineNC", { ctermfg = "DarkGray", nocombine = true })
 
 vim.api.nvim_set_hl(0, "CursorLine", {})
 vim.api.nvim_set_hl(0, "CursorLineNr", { ctermfg = "White" })
@@ -83,7 +83,7 @@ vim.api.nvim_set_hl(0, "MatchParen", { bold = true })
 
 vim.api.nvim_set_hl(0, "LineNr", { ctermfg = "DarkGray" })
 
-vim.api.nvim_set_hl(0, "MsgSeparator", { ctermfg = "DarkGray", underline = true })
+vim.api.nvim_set_hl(0, "MsgSeparator", { ctermfg = "DarkGray" })
 
 vim.api.nvim_set_hl(0, "Underlined", { underline = true })
 

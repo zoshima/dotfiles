@@ -29,10 +29,10 @@ vim.opt.listchars = {
   space = "_",
 }
 vim.opt.fillchars = {
-  vert = "|",
-  stl = "-",
-  stlnc = "-",
+  msgsep = "─",
+  stl = "─",
 }
+vim.opt.laststatus = 3
 
 -- functions
 function MapKey(mode, lhs, rhs, opts)

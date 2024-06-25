@@ -2,11 +2,10 @@ vim.api.nvim_command("au WinEnter,BufEnter * setlocal statusline=%!v:lua.Statusl
 vim.api.nvim_command("au WinLeave,BufLeave * setlocal statusline=%!v:lua.Statusline('inactive')")
 
 function Statusline(mode)
-  local stl = "-"
-  local filename = "[%t]"
-  local location = "[%l:%c]"
-  local left = "%r%m"
-  local right = ""
+  local filename = "%t"
+  local location = "%l:%c"
+  local state = "%r%m"
+  local diagnostics = ""
   local context = ""
 
   if mode == "active" then
@@ -24,18 +23,18 @@ function Statusline(mode)
       local num_warns = num_diagnostics[vim.diagnostic.severity.WARN]
 
       if num_errs ~= nil then
-        right = right .. "[%#DiagnosticError#" .. num_errs .. "e%*]"
+        diagnostics = diagnostics .. "[%#DiagnosticError#" .. num_errs .. "e%*]"
       end
 
       if num_warns ~= nil then
-        right = right .. "[%#DiagnosticWarn#" .. num_warns .. "w%*]"
+        diagnostics = diagnostics .. "[%#DiagnosticWarn#" .. num_warns .. "w%*]"
       end
 
       for _, v in ipairs(clients) do
-        right = right .. "[" .. v.name .. "]"
+        diagnostics = diagnostics .. "[" .. v.name .. "]"
       end
     end
   end
 
-  return string.format("%s%s%s[%s]%s%s%s%s", stl, left, filename, vim.fn.mode(), location, "%=", right, stl);
+  return string.format("%s[%s][%s][%s] %s %s", state, vim.fn.mode(), filename, location, "%=", diagnostics);
 end
