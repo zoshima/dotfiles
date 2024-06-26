@@ -20,6 +20,7 @@ require("nvim-treesitter.configs").setup({
     "rust",
     "c",
     "cpp",
+    "markdown",
   },
   ignore_install = { "t32" },
   highlight = {
