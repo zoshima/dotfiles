@@ -31,8 +31,9 @@ vim.opt.listchars = {
 vim.opt.fillchars = {
   msgsep = "─",
   stl = "─",
+  stlnc = "─",
 }
-vim.opt.laststatus = 3
+-- vim.opt.laststatus = 3
 
 -- functions
 function MapKey(mode, lhs, rhs, opts)

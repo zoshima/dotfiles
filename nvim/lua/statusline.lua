@@ -36,5 +36,5 @@ function Statusline(mode)
     end
   end
 
-  return string.format("%s[%s][%s][%s] %s %s", state, vim.fn.mode(), filename, location, "%=", diagnostics);
+  return string.format("─%s[%s][%s][%s]%s%s─", state, vim.fn.mode(), filename, location, "%=", diagnostics);
 end
