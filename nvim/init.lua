@@ -1,7 +1,5 @@
 -- globals
 vim.g.mapleader = " "
-vim.g.netrw_liststyle = 3
--- vim.g.netrw_banner = 0
 
 -- options
 vim.opt.termguicolors = false
@@ -33,7 +31,6 @@ vim.opt.fillchars = {
   stl = "─",
   stlnc = "─",
 }
--- vim.opt.laststatus = 3
 
 -- functions
 function MapKey(mode, lhs, rhs, opts)
@@ -45,29 +42,6 @@ end
 function ShowHighlightInfo()
   local result = vim.treesitter.get_captures_at_cursor(0)
   print(vim.inspect(result))
-end
-
-function GitBlameLine() 
-  local line = unpack(vim.api.nvim_win_get_cursor(0))
-  local path = vim.fn.expand('%')
-
-  local blame = vim.fn.system("git blame --porcelain -L"..line..",+1 -- "..path)
-
-  print(blame)
-end
-
-function GitBlameSelection()
-  local vstart = vim.fn.getpos("'<")
-  local vend = vim.fn.getpos("'>")
-
-  local line_start = vstart[2]
-  local line_end = vend[2]
-
-  local path = vim.fn.expand('%')
-
-  local blame = vim.fn.system("git blame -L"..line_start..","..line_end.." "..path)
-
-  print(blame)
 end
 
 -- mappings
@@ -82,10 +56,7 @@ MapKey("n", "<C-S-Right>", ":vertical resize -5<CR>")
 MapKey("n", "<C-S-Up>", ":resize +5<CR>")
 MapKey("n", "<C-S-Down>", ":resize -5<CR>")
 MapKey("n", "<Space>,", ":noh<CR>")
--- MapKey("n", "<Space>e", ":Ex<CR>")
 MapKey("n", "g?", ":lua ShowHighlightInfo()<CR>")
-MapKey("n", "gb", ":lua GitBlameLine()<CR>")
-MapKey("v", "gb", ":lua GitBlameSelection()<CR>")
 MapKey("n", "<F5>", ":!make run<CR>")
 MapKey("n", "<F6>", ":!make build<CR>")
 MapKey("n", "<F7>", ":!make test<CR>")
