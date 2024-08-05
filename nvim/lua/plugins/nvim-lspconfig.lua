@@ -23,6 +23,25 @@ local on_attach = function(client, bufnr, fmt)
   end
 end
 
+lspconfig.lua_ls.setup({
+  on_init = function(client)
+    client.config.settings.Lua = {
+      runtime = {
+        version = 'LuaJIT'
+      },
+      workspace = {
+        checkThirdParty = false,
+        library = {
+          vim.env.VIMRUNTIME
+        }
+      }
+    }
+  end,
+  on_attach = function(client, bufnr)
+    on_attach(client, bufnr, true)
+  end
+})
+
 lspconfig.gopls.setup({
   on_attach = function(client, bufnr)
     on_attach(client, bufnr, true)
