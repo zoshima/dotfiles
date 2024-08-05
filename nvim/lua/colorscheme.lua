@@ -1,6 +1,22 @@
 -- :h group-name
 -- :h cterm-colors
 
+-- material colors
+local gui_remap = {
+  Black = "#212121",     -- gray 900
+  White = "#FFFFFF",
+  DarkGray = "#616161",  -- 700
+  LightGray = "#E0E0E0", --  300
+  Green = "#4CAF50",
+  Yellow = "#FDD835",
+  Brown = "#795548",
+  Magenta = "#E91E63",
+  Blue = "#2196F3",
+  Cyan = "#00BCD4",
+  Red = "#F44336",
+  LightRed = "#EF9A9A",
+}
+
 local syntax_colors = {
   White = {
     "Identifier",
@@ -15,6 +31,8 @@ local syntax_colors = {
   },
   Green = {
     "Constant",
+    "String",
+    "Added",
   },
   Yellow = {
     "Function", -- Identifier group
@@ -39,43 +57,44 @@ local syntax_colors = {
     "Statement",
     "PreProc",
     "Error",
+    "Removed",
   },
 };
 
 local ui_colors = {
-  Pmenu = { bg = "Black", },
-  PmenuSbar = { bg = "Black", },
-  PmenuThumb = { bg = "Black", reverse = true, },
-  PmenuSel = { bg = "Black", reverse = true, },
-  NormalFloat = { bg = "Black", },
-  FloatBorder = { bg = "DarkGray", },
-  SignColumn = { bg = "NONE", },
-  Visual = { bg = "NONE", reverse = true },
-  TabLineFill = { fg = "DarkGray" },
-  TabLineSel = { fg = "White" },
-  StatusLine = { fg = "DarkGray", bg = "NONE" },
-  StatusLineNC = { fg = "DarkGray", nocombine = true },
-  StatusLineFileName = { fg = "White" },
-  CursorLine = { bg = "DarkGray" },
-  CursorLineNr = { fg = "White" },
-  WinSeparator = { fg = "DarkGray" },
+  Pmenu = { ctermbg = "Black", },
+  PmenuSbar = { ctermbg = "Black", },
+  PmenuThumb = { ctermbg = "Black", reverse = true, },
+  PmenuSel = { ctermbg = "Black", reverse = true, },
+  NormalFloat = { ctermbg = "Black", },
+  FloatBorder = { ctermbg = "DarkGray", },
+  SignColumn = { ctermbg = "NONE", },
+  Visual = { ctermbg = "NONE", reverse = true },
+  TabLineFill = { ctermfg = "DarkGray" },
+  TabLineSel = { ctermfg = "White" },
+  StatusLine = { ctermfg = "DarkGray", ctermbg = "NONE" },
+  StatusLineNC = { ctermfg = "DarkGray", nocombine = true },
+  StatusLineFileName = { ctermfg = "White" },
+  CursorLine = { ctermbg = "DarkGray" },
+  CursorLineNr = { ctermfg = "White" },
+  WinSeparator = { ctermfg = "DarkGray" },
   MatchParen = { bold = true },
-  LineNr = { fg = "DarkGray" },
-  MsgSeparator = { fg = "DarkGray" },
+  LineNr = { ctermfg = "DarkGray" },
+  MsgSeparator = { ctermfg = "DarkGray" },
   Underlined = { underline = true },
-  Search = { bg = "NONE", reverse = true },
-  DiagnosticError = { fg = "Red" },
+  Search = { ctermbg = "NONE", reverse = true },
+  DiagnosticError = { ctermfg = "Red" },
   DiagnosticUnderlineError = { sp = "Red", undercurl = true },
-  DiagnosticWarn = { fg = "Yellow" },
+  DiagnosticWarn = { ctermfg = "Yellow" },
   DiagnosticUnderlineWarn = { sp = "Yellow", undercurl = true },
-  DiagnosticInfo = { fg = "Blue" },
+  DiagnosticInfo = { ctermfg = "Blue" },
   DiagnosticUnderlineInfo = { sp = "Blue", undercurl = true },
-  DiagnosticHint = { fg = "Cyan" },
+  DiagnosticHint = { ctermfg = "Cyan" },
   DiagnosticUnderlineHint = { sp = "Cyan", undercurl = true },
-  DiagnosticOk = { fg = "Green" },
+  DiagnosticOk = { ctermfg = "Green" },
   DiagnosticUnderlineOk = { sp = "Green", undercurl = true },
-  TreesitterContext = { bg = "NONE", nocombine = true },
-  TreesitterContextLineNumber = { fg = "White" },
+  TreesitterContext = { ctermbg = "NONE", nocombine = true },
+  TreesitterContextLineNumber = { ctermfg = "White" },
 };
 
 local group_links = {
@@ -128,10 +147,16 @@ for col_name, values in pairs(syntax_colors) do
     local value
 
     value = { bg = "NONE", ctermbg = "NONE" }
-    value.fg = col_name
+    value.fg = gui_remap[col_name] or col_name
     value.ctermfg = col_name
 
     vim.api.nvim_set_hl(0, v, value)
+  end
+end
+
+for group_name, values in pairs(group_links) do
+  for _, v in ipairs(values) do
+    vim.api.nvim_set_hl(0, v, { link = group_name })
   end
 end
 
@@ -139,20 +164,14 @@ for group_name, values in pairs(ui_colors) do
   local result = {}
 
   for k, v in pairs(values) do
-    if k == 'fg' then
-      result.ctermfg = v
-    elseif k == 'bg' then
-      result.ctermbg = v
+    if k == 'ctermfg' then
+      result.fg = gui_remap[v] or v
+    elseif k == 'ctermbg' then
+      result.bg = gui_remap[v] or v
     end
 
     result[k] = v
   end
 
   vim.api.nvim_set_hl(0, group_name, result)
-end
-
-for group_name, values in pairs(group_links) do
-  for _, v in ipairs(values) do
-    vim.api.nvim_set_hl(0, v, { link = group_name })
-  end
 end
