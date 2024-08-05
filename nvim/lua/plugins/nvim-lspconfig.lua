@@ -15,6 +15,8 @@ local on_attach = function(client, bufnr, fmt)
   MapKey("n", "zp", "<cmd>lua vim.diagnostic.goto_prev()<CR>", opts)
   MapKey("n", "zh", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
 
+  MapKey("i", "<C-n>", "<C-x><C-o>")
+
   if fmt == true then
     MapKey("n", "gf", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
     MapKey("v", "gf", "<cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
