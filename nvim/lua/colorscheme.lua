@@ -1,12 +1,11 @@
 -- :h group-name
 -- :h cterm-colors
 
--- material colors
+-- standard material colors (500)
 local gui_remap = {
   Black = "#212121",
   White = "#FFFFFF",
-  DarkGray = "#616161",
-  LightGray = "#E0E0E0",
+  Gray = "#9E9E9E",
   Green = "#4CAF50",
   Yellow = "#FDD835",
   Brown = "#795548",
@@ -14,7 +13,6 @@ local gui_remap = {
   Blue = "#2196F3",
   Cyan = "#00BCD4",
   Red = "#F44336",
-  LightRed = "#EF9A9A",
 }
 
 local syntax_colors = {
@@ -22,12 +20,12 @@ local syntax_colors = {
     "Identifier",
     "Variable",
   },
-  DarkGray = {
-    "NonText", -- ~ at EOF
-    "Comment",
-  },
-  LightGray = {
+  Gray = {
+    "PreProc",
     "Delimiter", -- Special group
+    "Operator",  -- Statement group
+    "Comment",
+    "NonText",   -- ~ at EOF
   },
   Green = {
     "Constant",
@@ -45,17 +43,13 @@ local syntax_colors = {
     "Special",
   },
   Blue = {
-    "BuiltinType",
+    "Tag", -- Special group
   },
   Cyan = {
     "Type",
   },
-  LightRed = {
-    "Operator", -- Statement group
-  },
   Red = {
     "Statement",
-    "PreProc",
     "Error",
     "Removed",
   },
@@ -67,20 +61,20 @@ local ui_colors = {
   PmenuThumb = { ctermbg = "Black", reverse = true, },
   PmenuSel = { ctermbg = "Black", reverse = true, },
   NormalFloat = { ctermbg = "NONE", },
-  FloatBorder = { ctermfg = "DarkGray", ctermbg = "NONE" },
+  FloatBorder = { ctermfg = "Gray", ctermbg = "NONE" },
   SignColumn = { ctermbg = "NONE", },
   Visual = { ctermbg = "NONE", reverse = true },
-  TabLineFill = { ctermfg = "DarkGray" },
+  TabLineFill = { ctermfg = "Gray" },
   TabLineSel = { ctermfg = "White" },
-  StatusLine = { ctermfg = "DarkGray", ctermbg = "NONE" },
-  StatusLineNC = { ctermfg = "DarkGray", nocombine = true },
+  StatusLine = { ctermfg = "Gray", ctermbg = "NONE" },
+  StatusLineNC = { ctermfg = "Gray", nocombine = true },
   StatusLineFileName = { ctermfg = "White" },
-  CursorLine = { ctermbg = "DarkGray" },
+  CursorLine = { ctermbg = "Gray" },
   CursorLineNr = { ctermfg = "White" },
-  WinSeparator = { ctermfg = "DarkGray" },
+  WinSeparator = { ctermfg = "Gray" },
   MatchParen = { bold = true },
-  LineNr = { ctermfg = "DarkGray" },
-  MsgSeparator = { ctermfg = "DarkGray" },
+  LineNr = { ctermfg = "Gray" },
+  MsgSeparator = { ctermfg = "Gray" },
   Underlined = { underline = true },
   Search = { ctermbg = "NONE", reverse = true },
   DiagnosticError = { ctermfg = "Red" },
@@ -117,9 +111,8 @@ local group_links = {
   Type = {
     "@tag.attribute"
   },
-  BuiltinType = {
+  Tag = {
     "@type.builtin",
-    "tag",
   },
   Constant = {
     "@constant.builtin",
@@ -138,8 +131,10 @@ local group_links = {
   },
   Todo = {
     "@comment.todo",
-    "label"
   },
+  PreProc = {
+    "@module",
+  }
 }
 
 for col_name, values in pairs(syntax_colors) do
