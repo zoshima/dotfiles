@@ -33,6 +33,10 @@ vim.opt.fillchars = {
   stlnc = "─",
 }
 
+vim.diagnostic.config({
+  virtual_text = false,
+})
+
 -- functions
 function MapKey(mode, lhs, rhs, opts)
   local options = { noremap = true }

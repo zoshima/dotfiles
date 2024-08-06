@@ -59,7 +59,7 @@ local ui_colors = {
   PmenuSbar = { ctermbg = "Black", },
   PmenuThumb = { ctermbg = "Black", reverse = true, },
   PmenuSel = { ctermbg = "Black", reverse = true, },
-  NormalFloat = { ctermbg = "NONE", },
+  NormalFloat = { ctermbg = "Black", },
   FloatBorder = { ctermfg = "DarkGray", ctermbg = "NONE" },
   SignColumn = { ctermbg = "NONE", },
   Visual = { ctermbg = "NONE", reverse = true },
