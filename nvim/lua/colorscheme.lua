@@ -18,7 +18,6 @@ local gui_remap = {
 local syntax_colors = {
   White = {
     "Identifier",
-    "Variable",
   },
   Gray = {
     "PreProc",
@@ -117,7 +116,7 @@ local group_links = {
   Constant = {
     "@constant.builtin",
   },
-  Variable = {
+  Identifier = {
     "@variable",
     "@variable.builtin",
   },
@@ -137,6 +136,12 @@ local group_links = {
   }
 }
 
+for group_name, values in pairs(group_links) do
+  for _, v in ipairs(values) do
+    vim.api.nvim_set_hl(0, v, { link = group_name })
+  end
+end
+
 for col_name, values in pairs(syntax_colors) do
   for _, v in ipairs(values) do
     local value
@@ -146,12 +151,6 @@ for col_name, values in pairs(syntax_colors) do
     value.ctermfg = col_name
 
     vim.api.nvim_set_hl(0, v, value)
-  end
-end
-
-for group_name, values in pairs(group_links) do
-  for _, v in ipairs(values) do
-    vim.api.nvim_set_hl(0, v, { link = group_name })
   end
 end
 
@@ -169,4 +168,25 @@ for group_name, values in pairs(ui_colors) do
   end
 
   vim.api.nvim_set_hl(0, group_name, result)
+end
+
+local group_styles = {
+  ["@type.builtin"] = {}, -- already use different color
+  ["@constant.builtin"] = { italic = true },
+  ["@variable.builtin"] = { italic = true },
+  ["@variable.parameter.builtin"] = { italic = true },
+  ["@function.builtin"] = { italic = true },
+  ["@attribute.builtin"] = { italic = true },
+  ["@module.builtin"] = { italic = true },
+  ["@tag.builtin"] = { italic = true },
+}
+
+for group_name, styles in pairs(group_styles) do
+  for style_name, style_value in pairs(styles) do
+    local hl = vim.api.nvim_get_hl(0, { name = group_name, create = false, link = false })
+    hl[style_name] = style_value
+
+    ---@diagnostic disable-next-line: param-type-mismatch
+    vim.api.nvim_set_hl(0, group_name, hl)
+  end
 end
