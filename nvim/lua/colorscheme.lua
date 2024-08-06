@@ -20,11 +20,11 @@ local syntax_colors = {
     "Identifier",
   },
   Gray = {
-    "PreProc",
     "Delimiter", -- Special group
     "Operator",  -- Statement group
     "Comment",
     "NonText",   -- ~ at EOF
+    "PreProc",
   },
   Green = {
     "Constant",
@@ -60,20 +60,20 @@ local ui_colors = {
   PmenuThumb = { ctermbg = "Black", reverse = true, },
   PmenuSel = { ctermbg = "Black", reverse = true, },
   NormalFloat = { ctermbg = "NONE", },
-  FloatBorder = { ctermfg = "Gray", ctermbg = "NONE" },
+  FloatBorder = { ctermfg = "DarkGray", ctermbg = "NONE" },
   SignColumn = { ctermbg = "NONE", },
   Visual = { ctermbg = "NONE", reverse = true },
-  TabLineFill = { ctermfg = "Gray" },
+  TabLineFill = { ctermfg = "DarkGray" },
   TabLineSel = { ctermfg = "White" },
-  StatusLine = { ctermfg = "Gray", ctermbg = "NONE" },
-  StatusLineNC = { ctermfg = "Gray", nocombine = true },
+  StatusLine = { ctermfg = "DarkGray", ctermbg = "NONE" },
+  StatusLineNC = { ctermfg = "DarkGray", nocombine = true },
   StatusLineFileName = { ctermfg = "White" },
-  CursorLine = { ctermbg = "Gray" },
+  CursorLine = { ctermbg = "DarkGray" },
   CursorLineNr = { ctermfg = "White" },
-  WinSeparator = { ctermfg = "Gray" },
+  WinSeparator = { ctermfg = "DarkGray" },
   MatchParen = { bold = true },
-  LineNr = { ctermfg = "Gray" },
-  MsgSeparator = { ctermfg = "Gray" },
+  LineNr = { ctermfg = "DarkGray" },
+  MsgSeparator = { ctermfg = "DarkGray" },
   Underlined = { underline = true },
   Search = { ctermbg = "NONE", reverse = true },
   DiagnosticError = { ctermfg = "Red" },
@@ -108,9 +108,7 @@ local group_links = {
     "@storageclass",
   },
   Type = {
-    "@tag.attribute"
-  },
-  Tag = {
+    "@tag.attribute",
     "@type.builtin",
   },
   Constant = {
@@ -133,7 +131,8 @@ local group_links = {
   },
   PreProc = {
     "@module",
-  }
+    "@module.builtin",
+  },
 }
 
 for group_name, values in pairs(group_links) do
@@ -171,7 +170,7 @@ for group_name, values in pairs(ui_colors) do
 end
 
 local group_styles = {
-  ["@type.builtin"] = {}, -- already use different color
+  ["@type.builtin"] = { italic = true },
   ["@constant.builtin"] = { italic = true },
   ["@variable.builtin"] = { italic = true },
   ["@variable.parameter.builtin"] = { italic = true },
