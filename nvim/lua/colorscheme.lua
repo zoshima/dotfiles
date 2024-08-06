@@ -3,10 +3,10 @@
 
 -- material colors
 local gui_remap = {
-  Black = "#212121",     -- gray 900
+  Black = "#212121",
   White = "#FFFFFF",
-  DarkGray = "#616161",  -- 700
-  LightGray = "#E0E0E0", --  300
+  DarkGray = "#616161",
+  LightGray = "#E0E0E0",
   Green = "#4CAF50",
   Yellow = "#FDD835",
   Brown = "#795548",

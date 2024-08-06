@@ -70,13 +70,8 @@ MapKey("t", "<Esc>", "<C-\\><C-n>")
 -- require
 require("tabline")
 require("statusline")
-require("colorscheme")
 require("plugins.nvim-lspconfig")
 require("plugins.nvim-treesitter")
 require("plugins.telescope")
 require("plugins.oil")
-
-if vim.g.neovide then
-  vim.o.guifont = "Roboto Mono:h11"
-  vim.opt.termguicolors = true
-end
+require("colorscheme")
