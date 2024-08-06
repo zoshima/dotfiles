@@ -44,6 +44,13 @@ lspconfig.lua_ls.setup({
   end
 })
 
+lspconfig.bashls.setup({
+  on_attach = function(client, bufnr)
+    -- install shfmt for formatting
+    on_attach(client, bufnr, true)
+  end
+})
+
 lspconfig.gopls.setup({
   on_attach = function(client, bufnr)
     on_attach(client, bufnr, true)
