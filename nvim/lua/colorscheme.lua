@@ -1,20 +1,35 @@
 -- :h group-name
 -- :h cterm-colors
 
+-- standard material colors (500)
+local gui_remap = {
+  Black = "#212121",
+  White = "#FFFFFF",
+  Gray = "#9E9E9E",
+  Green = "#4CAF50",
+  Yellow = "#FDD835",
+  Brown = "#795548",
+  Magenta = "#E91E63",
+  Blue = "#2196F3",
+  Cyan = "#00BCD4",
+  Red = "#F44336",
+}
+
 local syntax_colors = {
   White = {
     "Identifier",
-    "Variable",
   },
-  DarkGray = {
-    "NonText", -- ~ at EOF
-    "Comment",
-  },
-  LightGray = {
+  Gray = {
     "Delimiter", -- Special group
+    "Operator",  -- Statement group
+    "Comment",
+    "NonText",   -- ~ at EOF
+    "PreProc",
   },
   Green = {
     "Constant",
+    "String",
+    "Added",
   },
   Yellow = {
     "Function", -- Identifier group
@@ -27,94 +42,54 @@ local syntax_colors = {
     "Special",
   },
   Blue = {
-    "BuiltinType",
+    "Tag", -- Special group
   },
   Cyan = {
     "Type",
   },
-  LightRed = {
-    "Operator", -- Statement group
-  },
   Red = {
     "Statement",
-    "PreProc",
     "Error",
+    "Removed",
   },
 };
 
-for col_name, values in pairs(syntax_colors) do
-  for _, v in ipairs(values) do
-    local value
+local ui_colors = {
+  Pmenu = { ctermbg = "Black", },
+  PmenuSbar = { ctermbg = "Black", },
+  PmenuThumb = { ctermbg = "Black", reverse = true, },
+  PmenuSel = { ctermbg = "Black", reverse = true, },
+  NormalFloat = { ctermbg = "Black", },
+  FloatBorder = { ctermfg = "DarkGray", ctermbg = "NONE" },
+  SignColumn = { ctermbg = "NONE", },
+  Visual = { ctermbg = "NONE", reverse = true },
+  TabLineFill = { ctermfg = "DarkGray" },
+  TabLineSel = { ctermfg = "White" },
+  StatusLine = { ctermfg = "DarkGray", ctermbg = "NONE" },
+  StatusLineNC = { ctermfg = "DarkGray", nocombine = true },
+  StatusLineFileName = { ctermfg = "White" },
+  CursorLine = { ctermbg = "DarkGray" },
+  CursorLineNr = { ctermfg = "White" },
+  WinSeparator = { ctermfg = "DarkGray" },
+  MatchParen = { bold = true },
+  LineNr = { ctermfg = "DarkGray" },
+  MsgSeparator = { ctermfg = "DarkGray" },
+  Underlined = { underline = true },
+  Search = { ctermbg = "NONE", reverse = true },
+  DiagnosticError = { ctermfg = "Red" },
+  DiagnosticUnderlineError = { sp = "Red", undercurl = true },
+  DiagnosticWarn = { ctermfg = "Yellow" },
+  DiagnosticUnderlineWarn = { sp = "Yellow", undercurl = true },
+  DiagnosticInfo = { ctermfg = "Blue" },
+  DiagnosticUnderlineInfo = { sp = "Blue", undercurl = true },
+  DiagnosticHint = { ctermfg = "Cyan" },
+  DiagnosticUnderlineHint = { sp = "Cyan", undercurl = true },
+  DiagnosticOk = { ctermfg = "Green" },
+  DiagnosticUnderlineOk = { sp = "Green", undercurl = true },
+  TreesitterContext = { ctermbg = "NONE", nocombine = true },
+  TreesitterContextLineNumber = { ctermfg = "White" },
+};
 
-    value = { ctermbg = "NONE" }
-    value.ctermfg = col_name
-
-    vim.api.nvim_set_hl(0, v, value)
-  end
-end
-
--- ui
-vim.api.nvim_set_hl(0, "Pmenu", { ctermbg = "Black" })
-vim.api.nvim_set_hl(0, "PmenuSbar", { ctermbg = "Black" })
-vim.api.nvim_set_hl(0, "PmenuThumb", { ctermbg = "Black", reverse = true })
-vim.api.nvim_set_hl(0, "PmenuSel", { ctermbg = "Black", reverse = true })
-
-vim.api.nvim_set_hl(0, "NormalFloat", { ctermbg = "Black" })
-
-vim.api.nvim_set_hl(0, "FloatBorder", { ctermfg = "DarkGray" })
-
-vim.api.nvim_set_hl(0, "SignColumn", { ctermbg = "NONE" })
-
-vim.api.nvim_set_hl(0, "Visual", { ctermbg = "NONE", reverse = true })
-vim.api.nvim_set_hl(0, "Visual", { ctermbg = "NONE", reverse = true })
-
-vim.api.nvim_set_hl(0, "TabLineFill", { ctermfg = "DarkGray" })
-vim.api.nvim_set_hl(0, "TabLineSel", { ctermfg = "White" })
-
-vim.api.nvim_set_hl(0, "StatusLine", { ctermfg = "DarkGray", ctermbg = "NONE" })
-vim.api.nvim_set_hl(0, "StatusLineNC", { ctermfg = "DarkGray", nocombine = true })
-vim.api.nvim_set_hl(0, "StatusLineFileName", { ctermfg = "White"  })
-
-vim.api.nvim_set_hl(0, "CursorLine", {})
-vim.api.nvim_set_hl(0, "CursorLineNr", { ctermfg = "White" })
-
-vim.api.nvim_set_hl(0, "WinSeparator", { ctermfg = "DarkGray" })
-vim.api.nvim_set_hl(0, "MatchParen", { bold = true })
-
-vim.api.nvim_set_hl(0, "LineNr", { ctermfg = "DarkGray" })
-
-vim.api.nvim_set_hl(0, "MsgSeparator", { ctermfg = "DarkGray" })
-
-vim.api.nvim_set_hl(0, "Underlined", { underline = true })
-
-vim.api.nvim_set_hl(0, "Search", { ctermbg = "NONE", reverse = true })
-
--- diagnostics
-vim.api.nvim_set_hl(0, "DiagnosticError", { ctermfg = "Red" })
-vim.api.nvim_set_hl(0, "DiagnosticUnderlineError", { sp = "Red", undercurl = true })
-vim.api.nvim_set_hl(0, "DiagnosticWarn", { ctermfg = "Yellow" })
-vim.api.nvim_set_hl(0, "DiagnosticUnderlineWarn", { sp = "Yellow", undercurl = true })
-vim.api.nvim_set_hl(0, "DiagnosticInfo", { ctermfg = "Blue" })
-vim.api.nvim_set_hl(0, "DiagnosticUnderlineInfo", { sp = "Blue", undercurl = true })
-vim.api.nvim_set_hl(0, "DiagnosticHint", { ctermfg = "Cyan" })
-vim.api.nvim_set_hl(0, "DiagnosticUnderlineHint", { sp = "Cyan", undercurl = true })
-vim.api.nvim_set_hl(0, "DiagnosticOk", { ctermfg = "Green" })
-vim.api.nvim_set_hl(0, "DiagnosticUnderlineOk", { sp = "Green", undercurl = true })
-
--- nvim tree stuff
-vim.api.nvim_set_hl(0, "NvimTreeNormalFloat", { ctermbg = "NONE", ctermfg = "White" })
-vim.api.nvim_set_hl(0, "NvimTreeExecFile", { ctermfg = "Red" })
-vim.api.nvim_set_hl(0, "NvimTreeSpecialFile", { ctermfg = "Magenta" })
-vim.api.nvim_set_hl(0, "NvimTreeSymlink", { ctermfg = "Cyan" })
-vim.api.nvim_set_hl(0, "NvimTreeFolderName", { ctermfg = "Blue" })
-vim.api.nvim_set_hl(0, "NvimTreeOpenedFolderName", { ctermfg = "Blue" })
-vim.api.nvim_set_hl(0, "NvimTreeEmptyFolderName", { ctermfg = "Blue" })
-
--- treesitter
-vim.api.nvim_set_hl(0, "TreesitterContext", { ctermbg = "NONE", nocombine = true })
-vim.api.nvim_set_hl(0, "TreesitterContextLineNumber", { ctermfg = "White" })
-
--- links
 local group_links = {
   Error = {
     "ErrorMsg",
@@ -133,16 +108,13 @@ local group_links = {
     "@storageclass",
   },
   Type = {
-    "@tag.attribute"
-  },
-  BuiltinType = {
+    "@tag.attribute",
     "@type.builtin",
-    "tag",
   },
   Constant = {
     "@constant.builtin",
   },
-  Variable = {
+  Identifier = {
     "@variable",
     "@variable.builtin",
   },
@@ -156,12 +128,64 @@ local group_links = {
   },
   Todo = {
     "@comment.todo",
-    "label"
+  },
+  PreProc = {
+    "@module",
+    "@module.builtin",
   },
 }
 
 for group_name, values in pairs(group_links) do
   for _, v in ipairs(values) do
     vim.api.nvim_set_hl(0, v, { link = group_name })
+  end
+end
+
+for col_name, values in pairs(syntax_colors) do
+  for _, v in ipairs(values) do
+    local value
+
+    value = { bg = "NONE", ctermbg = "NONE" }
+    value.fg = gui_remap[col_name] or col_name
+    value.ctermfg = col_name
+
+    vim.api.nvim_set_hl(0, v, value)
+  end
+end
+
+for group_name, values in pairs(ui_colors) do
+  local result = {}
+
+  for k, v in pairs(values) do
+    if k == 'ctermfg' then
+      result.fg = gui_remap[v] or v
+    elseif k == 'ctermbg' then
+      result.bg = gui_remap[v] or v
+    end
+
+    result[k] = v
+  end
+
+  vim.api.nvim_set_hl(0, group_name, result)
+end
+
+local group_styles = {
+  ["@type.builtin"] = { italic = true },
+  ["@constant.builtin"] = { italic = true },
+  ["@variable.builtin"] = { italic = true },
+  ["@variable.parameter.builtin"] = { italic = true },
+  ["@function.builtin"] = { italic = true },
+  ["@attribute.builtin"] = { italic = true },
+  ["@module.builtin"] = { italic = true },
+  ["@tag.builtin"] = { italic = true },
+}
+
+for group_name, styles in pairs(group_styles) do
+  for style_name, style_value in pairs(styles) do
+    local hl = vim.api.nvim_get_hl(0, { name = group_name, create = false, link = false })
+    hl[style_name] = style_value
+
+    ---@diagnostic disable-next-line: param-type-mismatch
+    vim.api.nvim_set_hl(0, group_name, hl)
   end
 end

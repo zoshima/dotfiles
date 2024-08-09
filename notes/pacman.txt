@@ -15,6 +15,8 @@ pacman -Sl # (list repository)
 pacman -Ql # (list package files)
 pacman -Qg # (list group packages)
 
+pacman -Qqe | grep -v "$(pacman -Qqg gnome)" (list installed packages, exclude group)
+
 pacman -F # (query package files)
 
 pacman -Qdt (list unneeded)

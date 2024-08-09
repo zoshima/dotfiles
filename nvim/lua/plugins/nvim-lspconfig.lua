@@ -15,6 +15,8 @@ local on_attach = function(client, bufnr, fmt)
   MapKey("n", "zp", "<cmd>lua vim.diagnostic.goto_prev()<CR>", opts)
   MapKey("n", "zh", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
 
+  MapKey("i", "<C-n>", "<C-x><C-o>")
+
   if fmt == true then
     MapKey("n", "gf", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
     MapKey("v", "gf", "<cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
@@ -22,6 +24,32 @@ local on_attach = function(client, bufnr, fmt)
     vim.api.nvim_command("au BufWritePre <buffer> lua vim.lsp.buf.format()")
   end
 end
+
+lspconfig.lua_ls.setup({
+  on_init = function(client)
+    client.config.settings.Lua = {
+      runtime = {
+        version = 'LuaJIT'
+      },
+      workspace = {
+        checkThirdParty = false,
+        library = {
+          vim.env.VIMRUNTIME
+        }
+      }
+    }
+  end,
+  on_attach = function(client, bufnr)
+    on_attach(client, bufnr, true)
+  end
+})
+
+lspconfig.bashls.setup({
+  on_attach = function(client, bufnr)
+    -- install shfmt for formatting
+    on_attach(client, bufnr, true)
+  end
+})
 
 lspconfig.gopls.setup({
   on_attach = function(client, bufnr)

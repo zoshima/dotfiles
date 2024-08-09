@@ -3,8 +3,9 @@ vim.g.mapleader = " "
 
 -- options
 vim.opt.termguicolors = false
-vim.opt.signcolumn = "no"
+vim.opt.signcolumn = "number"
 vim.opt.cursorline = true
+vim.opt.cursorlineopt = "number"
 vim.opt.cmdheight = 1
 vim.opt.number = true
 vim.opt.relativenumber = true
@@ -32,6 +33,10 @@ vim.opt.fillchars = {
   stlnc = "─",
 }
 
+vim.diagnostic.config({
+  virtual_text = false,
+})
+
 -- functions
 function MapKey(mode, lhs, rhs, opts)
   local options = { noremap = true }
@@ -51,10 +56,10 @@ MapKey("n", "<C-l>", "<C-w>l")
 MapKey("n", "<C-h>", "<C-w>h")
 MapKey("n", "<C-j>", "<C-w>j")
 MapKey("n", "<C-k>", "<C-w>k")
-MapKey("n", "<C-S-Left>", ":vertical resize +5<CR>")
-MapKey("n", "<C-S-Right>", ":vertical resize -5<CR>")
-MapKey("n", "<C-S-Up>", ":resize +5<CR>")
-MapKey("n", "<C-S-Down>", ":resize -5<CR>")
+MapKey("n", "<C-Left>", ":vertical resize +5<CR>")
+MapKey("n", "<C-Right>", ":vertical resize -5<CR>")
+MapKey("n", "<C-Up>", ":resize +5<CR>")
+MapKey("n", "<C-Down>", ":resize -5<CR>")
 MapKey("n", "<Space>,", ":noh<CR>")
 MapKey("n", "g?", ":lua ShowHighlightInfo()<CR>")
 MapKey("n", "<F5>", ":!make run<CR>")
@@ -69,8 +74,8 @@ MapKey("t", "<Esc>", "<C-\\><C-n>")
 -- require
 require("tabline")
 require("statusline")
-require("colorscheme")
 require("plugins.nvim-lspconfig")
 require("plugins.nvim-treesitter")
 require("plugins.telescope")
 require("plugins.oil")
+require("colorscheme")
