@@ -1,4 +1,8 @@
-function Tabline()
+vim.opt.tabline = '%!v:lua.Tabline.get_tabline()'
+
+Tabline = {}
+
+function Tabline.get_tabline()
   local tabline = {}
   for i = 1, vim.fn.tabpagenr('$') do
     local tab_label = string.format(
@@ -17,5 +21,3 @@ function Tabline()
 
   return table.concat(tabline, ' | ')
 end
-
-vim.o.tabline = '%!v:lua.Tabline()'

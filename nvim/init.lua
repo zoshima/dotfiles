@@ -1,7 +1,3 @@
--- globals
-vim.g.mapleader = " "
-
--- options
 vim.opt.termguicolors = false
 vim.opt.signcolumn = "number"
 vim.opt.cursorline = true
@@ -24,7 +20,7 @@ vim.opt.mouse = "a"
 vim.opt.scrolloff = 1
 vim.opt.shadafile = "NONE"
 vim.opt.listchars = {
-  tab = "<->",
+  tab = "<>",
   space = "_",
 }
 vim.opt.fillchars = {
@@ -32,6 +28,7 @@ vim.opt.fillchars = {
   stl = "─",
   stlnc = "─",
 }
+vim.opt.laststatus = 3
 
 vim.diagnostic.config({
   virtual_text = false,
