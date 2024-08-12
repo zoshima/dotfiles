@@ -1,5 +1,11 @@
 vim.opt.statusline = "%!v:lua.Statusline.get_statusline()"
 
+vim.api.nvim_create_autocmd('DiagnosticChanged', {
+  callback = function()
+    vim.opt.statusline = "%!v:lua.Statusline.get_statusline()"
+  end
+})
+
 Statusline = {}
 
 function Statusline.get_statusline()
