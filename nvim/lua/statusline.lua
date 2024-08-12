@@ -25,7 +25,7 @@ function Statusline.get_diagnostics(bufnr)
     bufnr = bufnr
   })
 
-  if #clients == 0 then
+  if clients == nil or #clients == 0 then
     return ""
   end
 
@@ -63,4 +63,6 @@ function Statusline.get_diagnostics(bufnr)
   for _, v in ipairs(clients) do
     diagnostics = diagnostics .. "[" .. v.name .. "]"
   end
+
+  return diagnostics
 end
