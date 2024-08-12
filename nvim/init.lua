@@ -28,7 +28,6 @@ vim.opt.fillchars = {
   stl = "─",
   stlnc = "─",
 }
-vim.opt.laststatus = 3
 
 vim.diagnostic.config({
   virtual_text = false,
