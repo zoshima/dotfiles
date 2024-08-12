@@ -60,4 +60,7 @@ alias manpac="$EDITOR ~/git/dotfiles/notes/pacman.txt"
 
 set_prompt
 
-test -f ~/.env && source ~/.env
+if [[ $(uname -r | grep -o "WSL") ]]; then
+  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+  export PS1="\[\e]0;\w\a\]$PS1"
+fi
