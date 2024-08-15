@@ -3,9 +3,9 @@
 [log]
   date = format:%Y-%m-%d %H:%M
 [format]
-  pretty = format:%C(dim)%h %ad %C(reset green bold)%aN %C(blue)%gD%D\n\t%C(reset)%s
+  pretty = format:%C(dim)%h %ad %C(reset)%C(green bold)%aN %C(reset)%C(blue)%gD%D\n\t%C(reset)%s
 [pull]
 	rebase = false
 [user]
+	name = zoshima
 	email = dmykras@gmail.com
-	name = dkra
