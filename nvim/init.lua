@@ -33,6 +33,23 @@ vim.diagnostic.config({
   virtual_text = false,
 })
 
+-- wsl
+-- from :h clipboard-wsl
+if vim.fn.has("wsl") then
+  vim.g.clipboard = {
+    name = 'WslClipboard',
+    copy = {
+      ['+'] = 'clip.exe',
+      ['*'] = 'clip.exe',
+    },
+    paste = {
+      ['+'] = 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+      ['*'] = 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+    },
+    cache_enabled = 0,
+  }
+end
+
 -- functions
 function MapKey(mode, lhs, rhs, opts)
   local options = { noremap = true }
@@ -92,6 +109,7 @@ MapKey("n", "<Esc>", ":pclose<CR>")
 MapKey("n", "<BS>", "-")
 MapKey("i", "<C-Space>", "<C-X><C-O>")
 MapKey("t", "<Esc>", "<C-\\><C-n>")
+
 
 -- require
 require("tabline")
