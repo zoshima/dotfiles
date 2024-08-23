@@ -1,4 +1,5 @@
 "ui.menu" = { fg = "white", bg = "black" }
+"ui.text.focus" = { modifiers = ["reversed"] }
 "ui.menu.selected" = { modifiers = ["reversed"]}
 "ui.linenr" = { fg = "gray" }
 "ui.linenr.selected" = { fg = "white",  modifiers = ["bold"] }
@@ -7,52 +8,53 @@
 "ui.selection" = { modifiers = ["reversed"] }
 "ui.statusline" = { fg = "white" }
 "ui.statusline.inactive" = { fg = "gray" }
+"ui.cursor" = { fg="gray",modifiers = ["reversed"] }
 
-"attribute" = "yellow"
-"type" = "cyan"
-"type.builtin" = { fg = "blue", modifiers = [ "italic" ] }
-"constructor" = "yellow"
-"constant" = "green"
-"constant.builtin" = { fg = "green", modifiers = [ "italic" ] }
-"string" = "green"
-"comment" = "gray"
+"attribute" = "light-yellow"
+"type" = "light-cyan"
+"type.builtin" = { fg = "light-blue", modifiers = [ "italic" ] }
+"constructor" = "light-yellow"
+"constant" = "light-green"
+"constant.builtin" = { fg = "light-green", modifiers = [ "italic" ] }
+"string" = "light-green"
+"comment" = "light-gray"
 "variable" = "white"
-"variable.builtin" = { fg = "red", modifiers = [ "italic" ] }
-"label" = "magenta"
-# "punctuation" = "magenta"
-"keyword" = "red"
-# "operator" = "magenta"
-"function" = "yellow"
-"function.builtin" = { fg = "yellow", modifiers = [ "italic" ] }
-"tag" = "red"
-"namespace" = "gray"
-"special" = "magenta"
-# "markup" = "magenta"
+"variable.builtin" = { fg = "light-red", modifiers = [ "italic" ] }
+"label" = "light-magenta"
+"punctuation" = "light-gray"
+"keyword" = "light-red"
+"operator" = "light-gray"
+"function" = "light-yellow"
+"function.builtin" = { fg = "light-yellow", modifiers = [ "italic" ] }
+"tag" = "light-magenta"
+"tag.builtin" = { fg = "light-magenta", modifiers = [ "italic" ] }
+"namespace" = "light-gray"
+"special" = "light-yellow"
 
-"diff.plus" = "light-green"
-"diff.delta" = "light-blue"
-"diff.minus" = "light-red"
-
-"debug" = "light-gray"
-"info" = "light-cyan"
-"hint" = "light-blue"
-"warning" = "light-yellow"
-"error" = "light-red"
-
-"diagnostic" = { underline = { color = "light-gray", style = "curl" }}
-"diagnostic.info" = { underline = { color = "light-cyan", style = "curl" }}
-"diagnostic.unnecessary" = { underline = { color = "light-cyan", style = "curl" }}
-"diagnostic.hint" = { underline = { color = "light-blue", style = "curl" }}
-"diagnostic.deprecated" = { underline = { color = "light-yellow", style = "curl" }}
-"diagnostic.warning" = { underline = { color = "light-yellow", style = "curl" }}
-"diagnostic.error" = { underline = { color = "light-red", style = "curl" }}
-
-"markup.heading" = "cyan"
-"markup.list" = "yellow"
-"markup.bold" = { fg = "white", modifiers = ["bold"] }
-"markup.italic" = { fg = "white", modifiers = ["italic"] }
+"markup.heading" = "light-cyan"
+"markup.list" = "light-gray"
+"markup.bold" = { modifiers = ["bold"] }
+"markup.italic" = { modifiers = ["italic"] }
 "markup.strikethrough" = { modifiers = ["crossed_out"] }
-"markup.link.url" = { fg = "cyan" }
-"markup.link.text" = "green"
-"markup.quote" = { fg = "green", modifiers = ["italic"] }
-"markup.raw" = { fg = "green", modifiers = ["italic"] }
+"markup.link.url" = { fg = "light-blue" }
+"markup.link.text" = "light-gray"
+"markup.quote" = { fg = "light-gray", modifiers = ["italic"] }
+"markup.raw" = { fg = "light-gray" }
+
+"diff.plus" = "green"
+"diff.delta" = "blue"
+"diff.minus" = "red"
+
+"debug" = "gray"
+"info" = "cyan"
+"hint" = "blue"
+"warning" = "yellow"
+"error" = "red"
+
+"diagnostic" = { underline = { color = "gray", style = "curl" }}
+"diagnostic.info" = { underline = { color = "cyan", style = "curl" }}
+"diagnostic.unnecessary" = { underline = { color = "cyan", style = "curl" }}
+"diagnostic.hint" = { underline = { color = "blue", style = "curl" }}
+"diagnostic.deprecated" = { underline = { color = "yellow", style = "curl" }}
+"diagnostic.warning" = { underline = { color = "yellow", style = "curl" }}
+"diagnostic.error" = { underline = { color = "red", style = "curl" }}
