@@ -1,5 +1,5 @@
 #!/bin/bash
-bus=1
+bus=12
 addresses=(0x61 0x63)
 
 for address in "${addresses[@]}"; do
