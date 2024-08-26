@@ -2,6 +2,7 @@ theme = "base8_custom"
 
 [editor]
 line-number = "relative"
+popup-border = "all"
 
 [editor.soft-wrap]
 enable = true
@@ -13,6 +14,9 @@ select = "underline"
 
 [editor.file-picker]
 hidden = false
+
+[editor.soft-wrap]
+enable = true
 
 [keys.normal]
 C-r = ":config-reload"

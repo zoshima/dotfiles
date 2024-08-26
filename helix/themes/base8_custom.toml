@@ -11,7 +11,7 @@
 "ui.cursor" = { fg="gray",modifiers = ["reversed"] }
 
 "attribute" = "light-yellow"
-"type" = "light-cyan"
+"type" = "light-blue"
 "type.builtin" = { fg = "light-blue", modifiers = [ "italic" ] }
 "constructor" = "light-yellow"
 "constant" = "light-green"
@@ -29,9 +29,9 @@
 "tag" = "light-magenta"
 "tag.builtin" = { fg = "light-magenta", modifiers = [ "italic" ] }
 "namespace" = "light-gray"
-"special" = "light-yellow"
+"special" = "light-cyan"
 
-"markup.heading" = "light-cyan"
+"markup.heading" = "light-blue"
 "markup.list" = "light-gray"
 "markup.bold" = { modifiers = ["bold"] }
 "markup.italic" = { modifiers = ["italic"] }
@@ -46,15 +46,15 @@
 "diff.minus" = "red"
 
 "debug" = "gray"
-"info" = "cyan"
-"hint" = "blue"
+"info" = "blue"
+"hint" = "cyan"
 "warning" = "yellow"
 "error" = "red"
 
 "diagnostic" = { underline = { color = "gray", style = "curl" }}
-"diagnostic.info" = { underline = { color = "cyan", style = "curl" }}
+"diagnostic.info" = { underline = { color = "blue", style = "curl" }}
 "diagnostic.unnecessary" = { underline = { color = "cyan", style = "curl" }}
-"diagnostic.hint" = { underline = { color = "blue", style = "curl" }}
+"diagnostic.hint" = { underline = { color = "cyan", style = "curl" }}
 "diagnostic.deprecated" = { underline = { color = "yellow", style = "curl" }}
 "diagnostic.warning" = { underline = { color = "yellow", style = "curl" }}
 "diagnostic.error" = { underline = { color = "red", style = "curl" }}
