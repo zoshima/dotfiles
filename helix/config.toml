@@ -15,9 +15,6 @@ select = "underline"
 [editor.file-picker]
 hidden = false
 
-[editor.soft-wrap]
-enable = true
-
 [keys.normal]
 C-r = ":config-reload"
 C-h = "jump_view_left"
