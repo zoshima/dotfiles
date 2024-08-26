@@ -17,7 +17,7 @@
 "constant" = "light-green"
 "constant.builtin" = { fg = "light-green", modifiers = [ "italic" ] }
 "string" = "light-green"
-"comment" = "light-gray"
+"comment" = "gray"
 "variable" = "white"
 "variable.builtin" = { fg = "light-red", modifiers = [ "italic" ] }
 "label" = "light-magenta"
