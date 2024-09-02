@@ -89,6 +89,7 @@ local ui_colors = {
   DiagnosticUnderlineOk = { sp = "Green", undercurl = true },
   TreesitterContext = { ctermbg = "NONE", nocombine = true },
   TreesitterContextLineNumber = { ctermfg = "White" },
+  Directory = { ctermfg = "Blue", bold = true }, -- Oil links to this...
 };
 
 local group_links = {
