@@ -55,6 +55,7 @@ local syntax_colors = {
 };
 
 local ui_colors = {
+  Normal = { ctermbg = "NONE", },
   Pmenu = { ctermbg = "Black", },
   PmenuSbar = { ctermbg = "Black", },
   PmenuThumb = { ctermbg = "Black", reverse = true, },
@@ -170,7 +171,7 @@ for group_name, values in pairs(ui_colors) do
 end
 
 local group_styles = {
-  ["@type.builtin"] = { italic = true },
+  ["@type.builtin"] = { ctermfg = "Blue", italic = true },
   ["@constant.builtin"] = { italic = true },
   ["@variable.builtin"] = { italic = true },
   ["@variable.parameter.builtin"] = { italic = true },
