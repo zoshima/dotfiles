@@ -75,7 +75,7 @@ local ui_colors = {
   MsgSeparator = { ctermfg = "DarkGray" },
   Underlined = { underline = true },
   Search = { ctermbg = "Yellow", ctermfg = "Black" },
-  IncSearch = { ctermbg = "NONE", ctermfg = "Yellow" },
+  IncSearch = { ctermbg = "Yellow", ctermfg = "Black" },
   CurSearch = { ctermbg = "NONE", reverse = true },
   DiagnosticError = { ctermfg = "Red" },
   DiagnosticUnderlineError = { sp = "Red", undercurl = true },
@@ -102,7 +102,7 @@ local group_links = {
   VertSplit = {
     "TelescopeBorder",
   },
-  IncSearch = {
+  Search = {
     "TelescopeMatching",
   },
   PmenuSel = {
