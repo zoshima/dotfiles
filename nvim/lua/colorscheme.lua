@@ -68,14 +68,15 @@ local ui_colors = {
   StatusLine = { ctermfg = "DarkGray", },
   StatusLineNC = { ctermfg = "DarkGray", nocombine = true },
   StatusLineFileName = { ctermfg = "White" },
-  CursorLine = { ctermbg = "DarkGray" },
   CursorLineNr = { ctermfg = "White" },
   WinSeparator = { ctermfg = "DarkGray" },
-  MatchParen = { bold = true },
+  MatchParen = { ctermbg = "DarkGray" },
   LineNr = { ctermfg = "DarkGray" },
   MsgSeparator = { ctermfg = "DarkGray" },
   Underlined = { underline = true },
-  Search = { ctermbg = "NONE", reverse = true },
+  Search = { ctermbg = "Yellow", ctermfg = "Black" },
+  IncSearch = { ctermbg = "NONE", ctermfg = "Yellow" },
+  CurSearch = { ctermbg = "NONE", reverse = true },
   DiagnosticError = { ctermfg = "Red" },
   DiagnosticUnderlineError = { sp = "Red", undercurl = true },
   DiagnosticWarn = { ctermfg = "Yellow" },
@@ -101,8 +102,11 @@ local group_links = {
   VertSplit = {
     "TelescopeBorder",
   },
-  Search = {
+  IncSearch = {
     "TelescopeMatching",
+  },
+  PmenuSel = {
+    "TelescopeSelection",
   },
   Statement = {
     "@type.qualifier",
