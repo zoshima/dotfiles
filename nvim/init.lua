@@ -22,6 +22,7 @@ vim.opt.shadafile = "NONE"
 vim.opt.listchars = {
   tab = "<>",
   space = "_",
+  eol = "$",
 }
 vim.opt.fillchars = {
   msgsep = "─",
