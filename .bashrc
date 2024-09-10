@@ -12,13 +12,13 @@ set_prompt() {
     num_jobs=$(jobs | wc -l)
 
     if [ $num_jobs -gt 0 ]; then
-        echo -n "[$(tput setaf 3)$num_jobs$(tput sgr0)]"
+      echo -n "[$(tput setaf 3)$num_jobs$(tput sgr0)]"
     fi
   }
 
   git_status() {
     branch_name=$(git rev-parse --abbrev-ref HEAD 2>/dev/null)
-    if [ ! -z $branch_name  ]; then
+    if [ ! -z $branch_name ]; then
       echo -n "($branch_name"
 
       if [ $(git status --porcelain | wc -l) -gt 0 ]; then
@@ -29,16 +29,16 @@ set_prompt() {
     fi
   }
 
-	user="$F_GREEN\u$F_RESET"
-	host="\h"
-	directory="$F_RESET$F_BOLD$F_BLUE\w$F_RESET"
-	prompt="$F_BOLD$F_YELLOW\$$F_RESET"
+  user="$F_GREEN\u$F_RESET"
+  host="\h"
+  directory="$F_RESET$F_BOLD$F_BLUE\w$F_RESET"
+  prompt="$F_BOLD$F_YELLOW\$$F_RESET"
 
   export PS1="$user@$host:$directory\$(jobs_status)\$(git_status)\n$prompt "
-	export PS2="$F_BOLD$F_YELLOW> $F_RESET"
+  export PS2="$F_BOLD$F_YELLOW> $F_RESET"
 }
 
-ffind () {
+ffind() {
   find . -iname "*$1*" 2>/dev/null
 }
 
@@ -46,6 +46,8 @@ export HISTSIZE=-1
 export HISTFILESIZE=-1
 
 export EDITOR=nvim
+export MANPAGER='nvim +Man!'
+export MANWIDTH=999
 
 export PATH="$PATH:/home/$USER/.local/bin"
 export PATH="$PATH:/home/$USER/go/bin"
