@@ -16,7 +16,8 @@ vim.opt.foldenable = false
 vim.opt.swapfile = false
 vim.opt.clipboard = "unnamedplus"
 vim.opt.completeopt = { "menuone", "noselect", "noinsert", "popup" }
-vim.opt.mouse = "a"
+vim.opt.mouse = "nv"
+vim.opt.mousemodel = "extend"
 vim.opt.scrolloff = 1
 vim.opt.shadafile = "NONE"
 vim.opt.listchars = {
@@ -25,8 +26,9 @@ vim.opt.listchars = {
 }
 vim.opt.fillchars = {
   msgsep = "─",
-  stl = "─",
-  stlnc = "─",
+  stl = "-",
+  stlnc = "-",
+  vert = "|"
 }
 
 vim.diagnostic.config({

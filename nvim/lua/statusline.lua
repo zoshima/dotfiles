@@ -23,7 +23,7 @@ function Statusline.get_statusline()
   local center = ""
   local right = string.format("%s", diagnostics)
 
-  return string.format("─%s%s%s%s%s─", left, "%=", center, "%=", right);
+  return string.format("-%s%s%s%s%s-", left, "%=", center, "%=", right);
 end
 
 function Statusline.get_diagnostics(bufnr)
