@@ -15,3 +15,6 @@ ln -s ~/git/dotfiles/.toprc ~/.toprc
 # ln -s ~/git/dotfiles/.vimrc ~/.vimrc
 ln -s ~/git/dotfiles/.alacritty.toml ~/.alacritty.toml
 ln -s ~/git/dotfiles/.tmux.conf ~/.tmux.conf
+
+rm -rf ~/.config/sway/ || true
+ln -s ~/git/dotfiles/sway ~/.config/
