@@ -1,12 +1,12 @@
-set $font RobotoMono
-set $bg #212121
-set $fg #fafafa
-set $primary #004D40
+set $font "RobotoMono 11"
+set $bg #000000
+set $fg #ffffff
+set $primary #00695c
 set $img /home/kdi/Pictures/color16.png
 
 set $mod Mod4
 set $term alacritty
-set $menu wmenu-run | xargs swaymsg exec --
+set $menu wmenu-run -l 5 -f $font | xargs swaymsg exec --
 
 # Home row direction keys, like vim
 set $left h
@@ -168,6 +168,6 @@ client.unfocused $bg $bg $fg $bg $bg
 client.focused_inactive $bg $bg $fg $bg $bg
 
 # font
-font pango: $font Regular 11
+font pango: $font
 
 include /etc/sway/config.d/*

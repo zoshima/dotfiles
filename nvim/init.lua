@@ -27,9 +27,9 @@ vim.opt.listchars = {
 }
 vim.opt.fillchars = {
   msgsep = "─",
-  stl = "-",
-  stlnc = "-",
-  vert = "|"
+  stl = "─",
+  stlnc = "─",
+  -- vert = "|"
 }
 
 vim.diagnostic.config({
