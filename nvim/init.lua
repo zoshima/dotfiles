@@ -110,9 +110,9 @@ MapKey("n", "<F7>", ":!make test<CR>")
 MapKey("n", "<F8>", ":so ~/git/dotfiles/nvim/lua/colorscheme.lua<CR>")
 MapKey("n", "<Esc>", ":pclose<CR>")
 MapKey("n", "<BS>", "-")
-MapKey("i", "<C-Space>", "<C-X><C-O>")
+MapKey("i", "<C-o>", "<C-x><C-o>")
+MapKey("i", "<C-n>", "<C-x><C-n>")
 MapKey("t", "<Esc>", "<C-\\><C-n>")
-
 
 -- require
 require("tabline")
