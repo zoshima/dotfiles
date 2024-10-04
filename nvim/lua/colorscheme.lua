@@ -106,6 +106,9 @@ local group_links = {
   Search = {
     "TelescopeMatching",
   },
+  Normal = {
+    "TelescopeResultsIdentifier",
+  },
   PmenuSel = {
     "TelescopeSelection",
   },
