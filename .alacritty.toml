@@ -1,7 +1,7 @@
 [window]
 dimensions = { columns = 110, lines = 30 }
 position = { x = 0, y = 0}
-padding = { x = 8, y = 4 }
+# padding = { x = 8, y = 4 }
 dynamic_padding = false
 resize_increments = true
 decorations = "None"
