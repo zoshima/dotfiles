@@ -94,6 +94,9 @@ local ui_colors = {
 };
 
 local group_links = {
+  StatusLine = {
+    "CopilotSuggestion",
+  },
   Error = {
     "ErrorMsg",
   },
