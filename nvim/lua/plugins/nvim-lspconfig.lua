@@ -57,7 +57,7 @@ lspconfig.gopls.setup({
   end
 })
 
-lspconfig.tsserver.setup({
+lspconfig.ts_ls.setup({
   on_attach = function(client, bufnr)
     on_attach(client, bufnr)
   end,
