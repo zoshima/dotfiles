@@ -55,8 +55,8 @@ local syntax_colors = {
 };
 
 local ui_colors = {
-  Normal = { ctermbg = "NONE", },
-  Pmenu = { ctermbg = "Black", },
+  Normal = { ctermbg = "NONE", bg = "Black" },
+  Pmenu = { ctermbg = "Black" },
   PmenuSbar = { ctermbg = "Black", },
   PmenuThumb = { ctermbg = "Black", reverse = true, },
   PmenuSel = { ctermbg = "White", ctermfg = "Black", },
@@ -91,6 +91,7 @@ local ui_colors = {
   TreesitterContext = { ctermbg = "NONE", nocombine = true },
   TreesitterContextLineNumber = { ctermfg = "White" },
   Directory = { ctermfg = "Blue", bold = true }, -- Oil links to this...
+  TelescopeResultsIdentifier = { ctermbg = "NONE" },
 };
 
 local group_links = {
@@ -108,9 +109,6 @@ local group_links = {
   },
   Search = {
     "TelescopeMatching",
-  },
-  Normal = {
-    "TelescopeResultsIdentifier",
   },
   PmenuSel = {
     "TelescopeSelection",
@@ -169,14 +167,11 @@ for group_name, values in pairs(ui_colors) do
   local result = {}
 
   for k, v in pairs(values) do
-    if k == 'ctermfg' then
-      result.fg = gui_remap[v] or v
-    elseif k == 'ctermbg' then
-      result.bg = gui_remap[v] or v
-    end
-
     result[k] = v
   end
+
+  result.fg = gui_remap[result.fg] or gui_remap[result.ctermfg] or values.ctermfg
+  result.bg = gui_remap[result.bg] or gui_remap[result.ctermbg] or values.ctermbg
 
   vim.api.nvim_set_hl(0, group_name, result)
 end

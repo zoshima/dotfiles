@@ -150,3 +150,6 @@ require("plugins.nvim-treesitter")
 require("plugins.telescope")
 require("plugins.oil")
 require("colorscheme")
+if vim.g.neovide then
+  require("neovide")
+end
