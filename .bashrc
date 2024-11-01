@@ -51,7 +51,6 @@ export MANWIDTH=999
 
 export PATH="$PATH:/home/$USER/.local/bin"
 export PATH="$PATH:/home/$USER/go/bin"
-export PATH="$PATH:/home/$USER/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin"
 
 export WINIT_UNIX_BACKEND=x11
 
@@ -61,8 +60,3 @@ alias ll="ls -al"
 alias manpac="$EDITOR ~/git/dotfiles/notes/pacman.txt"
 
 set_prompt
-
-if [[ $(uname -r | grep -o "WSL") ]]; then
-  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-  export PS1="\[\e]0;\w\a\]$PS1"
-fi
