@@ -13,9 +13,6 @@
 [submodule "nvim/pack/nvim/start/oil.nvim"]
 	path = nvim/pack/nvim/start/oil.nvim
 	url = https://github.com/stevearc/oil.nvim.git
-[submodule "nvim/pack/nvim/start/copilot.vim"]
-	path = nvim/pack/nvim/start/copilot.vim
-	url = https://github.com/github/copilot.vim.git
 [submodule "nvim/pack/nvim/start/codeium.vim"]
 	path = nvim/pack/nvim/start/codeium.vim
 	url = https://github.com/Exafunction/codeium.vim
