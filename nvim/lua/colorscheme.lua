@@ -91,7 +91,6 @@ local ui_colors = {
   TreesitterContext = { ctermbg = "NONE", nocombine = true },
   TreesitterContextLineNumber = { ctermfg = "White" },
   Directory = { ctermfg = "Blue", bold = true }, -- Oil links to this...
-  TelescopeResultsIdentifier = { ctermbg = "NONE" },
 };
 
 local group_links = {
@@ -103,6 +102,9 @@ local group_links = {
   },
   Warning = {
     "WarningMsg",
+  },
+  Normal = {
+    "TelescopeResultsIdentifier",
   },
   VertSplit = {
     "TelescopeBorder",
