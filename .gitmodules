@@ -1,18 +1,18 @@
-[submodule "nvim/pack/nvim/start/nvim-lspconfig"]
-	path = nvim/pack/nvim/start/nvim-lspconfig
-	url = https://github.com/neovim/nvim-lspconfig
-[submodule "nvim/pack/nvim/start/nvim-treesitter"]
-	path = nvim/pack/nvim/start/nvim-treesitter
-	url = https://github.com/nvim-treesitter/nvim-treesitter.git
-[submodule "nvim/pack/nvim/start/plenary.nvim"]
-	path = nvim/pack/nvim/start/plenary.nvim
-	url = https://github.com/nvim-lua/plenary.nvim.git
-[submodule "nvim/pack/nvim/start/telescope.nvim"]
-	path = nvim/pack/nvim/start/telescope.nvim
+[submodule "nvim/plugins/telescope.nvim"]
+	path = nvim/plugins/telescope.nvim
 	url = https://github.com/nvim-telescope/telescope.nvim.git
-[submodule "nvim/pack/nvim/start/oil.nvim"]
-	path = nvim/pack/nvim/start/oil.nvim
+[submodule "nvim/plugins/plenary.nvim"]
+	path = nvim/plugins/plenary.nvim
+	url = https://github.com/nvim-lua/plenary.nvim.git
+[submodule "nvim/plugins/oil.nvim"]
+	path = nvim/plugins/oil.nvim
 	url = https://github.com/stevearc/oil.nvim.git
-[submodule "nvim/pack/nvim/start/codeium.vim"]
-	path = nvim/pack/nvim/start/codeium.vim
-	url = https://github.com/Exafunction/codeium.vim
+[submodule "nvim/plugins/nvim-treesitter"]
+	path = nvim/plugins/nvim-treesitter
+	url = https://github.com/nvim-treesitter/nvim-treesitter.git
+[submodule "nvim/plugins/nvim-lspconfig"]
+	path = nvim/plugins/nvim-lspconfig
+	url = https://github.com/neovim/nvim-lspconfig.git
+[submodule "nvim/plugins/codeium.nvim"]
+	path = nvim/plugins/codeium.nvim
+	url = https://github.com/Exafunction/codeium.nvim

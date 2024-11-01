@@ -6,10 +6,10 @@ popd
 
 rm -rf ~/.config/nvim || true
 
-mkdir -p ~/.config/nvim
+mkdir -p ~/.config/nvim/pack/git/
 
 ln -s ~/git/dotfiles/nvim/init.lua ~/.config/nvim/init.lua
 ln -s ~/git/dotfiles/nvim/lua ~/.config/nvim/lua
-ln -s ~/git/dotfiles/nvim/pack ~/.config/nvim/pack
+ln -s ~/git/dotfiles/nvim/plugins ~/.config/nvim/pack/git/start
 
-nvim ~/.config/nvim/lua/plugins/init.lua
+nvim ~/.config/nvim/init.lua
