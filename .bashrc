@@ -42,10 +42,26 @@ ffind() {
   find . -iname "*$1*" 2>/dev/null
 }
 
+export XDG_CONFIG_HOME="${HOME}/.config"
+export XDG_CACHE_HOME="${HOME}/.cache"
+export XDG_DATA_HOME="${HOME}/.local/share"
+export XDG_STATE_HOME="${HOME}/.local/state"
+
+export ANSIBLE_HOME="${XDG_DATA_HOME}"/ansible
+export GNUPGHOME="${XDG_DATA_HOME}"/gnupg
+export GOPATH="${XDG_DATA_HOME}"/go
+export NPM_CONFIG_INIT_MODULE="${XDG_CONFIG_HOME}"/npm/config/npm-init.js
+export NPM_CONFIG_CACHE="${XDG_CACHE_HOME}"/npm
+export NPM_CONFIG_TMP="${XDG_RUNTIME_DIR}"/npm
+export PSQL_HISTORY="${XDG_STATE_HOME}/psql_history"
+export SQLITE_HISTORY="${XDG_CACHE_HOME}"/sqlite_history
+
 export HISTSIZE=-1
 export HISTFILESIZE=-1
+export HISTFILE="${XDG_STATE_HOME}"/bash/history
 
 export EDITOR=nvim
+
 export MANPAGER='nvim +Man!'
 export MANWIDTH=999
 
