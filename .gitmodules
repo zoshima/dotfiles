@@ -13,6 +13,3 @@
 [submodule "nvim/plugins/nvim-lspconfig"]
 	path = nvim/plugins/nvim-lspconfig
 	url = https://github.com/neovim/nvim-lspconfig.git
-[submodule "nvim/plugins/codeium.nvim"]
-	path = nvim/plugins/codeium.nvim
-	url = https://github.com/Exafunction/codeium.nvim
