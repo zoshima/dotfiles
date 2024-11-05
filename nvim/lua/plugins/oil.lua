@@ -4,4 +4,4 @@ require("oil").setup({
   },
 })
 
-MapKey("n", "<Space>e", ":Oil<CR>")
+vim.api.nvim_set_keymap("n", "<Space>e", ":Oil<CR>", { noremap = true, silent = true })

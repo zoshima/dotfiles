@@ -29,4 +29,5 @@ require("nvim-treesitter.configs").setup({
   },
 })
 
-MapKey("n", "<C-Space>", ":lua print(require('nvim-treesitter').statusline())<CR>")
+vim.api.nvim_set_keymap("n", "<C-h>", ":lua print(require('nvim-treesitter').statusline())<CR>",
+  { noremap = true, silent = true })

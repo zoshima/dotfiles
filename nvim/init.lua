@@ -1,3 +1,5 @@
+vim.g.mapleader = " "
+
 vim.opt.termguicolors = false
 vim.opt.signcolumn = "number"
 vim.opt.cursorline = true
@@ -36,30 +38,7 @@ vim.diagnostic.config({
   virtual_text = false,
 })
 
--- wsl
--- from :h clipboard-wsl
-if vim.fn.has("wsl") == 1 then
-  vim.g.clipboard = {
-    name = 'WslClipboard',
-    copy = {
-      ['+'] = 'clip.exe',
-      ['*'] = 'clip.exe',
-    },
-    paste = {
-      ['+'] = 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
-      ['*'] = 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
-    },
-    cache_enabled = 0,
-  }
-end
-
--- functions
-function MapKey(mode, lhs, rhs, opts)
-  local options = { noremap = true }
-  if opts then options = vim.tbl_extend("force", options, opts) end
-  vim.api.nvim_set_keymap(mode, lhs, rhs, options)
-end
-
+-- global functions
 function GitBlame()
   local current_win = vim.api.nvim_get_current_win()
   local current_buf = vim.api.nvim_get_current_buf()
@@ -114,33 +93,14 @@ end
 -- commands
 vim.cmd([[
   command! GitBlame lua GitBlame()
+  command! ShowHighlightInfo lua ShowHighlightInfo()
   command! -nargs=1 GitShow lua GitShow(<f-args>)
   command! CopyFilePath lua CopyFilePath()
 ]])
 
 -- mappings
-MapKey("n", "*", "*``")
-MapKey("n", "<Space>", "<Nop>")
-MapKey("n", "<C-l>", "<C-w>l")
-MapKey("n", "<C-h>", "<C-w>h")
-MapKey("n", "<C-j>", "<C-w>j")
-MapKey("n", "<C-k>", "<C-w>k")
-MapKey("n", "<C-Left>", ":vertical resize +5<CR>")
-MapKey("n", "<C-Right>", ":vertical resize -5<CR>")
-MapKey("n", "<C-Up>", ":resize +5<CR>")
-MapKey("n", "<C-Down>", ":resize -5<CR>")
-MapKey("n", "<Space>,", ":noh<CR>")
-MapKey("n", "g?", ":lua ShowHighlightInfo()<CR>")
-MapKey("n", "gb", ":lua GitBlame()<CR>")
-MapKey("n", "<F5>", ":!make run<CR>")
-MapKey("n", "<F6>", ":!make build<CR>")
-MapKey("n", "<F7>", ":!make test<CR>")
-MapKey("n", "<F8>", ":so ~/git/dotfiles/nvim/lua/colorscheme.lua<CR>")
-MapKey("n", "<Esc>", ":pclose<CR>")
-MapKey("n", "<BS>", "-")
-MapKey("i", "<C-o>", "<C-x><C-o>")
-MapKey("i", "<C-n>", "<C-x><C-n>")
-MapKey("t", "<Esc>", "<C-\\><C-n>")
+vim.api.nvim_set_keymap("n", "<Leader>", "<Nop>", {})
+vim.api.nvim_set_keymap("n", "<Leader>,", ":noh<CR>", { noremap = true })
 
 -- require
 require("tabline")

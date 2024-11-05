@@ -94,8 +94,8 @@ local ui_colors = {
 };
 
 local group_links = {
-  StatusLine = {
-    "CopilotSuggestion",
+  LspCodeLens = {
+    "CodeiumSuggestion",
   },
   Error = {
     "ErrorMsg",
