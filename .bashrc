@@ -55,6 +55,7 @@ export NPM_CONFIG_CACHE="${XDG_CACHE_HOME}"/npm
 export NPM_CONFIG_TMP="${XDG_RUNTIME_DIR}"/npm
 export PSQL_HISTORY="${XDG_STATE_HOME}/psql_history"
 export SQLITE_HISTORY="${XDG_CACHE_HOME}"/sqlite_history
+export GTK2_RC_FILES="$XDG_CONFIG_HOME"/gtk-2.0/gtkrc
 
 export HISTSIZE=-1
 export HISTFILESIZE=-1
