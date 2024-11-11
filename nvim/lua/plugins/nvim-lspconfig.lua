@@ -1,16 +1,20 @@
 local lspconfig = require("lspconfig")
 
-local on_attach = function(client, bufnr, fmt)
+local on_attach = function(client, _, fmt)
   client.server_capabilities.semanticTokensProvider = nil
 
-  -- may become obsolete: https://neovim.io/doc/user/lsp.html#lsp-defaults
   local opts = { noremap = true }
-  vim.api.nvim_set_keymap("n", "grn", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
-  vim.api.nvim_set_keymap("n", "gra", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
-  vim.api.nvim_set_keymap("n", "grr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
-  vim.api.nvim_set_keymap("n", "gri", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
-  vim.api.nvim_set_keymap("n", "gO", "<cmd>lua vim.lsp.buf.document_symbol()<CR>", opts)
-  vim.api.nvim_set_keymap("i", "<C-S>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
+
+  vim.api.nvim_set_keymap("n", "ga", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
+  vim.api.nvim_set_keymap("n", "gh", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
+  vim.api.nvim_set_keymap("n", "gH", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
+  vim.api.nvim_set_keymap("n", "<F2>", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
+
+  vim.api.nvim_set_keymap("i", "<C-h>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
+
+  vim.api.nvim_set_keymap("n", "zn", "<cmd>lua vim.diagnostic.goto_next()<CR>", opts)
+  vim.api.nvim_set_keymap("n", "zp", "<cmd>lua vim.diagnostic.goto_prev()<CR>", opts)
+  vim.api.nvim_set_keymap("n", "zh", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
 
   if fmt == true then
     vim.api.nvim_command("au BufWritePre <buffer> lua vim.lsp.buf.format()")
