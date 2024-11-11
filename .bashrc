@@ -47,19 +47,23 @@ export XDG_CACHE_HOME="${HOME}/.cache"
 export XDG_DATA_HOME="${HOME}/.local/share"
 export XDG_STATE_HOME="${HOME}/.local/state"
 
-export ANSIBLE_HOME="${XDG_DATA_HOME}"/ansible
-export GNUPGHOME="${XDG_DATA_HOME}"/gnupg
-export GOPATH="${XDG_DATA_HOME}"/go
-export NPM_CONFIG_INIT_MODULE="${XDG_CONFIG_HOME}"/npm/config/npm-init.js
-export NPM_CONFIG_CACHE="${XDG_CACHE_HOME}"/npm
-export NPM_CONFIG_TMP="${XDG_RUNTIME_DIR}"/npm
+export ANSIBLE_HOME="${XDG_DATA_HOME}/ansible"
+export GNUPGHOME="${XDG_DATA_HOME}/gnupg"
+export GOPATH="${XDG_DATA_HOME}/go"
+export NPM_CONFIG_INIT_MODULE="${XDG_CONFIG_HOME}/npm/config/npm-init.js"
+export NPM_CONFIG_CACHE="${XDG_CACHE_HOME}/npm"
+export NPM_CONFIG_TMP="${XDG_RUNTIME_DIR}/npm"
 export PSQL_HISTORY="${XDG_STATE_HOME}/psql_history"
-export SQLITE_HISTORY="${XDG_CACHE_HOME}"/sqlite_history
-export GTK2_RC_FILES="$XDG_CONFIG_HOME"/gtk-2.0/gtkrc
+export SQLITE_HISTORY="${XDG_CACHE_HOME}/sqlite_history"
+export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0/gtkrc"
 
 export HISTSIZE=-1
 export HISTFILESIZE=-1
-export HISTFILE="${XDG_STATE_HOME}"/bash/history
+export HISTCONTROL=ignoreboth
+export HISTFILE="${XDG_STATE_HOME}/bash/history"
+if [ ! -f ${HISTFILE} ]; then
+  touch ${HISTFILE}
+fi
 
 export EDITOR=nvim
 
@@ -71,9 +75,11 @@ export PATH="$PATH:/home/$USER/go/bin"
 
 export WINIT_UNIX_BACKEND=x11
 
+shopt -s histappend
+shopt -s checkwinsize
+
 alias ls="ls -h --time-style='+%F %T' --color=auto"
 alias ll="ls -al"
-
 alias manpac="$EDITOR ~/git/dotfiles/notes/pacman.txt"
 
 set_prompt
