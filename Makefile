@@ -12,6 +12,11 @@ git:
 	mkdir -p ${XDG_CONFIG_HOME}/git/
 	ln -s ~/git/dotfiles/.gitconfig ${XDG_CONFIG_HOME}/git/config
 
+ghostty:
+	rm ${XDG_CONFIG_HOME}/ghostty/config || true
+	mkdir -p ${XDG_CONFIG_HOME}/ghostty/
+	ln -s ~/git/dotfiles/.ghostty ${XDG_CONFIG_HOME}/ghostty/config
+
 top:
 	rm ${XDG_CONFIG_HOME}/procps/toprc || true
 	mkdir -p ${XDG_CONFIG_HOME}/procps/
