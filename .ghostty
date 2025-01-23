@@ -9,6 +9,7 @@ keybind = alt+l=goto_split:right
 keybind = alt+j=goto_split:bottom
 keybind = alt+k=goto_split:top
 
+selection-invert-fg-bg = true
 background = #1e1e1e
 foreground = #ffffff
 palette = 0=#241f31
