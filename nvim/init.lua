@@ -46,7 +46,6 @@ vim.api.nvim_set_keymap("n", "<C-k>", "<C-w>k", { noremap = true })
 -- require
 require("tabline")
 require("statusline")
--- require("plugins.nvim-lspconfig")
 require("plugins.nvim-treesitter")
 require("plugins.telescope")
 require("plugins.oil")
