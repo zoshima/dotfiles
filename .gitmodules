@@ -10,9 +10,3 @@
 [submodule "nvim/plugins/nvim-treesitter"]
 	path = nvim/plugins/nvim-treesitter
 	url = https://github.com/nvim-treesitter/nvim-treesitter.git
-[submodule "nvim/plugins/nvim-lspconfig"]
-	path = nvim/plugins/nvim-lspconfig
-	url = https://github.com/neovim/nvim-lspconfig.git
-[submodule "nvim/plugins/codeium.vim"]
-	path = nvim/plugins/codeium.vim
-	url = https://github.com/Exafunction/codeium.vim.git
