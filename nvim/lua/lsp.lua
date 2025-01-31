@@ -32,7 +32,12 @@ vim.api.nvim_create_autocmd('LspAttach', {
     vim.api.nvim_set_keymap("n", "zp", "<cmd>lua vim.diagnostic.goto_prev()<CR>", opts)
     vim.api.nvim_set_keymap("n", "zh", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
 
-    vim.api.nvim_command("au BufWritePre <buffer> lua vim.lsp.buf.format()")
+    vim.api.nvim_create_autocmd("BufWritePre", {
+      buffer = 0,
+      callback = function()
+        vim.lsp.buf.format()
+      end,
+    })
   end,
 })
 
