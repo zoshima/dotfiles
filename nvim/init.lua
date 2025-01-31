@@ -34,10 +34,6 @@ vim.opt.fillchars = {
   -- vert = "|"
 }
 
-vim.diagnostic.config({
-  virtual_text = false,
-})
-
 -- mappings
 vim.api.nvim_set_keymap("n", "<Leader>", "<Nop>", {})
 vim.api.nvim_set_keymap("n", "<Leader>,", ":noh<CR>", { noremap = true })
@@ -50,9 +46,9 @@ vim.api.nvim_set_keymap("n", "<C-k>", "<C-w>k", { noremap = true })
 -- require
 require("tabline")
 require("statusline")
-require("plugins.nvim-lspconfig")
 require("plugins.nvim-treesitter")
 require("plugins.telescope")
 require("plugins.oil")
 require("colorscheme")
 require("command")
+require("lsp")
