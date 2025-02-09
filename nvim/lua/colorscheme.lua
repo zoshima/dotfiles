@@ -198,3 +198,15 @@ for group_name, styles in pairs(group_styles) do
     vim.api.nvim_set_hl(0, group_name, hl)
   end
 end
+
+local diagnostic_signs = {
+  "DiagnosticSignError",
+  "DiagnosticSignWarn",
+  "DiagnosticSignInfo",
+  "DiagnosticSignHint",
+  "DiagnosticSignOk",
+}
+
+for _, sign in ipairs(diagnostic_signs) do
+  vim.fn.sign_define(sign, { text = "", numhl = sign })
+end
