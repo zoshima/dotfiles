@@ -8,6 +8,7 @@ keybind = alt+h=goto_split:left
 keybind = alt+l=goto_split:right
 keybind = alt+j=goto_split:bottom
 keybind = alt+k=goto_split:top
+keybind = f11=toggle_fullscreen
 
 selection-invert-fg-bg = true
 background = #1e1e1e
