@@ -1,5 +1,6 @@
 vim.g.mapleader = " "
 
+vim.opt.autochdir = true
 vim.opt.termguicolors = false
 vim.opt.signcolumn = "number"
 vim.opt.cursorline = true
