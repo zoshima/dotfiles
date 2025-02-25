@@ -36,18 +36,17 @@ vim.opt.fillchars = {
 }
 
 -- mappings
-vim.api.nvim_set_keymap("n", "<Leader>", "<Nop>", {})
 vim.api.nvim_set_keymap("n", "<Leader>,", ":noh<CR>", { noremap = true })
 vim.api.nvim_set_keymap("t", "<Esc>", "<C-\\><C-n>", {})
-vim.api.nvim_set_keymap("n", "<C-l>", "<C-w>l", { noremap = true })
-vim.api.nvim_set_keymap("n", "<C-h>", "<C-w>h", { noremap = true })
-vim.api.nvim_set_keymap("n", "<C-j>", "<C-w>j", { noremap = true })
-vim.api.nvim_set_keymap("n", "<C-k>", "<C-w>k", { noremap = true })
+
+-- functions
+function CopyFilePath()
+  local file_path = vim.fn.expand('%:p')
+  vim.fn.setreg('+', file_path)
+end
 
 -- require
-require("tabline")
 require("statusline")
-require("colorscheme")
-require("functions")
 require("lsp")
 require("treesitter")
+require("colorscheme")
