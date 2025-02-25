@@ -1,6 +1,6 @@
 vim.g.mapleader = " "
 
-vim.opt.autochdir = true
+vim.opt.path:append("**/*")
 vim.opt.termguicolors = false
 vim.opt.signcolumn = "number"
 vim.opt.cursorline = true
@@ -48,6 +48,6 @@ vim.api.nvim_set_keymap("n", "<C-k>", "<C-w>k", { noremap = true })
 require("tabline")
 require("statusline")
 require("colorscheme")
-require("command")
+require("functions")
 require("lsp")
 require("treesitter")

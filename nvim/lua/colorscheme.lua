@@ -1,20 +1,6 @@
 -- :h group-name
 -- :h cterm-colors
 
--- standard material colors (500)
-local gui_remap = {
-  Black = "#212121",
-  White = "#FFFFFF",
-  Gray = "#9E9E9E",
-  Green = "#4CAF50",
-  Yellow = "#FDD835",
-  Brown = "#795548",
-  Magenta = "#E91E63",
-  Blue = "#2196F3",
-  Cyan = "#00BCD4",
-  Red = "#F44336",
-}
-
 local syntax_colors = {
   White = {
     "Identifier",
@@ -90,13 +76,10 @@ local ui_colors = {
   DiagnosticUnderlineOk = { sp = "Green", undercurl = true },
   TreesitterContext = { ctermbg = "NONE", nocombine = true },
   TreesitterContextLineNumber = { ctermfg = "White" },
-  Directory = { ctermfg = "Blue", bold = true }, -- Oil links to this...
+  Directory = { ctermfg = "Blue", bold = true },
 };
 
 local group_links = {
-  LspCodeLens = {
-    "CodeiumSuggestion",
-  },
   Error = {
     "ErrorMsg",
   },
@@ -158,7 +141,6 @@ for col_name, values in pairs(syntax_colors) do
     local value
 
     value = { bg = "NONE", ctermbg = "NONE" }
-    value.fg = gui_remap[col_name] or col_name
     value.ctermfg = col_name
 
     vim.api.nvim_set_hl(0, v, value)
@@ -171,9 +153,6 @@ for group_name, values in pairs(ui_colors) do
   for k, v in pairs(values) do
     result[k] = v
   end
-
-  result.fg = gui_remap[result.fg] or gui_remap[result.ctermfg] or values.ctermfg
-  result.bg = gui_remap[result.bg] or gui_remap[result.ctermbg] or values.ctermbg
 
   vim.api.nvim_set_hl(0, group_name, result)
 end
