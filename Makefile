@@ -1,6 +1,3 @@
-update:
-	git submodule update --remote --recursive
-
 links: bash git top
 
 bash:
@@ -12,19 +9,10 @@ git:
 	mkdir -p ${XDG_CONFIG_HOME}/git/
 	ln -s ~/git/dotfiles/.gitconfig ${XDG_CONFIG_HOME}/git/config
 
-top:
-	rm ${XDG_CONFIG_HOME}/procps/toprc || true
-	mkdir -p ${XDG_CONFIG_HOME}/procps/
-	ln -s ~/git/dotfiles/.toprc ${XDG_CONFIG_HOME}/procps/toprc
-
-vim:
-	rm ~/.vimrc || true
-	ln -s ~/git/dotfiles/.vimrc ~/.vimrc
-
 nvim:
 	./scripts/setup_nvim.sh
 
 services:
 	./scripts/setup_services.sh
 
-.PHONY: update links vim nvim services git
+.PHONY: links bash git nvim services

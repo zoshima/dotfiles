@@ -80,6 +80,5 @@ shopt -s checkwinsize
 
 alias ls="ls -h --time-style='+%F %T' --color=auto"
 alias ll="ls -al"
-alias manpac="$EDITOR ~/git/dotfiles/notes/pacman.txt"
 
 set_prompt
