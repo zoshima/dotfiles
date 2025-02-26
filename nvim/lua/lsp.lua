@@ -3,6 +3,9 @@ vim.diagnostic.config({
   float = {
     border = "rounded",
   },
+  jump = {
+    float = true,
+  },
 });
 
 vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
@@ -19,19 +22,14 @@ vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(
 
 vim.api.nvim_create_autocmd('LspAttach', {
   callback = function()
-    local opts = { noremap = true }
+    local opts = { buffer = true, noremap = true }
 
-    vim.api.nvim_set_keymap("n", "ga", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
-    vim.api.nvim_set_keymap("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
-    vim.api.nvim_set_keymap("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
-    vim.api.nvim_set_keymap("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
-    vim.api.nvim_set_keymap("n", "gh", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
-
-    vim.api.nvim_set_keymap("i", "<C-S>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
-
-    vim.api.nvim_set_keymap("n", "zn", "<cmd>lua vim.diagnostic.goto_next()<CR>", opts)
-    vim.api.nvim_set_keymap("n", "zp", "<cmd>lua vim.diagnostic.goto_prev()<CR>", opts)
-    vim.api.nvim_set_keymap("n", "zh", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
+    vim.keymap.set("n", "ga", vim.lsp.buf.code_action, opts)
+    vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
+    vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
+    vim.keymap.set("n", "<F2>", vim.lsp.buf.rename, opts)
+    vim.keymap.set("i", "<C-k>", vim.lsp.buf.signature_help, opts)
+    vim.keymap.set("n", "<C-k>", vim.diagnostic.open_float, opts)
 
     vim.api.nvim_create_autocmd("BufWritePre", {
       buffer = 0,
