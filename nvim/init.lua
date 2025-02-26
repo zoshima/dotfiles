@@ -1,5 +1,3 @@
-vim.g.mapleader = " "
-
 vim.opt.path:append("**/*")
 vim.opt.termguicolors = false
 vim.opt.signcolumn = "number"
@@ -34,8 +32,7 @@ vim.opt.fillchars = {
 }
 
 -- mappings
-vim.api.nvim_set_keymap("n", "<Leader>,", ":noh<CR>", { noremap = true })
-vim.api.nvim_set_keymap("t", "<Esc>", "<C-\\><C-n>", {})
+vim.keymap.set("t", "<Esc>", "<C-\\><C-n>", {})
 
 -- functions
 function CopyFilePath()
