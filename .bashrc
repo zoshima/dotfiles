@@ -39,7 +39,7 @@ set_prompt() {
 }
 
 ffind() {
-  find . -iname "*$1*" 2>/dev/null | xargs ls -l --hyperlink=always
+  find . -iname "*$1*" 2>/dev/null 
 }
 
 export XDG_CONFIG_HOME="${HOME}/.config"
@@ -72,8 +72,6 @@ export MANWIDTH=999
 
 export PATH="$PATH:/home/$USER/.local/bin"
 export PATH="$PATH:/home/$USER/go/bin"
-
-export WINIT_UNIX_BACKEND=x11
 
 shopt -s histappend
 shopt -s checkwinsize
