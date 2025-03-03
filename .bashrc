@@ -39,7 +39,7 @@ set_prompt() {
 }
 
 ffind() {
-  find . -iname "*$1*" 2>/dev/null | xargs ls -l --hyperlink=always
+  find . -iname "*$1*" 2>/dev/null
 }
 
 export XDG_CONFIG_HOME="${HOME}/.config"

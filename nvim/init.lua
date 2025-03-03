@@ -1,3 +1,5 @@
+vim.g.mapleader = " "
+
 vim.opt.path:append("**/*")
 vim.opt.termguicolors = false
 vim.opt.signcolumn = "number"
@@ -31,14 +33,21 @@ vim.opt.fillchars = {
   -- vert = "|"
 }
 
+-- functions
+local function yank_file_path()
+  local file_path = vim.fn.expand('%:p')
+  vim.fn.setreg('+', file_path)
+  vim.notify("\"" .. file_path .. "\" yanked to clipboard", vim.log.levels.INFO)
+end
+
 -- mappings
 vim.keymap.set("t", "<Esc>", "<C-\\><C-n>", {})
 
--- functions
-function CopyFilePath()
-  local file_path = vim.fn.expand('%:p')
-  vim.fn.setreg('+', file_path)
-end
+vim.keymap.set("n", "<Leader>e", ":Ex<CR>")
+vim.keymap.set("n", "<Leader>p", ":find ")
+vim.keymap.set("n", "<Leader>f", ":grep ")
+vim.keymap.set("n", "<Leader>b", ":ls<CR>:b ")
+vim.keymap.set("n", "<Leader>yp", yank_file_path)
 
 -- require
 require("statusline")

@@ -2,6 +2,9 @@ bash:
 	rm ~/.bashrc || true
 	ln -s ~/git/dotfiles/.bashrc ~/.bashrc
 
+ghostty:
+	ln -s ~/git/dotfiles/.ghostty ~/.ghostty
+
 nvim:
 	./scripts/setup_nvim.sh
 
