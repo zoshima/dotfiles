@@ -86,18 +86,6 @@ local group_links = {
   Warning = {
     "WarningMsg",
   },
-  Normal = {
-    "TelescopeResultsIdentifier",
-  },
-  VertSplit = {
-    "TelescopeBorder",
-  },
-  Search = {
-    "TelescopeMatching",
-  },
-  PmenuSel = {
-    "TelescopeSelection",
-  },
   Statement = {
     "@type.qualifier",
     "@storageclass",
