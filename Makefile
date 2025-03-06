@@ -12,7 +12,4 @@ nvim:
 	ln -s ~/git/dotfiles/nvim/lua ~/.config/nvim/lua
 	git clone https://github.com/nvim-treesitter/nvim-treesitter.git ~/.config/nvim/pack/git/start/nvim-treesitter
 
-services:
-	./scripts/setup_services.sh
-
-.PHONY: bash nvim services
+.PHONY: bash nvim
