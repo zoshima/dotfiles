@@ -30,7 +30,6 @@ vim.opt.fillchars = {
   msgsep = "─",
   stl = "─",
   stlnc = "─",
-  -- vert = "|"
 }
 
 -- functions

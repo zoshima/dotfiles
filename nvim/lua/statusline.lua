@@ -9,21 +9,20 @@ vim.api.nvim_create_autocmd('DiagnosticChanged', {
 Statusline = {}
 
 function Statusline.get_statusline()
-  local current_win = vim.api.nvim_get_current_win()
   local bufnr = vim.api.nvim_win_get_buf(vim.g.statusline_winid)
-  local is_active = current_win == vim.g.statusline_winid
+  local current_win = vim.api.nvim_get_current_win()
 
-  local filename = is_active and "[%#StatusLineFileName#%t%*]" or "[%t]"
-  local location = "[%l:%c]"
-  local state = "%r%m"
-  local mode = string.format("[%s]", vim.fn.mode())
+  local filename = "[%t]"
+  if current_win == vim.g.statusline_winid then
+    filename = "%#StatusLineFileName#" .. filename .. "%*"
+  end
+
   local diagnostics = Statusline.get_diagnostics(bufnr)
 
-  local left = string.format("%s%s%s%s", state, mode, filename, location)
-  local center = ""
-  local right = string.format("%s", diagnostics)
+  local left = "[%n]" .. "[%Y%M%R]" .. filename .. "[%l:%c]"
+  local right = diagnostics
 
-  return string.format("─%s%s%s%s%s─", left, "%=", center, "%=", right);
+  return string.format("─%s%s%s─", left, "%=", right);
 end
 
 function Statusline.get_diagnostics(bufnr)

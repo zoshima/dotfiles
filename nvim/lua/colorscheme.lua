@@ -52,7 +52,7 @@ local ui_colors = {
   Visual = { ctermbg = "NONE", reverse = true },
   TabLineFill = { ctermfg = "DarkGray", },
   TabLineSel = { ctermfg = "White", },
-  StatusLine = { ctermfg = "DarkGray", },
+  StatusLine = { ctermfg = "DarkGray" },
   StatusLineNC = { ctermfg = "DarkGray", nocombine = true },
   StatusLineFileName = { ctermfg = "White" },
   CursorLineNr = { ctermfg = "White" },
