@@ -74,8 +74,6 @@ local ui_colors = {
   DiagnosticUnderlineHint = { sp = "Cyan", undercurl = true },
   DiagnosticOk = { ctermfg = "Green" },
   DiagnosticUnderlineOk = { sp = "Green", undercurl = true },
-  TreesitterContext = { ctermbg = "NONE", nocombine = true },
-  TreesitterContextLineNumber = { ctermfg = "White" },
   Directory = { ctermfg = "Blue", bold = true },
 };
 
