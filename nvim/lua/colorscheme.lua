@@ -30,6 +30,7 @@ vim.api.nvim_set_hl(0, "@variable.builtin", { ctermfg = "White", italic = true }
 vim.api.nvim_set_hl(0, "@module", { link = "PreProc" });
 
 -- ui
+vim.api.nvim_set_hl(0, "Directory", { ctermfg = "Blue", bold = true })
 vim.api.nvim_set_hl(0, "StatusLine", { ctermfg = "DarkGray" })
 vim.api.nvim_set_hl(0, "StatusLineNC", { ctermfg = "DarkGray" })
 vim.api.nvim_set_hl(0, "StatusLineFileName", { ctermfg = "White" })
