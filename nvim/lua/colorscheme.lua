@@ -44,6 +44,8 @@ vim.api.nvim_set_hl(0, "Visual", { reverse = true })
 vim.api.nvim_set_hl(0, "WinSeparator", { ctermfg = "DarkGray" })
 vim.api.nvim_set_hl(0, "MatchParen", { reverse = true })
 vim.api.nvim_set_hl(0, "NonText", { ctermfg = "DarkGray" })
+vim.api.nvim_set_hl(0, "FloatBorder", { ctermfg = "DarkGray" })
+vim.api.nvim_set_hl(0, "Search", { reverse = true })
 
 -- diagnostics
 vim.api.nvim_set_hl(0, "DiagnosticUnderlineError", { sp = "Red", undercurl = true })
