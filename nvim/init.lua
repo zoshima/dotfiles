@@ -46,4 +46,9 @@ end)
 require("colorscheme")
 require("lsp")
 require("statusline")
-require("treesitter")
+require("nvim-treesitter.configs").setup({
+  auto_install = true,
+  highlight = {
+    enable = true,
+  },
+})
