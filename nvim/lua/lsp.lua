@@ -24,11 +24,13 @@ vim.api.nvim_create_autocmd('LspAttach', {
   callback = function()
     local opts = { buffer = true, noremap = true }
 
-    vim.keymap.set("n", "ga", vim.lsp.buf.code_action, opts)
-    vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
-    vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
-    vim.keymap.set("n", "<F2>", vim.lsp.buf.rename, opts)
-    vim.keymap.set("i", "<C-k>", vim.lsp.buf.signature_help, opts)
+    vim.keymap.set("n", "gra", vim.lsp.buf.code_action, opts)
+    vim.keymap.set("n", "grr", vim.lsp.buf.references, opts)
+    vim.keymap.set("n", "gri", vim.lsp.buf.implementation, opts)
+    vim.keymap.set("n", "grn", vim.lsp.buf.rename, opts)
+    vim.keymap.set("i", "<C-S>", vim.lsp.buf.signature_help, opts)
+    vim.keymap.set("n", "gO", vim.lsp.buf.document_symbol, opts)
+
     vim.keymap.set("n", "<C-k>", vim.diagnostic.open_float, opts)
 
     vim.api.nvim_create_autocmd("BufWritePre", {

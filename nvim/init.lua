@@ -35,7 +35,7 @@ vim.opt.fillchars = {
 vim.keymap.set("t", "<Esc>", "<C-\\><C-n>", {})
 vim.keymap.set("n", "<Leader>e", ":Ex<CR>")
 vim.keymap.set("n", "<Leader>p", ":find ")
-vim.keymap.set("n", "<Leader>f", ":grep ")
+vim.keymap.set("n", "<Leader>f", ":silent grep! ")
 vim.keymap.set("n", "<Leader>b", ":ls<CR>:b ")
 vim.keymap.set("n", "<Leader>yp", function()
   local file_path = vim.fn.expand('%:p')
@@ -43,11 +43,17 @@ vim.keymap.set("n", "<Leader>yp", function()
   vim.notify("\"" .. file_path .. "\" yanked to clipboard", vim.log.levels.INFO)
 end)
 
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = "qf",
+  callback = function()
+    vim.api.nvim_command("wincmd J")
+  end
+})
+
 require("colorscheme")
 require("lsp")
 require("statusline")
 require("nvim-treesitter.configs").setup({
-  auto_install = true,
   highlight = {
     enable = true,
   },
