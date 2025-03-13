@@ -53,8 +53,3 @@ vim.api.nvim_set_hl(0, "DiagnosticUnderlineWarn", { sp = "Yellow", undercurl = t
 vim.api.nvim_set_hl(0, "DiagnosticUnderlineInfo", { sp = "Cyan", undercurl = true })
 vim.api.nvim_set_hl(0, "DiagnosticUnderlineHint", { sp = "Blue", undercurl = true })
 vim.api.nvim_set_hl(0, "DiagnosticUnderlineOk", { sp = "Green", undercurl = true })
-vim.fn.sign_define("DiagnosticSignError", { text = "", numhl = "DiagnosticSignError" })
-vim.fn.sign_define("DiagnosticSignWarn", { text = "", numhl = "DiagnosticSignWarn" })
-vim.fn.sign_define("DiagnosticSignInfo", { text = "", numhl = "DiagnosticSignInfo" })
-vim.fn.sign_define("DiagnosticSignHint", { text = "", numhl = "DiagnosticSignHint" })
-vim.fn.sign_define("DiagnosticSignOk", { text = "", numhl = "DiagnosticSignOk" })
