@@ -48,8 +48,8 @@ vim.api.nvim_set_hl(0, "FloatBorder", { ctermfg = "DarkGray" })
 vim.api.nvim_set_hl(0, "Search", { reverse = true })
 
 -- diagnostics
-vim.api.nvim_set_hl(0, "DiagnosticUnderlineError", { sp = "Red", undercurl = true })
-vim.api.nvim_set_hl(0, "DiagnosticUnderlineWarn", { sp = "Yellow", undercurl = true })
-vim.api.nvim_set_hl(0, "DiagnosticUnderlineInfo", { sp = "Cyan", undercurl = true })
-vim.api.nvim_set_hl(0, "DiagnosticUnderlineHint", { sp = "Blue", undercurl = true })
-vim.api.nvim_set_hl(0, "DiagnosticUnderlineOk", { sp = "Green", undercurl = true })
+vim.api.nvim_set_hl(0, "DiagnosticUnderlineError", { sp = "LightRed", undercurl = true })
+vim.api.nvim_set_hl(0, "DiagnosticUnderlineWarn", { sp = "LightYellow", undercurl = true })
+vim.api.nvim_set_hl(0, "DiagnosticUnderlineInfo", { sp = "LightCyan", undercurl = true })
+vim.api.nvim_set_hl(0, "DiagnosticUnderlineHint", { sp = "LightBlue", undercurl = true })
+vim.api.nvim_set_hl(0, "DiagnosticUnderlineOk", { sp = "LightGreen", undercurl = true })
