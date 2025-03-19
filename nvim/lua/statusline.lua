@@ -13,8 +13,8 @@ function Statusline()
   local dc = vim.diagnostic.count(bufid)
 
   local filename = winid == vim.g.statusline_winid
-      and "[%#StatusLineFileName#%t%*]"
-      or "[%t]"
+      and "[%#StatusLineFileName#%f%*]"
+      or "[%f]"
   local errors = dc[vim.diagnostic.severity.ERROR]
       and "[%#DiagnosticError#" .. dc[vim.diagnostic.severity.ERROR] .. "e%*]"
       or ""
@@ -35,6 +35,6 @@ function Statusline()
     end
   end
 
-  return "[%n][%Y%M%R]" .. filename .. "[%l:%c]" .. "%="
-      .. errors .. warnings .. info .. hints .. clients
+  return "%m%r" .. filename .. "[%l:%c]" .. "%="
+      .. errors .. warnings .. info .. hints .. clients .. "%y"
 end
