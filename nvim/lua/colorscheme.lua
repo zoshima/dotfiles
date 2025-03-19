@@ -22,12 +22,12 @@ vim.api.nvim_set_hl(0, "Changed", { ctermfg = "Yellow", });
 vim.api.nvim_set_hl(0, "Removed", { ctermfg = "Red", });
 
 -- syntax (treesitter)
+vim.api.nvim_set_hl(0, "@module", { link = "PreProc" });
 vim.api.nvim_set_hl(0, "@constructor", { link = "Function" });
 vim.api.nvim_set_hl(0, "@type.builtin", { ctermfg = "Blue", italic = true });
 vim.api.nvim_set_hl(0, "@constant.builtin", { ctermfg = "Green", italic = true });
 vim.api.nvim_set_hl(0, "@function.builtin", { ctermfg = "Yellow", italic = true });
 vim.api.nvim_set_hl(0, "@variable.builtin", { ctermfg = "White", italic = true });
-vim.api.nvim_set_hl(0, "@module", { link = "PreProc" });
 
 -- ui
 vim.api.nvim_set_hl(0, "Directory", { ctermfg = "Blue", bold = true })
@@ -45,12 +45,10 @@ vim.api.nvim_set_hl(0, "WinSeparator", { ctermfg = "DarkGray" })
 vim.api.nvim_set_hl(0, "MatchParen", { reverse = true })
 vim.api.nvim_set_hl(0, "NonText", { ctermfg = "DarkGray" })
 vim.api.nvim_set_hl(0, "FloatBorder", { ctermfg = "DarkGray" })
-vim.api.nvim_set_hl(0, "Search", { reverse = true })
-vim.api.nvim_set_hl(0, "PmenuMatch", { reverse = true })
 
 -- diagnostics
-vim.api.nvim_set_hl(0, "DiagnosticUnderlineError", { sp = "LightRed", undercurl = true })
-vim.api.nvim_set_hl(0, "DiagnosticUnderlineWarn", { sp = "LightYellow", undercurl = true })
-vim.api.nvim_set_hl(0, "DiagnosticUnderlineInfo", { sp = "LightCyan", undercurl = true })
-vim.api.nvim_set_hl(0, "DiagnosticUnderlineHint", { sp = "LightBlue", undercurl = true })
-vim.api.nvim_set_hl(0, "DiagnosticUnderlineOk", { sp = "LightGreen", undercurl = true })
+vim.api.nvim_set_hl(0, "DiagnosticUnderlineError", { link = "SpellBad" })
+vim.api.nvim_set_hl(0, "DiagnosticUnderlineWarn", { link = "SpellCap" })
+vim.api.nvim_set_hl(0, "DiagnosticUnderlineInfo", { link = "SpellRare" })
+vim.api.nvim_set_hl(0, "DiagnosticUnderlineHint", { link = "SpellRare" })
+vim.api.nvim_set_hl(0, "DiagnosticUnderlineOk", { link = "SpellLocal" })
