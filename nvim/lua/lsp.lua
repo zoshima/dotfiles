@@ -1,5 +1,4 @@
 vim.diagnostic.config({
-  virtual_text = false,
   float = {
     border = "rounded",
   },
@@ -22,37 +21,22 @@ vim.diagnostic.config({
   },
 });
 
-vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
-  vim.lsp.handlers.hover, {
-    border = "rounded",
-  }
-);
-
-vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(
-  vim.lsp.handlers.signature_help, {
-    border = "rounded",
-  }
-);
-
 vim.api.nvim_create_autocmd('LspAttach', {
-  callback = function()
-    local opts = { buffer = true, noremap = true }
+  callback = function(args)
+    local client = assert(vim.lsp.get_client_by_id(args.data.client_id))
 
-    vim.keymap.set("n", "gra", vim.lsp.buf.code_action, opts)
-    vim.keymap.set("n", "grr", vim.lsp.buf.references, opts)
-    vim.keymap.set("n", "gri", vim.lsp.buf.implementation, opts)
-    vim.keymap.set("n", "grn", vim.lsp.buf.rename, opts)
-    vim.keymap.set("i", "<C-S>", vim.lsp.buf.signature_help, opts)
-    vim.keymap.set("n", "gO", vim.lsp.buf.document_symbol, opts)
+    if client:supports_method('textDocument/formatting') then
+      vim.api.nvim_create_autocmd("BufWritePre", {
+        buffer = args.buf,
+        callback = function()
+          vim.lsp.buf.format({ bufnr = args.buf, id = client.id, timeout_ms = 1000 })
+        end,
+      })
+    end
 
-    vim.keymap.set("n", "<C-k>", vim.diagnostic.open_float, opts)
-
-    vim.api.nvim_create_autocmd("BufWritePre", {
-      buffer = 0,
-      callback = function()
-        vim.lsp.buf.format()
-      end,
-    })
+    if client:supports_method('textDocument/completion') then
+      vim.lsp.completion.enable(true, client.id, args.buf, { autotrigger = true })
+    end
   end,
 })
 
