@@ -42,7 +42,7 @@ vim.api.nvim_set_hl(0, "LineNr", { ctermfg = "DarkGray" })
 vim.api.nvim_set_hl(0, "CursorLineNr", { ctermfg = "White" })
 vim.api.nvim_set_hl(0, "Visual", { reverse = true })
 vim.api.nvim_set_hl(0, "WinSeparator", { ctermfg = "DarkGray" })
-vim.api.nvim_set_hl(0, "MatchParen", { reverse = true })
+vim.api.nvim_set_hl(0, "MatchParen", { bold = true })
 vim.api.nvim_set_hl(0, "NonText", { ctermfg = "DarkGray" })
 vim.api.nvim_set_hl(0, "FloatBorder", { ctermfg = "DarkGray" })
 
