@@ -23,7 +23,7 @@ vim.opt.winborder = "rounded"
 vim.opt.completeopt = { "menuone", "noselect", "fuzzy" }
 vim.opt.listchars = { tab = "<>", space = "_", eol = "$" }
 vim.opt.fillchars = { msgsep = "─", stl = "─", stlnc = "─" }
-vim.opt.statusline = "%m%r[%f][%l:%c]%=%y"
+vim.opt.statusline = "%!v:lua.StatusLine()"
 
 -- keymaps
 vim.keymap.set("t", "<Esc>", "<C-\\><C-n>", {})
@@ -105,17 +105,18 @@ vim.api.nvim_set_hl(0, "Statement", { ctermfg = "Red", });
 vim.api.nvim_set_hl(0, "Operator", { ctermfg = "Gray", });
 vim.api.nvim_set_hl(0, "PreProc", { ctermfg = "Gray", });
 vim.api.nvim_set_hl(0, "Type", { ctermfg = "Cyan", });
-vim.api.nvim_set_hl(0, "Special", { ctermfg = "Magenta", });
+vim.api.nvim_set_hl(0, "Special", { ctermfg = "Brown", });
 vim.api.nvim_set_hl(0, "Tag", { ctermfg = "Blue", });
 vim.api.nvim_set_hl(0, "Delimiter", { ctermfg = "Gray", });
 vim.api.nvim_set_hl(0, "Underlined", { underline = true });
 vim.api.nvim_set_hl(0, "Ignore", { ctermfg = "DarkGray", });
 vim.api.nvim_set_hl(0, "Error", { ctermfg = "Red", });
-vim.api.nvim_set_hl(0, "Todo", { ctermfg = "Brown", });
+vim.api.nvim_set_hl(0, "Todo", { ctermfg = "Magenta", });
 vim.api.nvim_set_hl(0, "Added", { ctermfg = "Green", });
 vim.api.nvim_set_hl(0, "Changed", { ctermfg = "Yellow", });
 vim.api.nvim_set_hl(0, "Removed", { ctermfg = "Red", });
 -- ui (:h highlight-groups)
+vim.api.nvim_set_hl(0, "Normal", { ctermfg = "White" })
 vim.api.nvim_set_hl(0, "Directory", { ctermfg = "Blue", bold = true })
 vim.api.nvim_set_hl(0, "StatusLine", { ctermbg = "NONE", ctermfg = "DarkGray" })
 vim.api.nvim_set_hl(0, "StatusLineNC", { ctermbg = "NONE", ctermfg = "DarkGray" })
@@ -123,8 +124,8 @@ vim.api.nvim_set_hl(0, "Pmenu", { ctermbg = "Black" })
 vim.api.nvim_set_hl(0, "PmenuSel", { reverse = true })
 vim.api.nvim_set_hl(0, "PmenuSbar", { ctermbg = "Black" })
 vim.api.nvim_set_hl(0, "PmenuThumb", { reverse = true })
-vim.api.nvim_set_hl(0, "PmenuMatch", { link = "CurSearch" })
-vim.api.nvim_set_hl(0, "PmenuMatchSel", {})
+vim.api.nvim_set_hl(0, "PmenuMatch", { bold = true })
+vim.api.nvim_set_hl(0, "PmenuMatchSel", { bold = true })
 vim.api.nvim_set_hl(0, "LineNr", { ctermfg = "DarkGray" })
 vim.api.nvim_set_hl(0, "CursorLineNr", { ctermfg = "White" })
 vim.api.nvim_set_hl(0, "Visual", { reverse = true })
@@ -152,3 +153,23 @@ vim.api.nvim_set_hl(0, "@module.builtin", { ctermfg = "Gray", italic = true });
 
 -- treesitter
 require("nvim-treesitter.configs").setup({ highlight = { enable = true } })
+
+-- statusline
+function StatusLine()
+  local winid = vim.api.nvim_get_current_win()
+  local bufid = vim.api.nvim_win_get_buf(vim.g.statusline_winid)
+  local lsp_clients = vim.lsp.get_clients({ bufnr = bufid })
+  local dc = vim.diagnostic.count(bufid)
+  local s = vim.diagnostic.severity
+
+  local filename = winid == vim.g.statusline_winid and "[%#Normal#%f%*]" or "[%f]"
+  local filetype = #lsp_clients > 0 and "[%#Special#%Y%*]" or "%y"
+  local diagnostics = string.format("%s%s%s%s",
+    dc[s.ERROR] and "[%#DiagnosticError#" .. dc[s.ERROR] .. "e%*]" or "",
+    dc[s.WARN] and "[%#DiagnosticWarn#" .. dc[s.WARN] .. "w%*]" or "",
+    dc[s.INFO] and "[%#DiagnosticInfo#" .. dc[s.INFO] .. "i%*]" or "",
+    dc[s.HINT] and "[%#DiagnosticHint#" .. dc[s.HINT] .. "h%*]" or ""
+  )
+
+  return "%m%r" .. filename .. "[%l:%c]%=" .. diagnostics .. filetype
+end
