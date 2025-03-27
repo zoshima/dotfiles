@@ -60,6 +60,11 @@ vim.api.nvim_create_autocmd('LspAttach', {
     end
   end,
 })
+vim.api.nvim_create_autocmd('DiagnosticChanged', {
+  callback = function()
+    vim.cmd("redrawstatus")
+  end
+})
 
 -- lsp
 vim.lsp.config.bashls = {
