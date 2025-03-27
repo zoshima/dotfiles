@@ -67,41 +67,33 @@ vim.api.nvim_create_autocmd('DiagnosticChanged', {
 })
 
 -- lsp
-vim.lsp.config["bashls"] = {
+vim.lsp.config.bashls = {
   cmd = { "bash-language-server", "start" },
+  root_markers = { ".git" },
   filetypes = { "sh" }
 }
-vim.lsp.config["gopls"] = {
+vim.lsp.config.gopls = {
   cmd = { "gopls" },
   root_markers = { "go.mod", "go.work", ".git" },
   filetypes = { "go" }
 }
-vim.lsp.config["tsls"] = {
+vim.lsp.config.tsls = {
   cmd = { "typescript-language-server", "--stdio" },
   root_markers = { "tsconfig.json", "jsconfig.json", "package.json", ".git" },
   filetypes = { "typescript", "javascript" }
 }
-vim.lsp.config["luals"] = {
+vim.lsp.config.luals = {
   cmd = { "lua-language-server" },
   root_markers = { ".luarc.json", ".luarc.jsonc", ".git" },
   filetypes = { "lua" },
   settings = {
     Lua = {
-      runtime = {
-        version = 'LuaJIT',
-      },
-      workspace = {
-        checkThirdParty = false,
-        library = {
-          vim.env.VIMRUNTIME
-        }
-      }
+      runtime = { version = 'LuaJIT', },
+      workspace = { checkThirdParty = false, library = { vim.env.VIMRUNTIME } }
     }
   }
 }
-
-vim.lsp.enable({ "bashls", "gopls", "tsls", "luals" })
-vim.diagnostic.config({ jump = { float = true } })
+vim.lsp.enable({ "bashls", "luals", "gopls", "tsls" })
 
 -- colorscheme
 -- syntax (:h cterm-colors, :h group-name)
@@ -131,26 +123,32 @@ vim.api.nvim_set_hl(0, "Pmenu", { ctermbg = "Black" })
 vim.api.nvim_set_hl(0, "PmenuSel", { reverse = true })
 vim.api.nvim_set_hl(0, "PmenuSbar", { ctermbg = "Black" })
 vim.api.nvim_set_hl(0, "PmenuThumb", { reverse = true })
+vim.api.nvim_set_hl(0, "PmenuMatch", { link = "CurSearch" })
+vim.api.nvim_set_hl(0, "PmenuMatchSel", {})
 vim.api.nvim_set_hl(0, "LineNr", { ctermfg = "DarkGray" })
 vim.api.nvim_set_hl(0, "CursorLineNr", { ctermfg = "White" })
 vim.api.nvim_set_hl(0, "Visual", { reverse = true })
 vim.api.nvim_set_hl(0, "WinSeparator", { ctermfg = "DarkGray" })
-vim.api.nvim_set_hl(0, "MatchParen", { bold = true })
 vim.api.nvim_set_hl(0, "NonText", { ctermfg = "DarkGray" })
 vim.api.nvim_set_hl(0, "FloatBorder", { ctermfg = "DarkGray" })
+vim.api.nvim_set_hl(0, "MatchParen", { underline = true })
 -- diagnostics (:h diagnostic-highlights)
 vim.api.nvim_set_hl(0, "DiagnosticUnderlineError", { link = "SpellBad" })
 vim.api.nvim_set_hl(0, "DiagnosticUnderlineWarn", { link = "SpellCap" })
 vim.api.nvim_set_hl(0, "DiagnosticUnderlineInfo", { link = "SpellRare" })
 vim.api.nvim_set_hl(0, "DiagnosticUnderlineHint", { link = "SpellRare" })
 vim.api.nvim_set_hl(0, "DiagnosticUnderlineOk", { link = "SpellLocal" })
--- treesitter
+-- treesitter (:h treesitter-highlight-groups)
 vim.api.nvim_set_hl(0, "@module", { link = "PreProc" });
 vim.api.nvim_set_hl(0, "@constructor", { link = "Function" });
 vim.api.nvim_set_hl(0, "@type.builtin", { ctermfg = "Blue", italic = true });
 vim.api.nvim_set_hl(0, "@constant.builtin", { ctermfg = "Green", italic = true });
 vim.api.nvim_set_hl(0, "@function.builtin", { ctermfg = "Yellow", italic = true });
 vim.api.nvim_set_hl(0, "@variable.builtin", { ctermfg = "White", italic = true });
+vim.api.nvim_set_hl(0, "@variable.parameter.builtin", { ctermfg = "White", italic = true });
+vim.api.nvim_set_hl(0, "@tag.builtin", { ctermfg = "Blue", italic = true });
+vim.api.nvim_set_hl(0, "@attribute.builtin", { ctermfg = "Gray", italic = true });
+vim.api.nvim_set_hl(0, "@module.builtin", { ctermfg = "Gray", italic = true });
 
--- plugins
+-- treesitter
 require("nvim-treesitter.configs").setup({ highlight = { enable = true } })
