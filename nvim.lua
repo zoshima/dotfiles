@@ -20,7 +20,7 @@ vim.opt.mousemodel = "extend"
 vim.opt.scrolloff = 1
 vim.opt.path:append("**/*")
 vim.opt.winborder = "rounded"
-vim.opt.completeopt = { "menuone", "noselect", "fuzzy" }
+vim.opt.completeopt = { "menuone", "noselect", "popup", "fuzzy" }
 vim.opt.listchars = { tab = "<>", space = "_", eol = "$" }
 vim.opt.fillchars = { msgsep = "─", stl = "─", stlnc = "─" }
 vim.opt.statusline = "%!v:lua.StatusLine()"
@@ -120,7 +120,7 @@ vim.api.nvim_set_hl(0, "Normal", { ctermfg = "White" })
 vim.api.nvim_set_hl(0, "Directory", { ctermfg = "Blue", bold = true })
 vim.api.nvim_set_hl(0, "StatusLine", { ctermbg = "NONE", ctermfg = "DarkGray" })
 vim.api.nvim_set_hl(0, "StatusLineNC", { ctermbg = "NONE", ctermfg = "DarkGray" })
-vim.api.nvim_set_hl(0, "Pmenu", { ctermbg = "Black" })
+vim.api.nvim_set_hl(0, "Pmenu", { ctermbg = "DarkGray" })
 vim.api.nvim_set_hl(0, "PmenuSel", { reverse = true })
 vim.api.nvim_set_hl(0, "PmenuSbar", { ctermbg = "Black" })
 vim.api.nvim_set_hl(0, "PmenuThumb", { reverse = true })
@@ -163,7 +163,7 @@ function StatusLine()
   local s = vim.diagnostic.severity
 
   local filename = winid == vim.g.statusline_winid and "[%#Normal#%f%*]" or "[%f]"
-  local filetype = #lsp_clients > 0 and "[%#Special#%Y%*]" or "%y"
+  local has_lsp = #lsp_clients > 0 and "[lsp]" or ""
   local diagnostics = string.format("%s%s%s%s",
     dc[s.ERROR] and "[%#DiagnosticError#" .. dc[s.ERROR] .. "e%*]" or "",
     dc[s.WARN] and "[%#DiagnosticWarn#" .. dc[s.WARN] .. "w%*]" or "",
@@ -171,5 +171,5 @@ function StatusLine()
     dc[s.HINT] and "[%#DiagnosticHint#" .. dc[s.HINT] .. "h%*]" or ""
   )
 
-  return "%m%r" .. filename .. "[%l:%c]%=" .. diagnostics .. filetype
+  return "%m%r" .. filename .. "[%l:%c]%=" .. diagnostics .. has_lsp .. "%y"
 end
