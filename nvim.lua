@@ -102,10 +102,10 @@ vim.api.nvim_set_hl(0, "Constant", { ctermfg = "Green", });
 vim.api.nvim_set_hl(0, "Identifier", { link = "Normal" });
 vim.api.nvim_set_hl(0, "Function", { ctermfg = "Yellow", });
 vim.api.nvim_set_hl(0, "Statement", { ctermfg = "Red", });
-vim.api.nvim_set_hl(0, "Operator", { link = "Special", });
-vim.api.nvim_set_hl(0, "PreProc", { ctermfg = "LightCyan", });
+vim.api.nvim_set_hl(0, "Operator", { link = "Normal", });
+vim.api.nvim_set_hl(0, "PreProc", { ctermfg = "Gray", });
 vim.api.nvim_set_hl(0, "Type", { ctermfg = "Cyan", });
-vim.api.nvim_set_hl(0, "Special", { ctermfg = "LightRed" });
+vim.api.nvim_set_hl(0, "Special", { ctermfg = "Gray" });
 vim.api.nvim_set_hl(0, "Underlined", { underline = true });
 vim.api.nvim_set_hl(0, "Ignore", { ctermfg = "DarkGray", });
 vim.api.nvim_set_hl(0, "Error", { ctermfg = "Red", });
@@ -139,7 +139,9 @@ vim.api.nvim_set_hl(0, "DiagnosticUnderlineOk", { link = "SpellLocal" })
 -- treesitter (:h treesitter-highlight-groups)
 vim.api.nvim_set_hl(0, "@module", { link = "PreProc" });
 vim.api.nvim_set_hl(0, "@constructor", { link = "Function" });
-vim.api.nvim_set_hl(0, "@type.builtin", { ctermfg = "Blue", italic = true });
+vim.api.nvim_set_hl(0, "@tag.attribute.html", { link = "@type" });
+vim.api.nvim_set_hl(0, "@tag.attribute.angular", { link = "@tag.attribute.html" });
+vim.api.nvim_set_hl(0, "@type.builtin", { ctermfg = "Blue" });
 vim.api.nvim_set_hl(0, "@constant.builtin", { ctermfg = "Green", italic = true });
 vim.api.nvim_set_hl(0, "@function.builtin", { ctermfg = "Yellow", italic = true });
 vim.api.nvim_set_hl(0, "@variable.builtin", { ctermfg = "White", italic = true });
@@ -147,8 +149,6 @@ vim.api.nvim_set_hl(0, "@variable.parameter.builtin", { ctermfg = "White", itali
 vim.api.nvim_set_hl(0, "@tag.builtin", { ctermfg = "Blue", italic = true });
 vim.api.nvim_set_hl(0, "@attribute.builtin", { ctermfg = "Gray", italic = true });
 vim.api.nvim_set_hl(0, "@module.builtin", { ctermfg = "Gray", italic = true });
-vim.api.nvim_set_hl(0, "@tag.attribute.html", { link = "@type" });
-vim.api.nvim_set_hl(0, "@tag.attribute.angular", { link = "@tag.attribute.html" });
 
 -- treesitter
 require("nvim-treesitter.configs").setup({ highlight = { enable = true } })
