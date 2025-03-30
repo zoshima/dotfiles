@@ -1,4 +1,5 @@
 -- options
+vim.opt.foldenable = false
 vim.opt.termguicolors = false
 vim.opt.signcolumn = "number"
 vim.opt.cursorline = true
@@ -11,7 +12,6 @@ vim.opt.shiftwidth = 2
 vim.opt.splitbelow = true
 vim.opt.splitright = true
 vim.opt.pumheight = 5
-vim.opt.foldenable = false
 vim.opt.swapfile = false
 vim.opt.shadafile = "NONE"
 vim.opt.clipboard = "unnamedplus"
@@ -99,15 +99,13 @@ vim.lsp.enable({ "bashls", "luals", "gopls", "tsls" })
 -- syntax (:h cterm-colors, :h group-name)
 vim.api.nvim_set_hl(0, "Comment", { ctermfg = "Gray", });
 vim.api.nvim_set_hl(0, "Constant", { ctermfg = "Green", });
-vim.api.nvim_set_hl(0, "Identifier", { ctermfg = "White", });
+vim.api.nvim_set_hl(0, "Identifier", { link = "Normal" });
 vim.api.nvim_set_hl(0, "Function", { ctermfg = "Yellow", });
 vim.api.nvim_set_hl(0, "Statement", { ctermfg = "Red", });
-vim.api.nvim_set_hl(0, "Operator", { ctermfg = "Gray", });
-vim.api.nvim_set_hl(0, "PreProc", { ctermfg = "Gray", });
+vim.api.nvim_set_hl(0, "Operator", { link = "Special", });
+vim.api.nvim_set_hl(0, "PreProc", { ctermfg = "LightCyan", });
 vim.api.nvim_set_hl(0, "Type", { ctermfg = "Cyan", });
-vim.api.nvim_set_hl(0, "Special", { ctermfg = "Brown", });
-vim.api.nvim_set_hl(0, "Tag", { ctermfg = "Blue", });
-vim.api.nvim_set_hl(0, "Delimiter", { ctermfg = "Gray", });
+vim.api.nvim_set_hl(0, "Special", { ctermfg = "LightRed" });
 vim.api.nvim_set_hl(0, "Underlined", { underline = true });
 vim.api.nvim_set_hl(0, "Ignore", { ctermfg = "DarkGray", });
 vim.api.nvim_set_hl(0, "Error", { ctermfg = "Red", });
@@ -117,22 +115,21 @@ vim.api.nvim_set_hl(0, "Changed", { ctermfg = "Yellow", });
 vim.api.nvim_set_hl(0, "Removed", { ctermfg = "Red", });
 -- ui (:h highlight-groups)
 vim.api.nvim_set_hl(0, "Normal", { ctermfg = "White" })
-vim.api.nvim_set_hl(0, "Directory", { ctermfg = "Blue", bold = true })
-vim.api.nvim_set_hl(0, "StatusLine", { ctermbg = "NONE", ctermfg = "DarkGray" })
-vim.api.nvim_set_hl(0, "StatusLineNC", { ctermbg = "NONE", ctermfg = "DarkGray" })
-vim.api.nvim_set_hl(0, "Pmenu", { ctermbg = "DarkGray" })
-vim.api.nvim_set_hl(0, "PmenuSel", { reverse = true })
-vim.api.nvim_set_hl(0, "PmenuSbar", { ctermbg = "Black" })
-vim.api.nvim_set_hl(0, "PmenuThumb", { reverse = true })
-vim.api.nvim_set_hl(0, "PmenuMatch", { bold = true })
-vim.api.nvim_set_hl(0, "PmenuMatchSel", { bold = true })
-vim.api.nvim_set_hl(0, "LineNr", { ctermfg = "DarkGray" })
-vim.api.nvim_set_hl(0, "CursorLineNr", { ctermfg = "White" })
-vim.api.nvim_set_hl(0, "Visual", { reverse = true })
-vim.api.nvim_set_hl(0, "WinSeparator", { ctermfg = "DarkGray" })
 vim.api.nvim_set_hl(0, "NonText", { ctermfg = "DarkGray" })
-vim.api.nvim_set_hl(0, "FloatBorder", { ctermfg = "DarkGray" })
-vim.api.nvim_set_hl(0, "MatchParen", { underline = true })
+vim.api.nvim_set_hl(0, "Directory", { ctermfg = "Blue", bold = true })
+vim.api.nvim_set_hl(0, "Search", { reverse = true })
+vim.api.nvim_set_hl(0, "CurSearch", { link = "Search" })
+vim.api.nvim_set_hl(0, "Visual", { reverse = true })
+vim.api.nvim_set_hl(0, "StatusLine", { link = "NonText" })
+vim.api.nvim_set_hl(0, "StatusLineNC", { link = "StatusLine" })
+vim.api.nvim_set_hl(0, "Pmenu", { ctermbg = "Black" })
+vim.api.nvim_set_hl(0, "PmenuSel", { reverse = true })
+vim.api.nvim_set_hl(0, "PmenuSbar", { link = "Pmenu" })
+vim.api.nvim_set_hl(0, "PmenuThumb", { link = "PmenuSel" })
+vim.api.nvim_set_hl(0, "CursorLineNr", { link = "Normal" })
+vim.api.nvim_set_hl(0, "LineNr", { link = "NonText" })
+vim.api.nvim_set_hl(0, "WinSeparator", { link = "NonText" })
+vim.api.nvim_set_hl(0, "FloatBorder", { link = "NonText" })
 -- diagnostics (:h diagnostic-highlights)
 vim.api.nvim_set_hl(0, "DiagnosticUnderlineError", { link = "SpellBad" })
 vim.api.nvim_set_hl(0, "DiagnosticUnderlineWarn", { link = "SpellCap" })
@@ -150,6 +147,8 @@ vim.api.nvim_set_hl(0, "@variable.parameter.builtin", { ctermfg = "White", itali
 vim.api.nvim_set_hl(0, "@tag.builtin", { ctermfg = "Blue", italic = true });
 vim.api.nvim_set_hl(0, "@attribute.builtin", { ctermfg = "Gray", italic = true });
 vim.api.nvim_set_hl(0, "@module.builtin", { ctermfg = "Gray", italic = true });
+vim.api.nvim_set_hl(0, "@tag.attribute.html", { link = "@type" });
+vim.api.nvim_set_hl(0, "@tag.attribute.angular", { link = "@tag.attribute.html" });
 
 -- treesitter
 require("nvim-treesitter.configs").setup({ highlight = { enable = true } })
