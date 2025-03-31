@@ -20,7 +20,7 @@ vim.opt.mousemodel = "extend"
 vim.opt.scrolloff = 1
 vim.opt.path:append("**/*")
 vim.opt.winborder = "rounded"
-vim.opt.completeopt = { "menuone", "noselect", "popup", "fuzzy" }
+vim.opt.completeopt = { "menuone", "noselect", "fuzzy" }
 vim.opt.listchars = { tab = "<>", space = "_", eol = "$" }
 vim.opt.fillchars = { msgsep = "─", stl = "─", stlnc = "─" }
 vim.opt.statusline = "%!v:lua.StatusLine()"
@@ -124,7 +124,6 @@ vim.api.nvim_set_hl(0, "StatusLine", { link = "NonText" })
 vim.api.nvim_set_hl(0, "StatusLineNC", { link = "StatusLine" })
 vim.api.nvim_set_hl(0, "Pmenu", { ctermbg = "Black" })
 vim.api.nvim_set_hl(0, "PmenuSel", { reverse = true })
-vim.api.nvim_set_hl(0, "PmenuSbar", { link = "Pmenu" })
 vim.api.nvim_set_hl(0, "PmenuThumb", { link = "PmenuSel" })
 vim.api.nvim_set_hl(0, "CursorLineNr", { link = "Normal" })
 vim.api.nvim_set_hl(0, "LineNr", { link = "NonText" })
@@ -137,18 +136,11 @@ vim.api.nvim_set_hl(0, "DiagnosticUnderlineInfo", { link = "SpellRare" })
 vim.api.nvim_set_hl(0, "DiagnosticUnderlineHint", { link = "SpellRare" })
 vim.api.nvim_set_hl(0, "DiagnosticUnderlineOk", { link = "SpellLocal" })
 -- treesitter (:h treesitter-highlight-groups)
-vim.api.nvim_set_hl(0, "@module", { link = "PreProc" });
-vim.api.nvim_set_hl(0, "@constructor", { link = "Function" });
-vim.api.nvim_set_hl(0, "@tag.attribute.html", { link = "@type" });
-vim.api.nvim_set_hl(0, "@tag.attribute.angular", { link = "@tag.attribute.html" });
+vim.api.nvim_set_hl(0, "@constructor", { link = "@function" });
+vim.api.nvim_set_hl(0, "@tag", { link = "@type.builtin" });
 vim.api.nvim_set_hl(0, "@type.builtin", { ctermfg = "Blue" });
-vim.api.nvim_set_hl(0, "@constant.builtin", { ctermfg = "Green", italic = true });
-vim.api.nvim_set_hl(0, "@function.builtin", { ctermfg = "Yellow", italic = true });
-vim.api.nvim_set_hl(0, "@variable.builtin", { ctermfg = "White", italic = true });
-vim.api.nvim_set_hl(0, "@variable.parameter.builtin", { ctermfg = "White", italic = true });
-vim.api.nvim_set_hl(0, "@tag.builtin", { ctermfg = "Blue", italic = true });
-vim.api.nvim_set_hl(0, "@attribute.builtin", { ctermfg = "Gray", italic = true });
-vim.api.nvim_set_hl(0, "@module.builtin", { ctermfg = "Gray", italic = true });
+vim.api.nvim_set_hl(0, "@constant.builtin", { link = "@constant" });
+vim.api.nvim_set_hl(0, "@function.builtin", { link = "@function" });
 
 -- treesitter
 require("nvim-treesitter.configs").setup({ highlight = { enable = true } })
