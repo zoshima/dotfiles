@@ -30,7 +30,35 @@ vim.keymap.set("t", "<Esc>", "<C-\\><C-n>", {})
 vim.keymap.set("n", "<Space>e", ":Ex<CR>")
 vim.keymap.set("n", "<Space>p", ":find ")
 vim.keymap.set("n", "<Space>f", ":silent grep! ")
-vim.keymap.set("n", "<Space>b", ":ls<CR>:b ")
+vim.keymap.set("n", "<Space>b", function()
+  local buffers = vim.api.nvim_list_bufs()
+  local locations = {}
+  for i in pairs(buffers) do
+    if vim.api.nvim_buf_is_loaded(buffers[i]) then
+      local filename = vim.api.nvim_buf_get_name(buffers[i])
+      if filename ~= "" then
+        local winview = vim.api.nvim_buf_get_var(buffers[i], 'viewinfo')
+        local lnum = 1
+        local col = 1
+        if winview and winview.lnum and winview.col then
+          lnum = winview.lnum
+          col = winview.col + 1
+        end
+
+        table.insert(locations, {
+          text = buffers[i],
+          bufnr = buffers[i],
+          filename = vim.api.nvim_buf_get_name(buffers[i]),
+          lnum = lnum,
+          col = col
+        })
+      end
+    end
+  end
+
+  vim.fn.setloclist(0, {}, ' ', { title = 'buffers', items = locations })
+  vim.cmd.lopen()
+end)
 vim.keymap.set("n", "<Space>yp", function()
   local file_path = vim.fn.expand('%:p')
   vim.fn.setreg('+', file_path)
