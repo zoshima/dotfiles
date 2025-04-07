@@ -112,10 +112,11 @@ vim.api.nvim_set_hl(0, "Changed", { ctermfg = "Yellow", });
 vim.api.nvim_set_hl(0, "Removed", { ctermfg = "Red", });
 -- ui (:h highlight-groups)
 vim.api.nvim_set_hl(0, "Normal", { ctermfg = "White" })
+vim.api.nvim_set_hl(0, "Cursor", { reverse = true })
+vim.api.nvim_set_hl(0, "Search", { reverse = true })
+vim.api.nvim_set_hl(0, "CurSearch", {})
 vim.api.nvim_set_hl(0, "NonText", { ctermfg = "DarkGray" })
 vim.api.nvim_set_hl(0, "Directory", { ctermfg = "Blue", bold = true })
-vim.api.nvim_set_hl(0, "Search", { reverse = true })
-vim.api.nvim_set_hl(0, "CurSearch", { link = "Search" })
 vim.api.nvim_set_hl(0, "Visual", { reverse = true })
 vim.api.nvim_set_hl(0, "StatusLine", { link = "NonText" })
 vim.api.nvim_set_hl(0, "StatusLineNC", { link = "StatusLine" })
@@ -136,9 +137,10 @@ vim.api.nvim_set_hl(0, "DiagnosticUnderlineOk", { link = "SpellLocal" })
 -- treesitter (:h treesitter-highlight-groups)
 vim.api.nvim_set_hl(0, "@constructor", { link = "@function" });
 vim.api.nvim_set_hl(0, "@tag", { link = "@type.builtin" });
-vim.api.nvim_set_hl(0, "@type.builtin", { ctermfg = "Blue" });
-vim.api.nvim_set_hl(0, "@constant.builtin", { link = "@constant" });
-vim.api.nvim_set_hl(0, "@function.builtin", { link = "@function" });
+vim.api.nvim_set_hl(0, "@type.builtin", { ctermfg = "Blue", italic = true });
+vim.api.nvim_set_hl(0, "@constant.builtin", { ctermfg = "Green", italic = true });
+vim.api.nvim_set_hl(0, "@function.builtin", { ctermfg = "Yellow", italic = true });
+vim.api.nvim_set_hl(0, "@variable.builtin", { italic = true });
 
 -- treesitter
 require("nvim-treesitter.configs").setup({ highlight = { enable = true } })

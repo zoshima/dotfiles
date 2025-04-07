@@ -1,8 +1,12 @@
-.PHONY: bash nvim
+.PHONY: bash nvim ghostty
 
 bash:
 	rm ~/.bashrc || true
 	ln -s ~/git/dotfiles/.bashrc ~/.bashrc
+
+ghostty:
+	mkdir -p ~/.config/ghostty
+	ln -s ~/git/dotfiles/ghostty ~/.config/ghostty/config
 
 nvim:
 	rm -rf ~/.config/nvim || true && mkdir -p ~/.config/nvim/pack/git

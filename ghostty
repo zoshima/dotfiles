@@ -1,0 +1,32 @@
+font-family = Roboto Mono
+font-size = 11
+
+window-padding-x = 6
+window-padding-y = 2
+
+keybind = alt+h=goto_split:left
+keybind = alt+l=goto_split:right
+keybind = alt+j=goto_split:bottom
+keybind = alt+k=goto_split:top
+keybind = f11=toggle_fullscreen
+
+selection-invert-fg-bg = true
+cursor-invert-fg-bg = true
+background = #1e1e1e
+foreground = #ffffff
+palette = 0=#424242
+palette = 1=#c01c28
+palette = 2=#2ec27e
+palette = 3=#f5c211
+palette = 4=#1e78e4
+palette = 5=#9841bb
+palette = 6=#0ab9dc
+palette = 7=#c0bfbc
+palette = 8=#5e5c64
+palette = 9=#ed333b
+palette = 10=#57e389
+palette = 11=#f8e45c
+palette = 12=#51a1ff
+palette = 13=#c061cb
+palette = 14=#4fd2fd
+palette = 15=#f6f5f4
