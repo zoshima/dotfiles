@@ -113,8 +113,6 @@ vim.api.nvim_set_hl(0, "Removed", { ctermfg = "Red", });
 -- ui (:h highlight-groups)
 vim.api.nvim_set_hl(0, "Normal", { ctermfg = "White" })
 vim.api.nvim_set_hl(0, "Cursor", { reverse = true })
-vim.api.nvim_set_hl(0, "Search", { reverse = true })
-vim.api.nvim_set_hl(0, "CurSearch", {})
 vim.api.nvim_set_hl(0, "NonText", { ctermfg = "DarkGray" })
 vim.api.nvim_set_hl(0, "Directory", { ctermfg = "Blue", bold = true })
 vim.api.nvim_set_hl(0, "Visual", { reverse = true })
