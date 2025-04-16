@@ -12,7 +12,7 @@ keybind = f11=toggle_fullscreen
 
 selection-invert-fg-bg = true
 cursor-invert-fg-bg = true
-background = #1e1e1e
+background = #1c1c1f
 foreground = #ffffff
 palette = 0=#424242
 palette = 1=#c01c28
