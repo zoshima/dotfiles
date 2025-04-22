@@ -102,7 +102,7 @@ vim.api.nvim_set_hl(0, "Statement", { ctermfg = "Red", });
 vim.api.nvim_set_hl(0, "Operator", { link = "Normal", });
 vim.api.nvim_set_hl(0, "PreProc", { ctermfg = "Gray", });
 vim.api.nvim_set_hl(0, "Type", { ctermfg = "Cyan", });
-vim.api.nvim_set_hl(0, "Special", { link = "Normal" });
+vim.api.nvim_set_hl(0, "Special", { ctermfg = "Cyan" });
 vim.api.nvim_set_hl(0, "Underlined", { underline = true });
 vim.api.nvim_set_hl(0, "Ignore", { ctermfg = "DarkGray", });
 vim.api.nvim_set_hl(0, "Error", { ctermfg = "Red", });
@@ -122,7 +122,7 @@ vim.api.nvim_set_hl(0, "Search", { ctermbg = "Yellow", ctermfg = "Black" })
 vim.api.nvim_set_hl(0, "CurSearch", { link = "Search" })
 vim.api.nvim_set_hl(0, "Pmenu", { ctermbg = "Black" })
 vim.api.nvim_set_hl(0, "PmenuSel", { reverse = true })
-vim.api.nvim_set_hl(0, "PmenuMatch", { ctermfg = "Yellow" })
+vim.api.nvim_set_hl(0, "PmenuMatch", { ctermfg = "Magenta" })
 vim.api.nvim_set_hl(0, "PmenuMatchSel", { reverse = true })
 vim.api.nvim_set_hl(0, "PmenuThumb", { link = "PmenuSel" })
 vim.api.nvim_set_hl(0, "CursorLineNr", { link = "Normal" })
