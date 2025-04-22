@@ -12,21 +12,38 @@ keybind = f11=toggle_fullscreen
 
 selection-invert-fg-bg = true
 cursor-invert-fg-bg = true
-background = #1e1e1e
+background = #1c1c1f
 foreground = #ffffff
-palette = 0=#424242
+
+# Black
+palette = 0=#241f31
+# Red
 palette = 1=#c01c28
+# Green
 palette = 2=#2ec27e
+# Yellow
 palette = 3=#f5c211
+# Blue
 palette = 4=#1e78e4
+# Magenta
 palette = 5=#9841bb
+# Cyan
 palette = 6=#0ab9dc
+# White
 palette = 7=#c0bfbc
+# Bright Black
 palette = 8=#5e5c64
+# Bright Red
 palette = 9=#ed333b
+# Bright Green
 palette = 10=#57e389
+# Bright Yellow
 palette = 11=#f8e45c
+# Bright Blue
 palette = 12=#51a1ff
+# Bright Magenta
 palette = 13=#c061cb
+# Bright Cyan
 palette = 14=#4fd2fd
+# Bright White
 palette = 15=#f6f5f4
