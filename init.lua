@@ -92,17 +92,39 @@ vim.lsp.config.luals = {
 }
 vim.lsp.enable({ "bashls", "luals", "gopls", "tsls" })
 
+-- statusline
+function StatusLine()
+  local winid = vim.api.nvim_get_current_win()
+  local bufid = vim.api.nvim_win_get_buf(vim.g.statusline_winid)
+  local dc = vim.diagnostic.count(bufid)
+  local s = vim.diagnostic.severity
+
+  local filename = winid == vim.g.statusline_winid and "[%#Normal#%f%*]" or "[%f]"
+  local diagnostics = string.format("%s%s%s%s",
+    dc[s.ERROR] and "[%#DiagnosticError#" .. dc[s.ERROR] .. "e%*]" or "",
+    dc[s.WARN] and "[%#DiagnosticWarn#" .. dc[s.WARN] .. "w%*]" or "",
+    dc[s.INFO] and "[%#DiagnosticInfo#" .. dc[s.INFO] .. "i%*]" or "",
+    dc[s.HINT] and "[%#DiagnosticHint#" .. dc[s.HINT] .. "h%*]" or ""
+  )
+
+  return "%m%r" .. filename .. "[%l:%c]%=" .. diagnostics .. "%y"
+end
+
+-- treesitter
+require("nvim-treesitter.configs").setup({ highlight = { enable = true } })
+
 -- colorscheme
--- syntax (:h cterm-colors, :h group-name)
+-- syntax (:h -colors, :h group-name)
 vim.api.nvim_set_hl(0, "Comment", { ctermfg = "Gray", });
 vim.api.nvim_set_hl(0, "Constant", { ctermfg = "Green", });
-vim.api.nvim_set_hl(0, "Identifier", { link = "Normal" });
+vim.api.nvim_set_hl(0, "Identifier", { ctermfg = "White" });
 vim.api.nvim_set_hl(0, "Function", { ctermfg = "Yellow", });
 vim.api.nvim_set_hl(0, "Statement", { ctermfg = "Red", });
-vim.api.nvim_set_hl(0, "Operator", { link = "Normal", });
-vim.api.nvim_set_hl(0, "PreProc", { ctermfg = "Gray", });
-vim.api.nvim_set_hl(0, "Type", { ctermfg = "Cyan", });
+vim.api.nvim_set_hl(0, "Operator", { ctermfg = "LightRed", });
+vim.api.nvim_set_hl(0, "PreProc", { ctermfg = "Gray" });
+vim.api.nvim_set_hl(0, "Type", { ctermfg = "Blue", });
 vim.api.nvim_set_hl(0, "Special", { ctermfg = "Cyan" });
+vim.api.nvim_set_hl(0, "Delimiter", { ctermfg = "LightCyan" });
 vim.api.nvim_set_hl(0, "Underlined", { underline = true });
 vim.api.nvim_set_hl(0, "Ignore", { ctermfg = "DarkGray", });
 vim.api.nvim_set_hl(0, "Error", { ctermfg = "Red", });
@@ -129,7 +151,7 @@ vim.api.nvim_set_hl(0, "CursorLineNr", { link = "Normal" })
 vim.api.nvim_set_hl(0, "LineNr", { link = "NonText" })
 vim.api.nvim_set_hl(0, "WinSeparator", { link = "NonText" })
 vim.api.nvim_set_hl(0, "FloatBorder", { link = "NonText" })
-vim.api.nvim_set_hl(0, "MatchParen", {})
+vim.api.nvim_set_hl(0, "MatchParen", { ctermbg = "DarkGray" })
 -- diagnostics (:h diagnostic-highlights)
 vim.api.nvim_set_hl(0, "DiagnosticUnderlineError", { link = "SpellBad" })
 vim.api.nvim_set_hl(0, "DiagnosticUnderlineWarn", { link = "SpellCap" })
@@ -143,24 +165,3 @@ vim.api.nvim_set_hl(0, "@type.builtin", { ctermfg = "Blue", italic = true });
 vim.api.nvim_set_hl(0, "@constant.builtin", { ctermfg = "Green", italic = true });
 vim.api.nvim_set_hl(0, "@function.builtin", { ctermfg = "Yellow", italic = true });
 vim.api.nvim_set_hl(0, "@variable.builtin", { italic = true });
-
--- treesitter
-require("nvim-treesitter.configs").setup({ highlight = { enable = true } })
-
--- statusline
-function StatusLine()
-  local winid = vim.api.nvim_get_current_win()
-  local bufid = vim.api.nvim_win_get_buf(vim.g.statusline_winid)
-  local dc = vim.diagnostic.count(bufid)
-  local s = vim.diagnostic.severity
-
-  local filename = winid == vim.g.statusline_winid and "[%#Normal#%f%*]" or "[%f]"
-  local diagnostics = string.format("%s%s%s%s",
-    dc[s.ERROR] and "[%#DiagnosticError#" .. dc[s.ERROR] .. "e%*]" or "",
-    dc[s.WARN] and "[%#DiagnosticWarn#" .. dc[s.WARN] .. "w%*]" or "",
-    dc[s.INFO] and "[%#DiagnosticInfo#" .. dc[s.INFO] .. "i%*]" or "",
-    dc[s.HINT] and "[%#DiagnosticHint#" .. dc[s.HINT] .. "h%*]" or ""
-  )
-
-  return "%m%r" .. filename .. "[%l:%c]%=" .. diagnostics .. "%y"
-end
