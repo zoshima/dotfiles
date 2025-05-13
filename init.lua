@@ -36,6 +36,26 @@ vim.keymap.set("n", "<Space>yp", function()
   vim.fn.setreg('+', file_path)
   vim.notify("\"" .. file_path .. "\" yanked to clipboard", vim.log.levels.INFO)
 end)
+vim.keymap.set("n", "<Space>ym", function()
+  local num_lines = vim.fn.line("$")
+  local pattern = vim.fn.getreg("/")
+  local matches = {}
+
+  for line_num = 1, num_lines do
+    local line = vim.fn.getline(line_num)
+    for match in string.gmatch(line, pattern) do
+      table.insert(matches, match)
+    end
+  end
+
+  if #matches == 0 then
+    vim.notify("no matches found", vim.log.levels.INFO)
+    return
+  end
+
+  vim.fn.setreg('+', table.concat(matches, "\n"))
+  vim.notify(#matches .. " matches yanked to clipboard", vim.log.levels.INFO)
+end)
 
 -- autocmd
 vim.api.nvim_create_autocmd('BufWritePost', {
