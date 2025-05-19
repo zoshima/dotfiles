@@ -71,7 +71,7 @@ export MANPAGER='nvim +Man!'
 export MANWIDTH=999
 
 export PATH="$PATH:/home/$USER/.local/bin"
-export PATH="$PATH:/home/$USER/go/bin"
+export PATH="$PATH:$GOPATH/bin"
 
 shopt -s histappend
 shopt -s checkwinsize
