@@ -127,7 +127,7 @@ function StatusLine()
     dc[s.HINT] and "[%#DiagnosticHint#" .. dc[s.HINT] .. "h%*]" or ""
   )
 
-  return "%m%r" .. filename .. "[%l:%c]%=" .. diagnostics .. "%y"
+  return filename .. "%m%r[%l:%c/%L]%=" .. diagnostics .. "%y"
 end
 
 -- treesitter
