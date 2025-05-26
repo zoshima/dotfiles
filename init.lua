@@ -144,7 +144,7 @@ vim.api.nvim_set_hl(0, "Comment", { ctermfg = "Gray", });
 vim.api.nvim_set_hl(0, "Constant", { ctermfg = "Green", });
 vim.api.nvim_set_hl(0, "Identifier", { link = "Normal" });
 vim.api.nvim_set_hl(0, "Function", { ctermfg = "Yellow", });
-vim.api.nvim_set_hl(0, "Statement", { ctermfg = "Red", });
+vim.api.nvim_set_hl(0, "Statement", { ctermfg = "Red" });
 vim.api.nvim_set_hl(0, "Operator", { ctermfg = "LightRed" });
 vim.api.nvim_set_hl(0, "PreProc", { link = "Normal" });
 vim.api.nvim_set_hl(0, "Type", { ctermfg = "Cyan" });
@@ -165,7 +165,7 @@ vim.api.nvim_set_hl(0, "Directory", { ctermfg = "Blue", bold = true })
 vim.api.nvim_set_hl(0, "Visual", { reverse = true })
 vim.api.nvim_set_hl(0, "StatusLine", { link = "NonText" })
 vim.api.nvim_set_hl(0, "StatusLineNC", { link = "StatusLine" })
-vim.api.nvim_set_hl(0, "Search", { ctermbg = "Yellow", ctermfg = "Black" })
+vim.api.nvim_set_hl(0, "Search", { reverse = true })
 vim.api.nvim_set_hl(0, "CurSearch", { link = "Search" })
 vim.api.nvim_set_hl(0, "Pmenu", { ctermbg = "Black" })
 vim.api.nvim_set_hl(0, "PmenuSel", { reverse = true })
