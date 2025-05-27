@@ -58,6 +58,10 @@ vim.keymap.set("n", "<Space>ym", function()
 end)
 
 -- autocmd
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = { "go", "typescript", "json", "css", "scss", "html", "htmlangular" },
+  callback = function() vim.treesitter.start() end,
+})
 vim.api.nvim_create_autocmd('BufWritePost', {
   pattern = { "*.json", "*.css", "*.scss", "*.html", },
   callback = function()
@@ -129,14 +133,6 @@ function StatusLine()
 
   return filename .. "%m%r%=" .. diagnostics .. "[%l:%c/%L]%y"
 end
-
--- treesitter
-require("nvim-treesitter.configs").setup({
-  highlight = {
-    enable = true,
-    additional_vim_regex_highlighting = false,
-  }
-})
 
 -- colorscheme
 -- syntax (:h -colors, :h group-name)
