@@ -92,11 +92,6 @@ vim.api.nvim_create_autocmd('DiagnosticChanged', {
 })
 
 -- lsp
-vim.lsp.config.bashls = {
-  cmd = { "bash-language-server", "start" },
-  root_markers = { ".git" },
-  filetypes = { "sh" }
-}
 vim.lsp.config.gopls = {
   cmd = { "gopls" },
   root_markers = { "go.mod", "go.work", ".git" },
@@ -107,18 +102,7 @@ vim.lsp.config.tsls = {
   root_markers = { "tsconfig.json", "jsconfig.json", "package.json", ".git" },
   filetypes = { "typescript", "javascript" }
 }
-vim.lsp.config.luals = {
-  cmd = { "lua-language-server" },
-  root_markers = { ".luarc.json", ".luarc.jsonc", ".git" },
-  filetypes = { "lua" },
-  settings = {
-    Lua = {
-      runtime = { version = 'LuaJIT', },
-      workspace = { checkThirdParty = false, library = { vim.env.VIMRUNTIME } }
-    }
-  }
-}
-vim.lsp.enable({ "bashls", "luals", "gopls", "tsls" })
+vim.lsp.enable({ "gopls", "tsls" })
 
 -- statusline
 function StatusLine()
