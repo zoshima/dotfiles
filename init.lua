@@ -59,7 +59,11 @@ end)
 
 -- autocmd
 vim.api.nvim_create_autocmd('FileType', {
-  pattern = { "go", "typescript", "json", "css", "scss", "html", "htmlangular" },
+  pattern = {
+    "bash", "go", "typescript", "javascript",
+    "css", "scss", "html", "htmlangular",
+    "json", "yaml"
+  },
   callback = function() vim.treesitter.start() end,
 })
 vim.api.nvim_create_autocmd('BufWritePost', {
