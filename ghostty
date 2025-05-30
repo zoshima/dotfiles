@@ -13,4 +13,4 @@ keybind = f11=toggle_fullscreen
 selection-invert-fg-bg = true
 cursor-invert-fg-bg = true
 
-theme = Dark+
+theme = Adwaita Dark
