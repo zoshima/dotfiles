@@ -123,7 +123,7 @@ function StatusLine()
     end
   end
 
-  return "%<%f %h%w%m%r%=%-14.("..diagnostics.."%)%-14.(%l,%c%V%) %P"
+  return "%f %h%w%m%r%="..diagnostics.."%l,%c/%L"
 end
 
 -- colorscheme
@@ -152,7 +152,7 @@ vim.api.nvim_set_hl(0, "NonText", { ctermfg = "DarkGray" })
 vim.api.nvim_set_hl(0, "Directory", { ctermfg = "Blue", bold = true })
 vim.api.nvim_set_hl(0, "Visual", { reverse = true })
 vim.api.nvim_set_hl(0, "StatusLine", {ctermbg = "Black", ctermfg = "White" })
-vim.api.nvim_set_hl(0, "StatusLineNC", { ctermbg = "Black", ctermfg = "Gray" })
+vim.api.nvim_set_hl(0, "StatusLineNC", { ctermbg = "Black", ctermfg = "DarkGray" })
 vim.api.nvim_set_hl(0, "Search", { reverse = true })
 vim.api.nvim_set_hl(0, "CurSearch", { link = "Search" })
 vim.api.nvim_set_hl(0, "Pmenu", { ctermbg = "Black" })
