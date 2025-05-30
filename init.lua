@@ -22,7 +22,7 @@ vim.opt.path:append("**/*")
 vim.opt.winborder = "rounded"
 vim.opt.completeopt = { "menuone", "noselect", "fuzzy" }
 vim.opt.listchars = { tab = "<>", space = "_", eol = "$" }
-vim.opt.fillchars = { msgsep = "─", stl = "─", stlnc = "─" }
+vim.opt.winbar = ""
 vim.opt.statusline = "%!v:lua.StatusLine()"
 
 -- keymaps
@@ -106,20 +106,24 @@ vim.lsp.enable({ "gopls", "tsls" })
 
 -- statusline
 function StatusLine()
-  local winid = vim.api.nvim_get_current_win()
   local bufid = vim.api.nvim_win_get_buf(vim.g.statusline_winid)
-  local dc = vim.diagnostic.count(bufid)
-  local s = vim.diagnostic.severity
+  local clients = vim.lsp.get_clients({ bufnr = bufid })
+  local diagnostics = "" 
 
-  local filename = winid == vim.g.statusline_winid and "[%#Normal#%f%*]" or "[%f]"
-  local diagnostics = string.format("%s%s%s%s",
-    dc[s.ERROR] and "[%#DiagnosticError#" .. dc[s.ERROR] .. "e%*]" or "",
-    dc[s.WARN] and "[%#DiagnosticWarn#" .. dc[s.WARN] .. "w%*]" or "",
-    dc[s.INFO] and "[%#DiagnosticInfo#" .. dc[s.INFO] .. "i%*]" or "",
-    dc[s.HINT] and "[%#DiagnosticHint#" .. dc[s.HINT] .. "h%*]" or ""
-  )
+  if #clients > 0 then
+    local dc = vim.diagnostic.count(bufid)
+    if next(dc) ~= nil then
+      local s = vim.diagnostic.severity
+      diagnostics = string.format("%s%s%s%s",
+        dc[s.ERROR] and "%#DiagnosticError#" .. dc[s.ERROR] .. "E%* " or "",
+        dc[s.WARN] and "%#DiagnosticWarn#" .. dc[s.WARN] .. "W%* " or "",
+        dc[s.INFO] and "%#DiagnosticInfo#" .. dc[s.INFO] .. "I%* " or "",
+        dc[s.HINT] and "%#DiagnosticHint#" .. dc[s.HINT] .. "H%* " or ""
+      )
+    end
+  end
 
-  return filename .. "%m%r%=" .. diagnostics .. "[%l:%c/%L]%y"
+  return "%<%f %h%w%m%r%=%-14.("..diagnostics.."%)%-14.(%l,%c%V%) %P"
 end
 
 -- colorscheme
@@ -147,8 +151,8 @@ vim.api.nvim_set_hl(0, "Cursor", { reverse = true })
 vim.api.nvim_set_hl(0, "NonText", { ctermfg = "DarkGray" })
 vim.api.nvim_set_hl(0, "Directory", { ctermfg = "Blue", bold = true })
 vim.api.nvim_set_hl(0, "Visual", { reverse = true })
-vim.api.nvim_set_hl(0, "StatusLine", { link = "NonText" })
-vim.api.nvim_set_hl(0, "StatusLineNC", { link = "StatusLine" })
+vim.api.nvim_set_hl(0, "StatusLine", {ctermbg = "Black", ctermfg = "White" })
+vim.api.nvim_set_hl(0, "StatusLineNC", { ctermbg = "Black", ctermfg = "Gray" })
 vim.api.nvim_set_hl(0, "Search", { reverse = true })
 vim.api.nvim_set_hl(0, "CurSearch", { link = "Search" })
 vim.api.nvim_set_hl(0, "Pmenu", { ctermbg = "Black" })
