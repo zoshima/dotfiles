@@ -135,7 +135,7 @@ vim.api.nvim_set_hl(0, "Function", { ctermfg = "Yellow", });
 vim.api.nvim_set_hl(0, "Statement", { ctermfg = "Red" });
 vim.api.nvim_set_hl(0, "Operator", { ctermfg = "LightRed" });
 vim.api.nvim_set_hl(0, "PreProc", { link = "Normal" });
-vim.api.nvim_set_hl(0, "Type", { ctermfg = "Cyan" });
+vim.api.nvim_set_hl(0, "Type", { ctermfg = "Blue" });
 vim.api.nvim_set_hl(0, "Special", { ctermfg = "Magenta" });
 vim.api.nvim_set_hl(0, "Delimiter", { ctermfg = "LightMagenta" });
 vim.api.nvim_set_hl(0, "Underlined", { underline = true });
@@ -153,11 +153,11 @@ vim.api.nvim_set_hl(0, "Directory", { ctermfg = "Blue", bold = true })
 vim.api.nvim_set_hl(0, "Visual", { reverse = true })
 vim.api.nvim_set_hl(0, "StatusLine", {ctermbg = "Black", ctermfg = "White" })
 vim.api.nvim_set_hl(0, "StatusLineNC", { ctermbg = "Black", ctermfg = "DarkGray" })
-vim.api.nvim_set_hl(0, "Search", { reverse = true })
+vim.api.nvim_set_hl(0, "Search", { ctermbg = "Cyan", ctermfg = "White" })
 vim.api.nvim_set_hl(0, "CurSearch", { link = "Search" })
 vim.api.nvim_set_hl(0, "Pmenu", { ctermbg = "Black" })
 vim.api.nvim_set_hl(0, "PmenuSel", { reverse = true })
-vim.api.nvim_set_hl(0, "PmenuMatch", { ctermfg = "Brown" })
+vim.api.nvim_set_hl(0, "PmenuMatch", { ctermfg = "Cyan" })
 vim.api.nvim_set_hl(0, "PmenuMatchSel", { reverse = true })
 vim.api.nvim_set_hl(0, "PmenuThumb", { link = "PmenuSel" })
 vim.api.nvim_set_hl(0, "CursorLineNr", { link = "Normal" })
@@ -174,7 +174,7 @@ vim.api.nvim_set_hl(0, "DiagnosticUnderlineOk", { link = "SpellLocal" })
 -- treesitter (:h treesitter-highlight-groups)
 vim.api.nvim_set_hl(0, "@module", { link = "Identifier" });
 vim.api.nvim_set_hl(0, "@module.builtin", { link = "@module" });
-vim.api.nvim_set_hl(0, "@type.builtin", { ctermfg = "Blue" });
+vim.api.nvim_set_hl(0, "@type.builtin", { link = "@type" });
 vim.api.nvim_set_hl(0, "@constructor", { link = "@function" });
 vim.api.nvim_set_hl(0, "@tag", { link = "Type" });
 vim.api.nvim_set_hl(0, "@tag.builtin", { link = "@tag" });
