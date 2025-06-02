@@ -20,5 +20,3 @@ theme = Adwaita Dark
 
 # Black (adwaita toolbar)
 palette = 0=#2E2E32
-# Cyan (adwaita accent)
-palette = 14=#2190A4
