@@ -9,8 +9,6 @@ vim.opt.relativenumber = true
 vim.opt.expandtab = true
 vim.opt.tabstop = 2
 vim.opt.shiftwidth = 2
-vim.opt.splitbelow = true
-vim.opt.splitright = true
 vim.opt.pumheight = 5
 vim.opt.swapfile = false
 vim.opt.shadafile = "NONE"
@@ -22,7 +20,6 @@ vim.opt.path:append("**/*")
 vim.opt.winborder = "rounded"
 vim.opt.completeopt = { "menuone", "noselect", "fuzzy" }
 vim.opt.listchars = { tab = "<>", space = "_", eol = "$" }
-vim.opt.winbar = ""
 vim.opt.statusline = "%!v:lua.StatusLine()"
 
 -- keymaps
@@ -30,32 +27,6 @@ vim.keymap.set("t", "<Esc>", "<C-\\><C-n>", {})
 vim.keymap.set("n", "<Space>e", ":Ex<CR>")
 vim.keymap.set("n", "<Space>p", ":find ")
 vim.keymap.set("n", "<Space>f", ":silent lgrep! ")
-vim.keymap.set("n", "<Space>b", ":ls<CR>:b ")
-vim.keymap.set("n", "<Space>yp", function()
-  local file_path = vim.fn.expand('%:p')
-  vim.fn.setreg('+', file_path)
-  vim.notify("\"" .. file_path .. "\" yanked to clipboard", vim.log.levels.INFO)
-end)
-vim.keymap.set("n", "<Space>ym", function()
-  local num_lines = vim.fn.line("$")
-  local pattern = vim.fn.getreg("/")
-  local matches = {}
-
-  for line_num = 1, num_lines do
-    local line = vim.fn.getline(line_num)
-    for match in string.gmatch(line, pattern) do
-      table.insert(matches, match)
-    end
-  end
-
-  if #matches == 0 then
-    vim.notify("no matches found", vim.log.levels.INFO)
-    return
-  end
-
-  vim.fn.setreg('+', table.concat(matches, "\n"))
-  vim.notify(#matches .. " matches yanked to clipboard", vim.log.levels.INFO)
-end)
 
 -- autocmd
 vim.api.nvim_create_autocmd('FileType', {
@@ -64,14 +35,18 @@ vim.api.nvim_create_autocmd('FileType', {
     "css", "scss", "html", "htmlangular",
     "json", "yaml"
   },
-  callback = function() vim.treesitter.start() end,
+  callback = function() 
+    vim.treesitter.start() 
+  end,
 })
+
 vim.api.nvim_create_autocmd('BufWritePost', {
   pattern = { "*.json", "*.css", "*.scss", "*.html", },
   callback = function()
     vim.cmd(":silent !npx prettier % --write")
   end,
 })
+
 vim.api.nvim_create_autocmd('LspAttach', {
   callback = function(args)
     local client = assert(vim.lsp.get_client_by_id(args.data.client_id))
@@ -85,6 +60,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
     end
   end,
 })
+
 vim.api.nvim_create_autocmd('DiagnosticChanged', {
   callback = function()
     vim.cmd("redrawstatus")
@@ -97,11 +73,13 @@ vim.lsp.config.gopls = {
   root_markers = { "go.mod", "go.work", ".git" },
   filetypes = { "go" }
 }
+
 vim.lsp.config.tsls = {
   cmd = { "typescript-language-server", "--stdio" },
   root_markers = { "tsconfig.json", "jsconfig.json", "package.json", ".git" },
   filetypes = { "typescript", "javascript" }
 }
+
 vim.lsp.enable({ "gopls", "tsls" })
 
 -- statusline
@@ -145,6 +123,7 @@ vim.api.nvim_set_hl(0, "Todo", { ctermfg = "Brown", });
 vim.api.nvim_set_hl(0, "Added", { ctermfg = "Green", });
 vim.api.nvim_set_hl(0, "Changed", { ctermfg = "Yellow", });
 vim.api.nvim_set_hl(0, "Removed", { ctermfg = "Red", });
+
 -- ui (:h highlight-groups)
 vim.api.nvim_set_hl(0, "Normal", { ctermfg = "White" })
 vim.api.nvim_set_hl(0, "Cursor", { reverse = true })
@@ -165,12 +144,14 @@ vim.api.nvim_set_hl(0, "LineNr", { link = "NonText" })
 vim.api.nvim_set_hl(0, "WinSeparator", { link = "NonText" })
 vim.api.nvim_set_hl(0, "FloatBorder", { link = "NonText" })
 vim.api.nvim_set_hl(0, "MatchParen", { ctermbg = "DarkGray" })
+
 -- diagnostics (:h diagnostic-highlights)
 vim.api.nvim_set_hl(0, "DiagnosticUnderlineError", { link = "SpellBad" })
 vim.api.nvim_set_hl(0, "DiagnosticUnderlineWarn", { link = "SpellCap" })
 vim.api.nvim_set_hl(0, "DiagnosticUnderlineInfo", { link = "SpellRare" })
 vim.api.nvim_set_hl(0, "DiagnosticUnderlineHint", { link = "SpellRare" })
 vim.api.nvim_set_hl(0, "DiagnosticUnderlineOk", { link = "SpellLocal" })
+
 -- treesitter (:h treesitter-highlight-groups)
 vim.api.nvim_set_hl(0, "@module", { link = "Identifier" });
 vim.api.nvim_set_hl(0, "@module.builtin", { link = "@module" });
