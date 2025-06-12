@@ -1,5 +1,7 @@
 #!/bin/bash
-bus=12
+# sudo i2cdetect -l
+# sudo i2cdetect -y 13
+bus=13
 addresses=(0x61 0x63)
 
 for address in "${addresses[@]}"; do
