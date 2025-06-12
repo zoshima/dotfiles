@@ -28,7 +28,7 @@ vim.opt.statusline = "%!v:lua.StatusLine()"
 vim.keymap.set("t", "<Esc>", "<C-\\><C-n>", {})
 vim.keymap.set("n", "<Space>e", ":Ex<CR>")
 vim.keymap.set("n", "<Space>p", ":find ")
-vim.keymap.set("n", "<Space>f", ":silent lgrep! ")
+vim.keymap.set("n", "<Space>f", ":silent grep! ")
 
 -- autocmd
 vim.api.nvim_create_autocmd('FileType', {
