@@ -38,7 +38,7 @@ vim.keymap.set("n", "<Space>lc", ":lclose<CR>")
 -- autocmd
 vim.api.nvim_create_autocmd('FileType', {
   pattern = {
-    "bash", "go", "typescript", "javascript",
+    "sh", "go", "typescript", "javascript",
     "css", "scss", "html", "htmlangular",
     "json", "yaml"
   },
