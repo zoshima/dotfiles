@@ -29,6 +29,11 @@ vim.keymap.set("t", "<Esc>", "<C-\\><C-n>", {})
 vim.keymap.set("n", "<Space>e", ":Ex<CR>")
 vim.keymap.set("n", "<Space>p", ":find ")
 vim.keymap.set("n", "<Space>f", ":silent grep! ")
+vim.keymap.set("n", "<Space>b", ":ls<CR>:b ")
+vim.keymap.set("n", "<Space>co", ":bo copen<CR>")
+vim.keymap.set("n", "<Space>cc", ":cclose<CR>")
+vim.keymap.set("n", "<Space>lo", ":lopen<CR>")
+vim.keymap.set("n", "<Space>lc", ":lclose<CR>")
 
 -- autocmd
 vim.api.nvim_create_autocmd('FileType', {
