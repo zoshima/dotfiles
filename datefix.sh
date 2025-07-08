@@ -1,4 +1,8 @@
 #!/bin/bash
 for file in ./*; do
-  exiftool "-FileModifyDate<CreateDate" "-FileCreateDate<CreateDate" ${file}
+  exiftool -overwrite_original \
+    "-FileCreateDate<CreateDate" \
+    "-FileModifyDate<CreateDate" \
+    "-FileAccessDate<CreateDate" \
+    ${file}
 done
