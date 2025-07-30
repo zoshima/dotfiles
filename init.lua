@@ -1,5 +1,4 @@
 -- options
-vim.opt.foldenable = false
 vim.opt.termguicolors = false
 vim.opt.signcolumn = "number"
 vim.opt.cursorline = true
