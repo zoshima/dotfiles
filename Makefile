@@ -1,7 +1,7 @@
 .PHONY: bash nvim ghostty
 
 bash:
-	ln -sf ~/git/dotfiles/.bashrc ~/.bashrc
+	ln -sf ~/git/dotfiles/bashrc ~/.bashrc
 
 ghostty:
 	mkdir -p ~/.config/ghostty
