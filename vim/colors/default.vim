@@ -1,6 +1,6 @@
 hi clear
 
-let g:colors_name = 'custom'
+let g:colors_name = 'default'
 
 " :h group-name
 hi Comment ctermfg=Gray ctermbg=NONE cterm=NONE
