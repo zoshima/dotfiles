@@ -5,7 +5,8 @@ let g:colors_name = 'custom'
 " :h group-name
 hi Comment ctermfg=Gray ctermbg=NONE cterm=NONE
 hi Constant ctermfg=Green ctermbg=NONE cterm=NONE
-hi Identifier ctermfg=Yellow ctermbg=NONE cterm=NONE
+hi Identifier ctermfg=White ctermbg=NONE cterm=NONE
+hi Function ctermfg=Yellow ctermbg=NONE cterm=NONE
 hi Statement ctermfg=Red ctermbg=NONE cterm=NONE
 hi PreProc ctermfg=Blue ctermbg=NONE cterm=NONE
 hi Type ctermfg=Cyan ctermbg=NONE cterm=NONE
