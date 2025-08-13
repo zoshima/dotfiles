@@ -66,10 +66,7 @@ if [ ! -f ${HISTFILE} ]; then
   touch ${HISTFILE}
 fi
 
-export EDITOR=nvim
-
-export MANPAGER='nvim +Man!'
-export MANWIDTH=999
+export EDITOR=vim
 
 export PATH="$PATH:/home/$USER/.local/bin"
 export PATH="$PATH:$GOPATH/bin"
