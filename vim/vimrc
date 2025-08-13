@@ -25,19 +25,23 @@ set t_Co=16
 " mappings
 nnoremap <Space>e :Ex<CR>
 nnoremap <Space>p :find 
-nnoremap <Space>f :grep 
+nnoremap <Space>f :lgrep 
 nnoremap <Space>b :ls<CR>:b 
 nnoremap <Space>co :bo copen<CR>
 nnoremap <Space>cc :cclose<CR>
+nnoremap ]c :cn<CR>
+nnoremap [c :cp<CR>
 nnoremap <Space>lo :lopen<CR>
 nnoremap <Space>lc :lclose<CR>
+nnoremap ]l :lnext<CR>
+nnoremap [l :lprevious<CR>
 nnoremap <silent> <C-L> :nohlsearch<CR>
 
 " functions
 function! SynStack ()
   let s = synID(line('.'), col('.'), 1) | echo synIDattr(s, 'name') . ' -> ' . synIDattr(synIDtrans(s), 'name')
 endfunc
-command Inspect call SynStack()
+command! Inspect call SynStack()
 
 " colorscheme ~/.vim/colors/custom.vim
 colorscheme custom
