@@ -44,5 +44,4 @@ function! SynStack ()
 endfunc
 command! Inspect call SynStack()
 
-" colorscheme ~/.vim/colors/custom.vim
-colorscheme custom
+colorscheme default
