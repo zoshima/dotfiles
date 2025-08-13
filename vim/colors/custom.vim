@@ -43,3 +43,4 @@ hi! link TabLineFill StatusLineNC
 hi Title ctermfg=White ctermbg=NONE cterm=NONE
 hi NonText ctermfg=DarkGray ctermbg=NONE cterm=NONE
 hi Visual ctermfg=NONE ctermbg=NONE cterm=reverse
+hi! link ErrorMsg Error
