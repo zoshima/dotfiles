@@ -1,4 +1,5 @@
 syntax on
+filetype plugin on
 
 set number relativenumber 
 set expandtab 
@@ -21,6 +22,7 @@ set viminfofile=NONE
 set grepprg=rg\ --vimgrep\ -uu
 set laststatus=2
 set t_Co=16
+set textwidth=102
 
 " mappings
 nnoremap <Space>e :Ex<CR>

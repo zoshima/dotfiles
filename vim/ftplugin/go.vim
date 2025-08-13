@@ -1,1 +1,0 @@
-setlocal keywordprg=go\ doc
