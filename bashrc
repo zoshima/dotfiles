@@ -67,6 +67,7 @@ if [ ! -f ${HISTFILE} ]; then
 fi
 
 export EDITOR=vim
+export MANPAGER="vim +MANPAGER -"
 
 export PATH="$PATH:/home/$USER/.local/bin"
 export PATH="$PATH:$GOPATH/bin"
