@@ -54,3 +54,11 @@ hi DiffChange ctermfg=Yellow ctermbg=NONE cterm=NONE
 hi DiffDelete ctermfg=Red ctermbg=NONE cterm=NONE
 hi DiffText ctermfg=Black ctermbg=Yellow cterm=NONE
 hi ColorColumn ctermfg=NONE ctermbg=Black cterm=NONE
+
+" /usr/share/vim/vimX/syntax/go.vim
+let g:go_highlight_functions=1
+let g:go_highlight_function_parameters=1
+let g:go_highlight_function_calls=1
+let g:go_highlight_types=1
+
+hi! link goFunctionCall goFunction
