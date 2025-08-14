@@ -8,7 +8,7 @@ hi Constant ctermfg=Green ctermbg=NONE cterm=NONE
 hi Identifier ctermfg=White ctermbg=NONE cterm=NONE
 hi Function ctermfg=Yellow ctermbg=NONE cterm=NONE
 hi Statement ctermfg=Red ctermbg=NONE cterm=NONE
-hi PreProc ctermfg=Blue ctermbg=NONE cterm=NONE
+hi PreProc ctermfg=Cyan ctermbg=NONE cterm=NONE
 hi Type ctermfg=Blue ctermbg=NONE cterm=NONE
 hi Special ctermfg=Magenta ctermbg=NONE cterm=NONE
 hi Underlined ctermfg=NONE ctermbg=NONE cterm=underline
@@ -55,10 +55,38 @@ hi DiffDelete ctermfg=Red ctermbg=NONE cterm=NONE
 hi DiffText ctermfg=Black ctermbg=Yellow cterm=NONE
 hi ColorColumn ctermfg=NONE ctermbg=Black cterm=NONE
 
-" /usr/share/vim/vimX/syntax/go.vim
+" /usr/share/vim/vim91/syntax/go.vim
 let g:go_highlight_functions=1
 let g:go_highlight_function_parameters=1
 let g:go_highlight_function_calls=1
 let g:go_highlight_types=1
 
-hi! link goFunctionCall goFunction
+hi! link goFunctionCall Function
+
+" /usr/share/vim/vim91/syntax/shared/typescriptcommon.vim
+hi! link typescriptBraces Normal
+hi! link typescriptUnion Normal
+hi! link typescriptFuncCallArg Normal
+hi! link typescriptCall Normal
+hi! link typescriptObjectLabel Normal
+hi! link typescriptDOMFormProp Normal
+hi! link typescriptPaymentShippingOptionProp Normal
+hi! link typescriptFileReaderProp Normal
+hi! link typescriptResponseProp Normal
+hi! link typescriptArrowFunc Normal
+hi! link typescriptGlobal Normal
+hi! link typescriptArrowFuncArg Normal
+hi! link typescriptIdentifier Normal
+hi! link typescriptCastKeyword Keyword
+hi! link typescriptDecorator PreProc
+hi! link typescriptGlobalMethod Function
+hi! link typescriptArrayMethod Function
+hi! link typescriptHeadersMethod Function
+hi! link typescriptDOMDocMethod Function
+hi! link typescriptBOMLocationMethod Function
+hi! link typescriptBOMWindowMethod Function
+hi! link typescriptConsoleMethod Function
+hi! link typescriptStringMethod Function
+hi! link typescriptTemplateSB Special
+hi! link typescriptClassName Type
+hi! link typescriptTypeReference Type
