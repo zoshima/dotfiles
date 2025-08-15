@@ -9,6 +9,8 @@ ghostty:
 
 nvim:
 	rm -rf ~/.config/nvim
-	mkdir -p ~/.config/nvim/pack/git
-	git clone -b main https://github.com/nvim-treesitter/nvim-treesitter.git ~/.config/nvim/pack/git/start/nvim-treesitter
-	ln -s ~/git/dotfiles/init.lua ~/.config/nvim/init.lua
+	mkdir ~/.config/nvim
+	ln -s ~/git/dotfiles/nvim/* ~/.config/nvim
+	git clone -b main \
+		https://github.com/nvim-treesitter/nvim-treesitter.git \
+		~/.config/nvim/pack/git/start/nvim-treesitter
