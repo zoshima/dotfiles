@@ -36,8 +36,7 @@ nnoremap <Space>lo :lopen<CR>
 nnoremap <Space>lc :lclose<CR>
 nnoremap ]l :lnext<CR>
 nnoremap [l :lprevious<CR>
-nnoremap <silent> <C-L> :nohlsearch<CR>
-nnoremap <silent> <C-S> :so % \| windo e!<CR>
+nnoremap <silent> <C-L> :let @/ = ''<CR>
 
 " functions
 function! SynStack ()
