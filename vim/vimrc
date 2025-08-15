@@ -37,11 +37,6 @@ nnoremap <Space>lc :lclose<CR>
 nnoremap ]l :lnext<CR>
 nnoremap [l :lprevious<CR>
 nnoremap <silent> <C-L> :let @/ = ''<CR>
-
-" functions
-function! SynStack ()
-  let s = synID(line('.'), col('.'), 1) | echo synIDattr(s, 'name') . ' -> ' . synIDattr(synIDtrans(s), 'name')
-endfunc
-command! Inspect call SynStack()
+nnoremap <silent>gh :echo synIDattr(synID(line('.'), col('.'), 1), 'name') . ' -> ' . synIDattr(synIDtrans(synID(line('.'), col('.'), 1)), 'name')<CR>
 
 colorscheme default
