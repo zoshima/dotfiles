@@ -83,7 +83,10 @@ vim.lsp.config.gopls = {
 vim.lsp.config.tsls = {
   cmd = { "typescript-language-server", "--stdio" },
   root_markers = { "tsconfig.json", "jsconfig.json", "package.json", ".git" },
-  filetypes = { "typescript", "javascript" }
+  filetypes = { "typescript", "javascript" },
+  on_init = function(client, _)
+    client.server_capabilities.semanticTokensProvider = nil  -- turn off semantic tokens
+  end,
 }
 
 vim.lsp.enable({ "gopls", "tsls" })
