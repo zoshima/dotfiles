@@ -14,3 +14,6 @@ nvim:
 	git clone -b main \
 		https://github.com/nvim-treesitter/nvim-treesitter.git \
 		~/.config/nvim/pack/git/start/nvim-treesitter
+	git clone --depth=1 \
+		https://github.com/stevearc/oil.nvim.git \
+		~/.config/nvim/pack/git/start/oil

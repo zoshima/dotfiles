@@ -109,3 +109,5 @@ function StatusLine()
 
   return "%f %h%w%m%r%="..diagnostics.."%l,%c/%L"
 end
+
+require("oil").setup()
