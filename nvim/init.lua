@@ -25,7 +25,7 @@ vim.cmd.colorscheme('default')
 
 -- keymaps
 vim.keymap.set("t", "<Esc>", "<C-\\><C-n>", {})
-vim.keymap.set("n", "<Space>e", ":Ex<CR>")
+vim.keymap.set("n", "<Space>e", ":Oil<CR>")
 vim.keymap.set("n", "<Space>p", ":find ")
 vim.keymap.set("n", "<Space>f", ":silent lgrep! ")
 vim.keymap.set("n", "<Space>b", ":ls<CR>:b ")
@@ -72,6 +72,22 @@ vim.api.nvim_create_autocmd('DiagnosticChanged', {
     vim.cmd("redrawstatus")
   end
 })
+
+
+-- user commands
+vim.api.nvim_create_user_command('Blame', function()
+    local row, col = unpack(vim.api.nvim_win_get_cursor(0))
+
+    local bufnr = vim.api.nvim_create_buf(false, true)
+    vim.api.nvim_buf_set_option(bufnr, 'filetype', vim.bo.filetype)
+    vim.api.nvim_buf_set_option(bufnr, 'bufhidden', 'wipe')
+
+    vim.api.nvim_set_current_buf(bufnr)
+
+    vim.cmd("0r !git blame #");
+
+    vim.api.nvim_win_set_cursor(0, {row, col})
+end, {})
 
 -- lsp
 vim.lsp.config.gopls = {
