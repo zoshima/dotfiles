@@ -17,3 +17,8 @@ nvim:
 	git clone --depth=1 \
 		https://github.com/stevearc/oil.nvim.git \
 		~/.config/nvim/pack/git/start/oil
+
+vim:
+	rm -rf ~/.vim
+	mkdir ~/.vim
+	ln -s ~/git/dotfiles/vim/* ~/.vim/
