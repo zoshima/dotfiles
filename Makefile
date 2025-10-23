@@ -1,4 +1,4 @@
-.PHONY: bash nvim ghostty
+.PHONY: bash nvim ghostty vim
 
 bash:
 	ln -sf ~/git/dotfiles/bashrc ~/.bashrc
