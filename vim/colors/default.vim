@@ -62,6 +62,7 @@ let g:go_highlight_function_calls=1
 let g:go_highlight_types=1
 
 hi! link goFunctionCall Function
+hi! link goBuiltins Function
 
 " /usr/share/vim/vim91/syntax/shared/typescriptcommon.vim
 hi! link typescriptBraces Normal
