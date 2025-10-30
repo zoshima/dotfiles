@@ -66,9 +66,9 @@ if [ ! -f ${HISTFILE} ]; then
   touch ${HISTFILE}
 fi
 
-export EDITOR=vim
+export EDITOR=nvim
 
-# export MANPAGER='nvim +Man!'
+export MANPAGER='nvim +Man!'
 export MANWIDTH=999
 
 export PATH="$PATH:/home/$USER/.local/bin"
