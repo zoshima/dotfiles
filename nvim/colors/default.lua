@@ -21,19 +21,19 @@ vim.api.nvim_set_hl(0, "Todo", { ctermfg = "Brown" })
 
 -- :h highlight-groups
 vim.api.nvim_set_hl(0, "Normal", { ctermfg = "White" })
-vim.api.nvim_set_hl(0, "Cursor", { reverse = true })
+vim.api.nvim_set_hl(0, "Cursor", { standout = true })
 vim.api.nvim_set_hl(0, "CursorLine", { })
 vim.api.nvim_set_hl(0, "Directory", { ctermfg = "Blue", bold = true }) 
 vim.api.nvim_set_hl(0, "LineNr", { ctermfg = "DarkGray" }) 
 vim.api.nvim_set_hl(0, "CursorLineNr", { ctermfg = "White" }) 
 vim.api.nvim_set_hl(0, "MatchParen", { underline = true }) 
 vim.api.nvim_set_hl(0, "Pmenu", { ctermbg = "Black" }) 
-vim.api.nvim_set_hl(0, "PmenuSel", { reverse = true }) 
-vim.api.nvim_set_hl(0, "PmenuMatch", { ctermfg = "Cyan" }) 
-vim.api.nvim_set_hl(0, "QuickFixLine", { ctermfg = "Cyan" }) 
+vim.api.nvim_set_hl(0, "PmenuSel", { standout = true }) 
+vim.api.nvim_set_hl(0, "PmenuMatch", { link = "Search" }) 
+vim.api.nvim_set_hl(0, "QuickFixLine", { standout = true }) 
 vim.api.nvim_set_hl(0, "WinSeparator", { ctermfg = "DarkGray" }) 
-vim.api.nvim_set_hl(0, "Search", { reverse = true }) 
-vim.api.nvim_set_hl(0, "CurSearch", { ctermfg = "Black", ctermbg = "LightGray" }) 
+vim.api.nvim_set_hl(0, "Search", { standout = true }) 
+vim.api.nvim_set_hl(0, "CurSearch", { standout = true }) 
 vim.api.nvim_set_hl(0, "IncSearch", { link = "CurSearch" })
 vim.api.nvim_set_hl(0, "StatusLine", { ctermfg = "White", ctermbg = "Black" }) 
 vim.api.nvim_set_hl(0, "StatusLineNC", { ctermfg = "DarkGray", ctermbg = "Black" }) 
@@ -68,6 +68,7 @@ vim.api.nvim_set_hl(0, "@module.builtin", { link = "@module" });
 vim.api.nvim_set_hl(0, "@type.builtin", { ctermfg = "Blue" });
 vim.api.nvim_set_hl(0, "@constructor", { link = "@function" });
 vim.api.nvim_set_hl(0, "@tag.builtin", { link = "@tag" });
+vim.api.nvim_set_hl(0, "@tag.angular", { link = "@tag" });
 vim.api.nvim_set_hl(0, "@constant.builtin", { link = "@constant" });
 vim.api.nvim_set_hl(0, "@function.builtin", { link = "@function" });
 vim.api.nvim_set_hl(0, "@variable.builtin", { link = "@variable" });
