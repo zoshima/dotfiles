@@ -26,7 +26,7 @@ export MANWIDTH=999
 alias ls="ls -hG"
 alias ll="ls -alG"
 
-PROMPT='%F{green}%n%f@%m:%B%F{blue}%~%f$(jobs_status)$(git_status)
-%B%F{yellow}$%f '
+PROMPT='%F{green}%n%f@%m:%F{blue}%~%f$(jobs_status)$(git_status)
+%F{yellow}$%f '
 
-PS2="%B%F{yellow}> %f"
+PS2="%F{yellow}> %f"
