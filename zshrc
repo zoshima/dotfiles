@@ -1,0 +1,32 @@
+autoload -U colors && colors
+setopt prompt_subst
+
+git_status() {
+  local branch=$(git rev-parse --abbrev-ref HEAD 2>/dev/null)
+  [[ -z "$branch" ]] && return
+  
+  local dirty=""
+  [[ $(git status --porcelain 2>/dev/null | wc -l) -gt 0 ]] && dirty="%F{red}*%f"
+  
+  echo -n "($branch$dirty)"
+}
+
+jobs_status() {
+  # Counts entries in the $jobstates associative array
+  local num=${#jobstates}
+  [[ "$num" -gt 0 ]] && echo -n "[%F{yellow}$num%f]"
+}
+
+ffind() { find . -iname "*$1*" 2>/dev/null }
+
+export EDITOR=nvim
+export MANPAGER='nvim +Man!'
+export MANWIDTH=999
+
+alias ls="ls -hG"
+alias ll="ls -alG"
+
+PROMPT='%F{green}%n%f@%m:%B%F{blue}%~%f$(jobs_status)$(git_status)
+%B%F{yellow}$%f '
+
+PS2="%B%F{yellow}> %f"

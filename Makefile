@@ -1,7 +1,10 @@
-.PHONY: bash nvim ghostty vim
+.PHONY: bash zsh nvim ghostty vim
 
 bash:
 	ln -sf ~/git/dotfiles/bashrc ~/.bashrc
+
+zsh:
+	ln -sf ~/git/dotfiles/zshrc ~/.zshrc
 
 ghostty:
 	mkdir -p ~/.config/ghostty
