@@ -21,7 +21,7 @@ vim.opt.listchars = { tab = "<>", space = "_", eol = "$" }
 vim.opt.statusline = "%!v:lua.StatusLine()"
 
 if vim.g.neovide then
-  vim.g.neovide_cursor_short_animation_length = 0.04
+  vim.g.neovide_cursor_short_animation_length = 0.0
   vim.g.neovide_cursor_trail_size = 0.0
 else
   vim.opt.termguicolors = false
@@ -96,6 +96,18 @@ vim.api.nvim_create_user_command('Blame', function()
 
     vim.api.nvim_win_set_cursor(0, {row, col})
 end, {})
+
+vim.api.nvim_create_user_command('Open', function(opts)
+    local target = vim.fn.expand(opts.args)
+    
+    vim.cmd('edit ' .. target)
+
+    if vim.fn.isdirectory(target) == 0 then
+      target = vim.fn.fnamemodify(target, ':p:h')
+    end
+
+    vim.api.nvim_set_current_dir(target)
+end, { nargs = 1, complete = "dir" })
 
 -- lsp
 vim.lsp.config.gopls = {
