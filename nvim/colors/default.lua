@@ -15,7 +15,7 @@ local cyan= "#26C6DA"
 local magenta = "#EC407A"
 local brown= "#8D6E63"
 
-local background = "#131314"
+local background = "#1E1E1E"
 
 -- colorscheme
 -- :h group-name
@@ -71,6 +71,7 @@ vim.api.nvim_set_hl(0, "DiffChange", { ctermfg = "Yellow", fg = yellow })
 vim.api.nvim_set_hl(0, "DiffDelete", { ctermfg = "Red", fg = red })
 vim.api.nvim_set_hl(0, "DiffText", { reverse = true })
 vim.api.nvim_set_hl(0, "ColorColumn", { ctermbg = "Black", bg = black })
+vim.api.nvim_set_hl(0, "NormalFloat", { ctermbg = "Black", bg = black })
 
 -- diagnostics (:h diagnostic-highlights)
 vim.api.nvim_set_hl(0, "DiagnosticUnderlineError", { link = "SpellBad" })

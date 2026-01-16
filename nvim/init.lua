@@ -15,17 +15,12 @@ vim.opt.mouse = "nv"
 vim.opt.mousemodel = "extend"
 vim.opt.scrolloff = 1
 vim.opt.path:append("**/*")
-vim.opt.winborder = "rounded"
+vim.opt.winborder = "solid"
 vim.opt.completeopt = { "menuone", "noselect", "fuzzy" }
 vim.opt.listchars = { tab = "<>", space = "_", eol = "$" }
 vim.opt.statusline = "%!v:lua.StatusLine()"
 
-if vim.g.neovide then
-  vim.g.neovide_cursor_short_animation_length = 0.0
-  vim.g.neovide_cursor_trail_size = 0.0
-else
-  vim.opt.termguicolors = false
-end
+vim.opt.termguicolors = false
 
 vim.cmd.colorscheme('default')
 
@@ -146,7 +141,7 @@ function StatusLine()
     end
   end
 
-  return "%f %h%w%m%r%="..diagnostics.."%l,%c/%L"
+  return "%f%h%w%m%r%="..diagnostics.."%l,%c/%L"
 end
 
 require("oil").setup({
