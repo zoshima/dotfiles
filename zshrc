@@ -1,4 +1,8 @@
+bindkey -v
+
 autoload -U colors && colors
+autoload -U compinit && compinit
+
 setopt prompt_subst
 
 git_status() {
@@ -22,6 +26,9 @@ ffind() { find . -iname "*$1*" 2>/dev/null }
 export EDITOR=nvim
 export MANPAGER='nvim +Man!'
 export MANWIDTH=999
+
+export PATH="$PATH:/opt/homebrew/opt/postgresql@18/bin/"
+export PATH="$PATH:/Users/kdi/go/bin/"
 
 alias ls="ls -hG"
 alias ll="ls -alG"

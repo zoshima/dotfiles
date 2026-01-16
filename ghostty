@@ -5,10 +5,10 @@ font-feature = -calt, -liga, -dlig
 window-padding-x = 6
 window-padding-y = 6
 
-keybind = alt+h=goto_split:left
-keybind = alt+l=goto_split:right
-keybind = alt+j=goto_split:bottom
-keybind = alt+k=goto_split:top
+keybind = super+left=goto_split:left
+keybind = super+right=goto_split:right
+keybind = super+down=goto_split:bottom
+keybind = super+up=goto_split:top
 keybind = f11=toggle_fullscreen
 
 selection-invert-fg-bg = true
