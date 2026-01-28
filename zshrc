@@ -1,9 +1,14 @@
 bindkey -v
 
+if type brew &>/dev/null; then
+  FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
+fi
+
 autoload -U colors && colors
 autoload -U compinit && compinit
 
 setopt prompt_subst
+setopt share_history
 
 git_status() {
   local branch=$(git rev-parse --abbrev-ref HEAD 2>/dev/null)
@@ -16,7 +21,6 @@ git_status() {
 }
 
 jobs_status() {
-  # Counts entries in the $jobstates associative array
   local num=${#jobstates}
   [[ "$num" -gt 0 ]] && echo -n "[%F{yellow}$num%f]"
 }
@@ -26,6 +30,9 @@ ffind() { find . -iname "*$1*" 2>/dev/null }
 export EDITOR=nvim
 export MANPAGER='nvim +Man!'
 export MANWIDTH=999
+
+export HISTSIZE=1000000
+export SAVEHIST=1000000
 
 export PATH="$PATH:/opt/homebrew/opt/postgresql@18/bin/"
 export PATH="$PATH:/Users/kdi/go/bin/"
