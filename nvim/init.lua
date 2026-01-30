@@ -91,6 +91,18 @@ vim.api.nvim_create_user_command('Blame', function()
     vim.api.nvim_win_set_cursor(0, {row, col})
 end, {})
 
+vim.api.nvim_create_user_command('Open', function(opts)
+    local target = vim.fn.expand(opts.args)
+    
+    vim.cmd('edit ' .. target)
+
+    if vim.fn.isdirectory(target) == 0 then
+      target = vim.fn.fnamemodify(target, ':p:h')
+    end
+
+    vim.api.nvim_set_current_dir(target)
+end, { nargs = 1, complete = "dir" })
+
 -- lsp
 vim.lsp.config.gopls = {
   cmd = { "gopls" },
@@ -128,7 +140,7 @@ function StatusLine()
     end
   end
 
-  return "%f %h%w%m%r%="..diagnostics.."%l,%c/%L"
+  return "%f%h%w%m%r%="..diagnostics.."%l,%c/%L"
 end
 
 require("oil").setup({

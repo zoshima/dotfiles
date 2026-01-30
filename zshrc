@@ -1,27 +1,50 @@
+bindkey -v
+
+if type brew &>/dev/null; then
+  FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
+fi
+
 autoload -U colors && colors
+autoload -U compinit && compinit
+
 setopt prompt_subst
+setopt share_history
+setopt hist_ignore_all_dups
 
 git_status() {
   local branch=$(git rev-parse --abbrev-ref HEAD 2>/dev/null)
-  [[ -z "$branch" ]] && return
+  if [[ -z "$branch" ]]; then
+    return
+  fi
   
   local dirty=""
-  [[ $(git status --porcelain 2>/dev/null | wc -l) -gt 0 ]] && dirty="%F{red}*%f"
+  if [[ $(git status --porcelain 2>/dev/null | wc -l) -gt 0 ]]; then
+    dirty="%F{red}*%f"
+  fi
   
   echo -n "($branch$dirty)"
 }
 
 jobs_status() {
-  # Counts entries in the $jobstates associative array
   local num=${#jobstates}
-  [[ "$num" -gt 0 ]] && echo -n "[%F{yellow}$num%f]"
+  if [[ "$num" -gt 0 ]]; then
+    echo -n "[%F{yellow}$num%f]"
+  fi
 }
 
-ffind() { find . -iname "*$1*" 2>/dev/null }
+ffind() { 
+  find . -iname "*$1*" 2>/dev/null 
+}
 
 export EDITOR=nvim
 export MANPAGER='nvim +Man!'
 export MANWIDTH=999
+
+export HISTSIZE=2000
+export SAVEHIST=$HISTSIZE
+
+export PATH="$PATH:/opt/homebrew/opt/postgresql@18/bin/"
+export PATH="$PATH:/Users/kdi/go/bin/"
 
 alias ls="ls -hG"
 alias ll="ls -alG"

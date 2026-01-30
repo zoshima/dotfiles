@@ -2,6 +2,9 @@ font-family = Roboto Mono Regular
 font-size = 14
 font-feature = -calt, -liga, -dlig
 
+font-thicken = true
+font-thicken-strength = 0
+
 window-padding-x = 6
 window-padding-y = 6
 
@@ -9,7 +12,6 @@ keybind = alt+h=goto_split:left
 keybind = alt+l=goto_split:right
 keybind = alt+j=goto_split:bottom
 keybind = alt+k=goto_split:top
-keybind = f11=toggle_fullscreen
 
 selection-invert-fg-bg = true
 cursor-invert-fg-bg = true
