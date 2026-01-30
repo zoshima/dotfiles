@@ -1,4 +1,5 @@
 -- options
+vim.opt.termguicolors = false
 vim.opt.signcolumn = "number"
 vim.opt.cursorline = true
 vim.opt.cursorlineopt = "number"
@@ -19,8 +20,6 @@ vim.opt.winborder = "rounded"
 vim.opt.completeopt = { "menuone", "noselect", "fuzzy" }
 vim.opt.listchars = { tab = "<>", space = "_", eol = "$" }
 vim.opt.statusline = "%!v:lua.StatusLine()"
-
-vim.opt.termguicolors = false
 
 vim.cmd.colorscheme('default')
 
