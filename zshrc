@@ -1,11 +1,12 @@
-bindkey -v
-
 if type brew &>/dev/null; then
+  eval $(brew shellenv)
   FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
 fi
 
-autoload -U colors && colors
-autoload -U compinit && compinit
+autoload -Uz colors && colors
+autoload -Uz compinit && compinit
+
+bindkey -v
 
 setopt prompt_subst
 setopt share_history
