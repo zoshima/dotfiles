@@ -1,9 +1,5 @@
-font-family = Roboto Mono Regular
-font-size = 14
-font-feature = -calt, -liga, -dlig
-
-font-thicken = true
-font-thicken-strength = 0
+font-size = 15
+font-feature = -calt
 
 window-padding-x = 6
 window-padding-y = 6
