@@ -45,7 +45,7 @@ export HISTSIZE=2000
 export SAVEHIST=$HISTSIZE
 
 export PATH="$PATH:/opt/homebrew/opt/postgresql@18/bin/"
-export PATH="$PATH:/Users/kdi/go/bin/"
+export PATH="$PATH:/Users/$(whoami)/go/bin/"
 
 alias ls="ls -hG"
 alias ll="ls -alG"
