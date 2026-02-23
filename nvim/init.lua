@@ -17,6 +17,7 @@ vim.opt.mousemodel = "extend"
 vim.opt.scrolloff = 1
 vim.opt.path:append("**/*")
 vim.opt.winborder = "rounded"
+vim.opt.pumborder = "rounded"
 vim.opt.completeopt = { "menuone", "noselect", "fuzzy" }
 vim.opt.listchars = { tab = "<>", space = "_", eol = "$" }
 vim.opt.statusline = "%!v:lua.StatusLine()"
